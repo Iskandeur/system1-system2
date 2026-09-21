@@ -1,0 +1,404 @@
+{
+ "generated_at": "2026-09-21T20:20:53.930Z",
+ "kind": "openweights",
+ "languages": {
+  "en": {
+   "dataset": "massive-en-openweights",
+   "count": 120,
+   "source": {
+    "name": "MASSIVE 1.1",
+    "url": "https://github.com/alexa/massive",
+    "download": "https://amazon-massive-nlu-dataset.s3.amazonaws.com/amazon-massive-dataset-1.1.tar.gz",
+    "license": "CC BY 4.0",
+    "citation": "FitzGerald et al., \"MASSIVE: A 1M-Example Multilingual Natural Language Understanding Dataset with 51 Typologically-Diverse Languages\", 2022",
+    "locale": "en-US",
+    "split": "test",
+    "sampling": "600 of 2974 test utterances, proportional to scenario, seed 42; identical ids across locales",
+    "per_label": {
+     "alarm": 19,
+     "audio": 13,
+     "iot": 44,
+     "general": 38,
+     "datetime": 21,
+     "music": 16,
+     "takeaway": 12,
+     "weather": 31,
+     "play": 78,
+     "news": 25,
+     "recommendation": 19,
+     "qa": 58,
+     "calendar": 81,
+     "social": 21,
+     "transport": 25,
+     "cooking": 15,
+     "email": 55,
+     "lists": 29
+    },
+    "derived_from": "massive-en",
+    "openweights_subset": {
+     "n": 120,
+     "seed": 7,
+     "method": "seeded shuffle (seed 7) then label-stratified round-robin (src/task.mjs stratifiedSubset)"
+    }
+   }
+  },
+  "fr": {
+   "dataset": "massive-fr-openweights",
+   "count": 120,
+   "source": {
+    "name": "MASSIVE 1.1",
+    "url": "https://github.com/alexa/massive",
+    "download": "https://amazon-massive-nlu-dataset.s3.amazonaws.com/amazon-massive-dataset-1.1.tar.gz",
+    "license": "CC BY 4.0",
+    "citation": "FitzGerald et al., \"MASSIVE: A 1M-Example Multilingual Natural Language Understanding Dataset with 51 Typologically-Diverse Languages\", 2022",
+    "locale": "fr-FR",
+    "split": "test",
+    "sampling": "600 of 2974 test utterances, proportional to scenario, seed 42; identical ids across locales",
+    "per_label": {
+     "alarm": 19,
+     "audio": 13,
+     "iot": 44,
+     "general": 38,
+     "datetime": 21,
+     "music": 16,
+     "takeaway": 12,
+     "weather": 31,
+     "play": 78,
+     "news": 25,
+     "recommendation": 19,
+     "qa": 58,
+     "calendar": 81,
+     "social": 21,
+     "transport": 25,
+     "cooking": 15,
+     "email": 55,
+     "lists": 29
+    },
+    "derived_from": "massive-fr",
+    "openweights_subset": {
+     "n": 120,
+     "seed": 7,
+     "method": "seeded shuffle (seed 7) then label-stratified round-robin (src/task.mjs stratifiedSubset)"
+    }
+   }
+  }
+ },
+ "systems": {
+  "gpt-5.2": {
+   "tag": "gpt-5.2",
+   "where": "hosted API",
+   "en": {
+    "tag": "gpt-5.2",
+    "model": "gpt-5.2",
+    "role": "system2",
+    "where": "hosted API",
+    "n": 120,
+    "correct": 108,
+    "accuracy": 0.9,
+    "accuracy_ci": {
+     "lo": 0.8333,
+     "hi": 0.9419
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 1.444,
+    "latency_ms": {
+     "mean": 2478.6583,
+     "median": 2348,
+     "p90": 3291,
+     "max": 7273
+    },
+    "vs_jev": {
+     "only_this_correct": 6,
+     "only_jev_correct": 4
+    }
+   },
+   "model": "gpt-5.2",
+   "fr": {
+    "tag": "gpt-5.2",
+    "model": "gpt-5.2",
+    "role": "system2",
+    "where": "hosted API",
+    "n": 120,
+    "correct": 103,
+    "accuracy": 0.8583,
+    "accuracy_ci": {
+     "lo": 0.7848,
+     "hi": 0.9096
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 1.5687,
+    "latency_ms": {
+     "mean": 2722.875,
+     "median": 2513,
+     "p90": 3798,
+     "max": 6554
+    },
+    "vs_jev": {
+     "only_this_correct": 4,
+     "only_jev_correct": 6
+    }
+   },
+   "gap_fr_minus_en": -0.0417
+  },
+  "jev": {
+   "tag": "jev",
+   "where": "hosted API",
+   "en": {
+    "tag": "jev",
+    "model": "typesafe/jev-1.13",
+    "role": "system1",
+    "where": "hosted API",
+    "n": 120,
+    "correct": 106,
+    "accuracy": 0.8833,
+    "accuracy_ci": {
+     "lo": 0.8137,
+     "hi": 0.9292
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 0.0313,
+    "latency_ms": {
+     "mean": 307.8083,
+     "median": 297,
+     "p90": 365,
+     "max": 815
+    },
+    "calibration": {
+     "n": 120,
+     "ece": 0.0568,
+     "ece_ci": {
+      "lo": 0.0336,
+      "hi": 0.1134
+     },
+     "auroc": 0.8555,
+     "mean_confidence": 0.9212
+    }
+   },
+   "model": "typesafe/jev-1.13",
+   "fr": {
+    "tag": "jev",
+    "model": "typesafe/jev-1.13",
+    "role": "system1",
+    "where": "hosted API",
+    "n": 120,
+    "correct": 105,
+    "accuracy": 0.875,
+    "accuracy_ci": {
+     "lo": 0.804,
+     "hi": 0.9228
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 0.0315,
+    "latency_ms": {
+     "mean": 291.1583,
+     "median": 283,
+     "p90": 351,
+     "max": 436
+    },
+    "calibration": {
+     "n": 120,
+     "ece": 0.0894,
+     "ece_ci": {
+      "lo": 0.0507,
+      "hi": 0.1439
+     },
+     "auroc": 0.8638,
+     "mean_confidence": 0.9154
+    }
+   },
+   "gap_fr_minus_en": -0.0083
+  },
+  "kev": {
+   "tag": "kev",
+   "where": "local CPU",
+   "en": {
+    "tag": "kev",
+    "model": "jaredpalmer/kev-0.8b",
+    "role": "system1",
+    "where": "local CPU",
+    "n": 120,
+    "correct": 89,
+    "accuracy": 0.7417,
+    "accuracy_ci": {
+     "lo": 0.6567,
+     "hi": 0.8116
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 0,
+    "latency_ms": {
+     "mean": 8270.0083,
+     "median": 5065,
+     "p90": 7995,
+     "max": 199540
+    },
+    "calibration": {
+     "n": 120,
+     "ece": 0.1778,
+     "ece_ci": {
+      "lo": 0.1478,
+      "hi": 0.2473
+     },
+     "auroc": 0.8753,
+     "mean_confidence": 0.5638
+    },
+    "vs_jev": {
+     "only_this_correct": 4,
+     "only_jev_correct": 21
+    }
+   },
+   "model": "jaredpalmer/kev-0.8b"
+  },
+  "laya": {
+   "tag": "laya",
+   "where": "local CPU",
+   "en": {
+    "tag": "laya",
+    "model": "convaiinnovations/laya",
+    "role": "system1",
+    "where": "local CPU",
+    "n": 120,
+    "correct": 84,
+    "accuracy": 0.7,
+    "accuracy_ci": {
+     "lo": 0.6128,
+     "hi": 0.7747
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 0,
+    "latency_ms": {
+     "mean": 2739.5333,
+     "median": 1917,
+     "p90": 3971,
+     "max": 41276
+    },
+    "calibration": {
+     "n": 120,
+     "ece": 0.2742,
+     "ece_ci": {
+      "lo": 0.1993,
+      "hi": 0.3563
+     },
+     "auroc": 0.7148,
+     "mean_confidence": 0.9742
+    },
+    "vs_jev": {
+     "only_this_correct": 3,
+     "only_jev_correct": 25
+    }
+   },
+   "model": "convaiinnovations/laya",
+   "fr": {
+    "tag": "laya",
+    "model": "convaiinnovations/laya",
+    "role": "system1",
+    "where": "local CPU",
+    "n": 120,
+    "correct": 57,
+    "accuracy": 0.475,
+    "accuracy_ci": {
+     "lo": 0.3878,
+     "hi": 0.5637
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 0,
+    "latency_ms": {
+     "mean": 2047.825,
+     "median": 1692,
+     "p90": 3285,
+     "max": 5612
+    },
+    "calibration": {
+     "n": 120,
+     "ece": 0.4915,
+     "ece_ci": {
+      "lo": 0.4021,
+      "hi": 0.5841
+     },
+     "auroc": 0.6788,
+     "mean_confidence": 0.9665
+    },
+    "vs_jev": {
+     "only_this_correct": 5,
+     "only_jev_correct": 53
+    }
+   },
+   "gap_fr_minus_en": -0.225
+  },
+  "laya-multilingual": {
+   "tag": "laya-multilingual",
+   "where": "local CPU",
+   "en": {
+    "tag": "laya-multilingual",
+    "model": "convaiinnovations/laya-multilingual",
+    "role": "system1",
+    "where": "local CPU",
+    "n": 120,
+    "correct": 82,
+    "accuracy": 0.6833,
+    "accuracy_ci": {
+     "lo": 0.5955,
+     "hi": 0.7598
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 0,
+    "latency_ms": {
+     "mean": 962.675,
+     "median": 719,
+     "p90": 1757,
+     "max": 3476
+    },
+    "calibration": {
+     "n": 120,
+     "ece": 0.121,
+     "ece_ci": {
+      "lo": 0.0883,
+      "hi": 0.2116
+     },
+     "auroc": 0.8013,
+     "mean_confidence": 0.7861
+    },
+    "vs_jev": {
+     "only_this_correct": 4,
+     "only_jev_correct": 28
+    }
+   },
+   "model": "convaiinnovations/laya-multilingual",
+   "fr": {
+    "tag": "laya-multilingual",
+    "model": "convaiinnovations/laya-multilingual",
+    "role": "system1",
+    "where": "local CPU",
+    "n": 120,
+    "correct": 70,
+    "accuracy": 0.5833,
+    "accuracy_ci": {
+     "lo": 0.4939,
+     "hi": 0.6676
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 0,
+    "latency_ms": {
+     "mean": 1311.3333,
+     "median": 736,
+     "p90": 1844,
+     "max": 42983
+    },
+    "calibration": {
+     "n": 120,
+     "ece": 0.2116,
+     "ece_ci": {
+      "lo": 0.1577,
+      "hi": 0.2964
+     },
+     "auroc": 0.7589,
+     "mean_confidence": 0.7668
+    },
+    "vs_jev": {
+     "only_this_correct": 4,
+     "only_jev_correct": 39
+    }
+   },
+   "gap_fr_minus_en": -0.1
+  }
+ }
+}

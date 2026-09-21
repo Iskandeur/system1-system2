@@ -56,7 +56,19 @@ function compactRow(item, r) {
   };
 }
 
-export async function predict({ system, role, datasetName, tag, defense = 'none', limit = null, useCache = true, env = process.env, log = () => {} }) {
+export async function predict({
+  system,
+  role,
+  datasetName,
+  tag,
+  defense = 'none',
+  limit = null,
+  useCache = true,
+  resume = false,
+  maxNew = null,
+  env = process.env,
+  log = () => {},
+}) {
   if (!DEFENSES.includes(defense)) throw new Error(`--defense must be one of ${DEFENSES.join('|')}`);
   const dataset = loadDataset(datasetName);
   const task = withDefense(dataset.task, defense);
@@ -64,7 +76,22 @@ export async function predict({ system, role, datasetName, tag, defense = 'none'
 
   applyListPrices(system, loadPrices());
   resolveAuth(system, env); // fail early, by name
-  const cache = useCache ? createCache({ dir: inProject('.cache/responses') }) : null;
+  const defaultCacheDir = inProject('.cache/responses');
+  const fallbackCacheDir = inProject('scratch/responses-cache');
+  const requestedCacheDir = env.S1S2_RESPONSE_CACHE_DIR ? path.resolve(String(env.S1S2_RESPONSE_CACHE_DIR)) : defaultCacheDir;
+
+  const canWriteDir = (p) => {
+    try {
+      fs.mkdirSync(p, { recursive: true });
+      fs.accessSync(p, fs.constants.W_OK);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const cacheDir = canWriteDir(requestedCacheDir) ? requestedCacheDir : fallbackCacheDir;
+  const cache = useCache ? createCache({ dir: cacheDir }) : null;
   const adapter = createAdapter(system, {
     env,
     cache,
@@ -74,9 +101,23 @@ export async function predict({ system, role, datasetName, tag, defense = 'none'
 
   const outPath = predictionsPath(dataset.name, tag);
   const wantConfidence = role === 'system1';
-  const rows = [];
-  const errors = [];
-  const startedAt = new Date().toISOString();
+
+  let rows = [];
+  let startedAt = new Date().toISOString();
+  if (resume && fs.existsSync(outPath)) {
+    const prev = JSON.parse(fs.readFileSync(outPath, 'utf8'));
+    if (prev.dataset !== dataset.name) throw new Error(`--resume: dataset mismatch (${prev.dataset} vs ${dataset.name})`);
+    if (prev.tag !== tag) throw new Error(`--resume: tag mismatch (${prev.tag} vs ${tag})`);
+    if (prev.role !== role) throw new Error(`--resume: role mismatch (${prev.role} vs ${role})`);
+    if ((prev.defense ?? 'none') !== defense) throw new Error(`--resume: defense mismatch (${prev.defense} vs ${defense})`);
+    rows = Array.isArray(prev.items) ? prev.items : [];
+    startedAt = prev.started_at || startedAt;
+  }
+
+  const doneIds = new Set(rows.map((r) => String(r.id)));
+
+  // Count errors from the rows we already have, so resuming preserves the error total.
+  const errors = rows.filter((r) => r && r.error).map((r) => ({ id: r.id, error: String(r.error).slice(0, 300) }));
 
   const write = (final) => {
     const doc = {
@@ -99,23 +140,46 @@ export async function predict({ system, role, datasetName, tag, defense = 'none'
     return doc;
   };
 
+  let newDone = 0;
   for (let i = 0; i < items.length; i++) {
     const item = items[i];
+    if (doneIds.has(String(item.id))) continue;
+
     try {
       const r = await adapter.classify({ text: item.text, wantConfidence });
       rows.push(compactRow(item, r));
+      doneIds.add(String(item.id));
+      newDone++;
       if (!r.cached) await new Promise((res) => setTimeout(res, 100));
     } catch (e) {
       errors.push({ id: item.id, error: String(e.message).slice(0, 300) });
-      rows.push({ id: item.id, truth: item.truth, pred: null, confidence: null, confidence_source: null, cost: null, cost_source: null, latency_ms: 0, error: String(e.message).slice(0, 300) });
+      rows.push({
+        id: item.id,
+        truth: item.truth,
+        pred: null,
+        confidence: null,
+        confidence_source: null,
+        cost: null,
+        cost_source: null,
+        latency_ms: 0,
+        error: String(e.message).slice(0, 300),
+      });
+      doneIds.add(String(item.id));
+      newDone++;
       log(`item ${item.id}: ${e.message}`);
     }
-    if ((i + 1) % 25 === 0 || i + 1 === items.length) {
-      write(i + 1 === items.length);
+
+    if (rows.length % 25 === 0 || doneIds.size === items.length) {
+      write(doneIds.size === items.length);
       const s = summarize(rows);
-      log(`${dataset.name}/${tag}: ${i + 1}/${items.length}  acc ${(s.accuracy * 100).toFixed(1)}%  cost $${s.cost_total_usd.toFixed(4)}  cache ${cache ? cache.stats().hits : 0} hits`);
+      log(`${dataset.name}/${tag}: ${doneIds.size}/${items.length}  acc ${(s.accuracy * 100).toFixed(1)}%  cost $${s.cost_total_usd.toFixed(4)}  cache ${cache ? cache.stats().hits : 0} hits`);
+    }
+
+    if (maxNew !== null && newDone >= maxNew) {
+      return { doc: write(false), path: outPath };
     }
   }
+
   return { doc: write(true), path: outPath };
 }
 
@@ -124,6 +188,11 @@ export function runFlags(cfg) {
   const role = f.system === 's2' || f.system === 'system2' ? 'system2' : 'system1';
   const system = cfg[role];
   const defense = f.defense && f.defense !== true ? String(f.defense) : 'none';
+
+  const maxNewRaw = f['max-new'];
+  const maxNew = maxNewRaw === undefined || maxNewRaw === true || maxNewRaw === '' ? null : Number(maxNewRaw);
+  if (maxNew !== null && (!Number.isInteger(maxNew) || maxNew <= 0)) throw new Error(`--max-new must be a positive integer`);
+
   return {
     role,
     system,
@@ -132,6 +201,8 @@ export function runFlags(cfg) {
     tag: cfg.tag ?? defaultTag(system, defense),
     limit: cfg.limit,
     useCache: !(f['no-cache'] === true || f['no-cache'] === 'true'),
+    resume: f.resume === true || f.resume === 'true',
+    maxNew,
   };
 }
 

@@ -21,7 +21,7 @@ export function buildManifest(files) {
       return {
         id: f.slice(0, -5),
         file: `results/${f}`,
-        kind: injected ? 'injection' : 'hybrid',
+        kind: doc.kind ?? (injected ? 'injection' : 'hybrid'),
         dataset: doc.dataset?.name ?? f.slice(0, -5),
         n: doc.dataset?.count ?? null,
         generated_at: doc.generated_at ?? null,

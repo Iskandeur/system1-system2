@@ -1,0 +1,1169 @@
+{
+  "name": "massive-en-openweights",
+  "generated_at": "2026-09-21T19:39:46.557Z",
+  "source": {
+    "name": "MASSIVE 1.1",
+    "url": "https://github.com/alexa/massive",
+    "download": "https://amazon-massive-nlu-dataset.s3.amazonaws.com/amazon-massive-dataset-1.1.tar.gz",
+    "license": "CC BY 4.0",
+    "citation": "FitzGerald et al., \"MASSIVE: A 1M-Example Multilingual Natural Language Understanding Dataset with 51 Typologically-Diverse Languages\", 2022",
+    "locale": "en-US",
+    "split": "test",
+    "sampling": "600 of 2974 test utterances, proportional to scenario, seed 42; identical ids across locales",
+    "per_label": {
+      "alarm": 19,
+      "audio": 13,
+      "iot": 44,
+      "general": 38,
+      "datetime": 21,
+      "music": 16,
+      "takeaway": 12,
+      "weather": 31,
+      "play": 78,
+      "news": 25,
+      "recommendation": 19,
+      "qa": 58,
+      "calendar": 81,
+      "social": 21,
+      "transport": 25,
+      "cooking": 15,
+      "email": 55,
+      "lists": 29
+    },
+    "derived_from": "massive-en",
+    "openweights_subset": {
+      "n": 120,
+      "seed": 7,
+      "method": "seeded shuffle (seed 7) then label-stratified round-robin (src/task.mjs stratifiedSubset)"
+    }
+  },
+  "task": {
+    "name": "scenario",
+    "instructions": "Classify this voice-assistant request into the scenario it belongs to.",
+    "labels": [
+      "alarm",
+      "audio",
+      "calendar",
+      "cooking",
+      "datetime",
+      "email",
+      "general",
+      "iot",
+      "lists",
+      "music",
+      "news",
+      "play",
+      "qa",
+      "recommendation",
+      "social",
+      "takeaway",
+      "transport",
+      "weather"
+    ],
+    "criteria": {
+      "alarm": "Setting, checking or removing alarms and wake-up calls.",
+      "audio": "Controlling the assistant's sound volume: mute, louder, quieter.",
+      "calendar": "Creating, checking or deleting calendar events, meetings and reminders.",
+      "cooking": "Recipes and cooking instructions.",
+      "datetime": "Asking the current time or date, or converting between time zones.",
+      "email": "Reading, sending or searching emails; managing email contacts.",
+      "general": "Chit-chat, greetings, jokes, and replies to the assistant (yes, no, stop, repeat, thanks) with no task.",
+      "iot": "Smart-home devices: lights, plugs, coffee machine, vacuum cleaner.",
+      "lists": "Creating, adding to, reading or removing items from lists (shopping, to-do).",
+      "music": "Music preferences and settings: liking or disliking a song, asking what is playing, playback settings.",
+      "news": "News and headlines.",
+      "play": "Starting playback of music, radio, podcasts, audiobooks or games.",
+      "qa": "Factual questions: definitions, facts, maths, stock prices, currency rates.",
+      "recommendation": "Recommendations for events, movies, restaurants or places.",
+      "social": "Social media: posting an update or checking feeds and notifications.",
+      "takeaway": "Ordering takeaway food or checking a food order.",
+      "transport": "Trains, buses, taxis and traffic: timetables, tickets, rides, traffic conditions.",
+      "weather": "Weather forecasts and conditions."
+    },
+    "defense": "none"
+  },
+  "items": [
+    {
+      "id": "174",
+      "text": "set wake up thursday seven am",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "201",
+      "text": "delete the alarm i just set",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5635",
+      "text": "ensure i have to get up at six in morning",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3695",
+      "text": "i want an alarm for three today",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2870",
+      "text": "olly tell me my alarms",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3161",
+      "text": "do i have any alarms set for six am tomorrow",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "560",
+      "text": "turn off eight am alarm",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4994",
+      "text": "please mute my speaker",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_mute",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4831",
+      "text": "speaker volume increase",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_up",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1630",
+      "text": "raise the volume of the current music",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_up",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "189",
+      "text": "mute volume",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_mute",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2207",
+      "text": "silently adjust",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_mute",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3812",
+      "text": "mute for fifteen minutes",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_mute",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7836",
+      "text": "delete all events",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6761",
+      "text": "remove from my calendar meeting at nine am",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8413",
+      "text": "please alert me",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7912",
+      "text": "alexa remove dinner with mike from my calendar",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8914",
+      "text": "what time is my appointment on april fourth",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8043",
+      "text": "what time is my next appointment",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7981",
+      "text": "send an alert before meeting",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10177",
+      "text": "how to cook spaghetti squash",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10164",
+      "text": "how long do i cook maccoroni",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10206",
+      "text": "how is rice prepared",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9942",
+      "text": "what all goes into a red velvet cake",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9924",
+      "text": "tell me the recipe of",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10217",
+      "text": "find the recipe for sambar in cookingforu application",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "197",
+      "text": "what time is it",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3669",
+      "text": "tell me the time in someplace",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_convert",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13506",
+      "text": "can you tell me the time it is",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4951",
+      "text": "i'd like to know what time it is right now",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1449",
+      "text": "when is easter in the year two thousand and eighteen",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3091",
+      "text": "what time is it in pacific standard time",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4463",
+      "text": "how many saturdays are in march",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16814",
+      "text": "check emails",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15948",
+      "text": "open contacts and call john smith",
+      "truth": "email",
+      "meta": {
+        "intent": "email_querycontact",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16758",
+      "text": "any new email since last time",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "17011",
+      "text": "can you send an email to",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15747",
+      "text": "add this person's email",
+      "truth": "email",
+      "meta": {
+        "intent": "email_addcontact",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16666",
+      "text": "do i have any incoming emails",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "17069",
+      "text": "are there any new emails in outlook",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6405",
+      "text": "what sound does a dog make",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6616",
+      "text": "what is your age",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6557",
+      "text": "play videos",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13197",
+      "text": "i wish it could give me advice",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6446",
+      "text": "is there a groomer in town for cats only",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14339",
+      "text": "tell me about economy and g. d. p. about india versus china",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6313",
+      "text": "today i saw a bulldog",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2903",
+      "text": "please start the vacuum cleaner",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_cleaning",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11914",
+      "text": "olly i need a drink",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_coffee",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6041",
+      "text": "hey olly turn off the light please",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightoff",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "426",
+      "text": "power up the plug socket one",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_wemo_on",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1812",
+      "text": "please make me coffee without sweetener",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_coffee",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "456",
+      "text": "change the bedroom lights to green",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightchange",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4346",
+      "text": "turn lights off",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightoff",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11154",
+      "text": "check recent to do list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10674",
+      "text": "trash the current list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10753",
+      "text": "what did i put down already on the walmart list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10451",
+      "text": "what i am going to do today",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10731",
+      "text": "read what is on my list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10667",
+      "text": "recite the schedules of the list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2093",
+      "text": "bring me the title of current music",
+      "truth": "music",
+      "meta": {
+        "intent": "music_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2355",
+      "text": "which film the music comes from what is the name of the music",
+      "truth": "music",
+      "meta": {
+        "intent": "music_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2647",
+      "text": "could you please create a pandora channel for adele",
+      "truth": "music",
+      "meta": {
+        "intent": "music_settings",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2387",
+      "text": "who wrote this song",
+      "truth": "music",
+      "meta": {
+        "intent": "music_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3030",
+      "text": "i love this song",
+      "truth": "music",
+      "meta": {
+        "intent": "music_likeness",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "379",
+      "text": "i want the music to be saved can you do it for me",
+      "truth": "music",
+      "meta": {
+        "intent": "music_likeness",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1741",
+      "text": "hey olly please tell me the name of this song that is currently playing",
+      "truth": "music",
+      "meta": {
+        "intent": "music_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1666",
+      "text": "so clean news in past six hours is what",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6077",
+      "text": "i want to hear the latest world news from today",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "366",
+      "text": "please tell me the latest news",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2384",
+      "text": "what's happening around the world",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2296",
+      "text": "keep me up to date with today's n. b. a. scores",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1759",
+      "text": "give me news on president trump",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5016",
+      "text": "tell me the news about share market ups and downs",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1995",
+      "text": "play the beatles",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9303",
+      "text": "play the oldies station",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10339",
+      "text": "please open chess game i would like to play with you",
+      "truth": "play",
+      "meta": {
+        "intent": "play_game",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11361",
+      "text": "shadi special podcast play it",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9524",
+      "text": "turn program on xmtune",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11424",
+      "text": "vitaly channel",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5619",
+      "text": "play previous song",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13370",
+      "text": "what's the sum of the two numbers four and six",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_maths",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15056",
+      "text": "how old is emma watson newest boyfriend",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12972",
+      "text": "which is the highest peak in the world",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14449",
+      "text": "does pink have a new baby",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13777",
+      "text": "can you describe a credit card",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_definition",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15094",
+      "text": "look up the number of people living in miami florida",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14767",
+      "text": "how would you describe a ball",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_definition",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11839",
+      "text": "what's happening around me",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11845",
+      "text": "olly hit me up with some exciting events in the bay area",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11643",
+      "text": "what events are happening soon",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11969",
+      "text": "is there anything special going on nearby",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11705",
+      "text": "show me painting exhibition in bay area",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11585",
+      "text": "any cultural events in california",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11582",
+      "text": "is there anything happening on jazz scene around edinburgh",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15618",
+      "text": "tweet esurance and tell them they suck",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15166",
+      "text": "post my business on twitter",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15459",
+      "text": "send a twitter complaint",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15731",
+      "text": "olly tweet a message to a. t. & t. and tell them my service is bad",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15532",
+      "text": "olly tweet walmart and tell them their customer service is horrible",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15155",
+      "text": "can you upload my latest selfie in my facebook account",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "132",
+      "text": "order a takeaway",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_order",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5552",
+      "text": "who takes less of duration of time for delivery",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5324",
+      "text": "hey do you have home delivery",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2447",
+      "text": "i feel like having soup for lunch order from wangs kitchen restaurant a chicken manchow soup",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_order",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "170",
+      "text": "do they deliver home",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2432",
+      "text": "how is my order",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12932",
+      "text": "olly i need directions to madison street",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12240",
+      "text": "what is the traffic like on my commute home at five",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12818",
+      "text": "how much is a train ticket to chicago",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12248",
+      "text": "olly find the nearest uber",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_taxi",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12310",
+      "text": "give me the list of available train tickets from edinburgh to leeds",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13215",
+      "text": "what is the quickest way to my work downtown without hitting any traffic",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2220",
+      "text": "weather in paris",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5468",
+      "text": "have i need to take a sun glass",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2423",
+      "text": "please give me todays forecast for new york city",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4614",
+      "text": "will the temperature be higher than forty tomorrow",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4482",
+      "text": "will i need to shovel my driveway this morning",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6172",
+      "text": "are sunglasses a good choice for today",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6039",
+      "text": "will it be rainy day tomorrow",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    }
+  ],
+  "count": 120,
+  "path": "/home/lupi/lupi/.tmp-job-530/system1-system2/data/massive-en.json"
+}

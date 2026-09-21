@@ -9,7 +9,12 @@ import { resolveCost, tokenCounts, authHeaders } from './common.mjs';
 // a statistic of how concentrated the probability mass is over the options, not as P(correct).
 
 export function buildRequest({ system, task, text }) {
-  const body = { model: system.model, state: wrapText(task, text), questions: decisionQuestions(task) };
+  // Some open-weight decision models (e.g. Laya) expect state as an object with a `body` field.
+  // Jev and Kev accept a plain string. Keep the default as a string to preserve existing results.
+  const wrapped = wrapText(task, text);
+  const state = system.provider && system.provider.startsWith('laya') ? { body: wrapped } : wrapped;
+
+  const body = { model: system.model, state, questions: decisionQuestions(task) };
   Object.assign(body, system.params || {});
   return { url: system.baseUrl, body };
 }
@@ -32,7 +37,20 @@ export function parseResponse({ system, task, json }) {
   }
   const c = Number(answer?.confidence);
   const confidence = Number.isFinite(c) ? c : null;
-  const { cost, cost_source } = resolveCost({ usage: json?.usage, pricing: system.pricing });
+  let { cost, cost_source } = resolveCost({ usage: json?.usage, pricing: system.pricing });
+
+  // Local decision servers are genuinely $0/call, but they don't report a provider cost. Mark
+  // them as free explicitly rather than leaving cost unknown.
+  if (
+    cost === null &&
+    system.apiKeyEnv === null &&
+    typeof system.baseUrl === 'string' &&
+    /^http:\/\/(127\.0\.0\.1|localhost)/.test(system.baseUrl)
+  ) {
+    cost = 0;
+    cost_source = 'local';
+  }
+
   return {
     label,
     confidence,

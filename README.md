@@ -4,6 +4,8 @@
 
 **The finding in one sentence:** on 600 MASSIVE utterances (18 classes) Jev's confidence is well calibrated (ECE 4.5%, AUROC 0.83) and turns a 90.0%-accurate model into one that is 96.1% accurate on the 85% of items it keeps — but the LLM behind it (GPT-5.2, 90.2%) is no more accurate than Jev on this task, so escalation buys nothing in accuracy, and under prompt injection the LLM is the weaker link: an *"annotation team re-labelled this"* payload flips GPT-5.2 **80 times out of 80**, versus 26/80 for Jev, so routing attacked items to the LLM makes the hybrid *worse*; a one-sentence hardening of the instructions brings both to the noise floor.
 
+**New, open-weight System 1 models run locally on a CPU ([section 5](#5-open-weight-system-1-run-locally-on-cpu)):** on a 120-item subset, Laya, Laya-multilingual and Kev-0.8B reach 68–74% in English against Jev's 88%, at $0 per call. Laya-multilingual halves the French penalty of the English Laya (−10 points instead of −22.5), and Kev's confidence ranks errors better than Jev's (AUROC 0.875 vs 0.856) despite being under-confident.
+
 ![Reliability diagram of System 1 confidences and the accuracy/cost frontier of the hybrid](docs/assets/hero.svg)
 
 Live results page with an interactive threshold slider: **https://iskandeur.github.io/system1-system2/**
@@ -113,6 +115,28 @@ TypeSafe's model page says English is *"where accuracy is currently best"* and o
 
 No measurable French penalty for Jev on this task (the gap is far inside the interval), and its calibration holds (AUROC 0.85, mean confidence 92.2% vs 94.1% in English — it is slightly *less* sure in French, and correctly so). The chat baseline loses 3 points. The router behaves the same way: at t = 0.9 Jev escalates 19.8% of French items (14.7% in English), catches 69% of its own errors and is 96.0% accurate on what it keeps; the held-out threshold choice is again t = 0, with 90.2% vs 90.6% for GPT-5.2 alone on the other half. Caveat: MASSIVE's French is a human translation of the English prompts, cleaner than native French input would be; and 5.2% of the French items are again labelled against a three-model consensus.
 
+### 5. Open-weight System 1, run locally on CPU
+
+Can a model you download replace Jev as System 1, at $0 per call? Three open-weight decision models, served locally with the same request shape as Jev (`{ model, state, questions }` → `{ answers }`, see `docker/`), on a **stratified subset of 120 items** (every scenario represented, same ids in English and French; `scripts/build-openweights-subset.mjs --n 120 --seed 7`). The hosted rows are slices of the full 600-item runs on exactly those ids, so every system answered the same 120 items. Local models ran on a **2-vCPU cloud server with no GPU** (float32, one request at a time), which is why the subset exists: a few seconds per decision × 1,200 decisions per model would not fit in a run.
+
+| System | Runs on | EN accuracy (95% CI) | FR accuracy (95% CI) | FR − EN | Median latency / decision | ECE EN / FR | Cost / 1k |
+|---|---|---:|---:|---:|---:|---:|---:|
+| TypeSafe Jev 1.13 | hosted API | **88.3%** [81–93] | **87.5%** [80–92] | −0.8 pts | 297 ms | 5.7% / 8.9% | $0.031 |
+| GPT-5.2 (System 2, reference) | hosted API | 90.0% [83–94] | 85.8% [78–91] | −4.2 pts | 2,348 ms | – | $1.4 |
+| [Laya](https://huggingface.co/convaiinnovations/laya) (Apache-2.0) | local CPU | 70.0% [61–77] | 47.5% [39–56] | −22.5 pts | 1,917 ms | 27.4% / 49.1% | $0 |
+| [Laya-multilingual](https://huggingface.co/convaiinnovations/laya-multilingual) (Apache-2.0) | local CPU | 68.3% [60–76] | 58.3% [49–67] | −10.0 pts | 719 ms | 12.1% / 21.2% | $0 |
+| [Kev-0.8B](https://github.com/jaredpalmer/kev) (Apache-2.0, LoRA on Qwen3.5-0.8B-Base) | local CPU | 74.2% [66–81] | not run | – | 5,065 ms | 17.8% / – | $0 |
+
+What this says, on this task and this hardware:
+
+- **None of the open-weight models is a drop-in replacement for Jev here.** On the same 120 English items Jev is right and Laya wrong 25 times, the reverse 3 times; for Laya-multilingual 28 vs 4; for Kev 21 vs 4. Kev-0.8B is the most accurate of the three in English (74.2%), but its interval overlaps both Layas'.
+- **Kev's confidence is the most useful and the least calibrated in the "honest" direction.** It is *under*-confident (mean 56% for 74% accuracy, ECE 17.8%) yet ranks its right answers above its wrong ones better than any model here, Jev included (AUROC 0.875 vs 0.856 on the same items). For a router that is the good kind of error: a threshold can be re-fitted on held-out data, a ranking cannot be invented. Kev was not run on French: its model card lists English only, and on this host it was the slowest model.
+- **Laya-multilingual does what its name says, partially.** The English Laya collapses on French (70.0% → 47.5%, and it stays 97% confident on average, hence the 49% ECE). The multilingual variant halves the French penalty (−10 points instead of −22.5) and is the better of the two in French by 10.8 points, but it is still 29 points behind Jev in French, where Jev shows no measurable penalty at all.
+- **Laya's confidence is the weak part for a router.** English Laya reports a mean confidence of 97% for 70% accuracy (ECE 27.4% [20–36], AUROC 0.71): a threshold on it would keep almost everything, errors included. Laya-multilingual is better calibrated (mean confidence 79%, ECE 12.1%, AUROC 0.80) but not at Jev's level (ECE 5.7%, AUROC 0.86 on the same items).
+- **Latency depends on the model more than on "local".** Laya-multilingual answers in 0.7 s median on two CPU cores without a GPU, English Laya in 1.9 s, Kev-0.8B (a 0.8B-parameter causal LM scoring 18 options) in 5.1 s. Hosted Jev is faster (0.3 s), but a local model has no per-call price, no network dependency, and the text never leaves the machine.
+
+Read these with the caveats that matter: the CPU server was shared with other workloads during the runs (load average well above its two cores, swap in use at times), so local latencies are pessimistic and a few individual calls took tens of seconds, up to 200 s for one Kev call (medians are robust to that, means are not); n = 120 gives roughly ±8 points per accuracy, so only large differences count; the question is the one Jev gets (one 18-way choice with one-sentence English criteria, identical for every model) and was not tuned for any open-weight model (a shorter option list or model-specific wording might do better); latency is from one small CPU server, would be much lower on a GPU, and the first call of each server (model loading, up to ~40 s) is included in the means but not the medians; each model ran once.
+
 ## Method
 
 **Dataset.** [MASSIVE 1.1](https://github.com/alexa/massive) (Amazon, CC BY 4.0): voice-assistant utterances labelled with one of 18 *scenarios* (alarm, calendar, email, iot, play, qa, transport, weather…). `scripts/build-massive.mjs` downloads the public tarball, takes the `en-US` test split (2,974 utterances) and samples 600 with a fixed seed, proportionally to the scenario mix, then takes the same 600 ids from `fr-FR`. The criteria given to the models are one sentence per scenario, written from the intents each scenario contains (`data/massive-en.json` → `task.criteria`); the same English criteria are used for the French run.
@@ -149,6 +173,22 @@ System 1 and System 2 are configured independently: a **provider preset**, a **m
 | `ollama` / `lmstudio` / `vllm` | chat | `localhost:11434` / `:1234` / `:8000` | none |
 | `openai-compatible` | chat | you set `S1_BASE_URL` / `S2_BASE_URL` | you name it |
 | `anthropic` | anthropic | `https://api.anthropic.com` (or `ANTHROPIC_BASE_URL`) | `ANTHROPIC_API_KEY`, or `ANTHROPIC_AUTH_TOKEN` as bearer |
+| `laya` / `laya-multilingual` | decision, local | `http://127.0.0.1:8010/v1/systemone` | none |
+| `kev` | decision, local | `http://127.0.0.1:8009/v1/systemone` | none |
+
+The local decision servers are one Docker image each, CPU-only, weights pulled from Hugging Face on first use:
+
+```bash
+docker build -t s1s2-laya-server docker/laya-server
+docker run -d -p 127.0.0.1:8010:8010 -v "$PWD/.cache/hf:/root/.cache/huggingface" s1s2-laya-server
+node scripts/predict.mjs --system s1 --dataset massive-fr-openweights --tag laya-multilingual --s1-provider laya-multilingual
+
+docker build -t s1s2-kev-server docker/kev-server
+docker run -d --network host -v "$PWD/.cache/hf:/root/.cache/huggingface" s1s2-kev-server   # kev.serve binds 127.0.0.1 only
+node scripts/predict.mjs --system s1 --dataset massive-en-openweights --tag kev --s1-provider kev
+```
+
+`--resume` continues an interrupted run from its predictions file, `--max-new N` stops after N new items (useful to time a slow model before committing to a full run).
 
 ```bash
 # System 1 = GPT-4o-mini with logprob confidence, System 2 = GPT-5.2, both on OpenRouter
@@ -194,6 +234,11 @@ node scripts/analyze.mjs --dataset massive-en             # → docs/assets/resu
 node scripts/analyze.mjs --dataset massive-fr
 node scripts/analyze-injection.mjs --dataset massive-en-injected
 node scripts/render-figures.mjs --dataset massive-en --s1 jev,gpt-4o-mini-logprobs --s2 gpt-5.2
+
+# open-weight section: 120-item subset, hosted rows sliced from the full runs (no API call)
+node scripts/build-openweights-subset.mjs --n 120 --seed 7
+node scripts/slice-predictions.mjs --from massive-en --to massive-en-openweights --tag jev --out jev   # same for gpt-5.2, and fr
+node scripts/analyze-openweights.mjs                      # → docs/assets/results/openweights.json
 node scripts/build-docs-assets.mjs                        # manifest for the page
 ```
 
@@ -205,6 +250,7 @@ node scripts/build-docs-assets.mjs                        # manifest for the pag
 - `src/adapters/` – one interface, three transports: `chat-openai.mjs` (any `/chat/completions`), `chat-anthropic.mjs` (Messages API, forced tool call), `decision.mjs` (TypeSafe Jev). `index.mjs` composes auth, the disk cache and timing.
 - `src/router.mjs` – the gate. `src/metrics.mjs` – Wilson, ECE, Brier, AUROC, bootstrap, sweep, Pareto front, held-out threshold. `src/injection.mjs` – templates and the injected-set builder. `src/http.mjs` – fetch with retries and backoff. `src/config.mjs` – presets and precedence.
 - `scripts/` – `predict.mjs`, `analyze.mjs`, `analyze-injection.mjs`, `run-eval.mjs` (the three in one), dataset builders, `render-figures.mjs`, `build-docs-assets.mjs`, `fetch-prices.mjs`, `lint-no-secrets.mjs`.
+- `docker/` – CPU-only servers exposing Laya and Kev behind the Jev request shape.
 - `data/` – datasets, `prices.json`, `predictions/`. `docs/` – the static results page and its JSON (no key ever reaches the browser). `test/` – `node:test`, mocked `fetch`.
 
 ## Sources
@@ -214,5 +260,7 @@ node scripts/build-docs-assets.mjs                        # manifest for the pag
 - Guo et al., *On Calibration of Modern Neural Networks* (reliability diagrams, ECE): arXiv:1706.04599.
 - Hines et al., *Defending Against Indirect Prompt Injection Attacks With Spotlighting*: arXiv:2403.14720. OWASP Top 10 for LLM Applications, LLM01.
 - TypeSafe docs — confidence definition, the "state is data … not treated as hostile by default" statement, language support, limits and pricing: https://docs.typesafe.ai/ (exact quotes and URLs in [`docs/research.md`](docs/research.md)).
+- Laya and Laya-multilingual, ConvAI Innovations, Apache-2.0: https://huggingface.co/convaiinnovations/laya, https://huggingface.co/convaiinnovations/laya-multilingual (loaded with the `laya` Python package).
+- Kev, Jared Palmer, Apache-2.0: https://github.com/jaredpalmer/kev, weights https://huggingface.co/jaredpalmer/kev-0.8b (LoRA on `Qwen/Qwen3.5-0.8B-Base`).
 - MASSIVE: FitzGerald et al., 2022, https://github.com/alexa/massive (CC BY 4.0).
 - OpenRouter public model listing (list prices): https://openrouter.ai/api/v1/models.
