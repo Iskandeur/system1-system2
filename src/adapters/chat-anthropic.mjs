@@ -1,5 +1,5 @@
 import { classificationPrompt, classificationSchema, isKnownLabel, TOOL_NAME } from '../task.mjs';
-import { normalizeSelfReported } from '../confidence.mjs';
+import { extractJsonObject, normalizeSelfReported } from '../confidence.mjs';
 import { resolveCost, tokenCounts, authHeaders } from './common.mjs';
 
 // "anthropic" adapter: the Anthropic Messages API, or any endpoint that speaks it (proxies and
@@ -32,10 +32,11 @@ export function buildRequest({ system, task, text, wantConfidence }) {
 export function parseResponse({ system, task, json, wantConfidence }) {
   const blocks = Array.isArray(json?.content) ? json.content : [];
   const tool = blocks.find((b) => b?.type === 'tool_use' && b?.name === TOOL_NAME) ?? blocks.find((b) => b?.type === 'tool_use');
-  const input = tool?.input;
+  const textBlock = blocks.find((b) => b?.type === 'text')?.text ?? '';
+  // Some endpoints answer the forced tool call with a plain JSON text block instead; accept it.
+  const input = tool?.input ?? extractJsonObject(textBlock);
 
   if (!input || !isKnownLabel(task, input.label)) {
-    const textBlock = blocks.find((b) => b?.type === 'text')?.text ?? '';
     throw new Error(`${system.role} (${system.model}) returned no usable label. ${textBlock.slice(0, 300)}`);
   }
 

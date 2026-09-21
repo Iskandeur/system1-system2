@@ -126,6 +126,9 @@ test('anthropic parsing reads tool_use input and prices input/output tokens', ()
   assert.ok(Math.abs(r.cost - (10 * 2000 + 50 * 20) / 1e6) < 1e-12);
   assert.throws(() => anthropic.parseResponse({ system: sys({ provider: 'anthropic', model: 'm', confidence: 'logprobs' }), task, json, wantConfidence: true }), /no logprobs/);
   assert.throws(() => anthropic.parseResponse({ system: s, task, json: { content: [{ type: 'text', text: 'nope' }] }, wantConfidence: false }), /no usable label/);
+  // a JSON text block in place of the tool call is accepted (seen from an Anthropic-compatible endpoint)
+  const textOnly = anthropic.parseResponse({ system: s, task, json: { content: [{ type: 'text', text: '{"label":"docs"}' }], usage: {} }, wantConfidence: false });
+  assert.equal(textOnly.label, 'docs');
 });
 
 test('anthropic auth: ANTHROPIC_API_KEY as x-api-key, else ANTHROPIC_AUTH_TOKEN as bearer; base URL from ANTHROPIC_BASE_URL', async () => {
