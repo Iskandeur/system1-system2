@@ -2,77 +2,41 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { parseArgs } from '../src/config.mjs';
 import { inProject } from './paths.mjs';
 
-// Publishes a compact payload for GitHub Pages. Never copies `raw` or `items`.
-//
-//   node scripts/build-docs-assets.mjs            -> docs/assets/results.json (+ threshold_sweep.json)
-//   node scripts/build-docs-assets.mjs --tag foo  -> docs/assets/results.foo.json and an entry in
-//                                                    docs/assets/runs.json (shown as "other runs")
+// Writes docs/assets/manifest.json: the list of result files the results page loads, in order.
+// The analyses themselves write directly to docs/assets/results/*.json; the page is static and
+// only replays those files (no key ever reaches the browser).
 
-const OUT_DIR = inProject('docs/assets');
-const MANIFEST = inProject('docs/assets/runs.json');
+const RESULTS_DIR = inProject('docs/assets/results');
+const MANIFEST = inProject('docs/assets/manifest.json');
 
-function mustReadJson(p) {
-  if (!fs.existsSync(p)) {
-    throw new Error(`Missing ${p}. Run: node scripts/run-eval.mjs first.`);
-  }
-  return JSON.parse(fs.readFileSync(p, 'utf8'));
-}
-
-export function publicResults(results) {
-  return {
-    generated_at: results.generated_at,
-    dataset: results.dataset,
-    models: results.models,
-    threshold: results.threshold,
-    tag: results.tag ?? null,
-    summary: results.summary,
-  };
-}
-
-export function upsertManifest(manifest, entry) {
-  const runs = Array.isArray(manifest?.runs) ? manifest.runs.filter((r) => r.tag !== entry.tag) : [];
-  runs.push(entry);
-  runs.sort((a, b) => String(a.generated_at).localeCompare(String(b.generated_at)));
-  return { runs };
+export function buildManifest(files) {
+  const entries = files
+    .filter((f) => f.endsWith('.json'))
+    .sort()
+    .map((f) => {
+      const doc = JSON.parse(fs.readFileSync(path.join(RESULTS_DIR, f), 'utf8'));
+      const injected = !!doc.dataset?.templates;
+      return {
+        id: f.slice(0, -5),
+        file: `results/${f}`,
+        kind: injected ? 'injection' : 'hybrid',
+        dataset: doc.dataset?.name ?? f.slice(0, -5),
+        n: doc.dataset?.count ?? null,
+        generated_at: doc.generated_at ?? null,
+        s1: doc.s1 ?? undefined,
+        s2: doc.s2 ?? undefined,
+      };
+    });
+  return { generated_at: new Date().toISOString(), results: entries };
 }
 
 function main() {
-  const { flags } = parseArgs(process.argv.slice(2));
-  const tag = flags.tag && flags.tag !== true ? String(flags.tag) : null;
-  if (tag && !/^[a-z0-9][a-z0-9._-]*$/i.test(tag)) throw new Error(`--tag must match [a-z0-9._-]+`);
-  const suffix = tag ? `.${tag}` : '';
-
-  const results = mustReadJson(inProject(`data/results${suffix}.json`));
-  const sweep = mustReadJson(inProject(`data/threshold_sweep${suffix}.json`));
-
-  fs.mkdirSync(OUT_DIR, { recursive: true });
-
-  const outResults = inProject(`docs/assets/results${suffix}.json`);
-  const outSweep = inProject(`docs/assets/threshold_sweep${suffix}.json`);
-
-  fs.writeFileSync(outResults, JSON.stringify(publicResults(results), null, 2) + '\n');
-  fs.writeFileSync(
-    outSweep,
-    JSON.stringify({ generated_at: sweep.generated_at, tag: sweep.tag ?? null, sweep: sweep.sweep }, null, 2) + '\n',
-  );
-
-  console.log('Wrote', outResults);
-  console.log('Wrote', outSweep);
-
-  if (tag) {
-    const existing = fs.existsSync(MANIFEST) ? JSON.parse(fs.readFileSync(MANIFEST, 'utf8')) : { runs: [] };
-    const manifest = upsertManifest(existing, {
-      tag,
-      results: `results${suffix}.json`,
-      sweep: `threshold_sweep${suffix}.json`,
-      generated_at: results.generated_at,
-    });
-    fs.writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + '\n');
-    console.log('Updated', MANIFEST);
-  }
+  if (!fs.existsSync(RESULTS_DIR)) throw new Error(`Missing ${RESULTS_DIR}. Run scripts/analyze.mjs first.`);
+  const manifest = buildManifest(fs.readdirSync(RESULTS_DIR));
+  fs.writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + '\n');
+  console.log('Wrote', MANIFEST, `(${manifest.results.length} result files)`);
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
