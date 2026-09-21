@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-21T19:41:52.227Z",
+ "generated_at": "2026-09-21T19:45:54.919Z",
  "kind": "openweights",
  "languages": {
   "en": {
@@ -207,6 +207,46 @@
     }
    },
    "gap_fr_minus_en": -0.0083
+  },
+  "laya": {
+   "tag": "laya",
+   "where": "local CPU",
+   "en": {
+    "tag": "laya",
+    "model": "convaiinnovations/laya",
+    "role": "system1",
+    "where": "local CPU",
+    "n": 120,
+    "correct": 84,
+    "accuracy": 0.7,
+    "accuracy_ci": {
+     "lo": 0.6128,
+     "hi": 0.7747
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 0,
+    "latency_ms": {
+     "mean": 2739.5333,
+     "median": 1917,
+     "p90": 3971,
+     "max": 41276
+    },
+    "calibration": {
+     "n": 120,
+     "ece": 0.2742,
+     "ece_ci": {
+      "lo": 0.1993,
+      "hi": 0.3563
+     },
+     "auroc": 0.7148,
+     "mean_confidence": 0.9742
+    },
+    "vs_jev": {
+     "only_this_correct": 3,
+     "only_jev_correct": 25
+    }
+   },
+   "model": "convaiinnovations/laya"
   }
  }
 }
