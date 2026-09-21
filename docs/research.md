@@ -1,65 +1,46 @@
-# Research notes — System 1 / System 2 routing (Jev + Claude Fable)
+# Research notes
 
-This demo borrows the dual-process framing ("System 1" vs "System 2") and maps it to an engineering architecture:
+Working notes behind the README: what the sources actually say, and the exact places the numbers come from.
 
-- route **structured decisions** to a cheap/fast component first,
-- then escalate to a more capable (and expensive) LLM when needed.
+## Dual-process framing
 
-## Dual-process background
+Kahneman, *Thinking, Fast and Slow* (2011): System 1 fast and automatic, System 2 slow and deliberate. Here it is an architecture, not a theory of mind: a narrow, structured, cheap component answers first; a general model is consulted when the first one is not sure.
 
-Daniel Kahneman popularized the System 1 / System 2 framing in *Thinking, Fast and Slow* (2011).
+## Cascades and routing
 
-In LLM systems, the useful translation is architectural:
+- FrugalGPT, Chen, Zaharia, Zou, 2023 — cascades of LLMs with a learned "stop here" scorer: https://arxiv.org/abs/2305.05176
+- RouteLLM, Ong et al., 2024 — routers trained on preference data to pick between a strong and a weak model: https://arxiv.org/abs/2406.18665
+- The gate used here is the simplest possible one: a threshold on the fast model's own confidence. No training, one parameter.
 
-- System 1 = fast, narrow, structured outputs (classification / scoring / routing)
-- System 2 = slower, general reasoning and language capability
+## TypeSafe Jev (the decision model used as System 1)
 
-## Cascades / routing for cost-quality tradeoffs
+All quotes verified on 2026-09-21 on docs.typesafe.ai.
 
-### FrugalGPT
+- Confidence (https://docs.typesafe.ai/confidence.md): *"TypeSafe computes confidence from how the probability is spread across the options. All of it on one option gives 1.0; the more evenly it spreads, the lower the confidence."* No calibration claim, no reliability curve; the page recommends *"Start with conservative thresholds, test with your own data, and adjust as you observe results."*
+- Adversarial content (https://docs.typesafe.ai/model-jaggedness/jev-1.13.md, section "Adversarial content"): *"State is data, and jev-1.13 does not treat it as hostile by default."* and *"Content written to adversarially steer the model, whether that is an injected instruction, a deliberately misleading framing, or text that argues for its own classification, can move the answer."*
+- Languages (https://docs.typesafe.ai/models.md): *"English is the primary training language and where accuracy is currently best. Other languages, including CJK scripts, are handled but not equally well."*
+- Limits (same page): 64k tokens per request, 32k for `state`; text only; choice questions accept up to 255 options.
+- Pricing (same page): $0.042 per million input tokens, output not charged. OpenRouter reports `usage.cost` per call, which is what the Jev costs in this repo are.
+- Request shape: `POST /api/alpha/decisions` on OpenRouter (or `POST https://api.typesafe.ai/v1/systemone`) with `{ model, state, questions }`; a choice question is `{ type: "choice", instructions, criteria: { option: description } }` and returns `choice`, `confidence` and `probabilities`.
 
-FrugalGPT proposes cheap-first strategies (cascades / early-exit) to reduce cost while keeping performance.
+## MASSIVE (the dataset)
 
-- Paper: *FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance* (arXiv:2305.05176)
-  - https://arxiv.org/abs/2305.05176
+FitzGerald et al., *MASSIVE: A 1M-Example Multilingual Natural Language Understanding Dataset with 51 Typologically-Diverse Languages*, 2022. https://github.com/alexa/massive — CC BY 4.0. Version 1.1 tarball: https://amazon-massive-nlu-dataset.s3.amazonaws.com/amazon-massive-dataset-1.1.tar.gz. Each utterance has an `id` shared across locales, a `scenario` (18 values) and an `intent` (60). This repo classifies the scenario. The English utterances are the originals; other locales are human translations/localisations.
 
-### RouteLLM
+Known quirks that put a ceiling on any model's accuracy: `play` (start playback) vs `music` (preferences and settings), `qa` vs `general`, and a handful of plainly mislabelled utterances (e.g. "clear data" labelled `audio_volume_mute`).
 
-RouteLLM focuses on learning a router from preference data to pick between LLMs.
+## Calibration
 
-- Paper: *RouteLLM: Learning to Route LLMs with Preference Data* (arXiv:2406.18665)
-  - https://arxiv.org/abs/2406.18665
+- Reliability diagrams and ECE: Guo et al., *On Calibration of Modern Neural Networks*, 2017. https://arxiv.org/abs/1706.04599 — ECE with 10 equal-width bins is the convention followed here.
+- Wilson score interval for binomial proportions (1927); used for every accuracy and rate.
+- Bootstrap percentile intervals for ECE (1000 resamples, seeded).
 
-## TypeSafe "System One" (Jev)
+## Prompt injection
 
-TypeSafe describes System One models as fast, structured decision models for software. Jev answers typed questions (Choice / Score / Noul) against some input `state`.
+- OWASP Top 10 for LLM Applications, LLM01: Prompt Injection. https://owasp.org/www-project-top-10-for-large-language-model-applications/
+- Hines et al., *Defending Against Indirect Prompt Injection Attacks With Spotlighting*, 2024. https://arxiv.org/abs/2403.14720 — the "hardened" defense in this repo is the lightest member of that family: delimit the untrusted text and say so in the instructions.
+- Greshake et al., *Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection*, 2023. https://arxiv.org/abs/2302.12173
 
-- Docs index (Mintlify llms.txt): https://docs.typesafe.ai/llms.txt
-- Quickstart (shows request/response shape): https://docs.typesafe.ai/introduction/quickstart.md
+## Pricing sources
 
-### Request/response shape (TypeSafe direct API)
-
-From the TypeSafe quickstart:
-
-- `POST https://api.typesafe.ai/v1/systemone`
-- body:
-  - `state`: string or JSON
-  - `model`: e.g. `"jev-latest"`
-  - `questions`: typed question map
-
-It returns `answers` with typed shapes (choice / score / noul) and a `confidence` field.
-
-## OpenRouter integration detail: decisions models
-
-OpenRouter exposes Jev as a **decisions model** (`text -> decisions`).
-
-Empirically:
-
-- Calling `typesafe/jev-1.13` via `POST /api/v1/chat/completions` returns an error that it "cannot be used with the chat/completions endpoint" and instructs to use `POST /api/alpha/decisions` instead.
-- Calling Jev via `POST https://openrouter.ai/api/alpha/decisions` works and returns:
-  - `answers.<key>.choice` and `answers.<key>.confidence` for Choice questions
-  - plus `usage.cost` in USD.
-
-OpenRouter docs (chat completions overview):
-
-- https://openrouter.ai/docs/api-reference/overview
+`data/prices.json` is regenerated by `scripts/fetch-prices.mjs` from OpenRouter's public model listing (https://openrouter.ai/api/v1/models, no key needed); `fetched_at` is recorded in the file. Used only for endpoints that report tokens without a price.

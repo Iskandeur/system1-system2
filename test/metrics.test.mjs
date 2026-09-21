@@ -97,6 +97,8 @@ test('sweep is monotone in escalation and paretoFront keeps only non-dominated p
   const sw = sweep(pairsFixture(), { step: 0.25 });
   assert.deepEqual(sw.map((r) => r.threshold), [0, 0.25, 0.5, 0.75, 1]);
   for (let i = 1; i < sw.length; i++) assert.ok(sw[i].escalation_rate >= sw[i - 1].escalation_rate);
+  assert.equal(sw[0].escalation_rate, 0); // System 1 only
+  assert.equal(sw[4].escalation_rate, 1); // System 2 only, even with confidences of exactly 1
   const front = paretoFront([
     { accuracy: 0.8, cost_per_1k_usd: 1 }, { accuracy: 0.9, cost_per_1k_usd: 2 },
     { accuracy: 0.7, cost_per_1k_usd: 3 }, { accuracy: 0.9, cost_per_1k_usd: 5 }, { accuracy: 0.8, cost_per_1k_usd: 1 },

@@ -9,7 +9,11 @@ test('pickHybrid keeps System 1 at or above threshold, escalates below or when c
   assert.deepEqual(pickHybrid({ ...base, s1Confidence: 0.4, threshold: 0.4 }), { label: 'bug', used: 'system1' });
   assert.deepEqual(pickHybrid({ ...base, s1Confidence: 0.39, threshold: 0.4 }), { label: 'feature', used: 'system2' });
   assert.deepEqual(pickHybrid({ ...base, s1Confidence: null, threshold: 0 }), { label: 'feature', used: 'system2' });
-  assert.deepEqual(pickHybrid({ ...base, s1Confidence: 1, threshold: 1.7 }), { label: 'bug', used: 'system1' }); // clamped
+  // the ends of the range are the pure strategies: t=0 keeps every known confidence, t>=1 escalates everything
+  assert.deepEqual(pickHybrid({ ...base, s1Confidence: 0, threshold: 0 }), { label: 'bug', used: 'system1' });
+  assert.deepEqual(pickHybrid({ ...base, s1Confidence: 1, threshold: 1 }), { label: 'feature', used: 'system2' });
+  assert.deepEqual(pickHybrid({ ...base, s1Confidence: 1, threshold: 1.7 }), { label: 'feature', used: 'system2' }); // clamped to 1
+  assert.deepEqual(pickHybrid({ ...base, s1Confidence: 1, threshold: 0.99 }), { label: 'bug', used: 'system1' });
 });
 
 test('labelSpanConfidence multiplies the probabilities of the tokens spelling the label', () => {
