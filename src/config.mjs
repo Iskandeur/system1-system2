@@ -54,6 +54,32 @@ export const PRESETS = {
     authTokenEnv: 'ANTHROPIC_AUTH_TOKEN',
     description: 'Anthropic Messages API, or any Anthropic-compatible endpoint (honours ANTHROPIC_BASE_URL / ANTHROPIC_AUTH_TOKEN)',
   },
+
+  // Open-weight, self-hosted decision models. These presets assume you run a local server that
+  // exposes the same request/response shape as the Jev decision API:
+  //   POST /v1/systemone  { model, state, questions } -> { answers, usage }
+  // See README for one-command Docker setups.
+  kev: {
+    kind: 'decision',
+    baseUrl: 'http://127.0.0.1:8009/v1/systemone',
+    apiKeyEnv: null,
+    model: 'jaredpalmer/kev-0.8b',
+    description: 'Kev local decision server (Qwen-based Jev-like family), no key',
+  },
+  laya: {
+    kind: 'decision',
+    baseUrl: 'http://127.0.0.1:8010/v1/systemone',
+    apiKeyEnv: null,
+    model: 'convaiinnovations/laya',
+    description: 'Laya local decision server (typed questions), no key',
+  },
+  'laya-multilingual': {
+    kind: 'decision',
+    baseUrl: 'http://127.0.0.1:8010/v1/systemone',
+    apiKeyEnv: null,
+    model: 'convaiinnovations/laya-multilingual',
+    description: 'Laya-multilingual local decision server (typed questions), no key',
+  },
 };
 
 export const ROLES = ['system1', 'system2'];

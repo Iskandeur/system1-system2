@@ -1,0 +1,359 @@
+{
+  "name": "massive-fr-openweights",
+  "generated_at": "2026-09-21T19:24:02.321Z",
+  "source": {
+    "name": "MASSIVE 1.1",
+    "url": "https://github.com/alexa/massive",
+    "download": "https://amazon-massive-nlu-dataset.s3.amazonaws.com/amazon-massive-dataset-1.1.tar.gz",
+    "license": "CC BY 4.0",
+    "citation": "FitzGerald et al., \"MASSIVE: A 1M-Example Multilingual Natural Language Understanding Dataset with 51 Typologically-Diverse Languages\", 2022",
+    "locale": "fr-FR",
+    "split": "test",
+    "sampling": "600 of 2974 test utterances, proportional to scenario, seed 42; identical ids across locales",
+    "per_label": {
+      "alarm": 19,
+      "audio": 13,
+      "iot": 44,
+      "general": 38,
+      "datetime": 21,
+      "music": 16,
+      "takeaway": 12,
+      "weather": 31,
+      "play": 78,
+      "news": 25,
+      "recommendation": 19,
+      "qa": 58,
+      "calendar": 81,
+      "social": 21,
+      "transport": 25,
+      "cooking": 15,
+      "email": 55,
+      "lists": 29
+    },
+    "derived_from": "massive-fr",
+    "openweights_subset": {
+      "n": 30,
+      "seed": 7,
+      "method": "seeded shuffle (seed 7) then label-stratified round-robin (src/task.mjs stratifiedSubset)"
+    }
+  },
+  "task": {
+    "name": "scenario",
+    "instructions": "Classify this voice-assistant request into the scenario it belongs to.",
+    "labels": [
+      "alarm",
+      "audio",
+      "calendar",
+      "cooking",
+      "datetime",
+      "email",
+      "general",
+      "iot",
+      "lists",
+      "music",
+      "news",
+      "play",
+      "qa",
+      "recommendation",
+      "social",
+      "takeaway",
+      "transport",
+      "weather"
+    ],
+    "criteria": {
+      "alarm": "Setting, checking or removing alarms and wake-up calls.",
+      "audio": "Controlling the assistant's sound volume: mute, louder, quieter.",
+      "calendar": "Creating, checking or deleting calendar events, meetings and reminders.",
+      "cooking": "Recipes and cooking instructions.",
+      "datetime": "Asking the current time or date, or converting between time zones.",
+      "email": "Reading, sending or searching emails; managing email contacts.",
+      "general": "Chit-chat, greetings, jokes, and replies to the assistant (yes, no, stop, repeat, thanks) with no task.",
+      "iot": "Smart-home devices: lights, plugs, coffee machine, vacuum cleaner.",
+      "lists": "Creating, adding to, reading or removing items from lists (shopping, to-do).",
+      "music": "Music preferences and settings: liking or disliking a song, asking what is playing, playback settings.",
+      "news": "News and headlines.",
+      "play": "Starting playback of music, radio, podcasts, audiobooks or games.",
+      "qa": "Factual questions: definitions, facts, maths, stock prices, currency rates.",
+      "recommendation": "Recommendations for events, movies, restaurants or places.",
+      "social": "Social media: posting an update or checking feeds and notifications.",
+      "takeaway": "Ordering takeaway food or checking a food order.",
+      "transport": "Trains, buses, taxis and traffic: timetables, tickets, rides, traffic conditions.",
+      "weather": "Weather forecasts and conditions."
+    },
+    "defense": "none"
+  },
+  "items": [
+    {
+      "id": "5635",
+      "text": "m'assurer que je dois me lever à six heures du matin",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_set",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "2870",
+      "text": "olly dis moi mes alarmes",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_query",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "2207",
+      "text": "ajuste silencieusement",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_mute",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "6761",
+      "text": "retirer de mon calendrier réunion à neuf heures du matin",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "8043",
+      "text": "à quelle heure est mon prochain rendez-vous",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "10217",
+      "text": "retrouvez la recette du sambar dans l'application cookingforu",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "13506",
+      "text": "peux tu me dire l'heure qu'il est",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "1449",
+      "text": "quand est easter en l'an deux mille dix-huit",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "16814",
+      "text": "vérifie les e-mails",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "16758",
+      "text": "tout nouvel e-mail depuis la dernière fois",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "6616",
+      "text": "quel âge avez-vous",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "6313",
+      "text": "aujourd'hui j'ai vu un bouledogue",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "11914",
+      "text": "olly j'ai besoin d'un verre",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_coffee",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "4346",
+      "text": "éteins les lumières",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightoff",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "11154",
+      "text": "vérifier la liste des tâches à faire récentes",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "2093",
+      "text": "apporte-moi le titre de la musique actuelle",
+      "truth": "music",
+      "meta": {
+        "intent": "music_query",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "1741",
+      "text": "hey olly s'il te plait dis moi le nom de cette chanson qui est en train de jouer",
+      "truth": "music",
+      "meta": {
+        "intent": "music_query",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "1666",
+      "text": "des nouvelles très claires au cours des six dernières heures sont ce que",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "1759",
+      "text": "donne moi des nouvelles du president trump",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "9524",
+      "text": "captes le programme de nrj",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "5619",
+      "text": "jouer la chanson précédente",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "15094",
+      "text": "rechercher le nombre de personnes vivant à lyon",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "14767",
+      "text": "comment décririez-vous une balle",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_definition",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "11845",
+      "text": "olly hit dis - moi quels sont les événements passionnants dans la région de la baie",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "11585",
+      "text": "tous les événements culturels en californie",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "15155",
+      "text": "pouvez-vous télécharger mon dernier selfie sur mon compte facebook",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "2432",
+      "text": "comment est ma commande",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_query",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "12932",
+      "text": "olly j'ai besoin d'indications pour la rue madison",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "5468",
+      "text": "ai-je besoin de prendre un lunettes de soleil",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "fr-FR"
+      }
+    },
+    {
+      "id": "6172",
+      "text": "les lunettes de soleil sont-elles un bon choix pour aujourd'hui",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "fr-FR"
+      }
+    }
+  ],
+  "count": 30,
+  "path": "/home/lupi/lupi/.tmp-job-530/system1-system2/data/massive-fr.json"
+}

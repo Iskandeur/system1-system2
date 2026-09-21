@@ -35,7 +35,7 @@ export function scanText(text, { patterns = BLOCK_PATTERNS, terms = forbiddenTer
   return hits;
 }
 
-const SKIP_DIRS = new Set(['node_modules', '.git', '.cache']);
+const SKIP_DIRS = new Set(['node_modules', '.git', '.cache', 'scratch', '.venv', 'venv']);
 
 function walk(dir, out) {
   for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
