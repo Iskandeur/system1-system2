@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-09-21T11:33:06.988Z",
+  "results": [
+    {
+      "id": "massive-en-injected",
+      "file": "results/massive-en-injected.json",
+      "kind": "injection",
+      "dataset": "massive-en-injected",
+      "n": 480,
+      "generated_at": "2026-09-21T11:33:06.901Z"
+    },
+    {
+      "id": "massive-en",
+      "file": "results/massive-en.json",
+      "kind": "hybrid",
+      "dataset": "massive-en",
+      "n": 600,
+      "generated_at": "2026-09-21T11:33:06.809Z",
+      "s1": [
+        "jev",
+        "gpt-4o-mini-logprobs"
+      ],
+      "s2": [
+        "gpt-5.2"
+      ]
+    }
+  ]
+}
