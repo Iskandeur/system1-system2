@@ -4,6 +4,8 @@
 
 **The finding in one sentence:** on 600 MASSIVE utterances (18 classes) Jev's confidence is well calibrated (ECE 4.5%, AUROC 0.83) and turns a 90.0%-accurate model into one that is 96.1% accurate on the 85% of items it keeps — but the LLM behind it (GPT-5.2, 90.2%) is no more accurate than Jev on this task, so escalation buys nothing in accuracy, and under prompt injection the LLM is the weaker link: an *"annotation team re-labelled this"* payload flips GPT-5.2 **80 times out of 80**, versus 26/80 for Jev, so routing attacked items to the LLM makes the hybrid *worse*; a one-sentence hardening of the instructions brings both to the noise floor.
 
+**New, open-weight System 1 models run locally on a CPU ([section 5](#5-open-weight-system-1-run-locally-on-cpu)):** on a 120-item subset, Laya, Laya-multilingual and Kev-0.8B reach 68–74% in English against Jev's 88%, at $0 per call. Laya-multilingual halves the French penalty of the English Laya (−10 points instead of −22.5), and Kev's confidence ranks errors better than Jev's (AUROC 0.875 vs 0.856) despite being under-confident.
+
 ![Reliability diagram of System 1 confidences and the accuracy/cost frontier of the hybrid](docs/assets/hero.svg)
 
 Live results page with an interactive threshold slider: **https://iskandeur.github.io/system1-system2/**
@@ -123,16 +125,17 @@ Can a model you download replace Jev as System 1, at $0 per call? Three open-wei
 | GPT-5.2 (System 2, reference) | hosted API | 90.0% [83–94] | 85.8% [78–91] | −4.2 pts | 2,348 ms | – | $1.4 |
 | [Laya](https://huggingface.co/convaiinnovations/laya) (Apache-2.0) | local CPU | 70.0% [61–77] | 47.5% [39–56] | −22.5 pts | 1,917 ms | 27.4% / 49.1% | $0 |
 | [Laya-multilingual](https://huggingface.co/convaiinnovations/laya-multilingual) (Apache-2.0) | local CPU | 68.3% [60–76] | 58.3% [49–67] | −10.0 pts | 719 ms | 12.1% / 21.2% | $0 |
-KEV_ROW
+| [Kev-0.8B](https://github.com/jaredpalmer/kev) (Apache-2.0, LoRA on Qwen3.5-0.8B-Base) | local CPU | 74.2% [66–81] | not run | – | 5,065 ms | 17.8% / – | $0 |
 
 What this says, on this task and this hardware:
 
-- **None of the open-weight models is a drop-in replacement for Jev here.** On the same 120 English items Jev is right and Laya wrong 25 times, the reverse 3 times; for Laya-multilingual 28 vs 4. The gaps are far outside the intervals.
+- **None of the open-weight models is a drop-in replacement for Jev here.** On the same 120 English items Jev is right and Laya wrong 25 times, the reverse 3 times; for Laya-multilingual 28 vs 4; for Kev 21 vs 4. Kev-0.8B is the most accurate of the three in English (74.2%), but its interval overlaps both Layas'.
+- **Kev's confidence is the most useful and the least calibrated in the "honest" direction.** It is *under*-confident (mean 56% for 74% accuracy, ECE 17.8%) yet ranks its right answers above its wrong ones better than any model here, Jev included (AUROC 0.875 vs 0.856 on the same items). For a router that is the good kind of error: a threshold can be re-fitted on held-out data, a ranking cannot be invented. Kev was not run on French: its model card lists English only, and on this host it was the slowest model.
 - **Laya-multilingual does what its name says, partially.** The English Laya collapses on French (70.0% → 47.5%, and it stays 97% confident on average, hence the 49% ECE). The multilingual variant halves the French penalty (−10 points instead of −22.5) and is the better of the two in French by 10.8 points, but it is still 29 points behind Jev in French, where Jev shows no measurable penalty at all.
 - **Laya's confidence is the weak part for a router.** English Laya reports a mean confidence of 97% for 70% accuracy (ECE 27.4% [20–36], AUROC 0.71): a threshold on it would keep almost everything, errors included. Laya-multilingual is better calibrated (mean confidence 79%, ECE 12.1%, AUROC 0.80) but not at Jev's level (ECE 5.7%, AUROC 0.86 on the same items).
-- **Latency is not the problem you would expect.** Laya-multilingual answers in 0.7 s median on two CPU cores without a GPU, English Laya in 1.9 s. Hosted Jev is faster (0.3 s), but a local model has no per-call price, no network dependency, and the text never leaves the machine.
+- **Latency depends on the model more than on "local".** Laya-multilingual answers in 0.7 s median on two CPU cores without a GPU, English Laya in 1.9 s, Kev-0.8B (a 0.8B-parameter causal LM scoring 18 options) in 5.1 s. Hosted Jev is faster (0.3 s), but a local model has no per-call price, no network dependency, and the text never leaves the machine.
 
-Read these with the caveats that matter: n = 120 gives roughly ±8 points per accuracy, so only large differences count; the question is the one Jev gets (one 18-way choice with one-sentence English criteria, identical for every model) and was not tuned for any open-weight model (a shorter option list or model-specific wording might do better); latency is from one small CPU server, would be much lower on a GPU, and the first call of each server (model loading, up to ~40 s) is included in the means but not the medians; each model ran once.
+Read these with the caveats that matter: the CPU server was shared with other workloads during the runs (load average well above its two cores, swap in use at times), so local latencies are pessimistic and a few individual calls took tens of seconds, up to 200 s for one Kev call (medians are robust to that, means are not); n = 120 gives roughly ±8 points per accuracy, so only large differences count; the question is the one Jev gets (one 18-way choice with one-sentence English criteria, identical for every model) and was not tuned for any open-weight model (a shorter option list or model-specific wording might do better); latency is from one small CPU server, would be much lower on a GPU, and the first call of each server (model loading, up to ~40 s) is included in the means but not the medians; each model ran once.
 
 ## Method
 
@@ -257,5 +260,7 @@ node scripts/build-docs-assets.mjs                        # manifest for the pag
 - Guo et al., *On Calibration of Modern Neural Networks* (reliability diagrams, ECE): arXiv:1706.04599.
 - Hines et al., *Defending Against Indirect Prompt Injection Attacks With Spotlighting*: arXiv:2403.14720. OWASP Top 10 for LLM Applications, LLM01.
 - TypeSafe docs — confidence definition, the "state is data … not treated as hostile by default" statement, language support, limits and pricing: https://docs.typesafe.ai/ (exact quotes and URLs in [`docs/research.md`](docs/research.md)).
+- Laya and Laya-multilingual, ConvAI Innovations, Apache-2.0: https://huggingface.co/convaiinnovations/laya, https://huggingface.co/convaiinnovations/laya-multilingual (loaded with the `laya` Python package).
+- Kev, Jared Palmer, Apache-2.0: https://github.com/jaredpalmer/kev, weights https://huggingface.co/jaredpalmer/kev-0.8b (LoRA on `Qwen/Qwen3.5-0.8B-Base`).
 - MASSIVE: FitzGerald et al., 2022, https://github.com/alexa/massive (CC BY 4.0).
 - OpenRouter public model listing (list prices): https://openrouter.ai/api/v1/models.

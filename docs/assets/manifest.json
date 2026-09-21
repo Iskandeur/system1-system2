@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T12:51:36.802Z",
+  "generated_at": "2026-09-21T20:21:26.402Z",
   "results": [
     {
       "id": "massive-en-injected",
@@ -38,6 +38,14 @@
       "s2": [
         "gpt-5.2"
       ]
+    },
+    {
+      "id": "openweights",
+      "file": "results/openweights.json",
+      "kind": "openweights",
+      "dataset": "openweights",
+      "n": null,
+      "generated_at": "2026-09-21T20:20:53.930Z"
     }
   ]
 }

@@ -405,7 +405,7 @@ node scripts/analyze.mjs --dataset massive-en      # recompute every number on t
       function renderOpenWeights(ow) {
         $('openweights-section').classList.remove('hidden');
         const n = ow.languages.en ? ow.languages.en.count : '?';
-        $('openweightsIntro').textContent = `A stratified subset of ${n} MASSIVE items (same ids in English and French, every scenario represented), because a local model on a 2-vCPU server without a GPU takes seconds per decision. Every system below answered exactly these items; the hosted rows are slices of the full 600-item runs. Numbers are not comparable in absolute terms with the 600-item tables above (n = ${n} gives about ±6 points).`;
+        $('openweightsIntro').textContent = `A stratified subset of ${n} MASSIVE items (same ids in English and French, every scenario represented), because a local model on a 2-vCPU server without a GPU takes seconds per decision. Every system below answered exactly these items; the hosted rows are slices of the full 600-item runs. Numbers are not comparable in absolute terms with the 600-item tables above (n = ${n} gives up to about ±8 points).`;
         const order = ['jev', 'gpt-5.2', 'laya', 'laya-multilingual', 'kev'];
         const tags = Object.keys(ow.systems).sort((a, b) => (order.indexOf(a) + 99 * (order.indexOf(a) < 0)) - (order.indexOf(b) + 99 * (order.indexOf(b) < 0)));
         const acc = (b) => (b ? `${pct(b.accuracy)}${esc(ci(b.accuracy_ci, 0))}` : '–');
@@ -417,7 +417,7 @@ node scripts/analyze.mjs --dataset massive-en      # recompute every number on t
           const eceTxt = [s.en, s.fr].map((b) => (b && b.calibration ? pct(b.calibration.ece) : '–')).join(' / ');
           return `<tr><td class="l">${esc(s.model || t)} <span class="pill">${any.role === 'system2' ? 'System 2' : 'System 1'}</span></td><td>${esc(s.where)}</td><td>${acc(s.en)}</td><td>${acc(s.fr)}</td><td style="color:${gap < 0 ? 'var(--bad)' : 'inherit'}">${gap === undefined ? '–' : (gap * 100).toFixed(1) + ' pts'}</td><td>${lat}</td><td>${eceTxt}</td><td>${usd(any.cost_per_1k_usd, 3)}</td></tr>`;
         }).join('');
-        $('openweightsNote').textContent = ow.note || 'Latency is wall-clock per decision and only comparable within a group: hosted APIs over the network, local models on the CPU of the machine that ran the benchmark. Local cost is $0 per call (hardware and electricity not counted).';
+        $('openweightsNote').textContent = ow.note || 'Latency is wall-clock per decision and only comparable within a group: hosted APIs over the network, local models on a shared 2-vCPU server without a GPU (medians shown; a few calls stalled for tens of seconds under host load). Kev was run in English only (its model card lists English). The question is the same 18-way choice for every model and was not tuned for any of them. Local cost is $0 per call (hardware and electricity not counted).';
       }
 
       function renderFinding(res, hybrid) {
