@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-09-21T10:35:58.948Z",
+  "dataset": {
+    "generated_at": "2026-09-21T08:18:56.760Z",
+    "source": {
+      "repo": "cli/cli",
+      "labels": [
+        "bug",
+        "enhancement",
+        "documentation"
+      ]
+    },
+    "count": 6,
+    "total_in_dataset": 24
+  },
+  "models": {
+    "system1": {
+      "provider": "openrouter",
+      "kind": "chat",
+      "model": "openai/gpt-4o-mini",
+      "base_url": "https://openrouter.ai/api/v1",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "confidence": "logprobs",
+      "json_mode": "json_schema",
+      "extra_headers": [],
+      "confidence_sources_seen": [
+        "logprobs"
+      ]
+    },
+    "system2": {
+      "provider": "openrouter",
+      "kind": "chat",
+      "model": "mistralai/mistral-small-3.2-24b-instruct",
+      "base_url": "https://openrouter.ai/api/v1",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "confidence": "auto",
+      "json_mode": "json_schema",
+      "extra_headers": []
+    }
+  },
+  "threshold": 0.4,
+  "tag": "gpt4omini-logprobs-mistral",
+  "summary": {
+    "system2_only": {
+      "accuracy": 0.6667,
+      "correct": 4,
+      "total_cost_usd": 0.00072,
+      "cost_coverage": 1,
+      "mean_latency_ms": 1144.5
+    },
+    "system1_only": {
+      "accuracy": 0.8333,
+      "correct": 5,
+      "total_cost_usd": 0.001091,
+      "cost_coverage": 1,
+      "mean_latency_ms": 1014.3
+    },
+    "hybrid": {
+      "accuracy": 0.8333,
+      "correct": 5,
+      "total_cost_usd": 0.001091,
+      "cost_coverage": 1,
+      "mean_latency_ms": 1014.3,
+      "escalation_rate": 0
+    }
+  }
+}

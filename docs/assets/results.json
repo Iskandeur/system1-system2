@@ -13,26 +13,53 @@
     "count": 24
   },
   "models": {
-    "system1": "typesafe/jev-1.13",
-    "system2": "anthropic/claude-fable-5.1"
+    "system1": {
+      "provider": "jev",
+      "kind": "decision",
+      "model": "typesafe/jev-1.13",
+      "base_url": "https://openrouter.ai/api/alpha/decisions",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "confidence": "model",
+      "extra_headers": [],
+      "confidence_sources_seen": [
+        "model"
+      ]
+    },
+    "system2": {
+      "provider": "openrouter",
+      "kind": "chat",
+      "model": "anthropic/claude-fable-5.1",
+      "base_url": "https://openrouter.ai/api/v1",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "confidence": "auto",
+      "json_mode": "json_schema",
+      "extra_headers": []
+    }
   },
   "threshold": 0.4,
+  "tag": null,
   "summary": {
-    "fable_only": {
+    "system2_only": {
       "accuracy": 0.9167,
       "total_cost_usd": 0.37581,
-      "mean_latency_ms": 3949.8
+      "mean_latency_ms": 3949.8,
+      "correct": 22,
+      "cost_coverage": 1
     },
-    "jev_only": {
+    "system1_only": {
       "accuracy": 0.875,
       "total_cost_usd": 0.001205,
-      "mean_latency_ms": 319
+      "mean_latency_ms": 319,
+      "correct": 21,
+      "cost_coverage": 1
     },
     "hybrid": {
       "accuracy": 0.9167,
       "total_cost_usd": 0.007915,
       "mean_latency_ms": 458,
-      "escalation_rate": 0.0417
+      "escalation_rate": 0.0417,
+      "correct": 22,
+      "cost_coverage": 1
     }
   }
 }
