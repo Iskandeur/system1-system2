@@ -156,6 +156,13 @@
         <div id="languageHybrid"></div>
       </section>
 
+      <section id="openweights-section" class="hidden">
+        <h2>Open-weight System 1, run locally on CPU</h2>
+        <p class="muted" id="openweightsIntro"></p>
+        <div class="tablewrap"><table id="openweightsTable"><thead><tr><th>System</th><th>Runs on</th><th>EN accuracy</th><th>FR accuracy</th><th>FR − EN</th><th>Median latency</th><th>ECE EN / FR</th><th>Cost / 1k</th></tr></thead><tbody></tbody></table></div>
+        <p class="muted" id="openweightsNote"></p>
+      </section>
+
       <section>
         <h2>Reproduce</h2>
         <pre>git clone https://github.com/Iskandeur/system1-system2 &amp;&amp; cd system1-system2
@@ -394,6 +401,25 @@ node scripts/analyze.mjs --dataset massive-en      # recompute every number on t
         }
       }
 
+      // ---------- open-weight ----------
+      function renderOpenWeights(ow) {
+        $('openweights-section').classList.remove('hidden');
+        const n = ow.languages.en ? ow.languages.en.count : '?';
+        $('openweightsIntro').textContent = `A stratified subset of ${n} MASSIVE items (same ids in English and French, every scenario represented), because a local model on a 2-vCPU server without a GPU takes seconds per decision. Every system below answered exactly these items; the hosted rows are slices of the full 600-item runs. Numbers are not comparable in absolute terms with the 600-item tables above (n = ${n} gives about ±6 points).`;
+        const order = ['jev', 'gpt-5.2', 'laya', 'laya-multilingual', 'kev'];
+        const tags = Object.keys(ow.systems).sort((a, b) => (order.indexOf(a) + 99 * (order.indexOf(a) < 0)) - (order.indexOf(b) + 99 * (order.indexOf(b) < 0)));
+        const acc = (b) => (b ? `${pct(b.accuracy)}${esc(ci(b.accuracy_ci, 0))}` : '–');
+        $('openweightsTable').querySelector('tbody').innerHTML = tags.map((t) => {
+          const s = ow.systems[t];
+          const any = s.en || s.fr;
+          const gap = s.gap_fr_minus_en;
+          const lat = [s.en, s.fr].filter(Boolean).map((b) => ms(b.latency_ms.median)).join(' / ');
+          const eceTxt = [s.en, s.fr].map((b) => (b && b.calibration ? pct(b.calibration.ece) : '–')).join(' / ');
+          return `<tr><td class="l">${esc(s.model || t)} <span class="pill">${any.role === 'system2' ? 'System 2' : 'System 1'}</span></td><td>${esc(s.where)}</td><td>${acc(s.en)}</td><td>${acc(s.fr)}</td><td style="color:${gap < 0 ? 'var(--bad)' : 'inherit'}">${gap === undefined ? '–' : (gap * 100).toFixed(1) + ' pts'}</td><td>${lat}</td><td>${eceTxt}</td><td>${usd(any.cost_per_1k_usd, 3)}</td></tr>`;
+        }).join('');
+        $('openweightsNote').textContent = ow.note || 'Latency is wall-clock per decision and only comparable within a group: hosted APIs over the network, local models on the CPU of the machine that ran the benchmark. Local cost is $0 per call (hardware and electricity not counted).';
+      }
+
       function renderFinding(res, hybrid) {
         const e = hybrid.heldout;
         const s1 = res.systems[hybrid.s1], s2 = res.systems[hybrid.s2];
@@ -420,6 +446,7 @@ node scripts/analyze.mjs --dataset massive-en      # recompute every number on t
         const inj = manifest.results.find((r) => r.kind === 'injection');
         if (inj) renderInjection(await load('./assets/' + inj.file), res);
         if (byId['massive-fr']) renderLanguage(res, await load('./assets/' + byId['massive-fr'].file));
+        if (byId['openweights']) renderOpenWeights(await load('./assets/' + byId['openweights'].file));
         $('footer').innerHTML = `Generated ${esc(String(res.generated_at).slice(0, 10))} from <code>docs/assets/results/*.json</code>. Accuracy intervals are Wilson 95%; ECE intervals are percentile bootstrap (1000 resamples). Costs use each model's public list price on the day of the run (see README).`;
       }
       main().catch((e) => { $('error').classList.remove('hidden'); $('error').textContent = String(e && e.stack ? e.stack : e); $('finding').textContent = 'Results could not be loaded.'; });

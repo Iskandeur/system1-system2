@@ -3,7 +3,7 @@
  "tag": "gpt-5.2",
  "role": "system2",
  "defense": "none",
- "generated_at": "2026-09-21T19:31:17.874Z",
+ "generated_at": "2026-09-21T19:39:46.750Z",
  "started_at": "2026-09-21T12:21:50.654Z",
  "complete": true,
  "system": {
@@ -21,19 +21,43 @@
    "source": "list"
   }
  },
- "count": 30,
+ "count": 120,
  "errors": 0,
  "cache": null,
  "summary": {
-  "n": 30,
-  "correct": 28,
-  "accuracy": 0.9333333333333333,
-  "cost_total_usd": 0.04847325,
-  "cost_per_1k_usd": 1.615775,
+  "n": 120,
+  "correct": 103,
+  "accuracy": 0.8583333333333333,
+  "cost_total_usd": 0.1882475,
+  "cost_per_1k_usd": 1.5687291666666667,
   "cost_coverage": 1,
-  "mean_latency_ms": 2816.266666666667
+  "mean_latency_ms": 2722.875
  },
  "items": [
+  {
+   "id": "174",
+   "truth": "alarm",
+   "pred": "alarm",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0014385,
+   "cost_source": "list_price",
+   "latency_ms": 1987,
+   "input_tokens": 510,
+   "output_tokens": 39
+  },
+  {
+   "id": "201",
+   "truth": "alarm",
+   "pred": "alarm",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00163275,
+   "cost_source": "list_price",
+   "latency_ms": 2893,
+   "input_tokens": 509,
+   "output_tokens": 53
+  },
   {
    "id": "5635",
    "truth": "alarm",
@@ -45,6 +69,18 @@
    "latency_ms": 2751,
    "input_tokens": 510,
    "output_tokens": 56
+  },
+  {
+   "id": "3695",
+   "truth": "alarm",
+   "pred": "alarm",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00165725,
+   "cost_source": "list_price",
+   "latency_ms": 2513,
+   "input_tokens": 507,
+   "output_tokens": 55
   },
   {
    "id": "2870",
@@ -59,6 +95,78 @@
    "output_tokens": 62
   },
   {
+   "id": "3161",
+   "truth": "alarm",
+   "pred": "alarm",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00114625,
+   "cost_source": "list_price",
+   "latency_ms": 1896,
+   "input_tokens": 511,
+   "output_tokens": 18
+  },
+  {
+   "id": "560",
+   "truth": "alarm",
+   "pred": "alarm",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0013685,
+   "cost_source": "list_price",
+   "latency_ms": 2187,
+   "input_tokens": 510,
+   "output_tokens": 34
+  },
+  {
+   "id": "4994",
+   "truth": "audio",
+   "pred": "audio",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0015645,
+   "cost_source": "list_price",
+   "latency_ms": 2424,
+   "input_tokens": 510,
+   "output_tokens": 48
+  },
+  {
+   "id": "4831",
+   "truth": "audio",
+   "pred": "audio",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00113575,
+   "cost_source": "list_price",
+   "latency_ms": 1805,
+   "input_tokens": 505,
+   "output_tokens": 18
+  },
+  {
+   "id": "1630",
+   "truth": "audio",
+   "pred": "audio",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00113925,
+   "cost_source": "list_price",
+   "latency_ms": 2004,
+   "input_tokens": 507,
+   "output_tokens": 18
+  },
+  {
+   "id": "189",
+   "truth": "audio",
+   "pred": "audio",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0015085,
+   "cost_source": "list_price",
+   "latency_ms": 2239,
+   "input_tokens": 502,
+   "output_tokens": 45
+  },
+  {
    "id": "2207",
    "truth": "audio",
    "pred": "audio",
@@ -69,6 +177,30 @@
    "latency_ms": 2387,
    "input_tokens": 503,
    "output_tokens": 58
+  },
+  {
+   "id": "3812",
+   "truth": "audio",
+   "pred": "alarm",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00347025,
+   "cost_source": "list_price",
+   "latency_ms": 5556,
+   "input_tokens": 503,
+   "output_tokens": 185
+  },
+  {
+   "id": "7836",
+   "truth": "calendar",
+   "pred": "calendar",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00141225,
+   "cost_source": "list_price",
+   "latency_ms": 2708,
+   "input_tokens": 503,
+   "output_tokens": 38
   },
   {
    "id": "6761",
@@ -83,6 +215,42 @@
    "output_tokens": 59
   },
   {
+   "id": "8413",
+   "truth": "calendar",
+   "pred": "alarm",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00178325,
+   "cost_source": "list_price",
+   "latency_ms": 3628,
+   "input_tokens": 507,
+   "output_tokens": 64
+  },
+  {
+   "id": "7912",
+   "truth": "calendar",
+   "pred": "calendar",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00157675,
+   "cost_source": "list_price",
+   "latency_ms": 3075,
+   "input_tokens": 509,
+   "output_tokens": 49
+  },
+  {
+   "id": "8914",
+   "truth": "calendar",
+   "pred": "calendar",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001449,
+   "cost_source": "list_price",
+   "latency_ms": 2369,
+   "input_tokens": 508,
+   "output_tokens": 40
+  },
+  {
    "id": "8043",
    "truth": "calendar",
    "pred": "calendar",
@@ -93,6 +261,78 @@
    "latency_ms": 2378,
    "input_tokens": 506,
    "output_tokens": 44
+  },
+  {
+   "id": "7981",
+   "truth": "calendar",
+   "pred": "calendar",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0014175,
+   "cost_source": "list_price",
+   "latency_ms": 4193,
+   "input_tokens": 506,
+   "output_tokens": 38
+  },
+  {
+   "id": "10177",
+   "truth": "cooking",
+   "pred": "cooking",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00145775,
+   "cost_source": "list_price",
+   "latency_ms": 2264,
+   "input_tokens": 505,
+   "output_tokens": 41
+  },
+  {
+   "id": "10164",
+   "truth": "cooking",
+   "pred": "cooking",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00115675,
+   "cost_source": "list_price",
+   "latency_ms": 3981,
+   "input_tokens": 509,
+   "output_tokens": 19
+  },
+  {
+   "id": "10206",
+   "truth": "cooking",
+   "pred": "cooking",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001372,
+   "cost_source": "list_price",
+   "latency_ms": 2124,
+   "input_tokens": 504,
+   "output_tokens": 35
+  },
+  {
+   "id": "9942",
+   "truth": "cooking",
+   "pred": "cooking",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001554,
+   "cost_source": "list_price",
+   "latency_ms": 2380,
+   "input_tokens": 512,
+   "output_tokens": 47
+  },
+  {
+   "id": "9924",
+   "truth": "cooking",
+   "pred": "cooking",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00155225,
+   "cost_source": "list_price",
+   "latency_ms": 2838,
+   "input_tokens": 503,
+   "output_tokens": 48
   },
   {
    "id": "10217",
@@ -107,6 +347,30 @@
    "output_tokens": 19
   },
   {
+   "id": "197",
+   "truth": "datetime",
+   "pred": "datetime",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0017465,
+   "cost_source": "list_price",
+   "latency_ms": 2849,
+   "input_tokens": 502,
+   "output_tokens": 62
+  },
+  {
+   "id": "3669",
+   "truth": "datetime",
+   "pred": "datetime",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00151375,
+   "cost_source": "list_price",
+   "latency_ms": 2544,
+   "input_tokens": 505,
+   "output_tokens": 45
+  },
+  {
    "id": "13506",
    "truth": "datetime",
    "pred": "datetime",
@@ -117,6 +381,18 @@
    "latency_ms": 6554,
    "input_tokens": 508,
    "output_tokens": 33
+  },
+  {
+   "id": "4951",
+   "truth": "datetime",
+   "pred": "datetime",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0011375,
+   "cost_source": "list_price",
+   "latency_ms": 2068,
+   "input_tokens": 506,
+   "output_tokens": 18
   },
   {
    "id": "1449",
@@ -131,6 +407,30 @@
    "output_tokens": 18
   },
   {
+   "id": "3091",
+   "truth": "datetime",
+   "pred": "datetime",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001771,
+   "cost_source": "list_price",
+   "latency_ms": 2743,
+   "input_tokens": 508,
+   "output_tokens": 63
+  },
+  {
+   "id": "4463",
+   "truth": "datetime",
+   "pred": "qa",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001505,
+   "cost_source": "list_price",
+   "latency_ms": 2064,
+   "input_tokens": 508,
+   "output_tokens": 44
+  },
+  {
    "id": "16814",
    "truth": "email",
    "pred": "email",
@@ -141,6 +441,18 @@
    "latency_ms": 1851,
    "input_tokens": 504,
    "output_tokens": 18
+  },
+  {
+   "id": "15948",
+   "truth": "email",
+   "pred": "general",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0021735,
+   "cost_source": "list_price",
+   "latency_ms": 3003,
+   "input_tokens": 506,
+   "output_tokens": 92
   },
   {
    "id": "16758",
@@ -155,6 +467,66 @@
    "output_tokens": 41
   },
   {
+   "id": "17011",
+   "truth": "email",
+   "pred": "email",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0011375,
+   "cost_source": "list_price",
+   "latency_ms": 2000,
+   "input_tokens": 506,
+   "output_tokens": 18
+  },
+  {
+   "id": "15747",
+   "truth": "email",
+   "pred": "email",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00163975,
+   "cost_source": "list_price",
+   "latency_ms": 2917,
+   "input_tokens": 505,
+   "output_tokens": 54
+  },
+  {
+   "id": "16666",
+   "truth": "email",
+   "pred": "email",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00169225,
+   "cost_source": "list_price",
+   "latency_ms": 3458,
+   "input_tokens": 503,
+   "output_tokens": 58
+  },
+  {
+   "id": "17069",
+   "truth": "email",
+   "pred": "email",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00113925,
+   "cost_source": "list_price",
+   "latency_ms": 1858,
+   "input_tokens": 507,
+   "output_tokens": 18
+  },
+  {
+   "id": "6405",
+   "truth": "general",
+   "pred": "qa",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00151025,
+   "cost_source": "list_price",
+   "latency_ms": 2335,
+   "input_tokens": 503,
+   "output_tokens": 45
+  },
+  {
    "id": "6616",
    "truth": "general",
    "pred": "general",
@@ -165,6 +537,54 @@
    "latency_ms": 2656,
    "input_tokens": 502,
    "output_tokens": 64
+  },
+  {
+   "id": "6557",
+   "truth": "general",
+   "pred": "play",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0014805,
+   "cost_source": "list_price",
+   "latency_ms": 2229,
+   "input_tokens": 502,
+   "output_tokens": 43
+  },
+  {
+   "id": "13197",
+   "truth": "general",
+   "pred": "general",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00174125,
+   "cost_source": "list_price",
+   "latency_ms": 2512,
+   "input_tokens": 507,
+   "output_tokens": 61
+  },
+  {
+   "id": "6446",
+   "truth": "general",
+   "pred": "recommendation",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0015505,
+   "cost_source": "list_price",
+   "latency_ms": 2003,
+   "input_tokens": 510,
+   "output_tokens": 47
+  },
+  {
+   "id": "14339",
+   "truth": "general",
+   "pred": "qa",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00115675,
+   "cost_source": "list_price",
+   "latency_ms": 3721,
+   "input_tokens": 517,
+   "output_tokens": 18
   },
   {
    "id": "6313",
@@ -179,6 +599,18 @@
    "output_tokens": 50
   },
   {
+   "id": "2903",
+   "truth": "iot",
+   "pred": "iot",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00152075,
+   "cost_source": "list_price",
+   "latency_ms": 5821,
+   "input_tokens": 509,
+   "output_tokens": 45
+  },
+  {
    "id": "11914",
    "truth": "iot",
    "pred": "general",
@@ -189,6 +621,54 @@
    "latency_ms": 3400,
    "input_tokens": 505,
    "output_tokens": 94
+  },
+  {
+   "id": "6041",
+   "truth": "iot",
+   "pred": "iot",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001568,
+   "cost_source": "list_price",
+   "latency_ms": 2420,
+   "input_tokens": 512,
+   "output_tokens": 48
+  },
+  {
+   "id": "426",
+   "truth": "iot",
+   "pred": "iot",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00166775,
+   "cost_source": "list_price",
+   "latency_ms": 2805,
+   "input_tokens": 505,
+   "output_tokens": 56
+  },
+  {
+   "id": "1812",
+   "truth": "iot",
+   "pred": "iot",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001736,
+   "cost_source": "list_price",
+   "latency_ms": 2458,
+   "input_tokens": 512,
+   "output_tokens": 60
+  },
+  {
+   "id": "456",
+   "truth": "iot",
+   "pred": "iot",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00142275,
+   "cost_source": "list_price",
+   "latency_ms": 1949,
+   "input_tokens": 509,
+   "output_tokens": 38
   },
   {
    "id": "4346",
@@ -215,6 +695,66 @@
    "output_tokens": 54
   },
   {
+   "id": "10674",
+   "truth": "lists",
+   "pred": "lists",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00156625,
+   "cost_source": "list_price",
+   "latency_ms": 2223,
+   "input_tokens": 503,
+   "output_tokens": 49
+  },
+  {
+   "id": "10753",
+   "truth": "lists",
+   "pred": "lists",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0014525,
+   "cost_source": "list_price",
+   "latency_ms": 3175,
+   "input_tokens": 510,
+   "output_tokens": 40
+  },
+  {
+   "id": "10451",
+   "truth": "lists",
+   "pred": "calendar",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00148925,
+   "cost_source": "list_price",
+   "latency_ms": 2166,
+   "input_tokens": 507,
+   "output_tokens": 43
+  },
+  {
+   "id": "10731",
+   "truth": "lists",
+   "pred": "lists",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0013895,
+   "cost_source": "list_price",
+   "latency_ms": 2057,
+   "input_tokens": 506,
+   "output_tokens": 36
+  },
+  {
+   "id": "10667",
+   "truth": "lists",
+   "pred": "lists",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0018515,
+   "cost_source": "list_price",
+   "latency_ms": 2610,
+   "input_tokens": 506,
+   "output_tokens": 69
+  },
+  {
    "id": "2093",
    "truth": "music",
    "pred": "music",
@@ -225,6 +765,66 @@
    "latency_ms": 2500,
    "input_tokens": 507,
    "output_tokens": 44
+  },
+  {
+   "id": "2355",
+   "truth": "music",
+   "pred": "qa",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.002128,
+   "cost_source": "list_price",
+   "latency_ms": 3411,
+   "input_tokens": 512,
+   "output_tokens": 88
+  },
+  {
+   "id": "2647",
+   "truth": "music",
+   "pred": "play",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00172375,
+   "cost_source": "list_price",
+   "latency_ms": 2266,
+   "input_tokens": 513,
+   "output_tokens": 59
+  },
+  {
+   "id": "2387",
+   "truth": "music",
+   "pred": "qa",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00113225,
+   "cost_source": "list_price",
+   "latency_ms": 1924,
+   "input_tokens": 503,
+   "output_tokens": 18
+  },
+  {
+   "id": "3030",
+   "truth": "music",
+   "pred": "music",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00173425,
+   "cost_source": "list_price",
+   "latency_ms": 3844,
+   "input_tokens": 503,
+   "output_tokens": 61
+  },
+  {
+   "id": "379",
+   "truth": "music",
+   "pred": "music",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001148,
+   "cost_source": "list_price",
+   "latency_ms": 1646,
+   "input_tokens": 512,
+   "output_tokens": 18
   },
   {
    "id": "1741",
@@ -251,6 +851,54 @@
    "output_tokens": 76
   },
   {
+   "id": "6077",
+   "truth": "news",
+   "pred": "news",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001547,
+   "cost_source": "list_price",
+   "latency_ms": 2740,
+   "input_tokens": 508,
+   "output_tokens": 47
+  },
+  {
+   "id": "366",
+   "truth": "news",
+   "pred": "news",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00113925,
+   "cost_source": "list_price",
+   "latency_ms": 1679,
+   "input_tokens": 507,
+   "output_tokens": 18
+  },
+  {
+   "id": "2384",
+   "truth": "news",
+   "pred": "news",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00140175,
+   "cost_source": "list_price",
+   "latency_ms": 1773,
+   "input_tokens": 505,
+   "output_tokens": 37
+  },
+  {
+   "id": "2296",
+   "truth": "news",
+   "pred": "news",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0018445,
+   "cost_source": "list_price",
+   "latency_ms": 4238,
+   "input_tokens": 510,
+   "output_tokens": 68
+  },
+  {
    "id": "1759",
    "truth": "news",
    "pred": "news",
@@ -261,6 +909,66 @@
    "latency_ms": 2562,
    "input_tokens": 506,
    "output_tokens": 42
+  },
+  {
+   "id": "5016",
+   "truth": "news",
+   "pred": "news",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00151375,
+   "cost_source": "list_price",
+   "latency_ms": 2152,
+   "input_tokens": 513,
+   "output_tokens": 44
+  },
+  {
+   "id": "1995",
+   "truth": "play",
+   "pred": "play",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0016345,
+   "cost_source": "list_price",
+   "latency_ms": 2434,
+   "input_tokens": 502,
+   "output_tokens": 54
+  },
+  {
+   "id": "9303",
+   "truth": "play",
+   "pred": "play",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00152775,
+   "cost_source": "list_price",
+   "latency_ms": 2043,
+   "input_tokens": 505,
+   "output_tokens": 46
+  },
+  {
+   "id": "10339",
+   "truth": "play",
+   "pred": "play",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00164325,
+   "cost_source": "list_price",
+   "latency_ms": 2719,
+   "input_tokens": 515,
+   "output_tokens": 53
+  },
+  {
+   "id": "11361",
+   "truth": "play",
+   "pred": "play",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00161,
+   "cost_source": "list_price",
+   "latency_ms": 2356,
+   "input_tokens": 504,
+   "output_tokens": 52
   },
   {
    "id": "9524",
@@ -275,6 +983,18 @@
    "output_tokens": 93
   },
   {
+   "id": "11424",
+   "truth": "play",
+   "pred": "general",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00172725,
+   "cost_source": "list_price",
+   "latency_ms": 4834,
+   "input_tokens": 499,
+   "output_tokens": 61
+  },
+  {
    "id": "5619",
    "truth": "play",
    "pred": "play",
@@ -285,6 +1005,66 @@
    "latency_ms": 2652,
    "input_tokens": 503,
    "output_tokens": 62
+  },
+  {
+   "id": "13370",
+   "truth": "qa",
+   "pred": "qa",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001673,
+   "cost_source": "list_price",
+   "latency_ms": 3723,
+   "input_tokens": 508,
+   "output_tokens": 56
+  },
+  {
+   "id": "15056",
+   "truth": "qa",
+   "pred": "qa",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001827,
+   "cost_source": "list_price",
+   "latency_ms": 3439,
+   "input_tokens": 508,
+   "output_tokens": 67
+  },
+  {
+   "id": "12972",
+   "truth": "qa",
+   "pred": "qa",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0013335,
+   "cost_source": "list_price",
+   "latency_ms": 2094,
+   "input_tokens": 506,
+   "output_tokens": 32
+  },
+  {
+   "id": "14449",
+   "truth": "qa",
+   "pred": "qa",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0015295,
+   "cost_source": "list_price",
+   "latency_ms": 2383,
+   "input_tokens": 506,
+   "output_tokens": 46
+  },
+  {
+   "id": "13777",
+   "truth": "qa",
+   "pred": "qa",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001505,
+   "cost_source": "list_price",
+   "latency_ms": 2420,
+   "input_tokens": 508,
+   "output_tokens": 44
   },
   {
    "id": "15094",
@@ -311,6 +1091,18 @@
    "output_tokens": 47
   },
   {
+   "id": "11839",
+   "truth": "recommendation",
+   "pred": "recommendation",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00193375,
+   "cost_source": "list_price",
+   "latency_ms": 3324,
+   "input_tokens": 505,
+   "output_tokens": 75
+  },
+  {
    "id": "11845",
    "truth": "recommendation",
    "pred": "recommendation",
@@ -321,6 +1113,42 @@
    "latency_ms": 2945,
    "input_tokens": 515,
    "output_tokens": 69
+  },
+  {
+   "id": "11643",
+   "truth": "recommendation",
+   "pred": "calendar",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00147175,
+   "cost_source": "list_price",
+   "latency_ms": 2301,
+   "input_tokens": 505,
+   "output_tokens": 42
+  },
+  {
+   "id": "11969",
+   "truth": "recommendation",
+   "pred": "recommendation",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001505,
+   "cost_source": "list_price",
+   "latency_ms": 2337,
+   "input_tokens": 508,
+   "output_tokens": 44
+  },
+  {
+   "id": "11705",
+   "truth": "recommendation",
+   "pred": "recommendation",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0011585,
+   "cost_source": "list_price",
+   "latency_ms": 2112,
+   "input_tokens": 510,
+   "output_tokens": 19
   },
   {
    "id": "11585",
@@ -335,6 +1163,78 @@
    "output_tokens": 46
   },
   {
+   "id": "11582",
+   "truth": "recommendation",
+   "pred": "recommendation",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0017395,
+   "cost_source": "list_price",
+   "latency_ms": 2598,
+   "input_tokens": 514,
+   "output_tokens": 60
+  },
+  {
+   "id": "15618",
+   "truth": "social",
+   "pred": "social",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00188825,
+   "cost_source": "list_price",
+   "latency_ms": 3415,
+   "input_tokens": 511,
+   "output_tokens": 71
+  },
+  {
+   "id": "15166",
+   "truth": "social",
+   "pred": "social",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001134,
+   "cost_source": "list_price",
+   "latency_ms": 3798,
+   "input_tokens": 504,
+   "output_tokens": 18
+  },
+  {
+   "id": "15459",
+   "truth": "social",
+   "pred": "social",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00139825,
+   "cost_source": "list_price",
+   "latency_ms": 3003,
+   "input_tokens": 503,
+   "output_tokens": 37
+  },
+  {
+   "id": "15731",
+   "truth": "social",
+   "pred": "social",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00204225,
+   "cost_source": "list_price",
+   "latency_ms": 2935,
+   "input_tokens": 519,
+   "output_tokens": 81
+  },
+  {
+   "id": "15532",
+   "truth": "social",
+   "pred": "social",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0015785,
+   "cost_source": "list_price",
+   "latency_ms": 1938,
+   "input_tokens": 510,
+   "output_tokens": 49
+  },
+  {
    "id": "15155",
    "truth": "social",
    "pred": "social",
@@ -345,6 +1245,66 @@
    "latency_ms": 2554,
    "input_tokens": 510,
    "output_tokens": 62
+  },
+  {
+   "id": "132",
+   "truth": "takeaway",
+   "pred": "takeaway",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00161,
+   "cost_source": "list_price",
+   "latency_ms": 2250,
+   "input_tokens": 504,
+   "output_tokens": 52
+  },
+  {
+   "id": "5552",
+   "truth": "takeaway",
+   "pred": "recommendation",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0019355,
+   "cost_source": "list_price",
+   "latency_ms": 2491,
+   "input_tokens": 506,
+   "output_tokens": 75
+  },
+  {
+   "id": "5324",
+   "truth": "takeaway",
+   "pred": "takeaway",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0018235,
+   "cost_source": "list_price",
+   "latency_ms": 2852,
+   "input_tokens": 506,
+   "output_tokens": 67
+  },
+  {
+   "id": "2447",
+   "truth": "takeaway",
+   "pred": "takeaway",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00146125,
+   "cost_source": "list_price",
+   "latency_ms": 2741,
+   "input_tokens": 523,
+   "output_tokens": 39
+  },
+  {
+   "id": "170",
+   "truth": "takeaway",
+   "pred": "takeaway",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0015155,
+   "cost_source": "list_price",
+   "latency_ms": 2415,
+   "input_tokens": 506,
+   "output_tokens": 45
   },
   {
    "id": "2432",
@@ -371,6 +1331,78 @@
    "output_tokens": 41
   },
   {
+   "id": "12240",
+   "truth": "transport",
+   "pred": "transport",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00114975,
+   "cost_source": "list_price",
+   "latency_ms": 4495,
+   "input_tokens": 513,
+   "output_tokens": 18
+  },
+  {
+   "id": "12818",
+   "truth": "transport",
+   "pred": "transport",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001701,
+   "cost_source": "list_price",
+   "latency_ms": 2710,
+   "input_tokens": 508,
+   "output_tokens": 58
+  },
+  {
+   "id": "12248",
+   "truth": "transport",
+   "pred": "transport",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0018235,
+   "cost_source": "list_price",
+   "latency_ms": 2687,
+   "input_tokens": 506,
+   "output_tokens": 67
+  },
+  {
+   "id": "12310",
+   "truth": "transport",
+   "pred": "transport",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00175175,
+   "cost_source": "list_price",
+   "latency_ms": 2608,
+   "input_tokens": 513,
+   "output_tokens": 61
+  },
+  {
+   "id": "13215",
+   "truth": "transport",
+   "pred": "transport",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001575,
+   "cost_source": "list_price",
+   "latency_ms": 3182,
+   "input_tokens": 516,
+   "output_tokens": 48
+  },
+  {
+   "id": "2220",
+   "truth": "weather",
+   "pred": "weather",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00134225,
+   "cost_source": "list_price",
+   "latency_ms": 2160,
+   "input_tokens": 503,
+   "output_tokens": 33
+  },
+  {
    "id": "5468",
    "truth": "weather",
    "pred": "weather",
@@ -383,6 +1415,42 @@
    "output_tokens": 69
   },
   {
+   "id": "2423",
+   "truth": "weather",
+   "pred": "weather",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.0011585,
+   "cost_source": "list_price",
+   "latency_ms": 1682,
+   "input_tokens": 518,
+   "output_tokens": 18
+  },
+  {
+   "id": "4614",
+   "truth": "weather",
+   "pred": "weather",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001491,
+   "cost_source": "list_price",
+   "latency_ms": 2613,
+   "input_tokens": 508,
+   "output_tokens": 43
+  },
+  {
+   "id": "4482",
+   "truth": "weather",
+   "pred": "weather",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.001771,
+   "cost_source": "list_price",
+   "latency_ms": 2538,
+   "input_tokens": 508,
+   "output_tokens": 63
+  },
+  {
    "id": "6172",
    "truth": "weather",
    "pred": "weather",
@@ -393,6 +1461,18 @@
    "latency_ms": 2639,
    "input_tokens": 510,
    "output_tokens": 64
+  },
+  {
+   "id": "6039",
+   "truth": "weather",
+   "pred": "weather",
+   "confidence": null,
+   "confidence_source": null,
+   "cost": 0.00113925,
+   "cost_source": "list_price",
+   "latency_ms": 1902,
+   "input_tokens": 507,
+   "output_tokens": 18
   }
  ]
 }
