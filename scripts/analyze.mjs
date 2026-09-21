@@ -36,10 +36,17 @@ export function loadPredictions(datasetName, tag) {
   return JSON.parse(fs.readFileSync(p, 'utf8'));
 }
 
+// Tags of the COMPLETE prediction files of a dataset. A file still being written (complete: false)
+// is skipped with a warning, so a partial run can never leak into published results.
 export function listPredictionTags(datasetName) {
   const dir = inProject('data/predictions', datasetName);
   if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir).filter((f) => f.endsWith('.json')).map((f) => f.slice(0, -5)).sort();
+  const tags = fs.readdirSync(dir).filter((f) => f.endsWith('.json')).map((f) => f.slice(0, -5)).sort();
+  return tags.filter((t) => {
+    const p = JSON.parse(fs.readFileSync(path.join(dir, `${t}.json`), 'utf8'));
+    if (p.complete === false) console.error(`skip ${datasetName}/${t}: run not complete (${p.count} items)`);
+    return p.complete !== false;
+  });
 }
 
 function correctnessRows(pred) {
@@ -110,18 +117,22 @@ export function hybridReport(s1, s2, { step = 0.02, seed = 42 } = {}) {
   ]).map((p) => ({ kind: p.kind, threshold: p.threshold, accuracy: p.accuracy, cost_per_1k_usd: p.cost_per_1k_usd }));
 
   const halves = splitHalves(pairs, seed);
-  const chosen = chooseThreshold(halves.tune, { thresholds: grid });
   const evalPairs = halves.eval;
-  const heldout = {
-    n: evalPairs.length,
-    tune_n: halves.tune.length,
-    threshold: chosen.threshold,
-    rule: chosen.rule,
-    system1_only: summarize(evalPairs.map((p) => ({ truth: p.truth, pred: p.s1.pred, cost: p.s1.cost, latency_ms: p.s1.latency_ms }))),
-    system2_only: summarize(evalPairs.map((p) => ({ truth: p.truth, pred: p.s2.pred, cost: p.s2.cost, latency_ms: p.s2.latency_ms }))),
-    hybrid: summarize(hybridRows(evalPairs, chosen.threshold)),
-    tune: { system2_accuracy: chosen.tune_s2_accuracy, hybrid_accuracy: chosen.tune_hybrid_accuracy, escalation_rate: chosen.tune_escalation_rate },
+  const heldoutFor = (rule) => {
+    const chosen = chooseThreshold(halves.tune, { thresholds: grid, rule });
+    return {
+      n: evalPairs.length,
+      tune_n: halves.tune.length,
+      threshold: chosen.threshold,
+      rule: chosen.rule,
+      system1_only: summarize(evalPairs.map((p) => ({ truth: p.truth, pred: p.s1.pred, cost: p.s1.cost, latency_ms: p.s1.latency_ms }))),
+      system2_only: summarize(evalPairs.map((p) => ({ truth: p.truth, pred: p.s2.pred, cost: p.s2.cost, latency_ms: p.s2.latency_ms }))),
+      hybrid: summarize(hybridRows(evalPairs, chosen.threshold)),
+      tune: { system2_accuracy: chosen.tune_s2_accuracy, hybrid_accuracy: chosen.tune_hybrid_accuracy, escalation_rate: chosen.tune_escalation_rate },
+    };
   };
+  const heldout = heldoutFor('match');
+  const heldoutBest = heldoutFor('best');
 
   // Agreement between the two systems, and who is right when they disagree.
   const disagree = pairs.filter((p) => p.s1.pred !== p.s2.pred);
@@ -139,11 +150,39 @@ export function hybridReport(s1, s2, { step = 0.02, seed = 42 } = {}) {
     n: pairs.length,
     system1_only: s1Only,
     system2_only: s2Only,
-    at_threshold: summarize(hybridRows(pairs, chosen.threshold)),
     heldout,
+    heldout_best: heldoutBest,
     agreement,
     sweep: sw,
     pareto: front,
+  };
+}
+
+// Items on which every system gives the same answer and that answer is not the label: an estimate
+// of how much of the residual error belongs to the label rather than to the models.
+export function consensusAgainstLabel(preds) {
+  const maps = preds.map((p) => new Map(p.items.filter((r) => r.pred).map((r) => [String(r.id), r])));
+  const ids = [...maps[0].keys()].filter((id) => maps.every((m) => m.has(id)));
+  let against = 0;
+  let allRight = 0;
+  const pairs = {};
+  for (const id of ids) {
+    const rs = maps.map((m) => m.get(id));
+    const truth = rs[0].truth;
+    if (rs.every((r) => r.pred === truth)) allRight++;
+    else if (rs.every((r) => r.pred === rs[0].pred)) {
+      against++;
+      const k = `${truth} -> ${rs[0].pred}`;
+      pairs[k] = (pairs[k] || 0) + 1;
+    }
+  }
+  return {
+    systems: preds.map((p) => p.tag),
+    n: ids.length,
+    all_right: allRight,
+    all_agree_against_label: against,
+    rate_against_label: ids.length ? against / ids.length : null,
+    top_confusions: Object.entries(pairs).sort((a, b) => b[1] - a[1]).slice(0, 8).map(([k, v]) => ({ pair: k, count: v })),
   };
 }
 
@@ -181,6 +220,7 @@ export function analyze({ datasetName, s1Tags, s2Tags, step = 0.02, seed = 42 })
     s2: s2s.map((p) => p.tag),
     systems,
     hybrids,
+    consensus: consensusAgainstLabel([...s1s, ...s2s]),
   });
 }
 
@@ -206,11 +246,14 @@ function main() {
     console.log(`${s.role === 'system1' ? 'S1' : 'S2'} ${tag.padEnd(24)} acc ${(s.accuracy * 100).toFixed(1)}% [${(s.accuracy_ci.lo * 100).toFixed(1)}, ${(s.accuracy_ci.hi * 100).toFixed(1)}]  $${(s.cost_per_1k_usd ?? 0).toFixed(3)}/1k${cal}`);
   }
   for (const h of doc.hybrids) {
-    const e = h.heldout;
-    console.log(
-      `hybrid ${h.s1} + ${h.s2} @ t=${e.threshold} (held-out n=${e.n}): acc ${(e.hybrid.accuracy * 100).toFixed(1)}% vs S2 ${(e.system2_only.accuracy * 100).toFixed(1)}% vs S1 ${(e.system1_only.accuracy * 100).toFixed(1)}%  escalation ${(e.hybrid.escalation_rate * 100).toFixed(1)}%  cost/1k $${e.hybrid.cost_per_1k_usd?.toFixed(3)} vs $${e.system2_only.cost_per_1k_usd?.toFixed(3)}`,
-    );
+    for (const [name, e] of [['match', h.heldout], ['best', h.heldout_best]]) {
+      console.log(
+        `hybrid ${h.s1} + ${h.s2} [${name}] @ t=${e.threshold} (held-out n=${e.n}): acc ${(e.hybrid.accuracy * 100).toFixed(1)}% vs S2 ${(e.system2_only.accuracy * 100).toFixed(1)}% vs S1 ${(e.system1_only.accuracy * 100).toFixed(1)}%  escalation ${(e.hybrid.escalation_rate * 100).toFixed(1)}%  cost/1k $${e.hybrid.cost_per_1k_usd?.toFixed(3)} vs $${e.system2_only.cost_per_1k_usd?.toFixed(3)}`,
+      );
+    }
   }
+  const c = doc.consensus;
+  console.log(`all ${c.systems.length} systems agree against the label on ${c.all_agree_against_label}/${c.n} items (${(c.rate_against_label * 100).toFixed(1)}%)`);
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

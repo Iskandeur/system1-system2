@@ -133,9 +133,10 @@ test('splitHalves is deterministic and chooseThreshold picks the cheapest thresh
   near(c2.threshold, 0.25);
   near(c2.tune_escalation_rate, 1 / 7);
 
-  // When nothing matches S2, fall back to the most accurate threshold.
-  const perfectS2 = pairs.map((p) => ({ ...p, s2: { ...p.s2, pred: p.truth } }));
-  const c3 = chooseThreshold(perfectS2.filter((p) => p.id !== '4'), { thresholds: [0.5] });
-  assert.match(c3.rule, /most accurate|cheapest/);
+  // The 'best' rule ignores S2 and takes the most accurate threshold: 6/7 at t=0.35, cheapest among ties.
+  const c3 = chooseThreshold(easy, { thresholds: thresholdGrid(0.05), rule: 'best' });
+  assert.match(c3.rule, /most accurate threshold on the tuning half/);
+  near(c3.threshold, 0.35);
+  near(c3.tune_hybrid_accuracy, 6 / 7);
   assert.equal(typeof fnv1a('x'), 'number');
 });

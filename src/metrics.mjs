@@ -201,22 +201,25 @@ export function splitHalves(pairs, seed = 42) {
   return { tune, eval: evalSet };
 }
 
-// Operating point chosen on the tuning half only: the cheapest threshold whose hybrid accuracy
-// matches or beats System 2 alone on that half; if none does, the most accurate threshold.
-export function chooseThreshold(tunePairs, { thresholds = thresholdGrid(0.02) } = {}) {
+// Operating point chosen on the tuning half only. Two rules:
+//   'match' – the cheapest threshold whose hybrid accuracy matches or beats System 2 alone on
+//             that half (if none does, falls back to 'best');
+//   'best'  – the most accurate threshold on that half, cheapest among ties.
+export function chooseThreshold(tunePairs, { thresholds = thresholdGrid(0.02), rule = 'match' } = {}) {
   const s2Acc = summarize(tunePairs.map((p) => ({ truth: p.truth, pred: p.s2.pred }))).accuracy;
   const grid = thresholds.map((t) => ({ threshold: t, ...summarize(hybridRows(tunePairs, t)) }));
-  const ok = grid.filter((g) => g.accuracy >= s2Acc);
+  const best = () => grid.reduce((a, b) => (b.accuracy > a.accuracy || (b.accuracy === a.accuracy && b.escalation_rate < a.escalation_rate) ? b : a));
+  const ok = rule === 'match' ? grid.filter((g) => g.accuracy >= s2Acc) : [];
   let pick;
-  let rule;
-  if (ok.length) {
+  let ruleText;
+  if (rule === 'match' && ok.length) {
     pick = ok.reduce((a, b) => (b.escalation_rate < a.escalation_rate ? b : a));
-    rule = 'cheapest threshold matching System 2 accuracy on the tuning half';
+    ruleText = 'cheapest threshold matching System 2 accuracy on the tuning half';
   } else {
-    pick = grid.reduce((a, b) => (b.accuracy > a.accuracy || (b.accuracy === a.accuracy && b.escalation_rate < a.escalation_rate) ? b : a));
-    rule = 'no threshold matched System 2 on the tuning half; most accurate threshold';
+    pick = best();
+    ruleText = rule === 'match' ? 'no threshold matched System 2 on the tuning half; most accurate threshold' : 'most accurate threshold on the tuning half (cheapest among ties)';
   }
-  return { threshold: pick.threshold, rule, tune_s2_accuracy: s2Acc, tune_hybrid_accuracy: pick.accuracy, tune_escalation_rate: pick.escalation_rate };
+  return { threshold: pick.threshold, rule: ruleText, tune_s2_accuracy: s2Acc, tune_hybrid_accuracy: pick.accuracy, tune_escalation_rate: pick.escalation_rate };
 }
 
 export function roundDeep(v, digits = 4) {

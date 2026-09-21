@@ -144,6 +144,8 @@
         <div class="legend" id="injectionLegend"></div>
         <h3>Through the router</h3>
         <div class="tablewrap"><table id="injectionHybridTable"><thead><tr><th>Pair</th><th>Defense</th><th>t</th><th>Targeted success</th><th>Escalated under attack</th><th>Passed the router</th></tr></thead><tbody></tbody></table></div>
+        <p class="muted" id="injectionRouterNote"></p>
+        <div class="tablewrap"><table id="injectionRouterTable"><thead><tr><th>System 1 · defense</th><th>t</th><th>Successful attacks kept (conf ≥ t)</th><th>Escalation clean → attacked</th><th>Hybrid targeted success</th><th>Passed the router</th></tr></thead><tbody></tbody></table></div>
         <details><summary>The six templates</summary><div class="tablewrap"><table id="templateTable"><thead><tr><th>Template</th><th>Appended payload</th></tr></thead><tbody></tbody></table></div></details>
       </section>
 
@@ -217,12 +219,14 @@ node scripts/analyze.mjs --dataset massive-en      # recompute every number on t
         show();
 
         const e = hybrid.heldout;
-        $('heldoutNote').textContent = `The threshold is chosen on one half of the items (${e.tune_n}, rule: ${e.rule}) and everything below is measured on the other half (${e.n} items). ${e.rule.startsWith('cheapest') ? 'On the tuning half the hybrid matched System 2 at ' + pct(e.tune.escalation_rate, 0) + ' escalation.' : ''}`;
+        const b = hybrid.heldout_best || e;
+        $('heldoutNote').textContent = `The threshold is chosen on one half of the items (${e.tune_n}) and everything below is measured on the other half (${e.n} items). Two rules: "match" = ${e.rule}; "best" = ${b.rule}.`;
         const tb = $('heldoutTable').querySelector('tbody');
         tb.innerHTML = [
           [`System 2 only (${s2.model})`, e.system2_only],
           [`System 1 only (${s1.model})`, e.system1_only],
-          [`Hybrid @ t = ${e.threshold}`, e.hybrid],
+          [`Hybrid, "match" rule: t = ${e.threshold}`, e.hybrid],
+          [`Hybrid, "best" rule: t = ${b.threshold}`, b.hybrid],
         ].map(([name, s]) => `<tr><td class="l">${esc(name)}</td><td>${pct(s.accuracy)}${esc(ci(s.accuracy_ci))}</td><td>${usd(s.cost_per_1k_usd, 3)}</td><td>${ms(s.mean_latency_ms)}</td><td>${s.escalation_rate === undefined ? '–' : pct(s.escalation_rate)}</td></tr>`).join('');
       }
 
@@ -361,6 +365,16 @@ node scripts/analyze.mjs --dataset massive-en      # recompute every number on t
         });
         $('injectionLegend').innerHTML = sys.map((s, k) => `<span><i style="background:${colors[k % colors.length]}"></i>${esc(s.model)} · ${esc(s.defense)}</span>`).join('');
         $('injectionHybridTable').querySelector('tbody').innerHTML = inj.hybrids.map((h) => `<tr><td class="l">${esc(h.s1)} → ${esc(h.s2)}</td><td>${esc(h.defense)}</td><td>${h.threshold}</td><td>${rate(h.targeted)}</td><td>${rate(h.escalated)}</td><td>${rate(h.passed_router)}</td></tr>`).join('');
+        const routerRows = [];
+        for (const s of sys.filter((x) => x.confidence && x.confidence.by_threshold)) {
+          const hyb = inj.hybrids.filter((h) => h.s1 === s.tag && h.by_threshold);
+          for (const b of s.confidence.by_threshold.filter((x) => [0.5, 0.7, 0.9].includes(x.threshold))) {
+            const hb = hyb.map((h) => ({ h, r: h.by_threshold.find((x) => x.threshold === b.threshold) })).filter((x) => x.r);
+            routerRows.push(`<tr><td class="l">${esc(s.model)} · ${esc(s.defense)}</td><td>${b.threshold}</td><td>${rate(b.successful_above_threshold)}</td><td>${pct(b.escalation_clean.rate)} → ${pct(b.escalation_attacked.rate)}</td><td>${hb.map((x) => `${esc(x.h.s2)}: ${rate(x.r.targeted)}`).join('<br>') || '–'}</td><td>${hb.map((x) => rate(x.r.passed_router)).join('<br>') || '–'}</td></tr>`);
+          }
+        }
+        $('injectionRouterTable').querySelector('tbody').innerHTML = routerRows.join('');
+        $('injectionRouterNote').textContent = `Reference threshold: ${inj.hybrids[0] ? inj.hybrids[0].threshold_source : ''}. Below, the same numbers at fixed thresholds: an attack that lowers System 1's confidence gets escalated (and then only wins if System 2 also falls), and every extra escalation is an extra paid LLM call.`;
         $('templateTable').querySelector('tbody').innerHTML = inj.dataset.templates.map((t) => `<tr><td class="l"><b>${esc(t.name)}</b><br><span class="muted">${esc(t.description)}</span></td><td class="l"><code>${esc(t.payload)}</code></td></tr>`).join('');
       }
 
@@ -383,8 +397,13 @@ node scripts/analyze.mjs --dataset massive-en      # recompute every number on t
       function renderFinding(res, hybrid) {
         const e = hybrid.heldout;
         const s1 = res.systems[hybrid.s1], s2 = res.systems[hybrid.s2];
-        const saving = e.system2_only.cost_per_1k_usd && e.hybrid.cost_per_1k_usd ? Math.round((1 - e.hybrid.cost_per_1k_usd / e.system2_only.cost_per_1k_usd) * 100) : null;
-        $('finding').innerHTML = `On ${res.dataset.count} ${esc(res.dataset.name)} items, routing on <b>${esc(s1.model)}</b>'s confidence reaches <b>${pct(e.hybrid.accuracy)}</b> on the held-out half (${esc(s2.model)} alone: ${pct(e.system2_only.accuracy)}, ${esc(s1.model)} alone: ${pct(e.system1_only.accuracy)}) while calling the LLM on <b>${pct(e.hybrid.escalation_rate, 0)}</b> of items${saving !== null ? `, for <b>${saving}% less</b> than System 2 alone` : ''}. ${esc(s1.model)}'s confidence has an ECE of <b>${pct(s1.calibration.ece)}</b>${s1.calibration.auroc === null ? '' : ` (AUROC ${s1.calibration.auroc.toFixed(2)})`}.`;
+        const gap = s2.accuracy - s1.accuracy;
+        const r9 = hybrid.sweep.reduce((a, b) => (Math.abs(b.threshold - 0.9) < Math.abs(a.threshold - 0.9) ? b : a));
+        const verdict = Math.abs(gap) < 0.02
+          ? `<b>${esc(s2.model)} alone is no more accurate than ${esc(s1.model)} alone</b> (${pct(s2.accuracy)} vs ${pct(s1.accuracy)}), so no threshold buys accuracy: chosen on one half, the threshold lands at t = ${e.threshold} (hybrid ${pct(e.hybrid.accuracy)} vs System 2 ${pct(e.system2_only.accuracy)} on the other half).`
+          : `<b>${esc(s2.model)} alone ${gap > 0 ? 'beats' : 'trails'} ${esc(s1.model)} alone by ${Math.abs(gap * 100).toFixed(1)} points</b>; chosen on one half, t = ${e.threshold} gives ${pct(e.hybrid.accuracy)} on the other half (System 2 ${pct(e.system2_only.accuracy)}) at ${pct(e.hybrid.escalation_rate, 0)} escalation.`;
+        const cons = res.consensus ? ` All ${res.consensus.systems.length} systems agree <em>against</em> the label on ${pct(res.consensus.rate_against_label)} of items, a floor on the residual error.` : '';
+        $('finding').innerHTML = `On ${res.dataset.count} ${esc(res.dataset.name)} items (${res.dataset.labels.length} labels), ${verdict} What ${esc(s1.model)}'s confidence does buy is <b>selectivity</b>: it is calibrated (ECE <b>${pct(s1.calibration.ece)}</b>${s1.calibration.auroc === null ? '' : `, AUROC ${s1.calibration.auroc.toFixed(2)}`}) and at t = ${r9.threshold} it hands off ${pct(r9.escalation_rate, 0)} of items and is <b>${pct(r9.selective_accuracy)}</b> accurate on the ${pct(r9.coverage, 0)} it keeps, for ${usd(r9.cost_per_1k_usd)} per 1,000 items instead of ${usd(s2.cost_per_1k_usd)}.${cons}`;
       }
 
       async function main() {

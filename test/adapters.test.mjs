@@ -125,6 +125,11 @@ test('anthropic parsing reads tool_use input and prices input/output tokens', ()
   assert.equal(r.confidence_source, 'self_reported');
   assert.ok(Math.abs(r.cost - (10 * 2000 + 50 * 20) / 1e6) < 1e-12);
   assert.throws(() => anthropic.parseResponse({ system: sys({ provider: 'anthropic', model: 'm', confidence: 'logprobs' }), task, json, wantConfidence: true }), /no logprobs/);
+  // a bare label is accepted (seen under injection: the model answered `takeaway` and nothing else), prose is not
+  const bare = anthropic.parseResponse({ system: s, task, json: { content: [{ type: 'text', text: ' "feature". ' }], usage: {} }, wantConfidence: false });
+  assert.equal(bare.label, 'feature');
+  assert.throws(() => anthropic.parseResponse({ system: s, task, json: { content: [{ type: 'text', text: 'feature request' }] }, wantConfidence: false }), /no usable label/);
+  assert.equal(chat.parseResponse({ system: sys({ provider: 'openrouter', model: 'm' }, 'system2'), task, wantConfidence: false, json: chatPayload({ content: 'bug' }) }).label, 'bug');
   assert.throws(() => anthropic.parseResponse({ system: s, task, json: { content: [{ type: 'text', text: 'nope' }] }, wantConfidence: false }), /no usable label/);
   // a JSON text block in place of the tool call is accepted (seen from an Anthropic-compatible endpoint)
   const textOnly = anthropic.parseResponse({ system: s, task, json: { content: [{ type: 'text', text: '{"label":"docs"}' }], usage: {} }, wantConfidence: false });

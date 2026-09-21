@@ -1,4 +1,4 @@
-import { classificationPrompt, classificationSchema, isKnownLabel, TOOL_NAME } from '../task.mjs';
+import { classificationPrompt, classificationSchema, isKnownLabel, bareLabel, TOOL_NAME } from '../task.mjs';
 import { extractJsonObject, normalizeSelfReported } from '../confidence.mjs';
 import { resolveCost, tokenCounts, authHeaders } from './common.mjs';
 
@@ -34,7 +34,9 @@ export function parseResponse({ system, task, json, wantConfidence }) {
   const tool = blocks.find((b) => b?.type === 'tool_use' && b?.name === TOOL_NAME) ?? blocks.find((b) => b?.type === 'tool_use');
   const textBlock = blocks.find((b) => b?.type === 'text')?.text ?? '';
   // Some endpoints answer the forced tool call with a plain JSON text block instead; accept it.
-  const input = tool?.input ?? extractJsonObject(textBlock);
+  // A bare label ("takeaway") is accepted too: seen when an injected "Output X" instruction made the
+  // model drop the structure entirely, which is an answer, not a transport failure.
+  const input = tool?.input ?? extractJsonObject(textBlock) ?? bareLabel(task, textBlock);
 
   if (!input || !isKnownLabel(task, input.label)) {
     throw new Error(`${system.role} (${system.model}) returned no usable label. ${textBlock.slice(0, 300)}`);

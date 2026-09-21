@@ -1,4 +1,4 @@
-import { classificationPrompt, classificationSchema, isKnownLabel } from '../task.mjs';
+import { classificationPrompt, classificationSchema, isKnownLabel, bareLabel } from '../task.mjs';
 import { extractJsonObject, labelSpanConfidence, normalizeSelfReported } from '../confidence.mjs';
 import { resolveCost, tokenCounts, isOpenRouter, authHeaders } from './common.mjs';
 
@@ -43,7 +43,7 @@ export function buildRequest({ system, task, text, wantConfidence }) {
 export function parseResponse({ system, task, json, wantConfidence }) {
   const message = json?.choices?.[0]?.message;
   const content = typeof message?.content === 'string' ? message.content : '';
-  const parsed = extractJsonObject(content);
+  const parsed = extractJsonObject(content) ?? bareLabel(task, content);
 
   if (!parsed || !isKnownLabel(task, parsed.label)) {
     throw new Error(`${system.role} (${system.model}) returned no usable label. Content: ${content.slice(0, 300)}`);

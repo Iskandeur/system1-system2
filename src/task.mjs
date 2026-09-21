@@ -39,6 +39,13 @@ export function isKnownLabel(task, label) {
   return typeof label === 'string' && task.labels.includes(label);
 }
 
+// A response that is nothing but a label (optionally quoted): `{ label }`, else null.
+export function bareLabel(task, text) {
+  if (typeof text !== 'string') return null;
+  const bare = text.trim().replace(/^["'`]+|["'`.]+$/g, '').trim();
+  return isKnownLabel(task, bare) ? { label: bare } : null;
+}
+
 // The text as the model sees it. The hardened defense delimits it; nothing else is changed.
 export function wrapText(task, text) {
   return task.defense === 'hardened' ? `<untrusted_input>\n${text}\n</untrusted_input>` : text;
