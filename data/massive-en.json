@@ -1,0 +1,5481 @@
+{
+  "name": "massive-en",
+  "generated_at": "2026-09-21T11:03:26.246Z",
+  "source": {
+    "name": "MASSIVE 1.1",
+    "url": "https://github.com/alexa/massive",
+    "download": "https://amazon-massive-nlu-dataset.s3.amazonaws.com/amazon-massive-dataset-1.1.tar.gz",
+    "license": "CC BY 4.0",
+    "citation": "FitzGerald et al., \"MASSIVE: A 1M-Example Multilingual Natural Language Understanding Dataset with 51 Typologically-Diverse Languages\", 2022",
+    "locale": "en-US",
+    "split": "test",
+    "sampling": "600 of 2974 test utterances, proportional to scenario, seed 42; identical ids across locales",
+    "per_label": {
+      "alarm": 19,
+      "audio": 13,
+      "iot": 44,
+      "general": 38,
+      "datetime": 21,
+      "music": 16,
+      "takeaway": 12,
+      "weather": 31,
+      "play": 78,
+      "news": 25,
+      "recommendation": 19,
+      "qa": 58,
+      "calendar": 81,
+      "social": 21,
+      "transport": 25,
+      "cooking": 15,
+      "email": 55,
+      "lists": 29
+    }
+  },
+  "task": {
+    "name": "scenario",
+    "instructions": "Classify this voice-assistant request into the scenario it belongs to.",
+    "labels": [
+      "alarm",
+      "audio",
+      "calendar",
+      "cooking",
+      "datetime",
+      "email",
+      "general",
+      "iot",
+      "lists",
+      "music",
+      "news",
+      "play",
+      "qa",
+      "recommendation",
+      "social",
+      "takeaway",
+      "transport",
+      "weather"
+    ],
+    "criteria": {
+      "alarm": "Setting, checking or removing alarms and wake-up calls.",
+      "audio": "Controlling the assistant's sound volume: mute, louder, quieter.",
+      "calendar": "Creating, checking or deleting calendar events, meetings and reminders.",
+      "cooking": "Recipes and cooking instructions.",
+      "datetime": "Asking the current time or date, or converting between time zones.",
+      "email": "Reading, sending or searching emails; managing email contacts.",
+      "general": "Chit-chat, greetings, jokes, and replies to the assistant (yes, no, stop, repeat, thanks) with no task.",
+      "iot": "Smart-home devices: lights, plugs, coffee machine, vacuum cleaner.",
+      "lists": "Creating, adding to, reading or removing items from lists (shopping, to-do).",
+      "music": "Music preferences and settings: liking or disliking a song, asking what is playing, playback settings.",
+      "news": "News and headlines.",
+      "play": "Starting playback of music, radio, podcasts, audiobooks or games.",
+      "qa": "Factual questions: definitions, facts, maths, stock prices, currency rates.",
+      "recommendation": "Recommendations for events, movies, restaurants or places.",
+      "social": "Social media: posting an update or checking feeds and notifications.",
+      "takeaway": "Ordering takeaway food or checking a food order.",
+      "transport": "Trains, buses, taxis and traffic: timetables, tickets, rides, traffic conditions.",
+      "weather": "Weather forecasts and conditions."
+    }
+  },
+  "items": [
+    {
+      "id": "3702",
+      "text": "olly do i have an alarm set for tomorrow",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1483",
+      "text": "what alarms did i set",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5974",
+      "text": "did i set an alarm to have tablets in the noon",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "174",
+      "text": "set wake up thursday seven am",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6162",
+      "text": "delete alarm",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "201",
+      "text": "delete the alarm i just set",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1862",
+      "text": "when does my alarm go off",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "796",
+      "text": "confirm my alarm settings",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5635",
+      "text": "ensure i have to get up at six in morning",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4930",
+      "text": "turn on an alarm for three thirty p. m. today",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3695",
+      "text": "i want an alarm for three today",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2134",
+      "text": "wake me up",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5103",
+      "text": "olly cancel all soccer practice alarms",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2870",
+      "text": "olly tell me my alarms",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3161",
+      "text": "do i have any alarms set for six am tomorrow",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3886",
+      "text": "any alarms currently listed",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "63",
+      "text": "tell me about my alarms",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "560",
+      "text": "turn off eight am alarm",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5902",
+      "text": "check if alarm is set for six am",
+      "truth": "alarm",
+      "meta": {
+        "intent": "alarm_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4833",
+      "text": "clear data",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_mute",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4994",
+      "text": "please mute my speaker",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_mute",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4831",
+      "text": "speaker volume increase",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_up",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "315",
+      "text": "please be quiet for another hour",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_mute",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "258",
+      "text": "i can't hear you",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_up",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1630",
+      "text": "raise the volume of the current music",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_up",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "189",
+      "text": "mute volume",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_mute",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3838",
+      "text": "turn off the sounds",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_mute",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5611",
+      "text": "reduce volume",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_down",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1639",
+      "text": "please turn the volume down",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_down",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4638",
+      "text": "change volume settings in the negative alexa",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_other",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2207",
+      "text": "silently adjust",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_mute",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3812",
+      "text": "mute for fifteen minutes",
+      "truth": "audio",
+      "meta": {
+        "intent": "audio_volume_mute",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6819",
+      "text": "olly there's a good band playing tonight at nine at jazz bar i want to go",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8559",
+      "text": "do i have anything scheduled for today",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8410",
+      "text": "remove my dinner event for monday",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8679",
+      "text": "is today saint patricks day",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7294",
+      "text": "remove the appointment with george adams from my calendar",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7878",
+      "text": "erase my calendar",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7289",
+      "text": "get rid of all events with jeff",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7117",
+      "text": "get rid of the events on the nineteenth from my calendar",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7836",
+      "text": "delete all events",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6891",
+      "text": "are there morning shows available",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8469",
+      "text": "what is scheduled on my calendar today",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7762",
+      "text": "what reminders do i have",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6761",
+      "text": "remove from my calendar meeting at nine am",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6856",
+      "text": "give me a reminder notification on tomorrow's meeting at ten am",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7185",
+      "text": "when is my next appointment with doctor smith",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13177",
+      "text": "remind me to move so there is no weight gain",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9193",
+      "text": "please set this date to repeat",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7662",
+      "text": "can you list out my meetings today",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9194",
+      "text": "please remove this event from my calendar",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8888",
+      "text": "delete it",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8975",
+      "text": "what are meeting scheduled for today",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6936",
+      "text": "remind me to take my medicine at nine am",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7851",
+      "text": "i have a meeting at noon today",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7628",
+      "text": "remind me when i am at the library to get a new library card",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7450",
+      "text": "i need a meeting to be schedule with this person",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7613",
+      "text": "what's was the upcoming event",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8635",
+      "text": "can you remind me to order the turkey three weeks before thanksgiving",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7397",
+      "text": "is there any events planned for the next three months",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7916",
+      "text": "remind me to take out the garbage at six p. m.",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8670",
+      "text": "remove events from calendar",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7194",
+      "text": "i am having a meeting on tomorrow set it",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9061",
+      "text": "what information do i have on reminders",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7655",
+      "text": "add a reminder for april twenty as my bro's birthday",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8302",
+      "text": "remove next monday's meeting",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8904",
+      "text": "information of recent events",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8431",
+      "text": "get rid of all my scheduled events",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9074",
+      "text": "please remove that event",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7609",
+      "text": "remove meeting reminder for tuesday",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8125",
+      "text": "create a meeting event in my calendar",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8413",
+      "text": "please alert me",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7122",
+      "text": "could you repeat this event",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7912",
+      "text": "alexa remove dinner with mike from my calendar",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7061",
+      "text": "give me a reminder twenty four hours before my friday meeting with edg",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8525",
+      "text": "meeting reminders from three to five",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6964",
+      "text": "can you remind my next meeting with my boss one hour before it will happen",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7569",
+      "text": "plan for tomorrow",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7055",
+      "text": "schedule a meeting with matt at eleven am on thursday",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7181",
+      "text": "wake me at six am thursday so i have time for the meeting",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7891",
+      "text": "cancel dinner tonight",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7025",
+      "text": "remove new year from calendar",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8653",
+      "text": "remind me of the event in my calendar",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8414",
+      "text": "remind me to go to dinner with dave on friday at five p. m.",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8631",
+      "text": "erase that from my calendar",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9011",
+      "text": "is the thanks giving event on fourteenth of this month true",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7817",
+      "text": "is this true about this date",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8914",
+      "text": "what time is my appointment on april fourth",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7955",
+      "text": "put this event in a repeating pattern on my calendar",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8880",
+      "text": "set a reminder about tomorrow's meeting at nine am",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8058",
+      "text": "do i have a sales meeting today",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7606",
+      "text": "meet with joe tomorrow at three",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6892",
+      "text": "can you give me the movie schedule",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8782",
+      "text": "do i have a meeting this afternoon",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8992",
+      "text": "show meetings",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8043",
+      "text": "what time is my next appointment",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6928",
+      "text": "erase all the events",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11180",
+      "text": "my party planning",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8516",
+      "text": "delete calendar item",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7768",
+      "text": "please add practice on feb four at king's park at two p. m.",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6918",
+      "text": "delete events from calendar",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7966",
+      "text": "did i tell you to remind me something",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6992",
+      "text": "show future events",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7927",
+      "text": "what do i have to do this week",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6850",
+      "text": "list out my schedule today",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8005",
+      "text": "on monday the twentieth i need to have a conversation with greg about our weekend trip",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8762",
+      "text": "tell me my schedule for later this afternoon",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6967",
+      "text": "can you check the facts on this issue",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8907",
+      "text": "mention event in calendar with others",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6865",
+      "text": "set up a notification about tomorrow's meeting at ten",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7971",
+      "text": "set a reminder for two days prior of the event",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7981",
+      "text": "send an alert before meeting",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_set",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "8828",
+      "text": "is calendar event true",
+      "truth": "calendar",
+      "meta": {
+        "intent": "calendar_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10177",
+      "text": "how to cook spaghetti squash",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10164",
+      "text": "how long do i cook maccoroni",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9956",
+      "text": "what can i substitute butter with",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10072",
+      "text": "baking times for chicken in the oven",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10081",
+      "text": "tell me how to cook meatballs",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9943",
+      "text": "how long does it take to make vegetable lasagna",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10097",
+      "text": "i would like a cheeseburger",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10049",
+      "text": "tell me how to make a poor boy sandwich",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10206",
+      "text": "how is rice prepared",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9942",
+      "text": "what all goes into a red velvet cake",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10038",
+      "text": "i need good ideas for cooking",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9980",
+      "text": "what is the menu today add some boiled vegetables also to it",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9924",
+      "text": "tell me the recipe of",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10213",
+      "text": "list of famous biryani recipes",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10217",
+      "text": "find the recipe for sambar in cookingforu application",
+      "truth": "cooking",
+      "meta": {
+        "intent": "cooking_recipe",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5757",
+      "text": "a quarter to two",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3441",
+      "text": "is the twenty second on a wednesday",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5774",
+      "text": "current time in cpt",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "197",
+      "text": "what time is it",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2146",
+      "text": "what's the date of the winter solstice two years from now",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1607",
+      "text": "tell me current time in los angels",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3669",
+      "text": "tell me the time in someplace",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_convert",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5997",
+      "text": "what time is it in central time zone",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13506",
+      "text": "can you tell me the time it is",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4951",
+      "text": "i'd like to know what time it is right now",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1191",
+      "text": "if it's sunrise in stockholm what time is it in okinawa",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_convert",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5341",
+      "text": "please alert me to the time",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4236",
+      "text": "is it afternoon yet",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1449",
+      "text": "when is easter in the year two thousand and eighteen",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3361",
+      "text": "what is the date for next tuesday",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5027",
+      "text": "when is the next friday the thirteenth",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4336",
+      "text": "what is the time in china",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3091",
+      "text": "what time is it in pacific standard time",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5523",
+      "text": "convert eight thirty from gtm four to g. m. t. five thirty",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_convert",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4463",
+      "text": "how many saturdays are in march",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4254",
+      "text": "what time is it on the east coast of the united states",
+      "truth": "datetime",
+      "meta": {
+        "intent": "datetime_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15809",
+      "text": "has robert emails me yet",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16624",
+      "text": "i need an email to be sent to comcastcom about my service issues",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16427",
+      "text": "how many new emails have i received today",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16630",
+      "text": "send a reply to the last email",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16814",
+      "text": "check emails",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15971",
+      "text": "what was the last email from work",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16271",
+      "text": "refresh my inbox and inform me about new emails",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15890",
+      "text": "check to see if i have any new emails from my dad",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16701",
+      "text": "i would like to reply to sarah's email",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16377",
+      "text": "send mom an email now",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16170",
+      "text": "open inbox to check unread mails",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16038",
+      "text": "hey has john sent me any email lately",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16609",
+      "text": "tell me if i have any unread new emails",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15802",
+      "text": "reply an email to jason that i will not come tonight",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16437",
+      "text": "please sent this email to my friend",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15841",
+      "text": "compose a new email to ray",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16002",
+      "text": "check for new email",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15994",
+      "text": "send an email to john asking him what time works for the meeting",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16560",
+      "text": "respond to my bosses email with the word that i will be in at four in the evening",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "17075",
+      "text": "are there any new emails received after four o'clock today",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16280",
+      "text": "please send an email to cassy who is there on my family and friend list",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16891",
+      "text": "send john smith and email",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16974",
+      "text": "please check all new email of income tax department",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16459",
+      "text": "new message to newmail at gmail dot com",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16694",
+      "text": "locate the email to giant eagle and put it into my contact list",
+      "truth": "email",
+      "meta": {
+        "intent": "email_addcontact",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "17147",
+      "text": "reply to the mail with the following content hello you",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16613",
+      "text": "send email to boss saying i will be late",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16446",
+      "text": "please check for recent emailstudy from this sender",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15948",
+      "text": "open contacts and call john smith",
+      "truth": "email",
+      "meta": {
+        "intent": "email_querycontact",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16838",
+      "text": "can you send the email to the new email id",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "17151",
+      "text": "my friend john has sent me a invitation card to his newly bought home say thanks to him in his mail id",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16758",
+      "text": "any new email since last time",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16880",
+      "text": "email jerry regarding the meeting",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16749",
+      "text": "are their any new emails for me today",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15829",
+      "text": "go to contacts and enter a new email address",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "17148",
+      "text": "alexa reply to the mail with the following content hello you",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "17136",
+      "text": "please read my new mails",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16376",
+      "text": "alexa please send an email to mom",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16419",
+      "text": "please send an email to uncle john with the following yes i can make it",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16712",
+      "text": "do i have any new email",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15857",
+      "text": "please send to new email address listed",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16938",
+      "text": "reply to johns email",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "17011",
+      "text": "can you send an email to",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15815",
+      "text": "what is a work phone number of emilia",
+      "truth": "email",
+      "meta": {
+        "intent": "email_querycontact",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16072",
+      "text": "email my boss that i will be late today because of an emergency and apologize to him for missing the meeting",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15849",
+      "text": "send an email to my boss",
+      "truth": "email",
+      "meta": {
+        "intent": "email_sendemail",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15789",
+      "text": "olly do i have any new emails",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15747",
+      "text": "add this person's email",
+      "truth": "email",
+      "meta": {
+        "intent": "email_addcontact",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16010",
+      "text": "tell me if i have any new messages in my inbox",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16666",
+      "text": "do i have any incoming emails",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16642",
+      "text": "check mail for anything from shelly",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16276",
+      "text": "do i have new emails",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "17069",
+      "text": "are there any new emails in outlook",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16275",
+      "text": "initiate polling for new email",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "17135",
+      "text": "any lighting news emails",
+      "truth": "email",
+      "meta": {
+        "intent": "email_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13451",
+      "text": "i would like my robot to feed and pet my dog when i'm not home",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3330",
+      "text": "i want to hear a joke",
+      "truth": "general",
+      "meta": {
+        "intent": "general_joke",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1579",
+      "text": "find me a joke related to baseball",
+      "truth": "general",
+      "meta": {
+        "intent": "general_joke",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15137",
+      "text": "become a helicopter",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6405",
+      "text": "what sound does a dog make",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6575",
+      "text": "plants",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14412",
+      "text": "describe the new football game rules",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6431",
+      "text": "today i had a meeting with george",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6616",
+      "text": "what is your age",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6557",
+      "text": "play videos",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "411",
+      "text": "can you tell me a joke",
+      "truth": "general",
+      "meta": {
+        "intent": "general_joke",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6568",
+      "text": "what happens to me if you become sentient",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6572",
+      "text": "do you have a boyfriend",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3364",
+      "text": "knock knock",
+      "truth": "general",
+      "meta": {
+        "intent": "general_joke",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13197",
+      "text": "i wish it could give me advice",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6533",
+      "text": "are you happy",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6295",
+      "text": "i hate how long the traffic jams get",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6694",
+      "text": "hey i am having a bad day today what can i watch to cheer me up",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6290",
+      "text": "what would you recommend for me to read",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6147",
+      "text": "find funny jokes",
+      "truth": "general",
+      "meta": {
+        "intent": "general_joke",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6515",
+      "text": "how has your day been today",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3128",
+      "text": "olly how many tornadoes have there been this month",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6352",
+      "text": "i went to the store",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6623",
+      "text": "who are your developers",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6293",
+      "text": "hey olly i met one of my old classmates today",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6446",
+      "text": "is there a groomer in town for cats only",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6241",
+      "text": "i helped a poor needy today olly",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6201",
+      "text": "my day was full of work olly",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "7168",
+      "text": "can you give me the details of upcoming annual function on twenty sixth march",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13762",
+      "text": "how much wood could a woodchuck chuck if a woodchuck could chuck wood",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6181",
+      "text": "hey olly i missed you",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6301",
+      "text": "what's shakin bacon",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6227",
+      "text": "i am going to work today",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14339",
+      "text": "tell me about economy and g. d. p. about india versus china",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14356",
+      "text": "i think i can travel the whole world in a day",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6313",
+      "text": "today i saw a bulldog",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6325",
+      "text": "my day was extremely hard",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14246",
+      "text": "how can you get basalt",
+      "truth": "general",
+      "meta": {
+        "intent": "general_quirky",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "665",
+      "text": "can you lower the lights",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightdim",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2903",
+      "text": "please start the vacuum cleaner",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_cleaning",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3700",
+      "text": "lights at percent",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightchange",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5156",
+      "text": "turn the light off in the living room",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightoff",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1941",
+      "text": "clean my house",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_cleaning",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "997",
+      "text": "turn the living room's light off",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightoff",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4024",
+      "text": "please power down",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_wemo_off",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "468",
+      "text": "change the lights to dim",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightdim",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14",
+      "text": "and the darkness has fallen",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lighton",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11914",
+      "text": "olly i need a drink",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_coffee",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "369",
+      "text": "switch off the lights",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightoff",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5201",
+      "text": "turn my lights down to a lower level of brightness",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightdim",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4347",
+      "text": "cease operating lights",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightoff",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2283",
+      "text": "i need to change my house lights color to blue",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightchange",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6041",
+      "text": "hey olly turn off the light please",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightoff",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "730",
+      "text": "turn the lights off",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightoff",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3674",
+      "text": "i would like the like in the kitchen to be a different color",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightchange",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2965",
+      "text": "turn office lights off",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightoff",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "426",
+      "text": "power up the plug socket one",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_wemo_on",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "263",
+      "text": "let's have the lights blue",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightchange",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1812",
+      "text": "please make me coffee without sweetener",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_coffee",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4013",
+      "text": "let's suck out the dust",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_cleaning",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "635",
+      "text": "please start vacuum cleaner",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_cleaning",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5856",
+      "text": "turn off smart plug socket",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_wemo_off",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "456",
+      "text": "change the bedroom lights to green",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightchange",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5026",
+      "text": "please make the lights natural",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightchange",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "897",
+      "text": "make the house lights amber at six p. m.",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightchange",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1427",
+      "text": "change the lights to blue olly",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightchange",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5697",
+      "text": "begin vacuuming",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_cleaning",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4201",
+      "text": "power on wemo",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_wemo_on",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4248",
+      "text": "house lights blue",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightchange",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3098",
+      "text": "make the lights off",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightoff",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4346",
+      "text": "turn lights off",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightoff",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "428",
+      "text": "turn off the bathroom lights",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightoff",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5047",
+      "text": "alexa please turn down the lights in the house",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightdim",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6060",
+      "text": "please start the coffee pot",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_coffee",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4554",
+      "text": "can you make some coffee",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_coffee",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3298",
+      "text": "power off the wemo plug",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_wemo_off",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5014",
+      "text": "can you make the room brighter",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightup",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5917",
+      "text": "make a coffee please",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_coffee",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2975",
+      "text": "please change the light colors to red",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightchange",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4240",
+      "text": "switch on the roomba",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_cleaning",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2311",
+      "text": "alexa turn the lights down to seven",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightdim",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1804",
+      "text": "more lights please",
+      "truth": "iot",
+      "meta": {
+        "intent": "iot_hue_lightup",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10718",
+      "text": "can you remove this item from the list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10956",
+      "text": "what groups are listed in my contacts",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10712",
+      "text": "create a new list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_createoradd",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11107",
+      "text": "what are my current list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11238",
+      "text": "please create a new list for me",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_createoradd",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11174",
+      "text": "list all the lists on this device",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10979",
+      "text": "what's on your list right now",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10808",
+      "text": "delete last item listed",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10940",
+      "text": "make a new shopping list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_createoradd",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11154",
+      "text": "check recent to do list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10512",
+      "text": "list everything left on my query",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10568",
+      "text": "remove the old music list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10501",
+      "text": "add broccoli to my grocery list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_createoradd",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10674",
+      "text": "trash the current list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10753",
+      "text": "what did i put down already on the walmart list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10451",
+      "text": "what i am going to do today",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10731",
+      "text": "read what is on my list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10667",
+      "text": "recite the schedules of the list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10792",
+      "text": "i need to make a list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_createoradd",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10815",
+      "text": "add toothpaste to my shopping list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_createoradd",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10999",
+      "text": "say the list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10957",
+      "text": "remind me of how many lists i have",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11177",
+      "text": "add a wrist watch to the shopping list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_createoradd",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10828",
+      "text": "erase all",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10503",
+      "text": "add the post office to my list of errands for saturday",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_createoradd",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10471",
+      "text": "i need to create a new to do list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_createoradd",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11189",
+      "text": "find the list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10756",
+      "text": "clear out the shopping list",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10655",
+      "text": "remove the list called party time",
+      "truth": "lists",
+      "meta": {
+        "intent": "lists_remove",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1874",
+      "text": "add song to running list",
+      "truth": "music",
+      "meta": {
+        "intent": "music_likeness",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3864",
+      "text": "who sings the song that i am listening to right now",
+      "truth": "music",
+      "meta": {
+        "intent": "music_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1745",
+      "text": "you like the song",
+      "truth": "music",
+      "meta": {
+        "intent": "music_likeness",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2093",
+      "text": "bring me the title of current music",
+      "truth": "music",
+      "meta": {
+        "intent": "music_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5691",
+      "text": "opinion petabit",
+      "truth": "music",
+      "meta": {
+        "intent": "music_likeness",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2355",
+      "text": "which film the music comes from what is the name of the music",
+      "truth": "music",
+      "meta": {
+        "intent": "music_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2647",
+      "text": "could you please create a pandora channel for adele",
+      "truth": "music",
+      "meta": {
+        "intent": "music_settings",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1872",
+      "text": "great song for the commute",
+      "truth": "music",
+      "meta": {
+        "intent": "music_likeness",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13855",
+      "text": "what are lady gagas most popular songs",
+      "truth": "music",
+      "meta": {
+        "intent": "music_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2387",
+      "text": "who wrote this song",
+      "truth": "music",
+      "meta": {
+        "intent": "music_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3030",
+      "text": "i love this song",
+      "truth": "music",
+      "meta": {
+        "intent": "music_likeness",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4874",
+      "text": "enter song suggestion",
+      "truth": "music",
+      "meta": {
+        "intent": "music_likeness",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6109",
+      "text": "store opinion on song",
+      "truth": "music",
+      "meta": {
+        "intent": "music_likeness",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "379",
+      "text": "i want the music to be saved can you do it for me",
+      "truth": "music",
+      "meta": {
+        "intent": "music_likeness",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4268",
+      "text": "move to the next song in the list",
+      "truth": "music",
+      "meta": {
+        "intent": "music_settings",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1741",
+      "text": "hey olly please tell me the name of this song that is currently playing",
+      "truth": "music",
+      "meta": {
+        "intent": "music_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13188",
+      "text": "tell me how are the results of assembly elections in delhi going to come out",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1760",
+      "text": "latest news on terrorism",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "281",
+      "text": "what is the exchange rate of us dollar to pound sterling",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "178",
+      "text": "tell me international news",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1666",
+      "text": "so clean news in past six hours is what",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6077",
+      "text": "i want to hear the latest world news from today",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3101",
+      "text": "olly turn the news on",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "366",
+      "text": "please tell me the latest news",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2384",
+      "text": "what's happening around the world",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2296",
+      "text": "keep me up to date with today's n. b. a. scores",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "16146",
+      "text": "give me the latest updates",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15213",
+      "text": "what is the trending now",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2651",
+      "text": "latest news from the area",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3624",
+      "text": "news from c. n. n.",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6683",
+      "text": "economic affairs",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5930",
+      "text": "any breaking news from the huffington post",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1759",
+      "text": "give me news on president trump",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "768",
+      "text": "tell me about the latest political news",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5016",
+      "text": "tell me the news about share market ups and downs",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "424",
+      "text": "what are the breaking news",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3060",
+      "text": "what is the news from that newsource",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5127",
+      "text": "here's the truth about meals on wheels in someone's budget",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3039",
+      "text": "what's new in the news",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6618",
+      "text": "tell interesting news",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3750",
+      "text": "olly if any new news comes out about the flood can you let me know right away",
+      "truth": "news",
+      "meta": {
+        "intent": "news_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10296",
+      "text": "could you please play temple run game for me",
+      "truth": "play",
+      "meta": {
+        "intent": "play_game",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9284",
+      "text": "play f. m.",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3727",
+      "text": "play best friends by yelawolf",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5658",
+      "text": "play for me the music by the beatles",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9871",
+      "text": "play my favorite book",
+      "truth": "play",
+      "meta": {
+        "intent": "play_audiobook",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9669",
+      "text": "i want to listen to be more chill by ned vizzini",
+      "truth": "play",
+      "meta": {
+        "intent": "play_audiobook",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9301",
+      "text": "play an f. m.",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3264",
+      "text": "play reggae music",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11286",
+      "text": "play the young turks podcast",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9225",
+      "text": "can you turn on the radio",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10263",
+      "text": "open chess app and begin game",
+      "truth": "play",
+      "meta": {
+        "intent": "play_game",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10352",
+      "text": "play papa pear saga",
+      "truth": "play",
+      "meta": {
+        "intent": "play_game",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3717",
+      "text": "please play my nineties rap hits",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11483",
+      "text": "start playing ringcast",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1995",
+      "text": "play the beatles",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3912",
+      "text": "i'd like to listen to hear a music of dance and country",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10403",
+      "text": "open games",
+      "truth": "play",
+      "meta": {
+        "intent": "play_game",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11265",
+      "text": "play the next one",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "254",
+      "text": "olly play a good track from my favorite jazz player",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9303",
+      "text": "play the oldies station",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9216",
+      "text": "play my station",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3550",
+      "text": "put on some led zeppelin",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4136",
+      "text": "can you please play imogen heap",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9362",
+      "text": "radio channels",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9795",
+      "text": "resume born to run",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10335",
+      "text": "olly play poker with me",
+      "truth": "play",
+      "meta": {
+        "intent": "play_game",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9594",
+      "text": "f. m. ninety three point five radio songs",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "10339",
+      "text": "please open chess game i would like to play with you",
+      "truth": "play",
+      "meta": {
+        "intent": "play_game",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3554",
+      "text": "can you put on love playlist",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11272",
+      "text": "play next",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3489",
+      "text": "play music now please",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9269",
+      "text": "tune in to eight hundred and ninety seven f. m.",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11467",
+      "text": "play the most recent podcast for this american life",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11442",
+      "text": "please play the latest bill simmons podcast",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9341",
+      "text": "alexa change the radio station",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9202",
+      "text": "play my radio station",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11341",
+      "text": "find the latest disney podcast",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11361",
+      "text": "shadi special podcast play it",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "891",
+      "text": "play some christian music",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9402",
+      "text": "play nine hundred and eighty nine the radio station",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3116",
+      "text": "play my favorite song from last year",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9327",
+      "text": "please scan the am dial on the radio right now",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1467",
+      "text": "play slayer",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3686",
+      "text": "turn on the playlist i have dedicated to rock music",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9384",
+      "text": "play c. n. n. radio",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9524",
+      "text": "turn program on xmtune",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "555",
+      "text": "play mf doom anything",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3146",
+      "text": "play track one from my david bowie playlist",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11345",
+      "text": "play next episode of podcast",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "827",
+      "text": "play bob dylan playlist",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11438",
+      "text": "please go to the next episode of the podcast",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11424",
+      "text": "vitaly channel",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9438",
+      "text": "can you play me a rap song on the radio",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3205",
+      "text": "play poker face by lady gaga",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1962",
+      "text": "hi google play me playlist wacky in my gaana application",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11460",
+      "text": "i want to listen to a sports podcast",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11536",
+      "text": "add podcast favorites to playlist and start",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3780",
+      "text": "play my midnight love playlist",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5619",
+      "text": "play previous song",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9640",
+      "text": "open spotify and open workout",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9520",
+      "text": "play the last doctor who radio broadcast",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9812",
+      "text": "open harrypotter audiobook and play from last played",
+      "truth": "play",
+      "meta": {
+        "intent": "play_audiobook",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9853",
+      "text": "alexa start from my last session of joes book",
+      "truth": "play",
+      "meta": {
+        "intent": "play_audiobook",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4998",
+      "text": "add this song for the next playing song",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9878",
+      "text": "please resume my audiobook",
+      "truth": "play",
+      "meta": {
+        "intent": "play_audiobook",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "936",
+      "text": "open up and play music from my jogging playlist",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1121",
+      "text": "play lady by kenny roger",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9305",
+      "text": "tune to classic hits",
+      "truth": "play",
+      "meta": {
+        "intent": "play_radio",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4452",
+      "text": "play songs",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2703",
+      "text": "please play folk music",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9592",
+      "text": "search for podcasts that cover men's issues",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4205",
+      "text": "i want to hear limelight by rush",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11423",
+      "text": "go backward thirty seconds",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11409",
+      "text": "please skip to the next podcast episode",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4031",
+      "text": "play pandora nineties dance party",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3481",
+      "text": "play the most popular song by given artist",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11420",
+      "text": "start playing my most recent podcast",
+      "truth": "play",
+      "meta": {
+        "intent": "play_podcasts",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3967",
+      "text": "rap",
+      "truth": "play",
+      "meta": {
+        "intent": "play_music",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13607",
+      "text": "could you please confirm if leonardo is married",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14414",
+      "text": "describe about the computer hard disk",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_definition",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14791",
+      "text": "what is the make up of the chair",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13370",
+      "text": "what's the sum of the two numbers four and six",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_maths",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14025",
+      "text": "one plus two equal",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_maths",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14742",
+      "text": "what's euro u. s. d. right now",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_currency",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15056",
+      "text": "how old is emma watson newest boyfriend",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12972",
+      "text": "which is the highest peak in the world",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13016",
+      "text": "look up the definition of blunder",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_definition",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14622",
+      "text": "describe what a sphere is",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_definition",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13823",
+      "text": "how far away is the sun",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13679",
+      "text": "can you tell me how many stomachs a cow has",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13616",
+      "text": "where do most celebrities hang out",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13298",
+      "text": "what does celebrity do",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14787",
+      "text": "what is the difference between roman and grigorean calendar",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "9138",
+      "text": "when does the super bowl officially start",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14038",
+      "text": "what is the location of moldova",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14090",
+      "text": "facebook current stock rate",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_stock",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13165",
+      "text": "what does oscillate mean",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_definition",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13361",
+      "text": "what is the definition of timeliness",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_definition",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14444",
+      "text": "what was the first movie of morgan freeman",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14770",
+      "text": "tell me the largest ocean in the world",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14526",
+      "text": "what is price of dollar",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_currency",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13683",
+      "text": "what brand hair spray does donald trump use",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13780",
+      "text": "is steph curry married",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13896",
+      "text": "from dollar to euro",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_currency",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14083",
+      "text": "where jackie chan currently live",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14437",
+      "text": "find exchange rate for u. s. d. to pound",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_currency",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14838",
+      "text": "what is a neutral density filter and would i want a gradient one or a solid one also which would be better in style between the screw on one and the square ones",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15124",
+      "text": "how many euros can i get for one dollar",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_currency",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14763",
+      "text": "how much is the dollar worth compared to the euro",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_currency",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14706",
+      "text": "where does sophia vergara live",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13639",
+      "text": "what is the increase in stock value over the past week of disney",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_stock",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14449",
+      "text": "does pink have a new baby",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14567",
+      "text": "what is the largest active volcano on earth",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13312",
+      "text": "alexa i've got dollars for the month how much can i spend every day this month",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_maths",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13777",
+      "text": "can you describe a credit card",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_definition",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12986",
+      "text": "check definition of capricious",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_definition",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13252",
+      "text": "what was george eliot's first november el",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13546",
+      "text": "what was the last movie will smith was in",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14917",
+      "text": "when's mark lanegan's next album out",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13799",
+      "text": "what is the definition of subjegant",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_definition",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13689",
+      "text": "what is a chair",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_definition",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13192",
+      "text": "what is the root of six hundred and twenty five",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_maths",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15032",
+      "text": "how much is one dollar in pounds",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_currency",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13908",
+      "text": "can you tell me what flabbergasted means",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_definition",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13074",
+      "text": "why isn't adam sandler funny",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14592",
+      "text": "give me the description of a smartphone circuit",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_definition",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14822",
+      "text": "to compare in people",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14653",
+      "text": "what is the population of russia",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13690",
+      "text": "what color are chairs",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15094",
+      "text": "look up the number of people living in miami florida",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13974",
+      "text": "where is laos located",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14767",
+      "text": "how would you describe a ball",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_definition",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14928",
+      "text": "let me know about the exchange rate of rupee to dirham",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_currency",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14508",
+      "text": "please summarize the latest george r. r. martin ice and fire book",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13206",
+      "text": "location",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_definition",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14877",
+      "text": "what are the climatic conditions in that area",
+      "truth": "qa",
+      "meta": {
+        "intent": "qa_factoid",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11862",
+      "text": "recommend a movie for me",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_movies",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11812",
+      "text": "what movies are playing tonight",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_movies",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11600",
+      "text": "what movie can i watch tonight on the theater here in boston",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11839",
+      "text": "what's happening around me",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12020",
+      "text": "tell me what clothing stores are within five miles of me",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_locations",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11845",
+      "text": "olly hit me up with some exciting events in the bay area",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11798",
+      "text": "what's the next event at the library",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12104",
+      "text": "kung fu panda three",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_movies",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11644",
+      "text": "show me events in sacramento",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11643",
+      "text": "what events are happening soon",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11969",
+      "text": "is there anything special going on nearby",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12066",
+      "text": "what shops are near me",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_locations",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11705",
+      "text": "show me painting exhibition in bay area",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11782",
+      "text": "are there any special events near me this weekend",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11585",
+      "text": "any cultural events in california",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11612",
+      "text": "what gun shows are in tulsa",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11904",
+      "text": "what's going on around here this weekend",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11871",
+      "text": "recommend a movie playing in my area",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_movies",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "11582",
+      "text": "is there anything happening on jazz scene around edinburgh",
+      "truth": "recommendation",
+      "meta": {
+        "intent": "recommendation_events",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15326",
+      "text": "please read my facebook feed",
+      "truth": "social",
+      "meta": {
+        "intent": "social_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15205",
+      "text": "give me my facebook update every three hours",
+      "truth": "social",
+      "meta": {
+        "intent": "social_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15350",
+      "text": "i'm unhappy with tesco please help me",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15618",
+      "text": "tweet esurance and tell them they suck",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15275",
+      "text": "post i am happy to facebook",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15554",
+      "text": "please tweet on dell service for delay services",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15166",
+      "text": "post my business on twitter",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15296",
+      "text": "read me new post on my feed",
+      "truth": "social",
+      "meta": {
+        "intent": "social_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15635",
+      "text": "tweet mcdonald's down reseda has terrible service",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15181",
+      "text": "do i have any new friend requests",
+      "truth": "social",
+      "meta": {
+        "intent": "social_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15199",
+      "text": "what going on",
+      "truth": "social",
+      "meta": {
+        "intent": "social_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15311",
+      "text": "tell me what's going on with facebook",
+      "truth": "social",
+      "meta": {
+        "intent": "social_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15364",
+      "text": "can you let amazon know that this new phone case is junk",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15333",
+      "text": "anything new on insta",
+      "truth": "social",
+      "meta": {
+        "intent": "social_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15459",
+      "text": "send a twitter complaint",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15731",
+      "text": "olly tweet a message to a. t. & t. and tell them my service is bad",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15399",
+      "text": "forward a complaint to aircel for network related issues",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15532",
+      "text": "olly tweet walmart and tell them their customer service is horrible",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13400",
+      "text": "send a funny message to all of my friends",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15518",
+      "text": "send complaint via tweet to j. crew",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "15155",
+      "text": "can you upload my latest selfie in my facebook account",
+      "truth": "social",
+      "meta": {
+        "intent": "social_post",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "132",
+      "text": "order a takeaway",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_order",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5552",
+      "text": "who takes less of duration of time for delivery",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5324",
+      "text": "hey do you have home delivery",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1379",
+      "text": "does pizza hut have delivery",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2850",
+      "text": "is there takeaway at papa john's",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3295",
+      "text": "does the nearby dominoes have delivery",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2338",
+      "text": "make an order for noodles one pack make it as takeaway order",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_order",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2447",
+      "text": "i feel like having soup for lunch order from wangs kitchen restaurant a chicken manchow soup",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_order",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "170",
+      "text": "do they deliver home",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "168",
+      "text": "can they provide takeaway",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2432",
+      "text": "how is my order",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "967",
+      "text": "can i get take-out from pf changs",
+      "truth": "takeaway",
+      "meta": {
+        "intent": "takeaway_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12256",
+      "text": "how is the traffic presently near central park road",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_traffic",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12581",
+      "text": "when does the f. train run today",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12724",
+      "text": "find me a train ticket to boston",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_ticket",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12453",
+      "text": "book train best deal",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_ticket",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12932",
+      "text": "olly i need directions to madison street",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12376",
+      "text": "what is the first metro to d. c.",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12240",
+      "text": "what is the traffic like on my commute home at five",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12245",
+      "text": "when is the next train to glasgow from aberdeen",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12818",
+      "text": "how much is a train ticket to chicago",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12469",
+      "text": "purchase ticket to new york city on train",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_ticket",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12264",
+      "text": "new york",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12289",
+      "text": "is there a traffic jam on my route",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_traffic",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12604",
+      "text": "how do i book a train ticket online",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12436",
+      "text": "how long will it take to get to the airport",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12235",
+      "text": "please purchase a train ticket for this weekend",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_ticket",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12537",
+      "text": "find me the cheapest train ticket to spain",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_ticket",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12248",
+      "text": "olly find the nearest uber",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_taxi",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12413",
+      "text": "what is the current traffic situation",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_traffic",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12310",
+      "text": "give me the list of available train tickets from edinburgh to leeds",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "13215",
+      "text": "what is the quickest way to my work downtown without hitting any traffic",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12856",
+      "text": "directions please",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12127",
+      "text": "i need to go to dundee at five am on sunday by train",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_ticket",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "14214",
+      "text": "find the ways of travel for the same",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12629",
+      "text": "what time does the first train depart from chicago",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "12446",
+      "text": "can you tell me the times the train leaves for chicago",
+      "truth": "transport",
+      "meta": {
+        "intent": "transport_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3305",
+      "text": "what is the weather this week for miami",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1653",
+      "text": "when is the next time it will rain",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2220",
+      "text": "weather in paris",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5468",
+      "text": "have i need to take a sun glass",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2423",
+      "text": "please give me todays forecast for new york city",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6289",
+      "text": "hey what is the weather like today",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2258",
+      "text": "do i need a sweater today",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3936",
+      "text": "what is the temperature",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "738",
+      "text": "how cold is it outside today",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5040",
+      "text": "what's the weather now",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1549",
+      "text": "will it rain this week",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3253",
+      "text": "should we expect rain this afternoon",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4486",
+      "text": "give me the weather forecast for this week",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "2678",
+      "text": "is it raining tonight",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4614",
+      "text": "will the temperature be higher than forty tomorrow",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4402",
+      "text": "will i need to carry around a brolly today",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "1933",
+      "text": "will there be a fall in temperature by tonight",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6050",
+      "text": "will i need sunscreen later",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3426",
+      "text": "what degree is it outside",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4482",
+      "text": "will i need to shovel my driveway this morning",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4104",
+      "text": "what is the weather going to be like today in tucson",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6172",
+      "text": "are sunglasses a good choice for today",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6039",
+      "text": "will it be rainy day tomorrow",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5721",
+      "text": "show me tomorrows weather in this area",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4871",
+      "text": "how is it outside",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5301",
+      "text": "what is the weather going to be like on march twentieth two thousand and seventeen",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "6069",
+      "text": "are storms likely today",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "3034",
+      "text": "tell me the temperature",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5953",
+      "text": "is the city cheaper or costlier to live",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "4933",
+      "text": "will it rain now",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    },
+    {
+      "id": "5524",
+      "text": "weather at the moment",
+      "truth": "weather",
+      "meta": {
+        "intent": "weather_query",
+        "locale": "en-US"
+      }
+    }
+  ],
+  "count": 600
+}

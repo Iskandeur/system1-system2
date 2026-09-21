@@ -8,6 +8,9 @@ import path from 'node:path';
 //   'chat'      -> OpenAI-compatible POST {base_url}/chat/completions
 //   'anthropic' -> Anthropic Messages API POST {base_url}/v1/messages
 //   'decision'  -> TypeSafe "System One" decision API (Jev): POST {base_url} with {model, state, questions}
+//
+// baseUrlEnv / authTokenEnv mirror what the official SDKs read, so a proxy or gateway that sets
+// ANTHROPIC_BASE_URL + ANTHROPIC_AUTH_TOKEN (or OPENAI_BASE_URL) works without any flag.
 export const PRESETS = {
   jev: {
     kind: 'decision',
@@ -27,9 +30,9 @@ export const PRESETS = {
     kind: 'chat',
     baseUrl: 'https://openrouter.ai/api/v1',
     apiKeyEnv: 'OPENROUTER_API_KEY',
-    description: 'Any chat model on OpenRouter (default System 2 = anthropic/claude-fable-5.1)',
+    description: 'Any chat model on OpenRouter (default System 2 = openai/gpt-5.2)',
   },
-  openai: { kind: 'chat', baseUrl: 'https://api.openai.com/v1', apiKeyEnv: 'OPENAI_API_KEY' },
+  openai: { kind: 'chat', baseUrl: 'https://api.openai.com/v1', baseUrlEnv: 'OPENAI_BASE_URL', apiKeyEnv: 'OPENAI_API_KEY' },
   groq: { kind: 'chat', baseUrl: 'https://api.groq.com/openai/v1', apiKeyEnv: 'GROQ_API_KEY' },
   together: { kind: 'chat', baseUrl: 'https://api.together.xyz/v1', apiKeyEnv: 'TOGETHER_API_KEY' },
   deepseek: { kind: 'chat', baseUrl: 'https://api.deepseek.com/v1', apiKeyEnv: 'DEEPSEEK_API_KEY' },
@@ -46,7 +49,10 @@ export const PRESETS = {
   anthropic: {
     kind: 'anthropic',
     baseUrl: 'https://api.anthropic.com',
+    baseUrlEnv: 'ANTHROPIC_BASE_URL',
     apiKeyEnv: 'ANTHROPIC_API_KEY',
+    authTokenEnv: 'ANTHROPIC_AUTH_TOKEN',
+    description: 'Anthropic Messages API, or any Anthropic-compatible endpoint (honours ANTHROPIC_BASE_URL / ANTHROPIC_AUTH_TOKEN)',
   },
 };
 
@@ -57,7 +63,7 @@ export const DEFAULT_THRESHOLD = 0.4;
 
 export const DEFAULTS = {
   system1: { provider: 'jev' },
-  system2: { provider: 'openrouter', model: 'anthropic/claude-fable-5.1' },
+  system2: { provider: 'openrouter', model: 'openai/gpt-5.2' },
 };
 
 const CONFIDENCE_MODES = ['auto', 'logprobs', 'self', 'none'];
@@ -66,9 +72,14 @@ const JSON_MODES = ['json_schema', 'json_object', 'none'];
 // ---------- CLI ----------
 
 // Tiny argv parser: --key value, --key=value, --flag (boolean). Returns { flags, positionals }.
+// A repeated flag collects into an array.
 export function parseArgs(argv) {
   const flags = {};
   const positionals = [];
+  const put = (k, v) => {
+    if (flags[k] === undefined) flags[k] = v;
+    else flags[k] = [].concat(flags[k], v);
+  };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (!a.startsWith('--')) {
@@ -78,15 +89,15 @@ export function parseArgs(argv) {
     const body = a.slice(2);
     const eq = body.indexOf('=');
     if (eq !== -1) {
-      flags[body.slice(0, eq)] = body.slice(eq + 1);
+      put(body.slice(0, eq), body.slice(eq + 1));
       continue;
     }
     const next = argv[i + 1];
     if (next !== undefined && !next.startsWith('--')) {
-      flags[body] = next;
+      put(body, next);
       i++;
     } else {
-      flags[body] = true;
+      put(body, true);
     }
   }
   return { flags, positionals };
@@ -216,7 +227,7 @@ function mergeLayers(...layers) {
   return out;
 }
 
-export function resolveSystem(role, { layers }) {
+export function resolveSystem(role, { layers, env = {} }) {
   const merged = mergeLayers(...layers);
   const provider = merged.provider ?? DEFAULTS[role].provider;
   const preset = PRESETS[provider];
@@ -227,7 +238,8 @@ export function resolveSystem(role, { layers }) {
   }
 
   const kind = preset.kind;
-  const baseUrl = (merged.baseUrl ?? preset.baseUrl) || null;
+  const envBase = preset.baseUrlEnv && env[preset.baseUrlEnv] ? env[preset.baseUrlEnv] : undefined;
+  const baseUrl = (merged.baseUrl ?? envBase ?? preset.baseUrl) || null;
   const model = merged.model ?? preset.model ?? null;
   const apiKeyEnv = merged.apiKeyEnv !== undefined ? merged.apiKeyEnv : preset.apiKeyEnv;
 
@@ -245,7 +257,7 @@ export function resolveSystem(role, { layers }) {
 
   const pricing =
     merged.pricing && (merged.pricing.inputPerM !== undefined || merged.pricing.outputPerM !== undefined)
-      ? { inputPerM: merged.pricing.inputPerM ?? 0, outputPerM: merged.pricing.outputPerM ?? 0 }
+      ? { inputPerM: merged.pricing.inputPerM ?? 0, outputPerM: merged.pricing.outputPerM ?? 0, source: 'configured' }
       : null;
 
   return {
@@ -255,6 +267,7 @@ export function resolveSystem(role, { layers }) {
     baseUrl: baseUrl.replace(/\/+$/, ''),
     model,
     apiKeyEnv: apiKeyEnv ?? null,
+    authTokenEnv: preset.authTokenEnv ?? null,
     apiKey: merged.apiKey ?? null,
     headers: merged.headers ?? {},
     params: merged.params ?? {},
@@ -274,6 +287,7 @@ export function resolveRunConfig({ argv = [], env = process.env, file } = {}) {
   for (const role of ROLES) {
     systems[role] = resolveSystem(role, {
       layers: [DEFAULTS[role], normalizeFileSystem(fileJson[role], role), envLayer(role, env), cliLayer(role, flags)],
+      env,
     });
   }
 
@@ -291,30 +305,53 @@ export function resolveRunConfig({ argv = [], env = process.env, file } = {}) {
   const tag = tagRaw && tagRaw !== true ? String(tagRaw) : null;
   if (tag && !/^[a-z0-9][a-z0-9._-]*$/i.test(tag)) throw new Error(`--tag must match [a-z0-9._-]+, got "${tag}"`);
 
+  const dataset = flags.dataset && flags.dataset !== true ? String(flags.dataset) : env.EVAL_DATASET || 'massive-en';
+
   return {
     system1: systems.system1,
     system2: systems.system2,
     threshold,
     limit,
     tag,
+    dataset,
     configFile: configPath ? path.resolve(configPath) : null,
     dryRun: flags['dry-run'] === true || flags['dry-run'] === 'true',
     help: flags.help === true,
+    flags,
   };
 }
 
-// Resolve the API key for a system. Returns null when the provider needs no key (local servers).
+// How to authenticate a system: { scheme: 'bearer' | 'x-api-key', key } or null for keyless
+// local servers. Anthropic-style endpoints take ANTHROPIC_API_KEY as x-api-key or
+// ANTHROPIC_AUTH_TOKEN as a bearer token, like the official SDK.
+export function resolveAuth(system, env = process.env) {
+  const defaultScheme = system.kind === 'anthropic' ? 'x-api-key' : 'bearer';
+  if (system.apiKey) return { scheme: defaultScheme, key: system.apiKey };
+  if (system.apiKeyEnv && env[system.apiKeyEnv]) return { scheme: defaultScheme, key: env[system.apiKeyEnv] };
+  if (system.authTokenEnv && env[system.authTokenEnv]) return { scheme: 'bearer', key: env[system.authTokenEnv] };
+  if (!system.apiKeyEnv && !system.authTokenEnv) return null;
+  const names = [system.apiKeyEnv, system.authTokenEnv].filter(Boolean).join(' or ');
+  throw new Error(
+    `${system.role}: API key missing. Set ${names} in your environment or .env ` +
+      `(provider "${system.provider}"), or point ${ROLE_PREFIX[system.role]}_API_KEY_ENV at another variable.`,
+  );
+}
+
+// Back-compat helper: the key alone (null when the provider needs none).
 export function getApiKey(system, env = process.env) {
-  if (system.apiKey) return system.apiKey;
-  if (!system.apiKeyEnv) return null;
-  const key = env[system.apiKeyEnv];
-  if (!key) {
-    throw new Error(
-      `${system.role}: API key missing. Set ${system.apiKeyEnv} in your environment or .env ` +
-        `(provider "${system.provider}"), or point ${ROLE_PREFIX[system.role]}_API_KEY_ENV at another variable.`,
-    );
-  }
-  return key;
+  return resolveAuth(system, env)?.key ?? null;
+}
+
+// Fill in pricing from a public list-price table when the provider reports no cost and the user
+// configured none. Keys are matched on the full model id, then on its last path segment.
+export function applyListPrices(system, prices) {
+  if (system.pricing || !prices?.models) return system;
+  const id = String(system.model);
+  const short = id.includes('/') ? id.slice(id.lastIndexOf('/') + 1) : id;
+  const entry = prices.models[id] ?? prices.models[short];
+  if (!entry) return system;
+  system.pricing = { inputPerM: Number(entry.input) || 0, outputPerM: Number(entry.output) || 0, source: 'list' };
+  return system;
 }
 
 // What we are allowed to write into results files and logs: never a key, never header values.
@@ -330,7 +367,7 @@ export function publicSystem(system) {
     extra_headers: Object.keys(system.headers || {}),
     params: system.params && Object.keys(system.params).length ? system.params : undefined,
     pricing: system.pricing
-      ? { input_per_m: system.pricing.inputPerM, output_per_m: system.pricing.outputPerM }
+      ? { input_per_m: system.pricing.inputPerM, output_per_m: system.pricing.outputPerM, source: system.pricing.source }
       : undefined,
   };
 }
@@ -339,6 +376,7 @@ export function helpText() {
   return `Usage: node scripts/run-eval.mjs [options]
 
 Options (each also has an env var; CLI > env > config file > preset defaults):
+  --dataset <name|file>      Dataset in data/<name>.json (env: EVAL_DATASET). Default: massive-en
   --config <file>            JSON config file (env: S1S2_CONFIG). See config.example.json
   --s1-provider <name>       System 1 preset (env: S1_PROVIDER). Default: jev
   --s1-model <id>            System 1 model id (env: S1_MODEL)
@@ -351,7 +389,9 @@ Options (each also has an env var; CLI > env > config file > preset defaults):
   --s2-...                   Same options for System 2 (env: S2_*)
   --threshold <0..1>         Escalation threshold (env: HYBRID_CONFIDENCE_THRESHOLD). Default 0.4
   --limit <n>                Only evaluate n dataset items, spread across labels (env: EVAL_LIMIT)
-  --tag <name>               Write data/results.<name>.json instead of data/results.json (env: EVAL_TAG)
+  --tag <name>               Name the predictions files (default: derived from the model ids)
+  --defense none|hardened    Prompt-level injection defense (default none)
+  --no-cache                 Do not read or write .cache/responses
   --dry-run                  Print the resolved configuration (no key) and exit
   --help
 

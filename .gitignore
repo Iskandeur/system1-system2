@@ -6,9 +6,8 @@ node_modules/
 # local config with provider choices (keys live in .env, never here — but keep it private anyway)
 /config.json
 
+# response cache and downloaded corpora
+/.cache/
+
 # local artifacts
 /scratch/
-/data/results.json
-/data/results.*.json
-/data/threshold_sweep.json
-/data/threshold_sweep.*.json

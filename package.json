@@ -1,16 +1,22 @@
 {
   "name": "system1-system2",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "engines": {
     "node": ">=22"
   },
   "scripts": {
-    "dataset": "node scripts/build-dataset.mjs",
     "eval": "node scripts/run-eval.mjs",
+    "predict": "node scripts/predict.mjs",
+    "analyze": "node scripts/analyze.mjs",
+    "analyze:injection": "node scripts/analyze-injection.mjs",
+    "dataset:massive": "node scripts/build-massive.mjs",
+    "dataset:injection": "node scripts/build-injection-set.mjs",
+    "prices": "node scripts/fetch-prices.mjs",
+    "figures": "node scripts/render-figures.mjs",
     "build:docs": "node scripts/build-docs-assets.mjs",
-    "lint": "node scripts/lint-no-secrets.mjs",
+    "lint": "node scripts/lint-no-secrets.mjs --history",
     "test": "node --test \"test/**/*.test.mjs\""
   }
 }

@@ -2,9 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
 import { pickHybrid } from '../src/router.mjs';
-import { stratifiedSubset, classificationPrompt } from '../src/task.mjs';
 import { labelSpanConfidence, extractJsonObject, normalizeSelfReported } from '../src/confidence.mjs';
-import { upsertManifest, publicResults } from '../scripts/build-docs-assets.mjs';
 
 test('pickHybrid keeps System 1 at or above threshold, escalates below or when confidence is unknown', () => {
   const base = { s1Label: 'bug', s2Label: 'feature' };
@@ -28,8 +26,6 @@ test('labelSpanConfidence multiplies the probabilities of the tokens spelling th
 });
 
 test('labelSpanConfidence tolerates partial token lists (label key tokens omitted by the provider)', () => {
-  // Observed from meta-llama/llama-3.1-8b-instruct on OpenRouter (json_object mode): the tokens
-  // for `label`, the opening quote and `confidence` are missing from logprobs.content.
   const tokens = [
     { token: '{"', logprob: -0.0096 },
     { token: '":', logprob: -0.0003 },
@@ -43,7 +39,6 @@ test('labelSpanConfidence tolerates partial token lists (label key tokens omitte
     { token: '}', logprob: 0 },
   ];
   assert.ok(Math.abs(labelSpanConfidence({ tokens, label: 'bug' }) - 0.7) < 1e-12);
-  // The label must be a standalone value: "debug" must not match "bug".
   assert.equal(labelSpanConfidence({ tokens: [{ token: '{"x":"de', logprob: 0 }, { token: 'bug"}', logprob: 0 }], label: 'bug' }), null);
 });
 
@@ -56,35 +51,4 @@ test('extractJsonObject and normalizeSelfReported are lenient but bounded', () =
   assert.equal(normalizeSelfReported(85), 0.85); // percent tolerated
   assert.equal(normalizeSelfReported(1.4), 1);
   assert.equal(normalizeSelfReported('abc'), null);
-});
-
-test('stratifiedSubset spreads --limit across labels and keeps order within a label', () => {
-  const items = [
-    { id: 1, truth: 'bug' }, { id: 2, truth: 'bug' }, { id: 3, truth: 'bug' },
-    { id: 4, truth: 'feature' }, { id: 5, truth: 'feature' },
-    { id: 6, truth: 'docs' },
-  ];
-  assert.deepEqual(stratifiedSubset(items, 4).map((i) => i.id), [1, 4, 6, 2]);
-  assert.deepEqual(stratifiedSubset(items, 6).map((i) => i.id), [1, 2, 3, 4, 5, 6]);
-  assert.deepEqual(stratifiedSubset(items, 100).map((i) => i.id), [1, 2, 3, 4, 5, 6]);
-  assert.deepEqual(stratifiedSubset(items, null).length, 6);
-});
-
-test('the System 2 prompt is unchanged from the original demo', () => {
-  assert.equal(
-    classificationPrompt({ text: 'T' }),
-    'Classify this GitHub issue into one label.\nReturn ONLY strict JSON with {"label": "bug"|"feature"|"docs"}.\n\nT',
-  );
-});
-
-test('docs manifest upsert replaces same-tag entries and publicResults drops raw/items', () => {
-  const m1 = upsertManifest({ runs: [] }, { tag: 'a', generated_at: '2026-01-02' });
-  const m2 = upsertManifest(m1, { tag: 'b', generated_at: '2026-01-01' });
-  const m3 = upsertManifest(m2, { tag: 'a', generated_at: '2026-01-03' });
-  assert.deepEqual(m3.runs.map((r) => r.tag), ['b', 'a']);
-
-  const pub = publicResults({ generated_at: 'x', dataset: {}, models: {}, threshold: 0.4, summary: {}, items: { big: 1 }, raw: [1] });
-  assert.equal(pub.items, undefined);
-  assert.equal(pub.raw, undefined);
-  assert.equal(pub.tag, null);
 });

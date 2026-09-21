@@ -1,9 +1,6 @@
-import { fetchJson } from '../http.mjs';
-import { msNow } from '../util.mjs';
-import { getApiKey } from '../config.mjs';
 import { classificationPrompt, classificationSchema, isKnownLabel } from '../task.mjs';
 import { extractJsonObject, labelSpanConfidence, normalizeSelfReported } from '../confidence.mjs';
-import { resolveCost, isOpenRouter, bearerHeaders } from './common.mjs';
+import { resolveCost, tokenCounts, isOpenRouter, authHeaders } from './common.mjs';
 
 // "chat" adapter: any OpenAI-compatible /chat/completions endpoint
 // (OpenRouter, OpenAI, Groq, Together, DeepSeek, Mistral, vLLM, Ollama, LM Studio, ...).
@@ -12,23 +9,23 @@ import { resolveCost, isOpenRouter, bearerHeaders } from './common.mjs';
 //   - from token logprobs when the endpoint returns them (confidence_source = "logprobs"),
 //   - else the model's self-reported number (confidence_source = "self_reported").
 
-export function buildChatRequest({ system, text, wantConfidence }) {
+export function buildRequest({ system, task, text, wantConfidence }) {
   const withConfidence = wantConfidence && system.confidence !== 'none';
   const askLogprobs = wantConfidence && (system.confidence === 'auto' || system.confidence === 'logprobs');
   const askSelf = withConfidence && system.confidence !== 'logprobs';
 
   const body = {
     model: system.model,
-    messages: [{ role: 'user', content: classificationPrompt({ text, withConfidence: askSelf }) }],
+    messages: [{ role: 'user', content: classificationPrompt({ task, text, withConfidence: askSelf }) }],
   };
 
   if (system.jsonMode === 'json_schema') {
     body.response_format = {
       type: 'json_schema',
       json_schema: {
-        name: 'issue_classification',
+        name: 'classification',
         strict: true,
-        schema: classificationSchema({ withConfidence: askSelf }),
+        schema: classificationSchema(task, { withConfidence: askSelf }),
       },
     };
   } else if (system.jsonMode === 'json_object') {
@@ -40,18 +37,15 @@ export function buildChatRequest({ system, text, wantConfidence }) {
 
   Object.assign(body, system.params || {});
 
-  return {
-    url: `${system.baseUrl}/chat/completions`,
-    body,
-  };
+  return { url: `${system.baseUrl}/chat/completions`, body };
 }
 
-export function parseChatResponse({ system, json, wantConfidence }) {
+export function parseResponse({ system, task, json, wantConfidence }) {
   const message = json?.choices?.[0]?.message;
   const content = typeof message?.content === 'string' ? message.content : '';
   const parsed = extractJsonObject(content);
 
-  if (!parsed || !isKnownLabel(parsed.label)) {
+  if (!parsed || !isKnownLabel(task, parsed.label)) {
     throw new Error(`${system.role} (${system.model}) returned no usable label. Content: ${content.slice(0, 300)}`);
   }
 
@@ -61,8 +55,7 @@ export function parseChatResponse({ system, json, wantConfidence }) {
 
   if (wantConfidence && system.confidence !== 'none') {
     const tokens = json?.choices?.[0]?.logprobs?.content;
-    const fromLogprobs =
-      system.confidence === 'self' ? null : labelSpanConfidence({ tokens, label: parsed.label });
+    const fromLogprobs = system.confidence === 'self' ? null : labelSpanConfidence({ tokens, label: parsed.label });
 
     if (fromLogprobs !== null) {
       confidence = fromLogprobs;
@@ -85,28 +78,13 @@ export function parseChatResponse({ system, json, wantConfidence }) {
     confidence,
     confidence_source: confidenceSource,
     self_reported_confidence: selfReported,
+    probabilities: null,
     cost,
     cost_source,
-    usage: json?.usage ?? null,
+    ...tokenCounts(json?.usage),
   };
 }
 
-export function createOpenAIChatAdapter(system, { env = process.env, fetchImpl } = {}) {
-  return {
-    system,
-    async classify({ text, wantConfidence = false }) {
-      const apiKey = getApiKey(system, env);
-      const { url, body } = buildChatRequest({ system, text, wantConfidence });
-      const t0 = msNow();
-      const json = await fetchJson(url, {
-        method: 'POST',
-        headers: bearerHeaders(apiKey, system.headers),
-        body,
-        timeoutMs: system.timeoutMs,
-        fetchImpl,
-      });
-      const latency_ms = msNow() - t0;
-      return { ...parseChatResponse({ system, json, wantConfidence }), latency_ms, raw: json };
-    },
-  };
+export function headers({ system, auth }) {
+  return authHeaders(auth, system.headers);
 }
