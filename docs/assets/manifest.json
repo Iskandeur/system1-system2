@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T11:33:06.988Z",
+  "generated_at": "2026-09-21T12:51:36.802Z",
   "results": [
     {
       "id": "massive-en-injected",
@@ -7,7 +7,7 @@
       "kind": "injection",
       "dataset": "massive-en-injected",
       "n": 480,
-      "generated_at": "2026-09-21T11:33:06.901Z"
+      "generated_at": "2026-09-21T12:31:50.685Z"
     },
     {
       "id": "massive-en",
@@ -15,7 +15,22 @@
       "kind": "hybrid",
       "dataset": "massive-en",
       "n": 600,
-      "generated_at": "2026-09-21T11:33:06.809Z",
+      "generated_at": "2026-09-21T12:51:36.711Z",
+      "s1": [
+        "jev",
+        "gpt-4o-mini-logprobs"
+      ],
+      "s2": [
+        "gpt-5.2"
+      ]
+    },
+    {
+      "id": "massive-fr",
+      "file": "results/massive-fr.json",
+      "kind": "hybrid",
+      "dataset": "massive-fr",
+      "n": 600,
+      "generated_at": "2026-09-21T12:51:36.468Z",
       "s1": [
         "jev",
         "gpt-4o-mini-logprobs"
