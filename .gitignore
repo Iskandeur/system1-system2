@@ -3,7 +3,12 @@ node_modules/
 .env
 *.log
 
+# local config with provider choices (keys live in .env, never here — but keep it private anyway)
+/config.json
+
 # local artifacts
 /scratch/
 /data/results.json
+/data/results.*.json
 /data/threshold_sweep.json
+/data/threshold_sweep.*.json

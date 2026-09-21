@@ -1,0 +1,16 @@
+{
+  "$comment": "Copy to config.json (git-ignored) and run: node scripts/run-eval.mjs --config config.json. Keys are never written here: api_key_env names the environment variable that holds them.",
+  "system1": {
+    "provider": "openrouter",
+    "model": "meta-llama/llama-3.1-8b-instruct",
+    "confidence": "auto",
+    "json_mode": "json_schema"
+  },
+  "system2": {
+    "provider": "anthropic",
+    "model": "claude-fable-5.1",
+    "api_key_env": "ANTHROPIC_API_KEY",
+    "pricing": { "input_per_m": 10, "output_per_m": 50 }
+  },
+  "threshold": 0.4
+}
