@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+.env
+*.log
+
+# local artifacts
+/scratch/
+/data/results.json
+/data/threshold_sweep.json

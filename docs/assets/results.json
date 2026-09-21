@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-09-21T09:25:06.879Z",
+  "dataset": {
+    "generated_at": "2026-09-21T08:18:56.760Z",
+    "source": {
+      "repo": "cli/cli",
+      "labels": [
+        "bug",
+        "enhancement",
+        "documentation"
+      ]
+    },
+    "count": 24
+  },
+  "models": {
+    "system1": "typesafe/jev-1.13",
+    "system2": "anthropic/claude-fable-5.1"
+  },
+  "threshold": 0.4,
+  "summary": {
+    "fable_only": {
+      "accuracy": 0.9167,
+      "total_cost_usd": 0.37581,
+      "mean_latency_ms": 3949.8
+    },
+    "jev_only": {
+      "accuracy": 0.875,
+      "total_cost_usd": 0.001205,
+      "mean_latency_ms": 319
+    },
+    "hybrid": {
+      "accuracy": 0.9167,
+      "total_cost_usd": 0.007915,
+      "mean_latency_ms": 458,
+      "escalation_rate": 0.0417
+    }
+  }
+}

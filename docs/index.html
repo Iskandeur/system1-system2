@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>System 1 / System 2 (Jev + Claude Fable)</title>
+    <style>
+      :root {
+        --bg: #0b0f17;
+        --fg: #e7eefc;
+        --muted: #a7b6d8;
+        --card: #131a2a;
+        --accent: #6aa6ff;
+        --bad: #ff6a6a;
+      }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+          Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        background: var(--bg);
+        color: var(--fg);
+      }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 28px 18px 48px;
+      }
+      h1 { margin: 0 0 8px; font-size: 28px; }
+      p { color: var(--muted); line-height: 1.45; }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+      @media (max-width: 860px) {
+        .grid { grid-template-columns: 1fr; }
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 10px;
+        padding: 14px 14px 12px;
+      }
+      .card h2 {
+        font-size: 14px;
+        margin: 0 0 8px;
+        color: var(--muted);
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+      }
+      .big {
+        font-size: 26px;
+        font-weight: 750;
+        margin: 0;
+      }
+      .small { font-size: 13px; color: var(--muted); margin: 6px 0 0; }
+      .row {
+        display: flex;
+        gap: 10px;
+        align-items: baseline;
+        justify-content: space-between;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 18px;
+        font-size: 13px;
+      }
+      th, td {
+        padding: 9px 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        text-align: right;
+      }
+      th:first-child, td:first-child { text-align: left; }
+      th { color: var(--muted); font-weight: 650; }
+      .badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: rgba(106, 166, 255, 0.18);
+        border: 1px solid rgba(106, 166, 255, 0.35);
+        color: var(--fg);
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .err {
+        color: var(--bad);
+        background: rgba(255, 106, 106, 0.12);
+        border: 1px solid rgba(255, 106, 106, 0.28);
+        border-radius: 8px;
+        padding: 10px 12px;
+        margin-top: 16px;
+        white-space: pre-wrap;
+        font-size: 13px;
+      }
+      .footer {
+        margin-top: 26px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+          "Courier New", monospace;
+        font-size: 0.95em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>System 1 / System 2: Jev + Claude Fable</h1>
+      <p>
+        This page is static GitHub Pages. It <em>replays</em> already-computed results from
+        <code>docs/assets/*.json</code>.
+      </p>
+
+      <div id="error" class="err" style="display: none"></div>
+
+      <div class="grid">
+        <div class="card">
+          <h2>Dataset</h2>
+          <div class="row">
+            <p class="big" id="datasetCount">–</p>
+            <span class="badge" id="datasetRepo">–</span>
+          </div>
+          <p class="small" id="generatedAt">–</p>
+        </div>
+
+        <div class="card">
+          <h2>Hybrid threshold</h2>
+          <p class="big" id="threshold">–</p>
+          <p class="small">
+            If Jev confidence is below this, we escalate to Fable.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Best tradeoff (from sweep)</h2>
+          <p class="big" id="bestLine">–</p>
+          <p class="small" id="bestNote">–</p>
+        </div>
+      </div>
+
+      <h2 style="margin-top: 22px">Summary</h2>
+      <table id="summaryTable">
+        <thead>
+          <tr>
+            <th>Strategy</th>
+            <th>Accuracy</th>
+            <th>Total cost (USD)</th>
+            <th>Mean latency (ms)</th>
+            <th>Escalation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="5" style="text-align:left;color:var(--muted)">Loading…</td></tr>
+        </tbody>
+      </table>
+
+      <h2 style="margin-top: 22px">Threshold sweep</h2>
+      <p class="small">Precomputed sweep (no extra model calls).</p>
+      <table id="sweepTable">
+        <thead>
+          <tr>
+            <th>Threshold</th>
+            <th>Accuracy</th>
+            <th>Total cost (USD)</th>
+            <th>Mean latency (ms)</th>
+            <th>Escalation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="5" style="text-align:left;color:var(--muted)">Loading…</td></tr>
+        </tbody>
+      </table>
+
+      <div class="footer">
+        Generated by <code>node scripts/run-eval.mjs</code> then
+        <code>node scripts/build-docs-assets.mjs</code>.
+      </div>
+    </div>
+
+    <script>
+      function el(id) {
+        return document.getElementById(id);
+      }
+
+      function fmt(n, digits) {
+        if (n === null || n === undefined) return '–';
+        if (typeof n !== 'number') return String(n);
+        return n.toFixed(digits);
+      }
+
+      function showError(err) {
+        const box = el('error');
+        box.style.display = 'block';
+        box.textContent = String(err && err.stack ? err.stack : err);
+      }
+
+      function renderSummary(summary) {
+        const rows = [
+          { key: 'fable_only', label: 'Fable only' },
+          { key: 'jev_only', label: 'Jev only' },
+          { key: 'hybrid', label: 'Hybrid' },
+        ];
+
+        const tbody = el('summaryTable').querySelector('tbody');
+        tbody.innerHTML = '';
+
+        for (const r of rows) {
+          const s = summary[r.key];
+          const tr = document.createElement('tr');
+
+          const esc = s.escalation_rate === undefined ? '–' : fmt(s.escalation_rate * 100, 1) + '%';
+
+          tr.innerHTML =
+            `<td style="text-align:left">${r.label}</td>` +
+            `<td>${fmt(s.accuracy, 4)}</td>` +
+            `<td>${fmt(s.total_cost_usd, 6)}</td>` +
+            `<td>${fmt(s.mean_latency_ms, 1)}</td>` +
+            `<td>${esc}</td>`;
+
+          tbody.appendChild(tr);
+        }
+      }
+
+      function renderSweep(sweep) {
+        const tbody = el('sweepTable').querySelector('tbody');
+        tbody.innerHTML = '';
+
+        for (const row of sweep) {
+          const tr = document.createElement('tr');
+          tr.innerHTML =
+            `<td style="text-align:left">${fmt(row.threshold, 2)}</td>` +
+            `<td>${fmt(row.accuracy, 4)}</td>` +
+            `<td>${fmt(row.total_cost_usd, 6)}</td>` +
+            `<td>${fmt(row.mean_latency_ms, 1)}</td>` +
+            `<td>${fmt(row.escalation_rate * 100, 1)}%</td>`;
+          tbody.appendChild(tr);
+        }
+
+        const best = sweep
+          .slice()
+          .sort((a, b) => {
+            // naive score: maximize accuracy, then minimize cost
+            if (b.accuracy !== a.accuracy) return b.accuracy - a.accuracy;
+            return a.total_cost_usd - b.total_cost_usd;
+          })[0];
+
+        el('bestLine').textContent = `t=${fmt(best.threshold, 2)} → acc ${fmt(best.accuracy, 4)}`;
+        el('bestNote').textContent = `cost $${fmt(best.total_cost_usd, 6)}, escalation ${fmt(best.escalation_rate * 100, 1)}%`;
+      }
+
+      async function main() {
+        const results = await fetch('./assets/results.json').then((r) => r.json());
+        const sweepDoc = await fetch('./assets/threshold_sweep.json').then((r) => r.json());
+
+        el('datasetCount').textContent = results.dataset.count;
+        el('datasetRepo').textContent = results.dataset.source.repo;
+        el('threshold').textContent = fmt(results.threshold, 2);
+        el('generatedAt').textContent = `generated_at: ${results.generated_at}`;
+
+        renderSummary(results.summary);
+        renderSweep(sweepDoc.sweep);
+      }
+
+      main().catch(showError);
+    </script>
+  </body>
+</html>
