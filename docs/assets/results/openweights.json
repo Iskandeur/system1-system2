@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-21T19:45:54.919Z",
+ "generated_at": "2026-09-21T20:20:53.930Z",
  "kind": "openweights",
  "languages": {
   "en": {
@@ -208,6 +208,46 @@
    },
    "gap_fr_minus_en": -0.0083
   },
+  "kev": {
+   "tag": "kev",
+   "where": "local CPU",
+   "en": {
+    "tag": "kev",
+    "model": "jaredpalmer/kev-0.8b",
+    "role": "system1",
+    "where": "local CPU",
+    "n": 120,
+    "correct": 89,
+    "accuracy": 0.7417,
+    "accuracy_ci": {
+     "lo": 0.6567,
+     "hi": 0.8116
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 0,
+    "latency_ms": {
+     "mean": 8270.0083,
+     "median": 5065,
+     "p90": 7995,
+     "max": 199540
+    },
+    "calibration": {
+     "n": 120,
+     "ece": 0.1778,
+     "ece_ci": {
+      "lo": 0.1478,
+      "hi": 0.2473
+     },
+     "auroc": 0.8753,
+     "mean_confidence": 0.5638
+    },
+    "vs_jev": {
+     "only_this_correct": 4,
+     "only_jev_correct": 21
+    }
+   },
+   "model": "jaredpalmer/kev-0.8b"
+  },
   "laya": {
    "tag": "laya",
    "where": "local CPU",
@@ -246,7 +286,119 @@
      "only_jev_correct": 25
     }
    },
-   "model": "convaiinnovations/laya"
+   "model": "convaiinnovations/laya",
+   "fr": {
+    "tag": "laya",
+    "model": "convaiinnovations/laya",
+    "role": "system1",
+    "where": "local CPU",
+    "n": 120,
+    "correct": 57,
+    "accuracy": 0.475,
+    "accuracy_ci": {
+     "lo": 0.3878,
+     "hi": 0.5637
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 0,
+    "latency_ms": {
+     "mean": 2047.825,
+     "median": 1692,
+     "p90": 3285,
+     "max": 5612
+    },
+    "calibration": {
+     "n": 120,
+     "ece": 0.4915,
+     "ece_ci": {
+      "lo": 0.4021,
+      "hi": 0.5841
+     },
+     "auroc": 0.6788,
+     "mean_confidence": 0.9665
+    },
+    "vs_jev": {
+     "only_this_correct": 5,
+     "only_jev_correct": 53
+    }
+   },
+   "gap_fr_minus_en": -0.225
+  },
+  "laya-multilingual": {
+   "tag": "laya-multilingual",
+   "where": "local CPU",
+   "en": {
+    "tag": "laya-multilingual",
+    "model": "convaiinnovations/laya-multilingual",
+    "role": "system1",
+    "where": "local CPU",
+    "n": 120,
+    "correct": 82,
+    "accuracy": 0.6833,
+    "accuracy_ci": {
+     "lo": 0.5955,
+     "hi": 0.7598
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 0,
+    "latency_ms": {
+     "mean": 962.675,
+     "median": 719,
+     "p90": 1757,
+     "max": 3476
+    },
+    "calibration": {
+     "n": 120,
+     "ece": 0.121,
+     "ece_ci": {
+      "lo": 0.0883,
+      "hi": 0.2116
+     },
+     "auroc": 0.8013,
+     "mean_confidence": 0.7861
+    },
+    "vs_jev": {
+     "only_this_correct": 4,
+     "only_jev_correct": 28
+    }
+   },
+   "model": "convaiinnovations/laya-multilingual",
+   "fr": {
+    "tag": "laya-multilingual",
+    "model": "convaiinnovations/laya-multilingual",
+    "role": "system1",
+    "where": "local CPU",
+    "n": 120,
+    "correct": 70,
+    "accuracy": 0.5833,
+    "accuracy_ci": {
+     "lo": 0.4939,
+     "hi": 0.6676
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 0,
+    "latency_ms": {
+     "mean": 1311.3333,
+     "median": 736,
+     "p90": 1844,
+     "max": 42983
+    },
+    "calibration": {
+     "n": 120,
+     "ece": 0.2116,
+     "ece_ci": {
+      "lo": 0.1577,
+      "hi": 0.2964
+     },
+     "auroc": 0.7589,
+     "mean_confidence": 0.7668
+    },
+    "vs_jev": {
+     "only_this_correct": 4,
+     "only_jev_correct": 39
+    }
+   },
+   "gap_fr_minus_en": -0.1
   }
  }
 }
