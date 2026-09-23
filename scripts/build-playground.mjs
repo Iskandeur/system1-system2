@@ -104,21 +104,24 @@ export function buildTask(cfg) {
   if (!s1 || !s1.complete) return { skipped: `${cfg.id}: no complete Jev predictions` };
   const s2docs = Object.keys(S2_NAMES)
     .map((tag) => ({ tag, doc: readPredictions(cfg.dataset, tag) }))
-    .filter(({ doc }) => doc && doc.complete && doc.count === ds.items.length && doc.errors === 0);
+    .filter(({ doc }) => doc && doc.complete && doc.count === ds.items.length);
   if (!s2docs.length) return { skipped: `${cfg.id}: no complete LLM predictions` };
 
   const s1By = indexById(s1);
   const s2By = s2docs.map(({ tag, doc }) => ({ tag, by: indexById(doc) }));
 
+  // An item one system never answered (transport error, or a provider that refused the text) is
+  // excluded from the page rather than scored against the other system; the exclusions are listed.
   const items = [];
+  const excluded = [];
   for (const it of ds.items) {
     const a = s1By.get(String(it.id));
-    if (!a || a.error) continue;
+    if (!a || a.error) { excluded.push({ id: it.id, system: 'jev', reason: a ? String(a.error).slice(0, 120) : 'no prediction' }); continue; }
     const s2 = {};
     let ok = true;
     for (const { tag, by } of s2By) {
       const b = by.get(String(it.id));
-      if (!b || b.error) { ok = false; break; }
+      if (!b || b.error) { ok = false; excluded.push({ id: it.id, system: tag, reason: b ? String(b.error).slice(0, 120) : 'no prediction' }); break; }
       s2[tag] = { pred: b.pred, cost: b.cost, ms: b.latency_ms };
     }
     if (!ok) continue;
@@ -138,6 +141,7 @@ export function buildTask(cfg) {
       source: ds.source ? { name: ds.source.name, url: ds.source.url, license: ds.source.license, sampling: ds.source.sampling } : null,
       task: { instructions: ds.task.instructions, labels: ds.task.labels, criteria: ds.task.criteria },
       n: items.length,
+      excluded,
       s1: { tag: 'jev', name: S1_NAME, model: s1.system.model, generated_at: s1.generated_at },
       s2: s2docs.map(({ tag, doc }) => ({ tag, name: S2_NAMES[tag], model: doc.system.model, pricing: doc.system.pricing, generated_at: doc.generated_at })),
       items,
@@ -157,7 +161,7 @@ function main() {
     const file = path.join(OUT, `${cfg.id}.json`);
     fs.writeFileSync(file, JSON.stringify(r.doc) + '\n');
     index.tasks.push({ id: cfg.id, file: `assets/play/${cfg.id}.json`, title: cfg.title, question: cfg.question, n: r.doc.n, labels: r.doc.task.labels.length, s2: r.doc.s2.map((s) => s.tag) });
-    console.log(`Wrote ${file} (${r.doc.n} items, LLMs: ${r.doc.s2.map((s) => s.name).join(', ')})`);
+    console.log(`Wrote ${file} (${r.doc.n} items, LLMs: ${r.doc.s2.map((s) => s.name).join(', ')}${r.doc.excluded.length ? `, ${r.doc.excluded.length} excluded: ${r.doc.excluded.map((e) => `${e.id} [${e.system}] ${e.reason}`).join('; ')}` : ''})`);
   }
   fs.writeFileSync(path.join(OUT, 'index.json'), JSON.stringify(index, null, 2) + '\n');
   console.log(`Wrote ${path.join(OUT, 'index.json')} (${index.tasks.length} tasks)`);

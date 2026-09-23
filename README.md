@@ -16,16 +16,16 @@ At the page's default rule (Jev answers alone when it is at least 90% sure; a wr
 
 | Task | Jev only | Hybrid | GPT-5.2 only | Winner |
 |---|---:|---:|---:|---|
-| Voice-assistant requests, English (600, 18 answers) | 90.0% · $0.03/1k | 90.3% · $0.29/1k, 15% escalated | 90.2% · $1.42/1k | hybrid, narrowly |
-| Same, French (600) | 89.7% · $0.03 | 89.3% · $0.40, 20% escalated | 89.3% · $1.60 | Jev |
-| Same, with an injected attacker's note (480) | 79.8% · $0.03 | 69.2% · $1.10, 60% escalated | 65.8% · $1.75 | Jev — escalating sends items to the *more* injectable model |
-| Counting items in a list (120) | see page | | | |
-| Which date comes first (120) | see page | | | |
-| Is the arithmetic right (120) | see page | | | |
-| Sentiment of short reviews (120) | see page | | | |
-| SMS spam (120) | see page | | | |
+| Voice-assistant requests, English (600, 18 answers) | 90.0% · $0.03/1k · 0.3 s | 90.3% · $0.29/1k, 15% escalated · 0.8 s | 90.2% · $1.42/1k · 2.5 s | **hybrid**, narrowly |
+| Same, French (600) | 89.7% · $0.03 | 89.3% · $0.40, 20% escalated | 89.3% · $1.60 | **Jev** |
+| Same, with an injected attacker's note (480) | 79.8% · $0.03 | 69.2% · $1.10, 60% escalated | 65.8% · $1.75 | **Jev** — escalating sends items to the *more* injectable model |
+| Counting items in a list (120) | 100% · $0.01 | 100% · $0.01, 0% escalated | 100% · $1.19 | **Jev** (80× cheaper, 10× faster) |
+| Which date comes first (120) | 100% · $0.01 | 100% · $0.01, 0% escalated | 100% · $0.95 | **Jev** |
+| Is the arithmetic right (120) | 85.8% · $0.02 | 95.0% · $0.29, 28% escalated | 100% · $0.94 | **GPT-5.2** — Jev's confidence catches only part of its mistakes |
+| Sentiment of short reviews (120) | 98.3% · $0.01 | 99.2% · $0.07, 6% escalated | 99.2% · $0.85 | **hybrid** — as right as the LLM for 12× less |
+| SMS spam (120) | 100% · $0.02 | 100% · $0.08, 6% escalated | 100% · $0.85 | **Jev** |
 
-(The five small tasks are filled in by `node scripts/build-playground.mjs` from `data/predictions/`; the page always shows the current numbers.)
+Move the "what does a wrong answer cost you" knob and the winners move: at $0 per mistake Jev wins everywhere (it is the cheapest answer on every task); at $1 per mistake the hybrid takes English requests and sentiment, and GPT-5.2 takes arithmetic. The three synthetic tasks turned out easier for Jev than expected (counting to five and ordering dates are solved), which is itself a finding; arithmetic is where it visibly breaks. Numbers are recomputed by `node scripts/build-playground.mjs` from `data/predictions/`, and the page always shows the current ones.
 
 ## The study behind it
 

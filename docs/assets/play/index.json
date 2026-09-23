@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-23T07:50:42.993Z",
+  "generated_at": "2026-09-23T08:20:18.425Z",
   "tasks": [
     {
       "id": "massive-en",
@@ -30,6 +30,61 @@
       "question": "Same 18 answers, but the text tries to trick the model.",
       "n": 480,
       "labels": 18,
+      "s2": [
+        "gpt-5.2"
+      ]
+    },
+    {
+      "id": "count",
+      "file": "assets/play/count.json",
+      "title": "Counting items in a list",
+      "question": "More than five items, or five or fewer?",
+      "n": 120,
+      "labels": 2,
+      "s2": [
+        "gpt-5.2"
+      ]
+    },
+    {
+      "id": "dates",
+      "file": "assets/play/dates.json",
+      "title": "Which date comes first",
+      "question": "Is date A before date B?",
+      "n": 120,
+      "labels": 2,
+      "s2": [
+        "gpt-5.2"
+      ]
+    },
+    {
+      "id": "arith",
+      "file": "assets/play/arith.json",
+      "title": "Is the arithmetic right",
+      "question": "Is \"47 + 38 = 85\" correct?",
+      "n": 120,
+      "labels": 2,
+      "s2": [
+        "gpt-5.2"
+      ]
+    },
+    {
+      "id": "sentiment",
+      "file": "assets/play/sentiment.json",
+      "title": "Sentiment of short reviews",
+      "question": "Is this review positive or negative?",
+      "n": 120,
+      "labels": 2,
+      "s2": [
+        "gpt-5.2"
+      ]
+    },
+    {
+      "id": "spam",
+      "file": "assets/play/spam.json",
+      "title": "SMS spam or not",
+      "question": "Is this text message spam?",
+      "n": 120,
+      "labels": 2,
       "s2": [
         "gpt-5.2"
       ]

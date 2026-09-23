@@ -33,7 +33,7 @@
 
       /* task picker */
       .tasks { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 10px; }
-      .task { text-align: left; padding: 10px 78px 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); cursor: pointer; min-height: 74px; position: relative; }
+      .task { display: block; width: 100%; text-align: left; padding: 10px 78px 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); cursor: pointer; min-height: 74px; position: relative; }
       .task:hover { border-color: var(--accent); }
       .task.on { border-color: var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); background: var(--card2); }
       .task .t { font-weight: 600; font-size: 14px; }
@@ -330,7 +330,7 @@ The app crashes every time I try to pay, I've been trying for an hour!!</textare
         const d = state.data[state.current];
         $('itemsIntro').textContent = state.current === 'own'
           ? (state.own ? `${items.length} of your examples. Rows without a known right answer count for cost and speed, not for accuracy.` : 'Run your own task above to see its items here.')
-          : d ? `${d.n} items · ${d.task.labels.length} possible answers · ${d.source ? d.source.name : ''}${d.source && d.source.license ? ' (' + d.source.license + ')' : ''}. "${d.task.instructions}"` : '';
+          : d ? `${d.n} items · ${d.task.labels.length} possible answers · ${d.source ? d.source.name : ''}${d.source && d.source.license ? ' (' + d.source.license + ')' : ''}. "${d.task.instructions}"${d.excluded && d.excluded.length ? ` · ${d.excluded.length} item${d.excluded.length > 1 ? 's' : ''} left out: ${d.excluded.map((e) => (/content|filter|policy/i.test(e.reason) ? `the LLM provider refused to process it (content filter)` : e.reason)).join('; ')}.` : ''}` : '';
         $('itemsCount').textContent = `${rows.length} shown${rows.length > state.shown ? ` (first ${state.shown})` : ''}`;
         const tb = $('items').querySelector('tbody');
         tb.innerHTML = rows.slice(0, state.shown).map(({ it, s }) => {
