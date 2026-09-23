@@ -1,14 +1,41 @@
-# System 1 / System 2: confidence-gated routing, measured
+# Jev, GPT, or both? — a System 1 / System 2 playground
 
-**A cheap typed-decision model (TypeSafe Jev) answers first; a strong LLM is called only when Jev's confidence is low.** This repo measures, on public data with confidence intervals, the three things that decide whether that is a good idea: whether Jev's confidence is calibrated, what the threshold actually buys, and what happens when an attacker writes into the text the router is classifying.
+**A small, fast, very cheap model (TypeSafe Jev) answers first and says how sure it is. When it is not sure enough, a big LLM takes over.** On which tasks does that hybrid beat "100% Jev" or "100% LLM"? Pick a task, move the slider, and see: how often each of the three setups is right, what it costs per 1,000 items, how fast it is, and who wins once you put a price on a wrong answer.
+
+### → **[Open the playground](https://iskandeur.github.io/system1-system2/)**
+
+[![The playground: task picker, threshold slider, three result cards, one-line verdict, per-task overview](docs/assets/playground.png)](https://iskandeur.github.io/system1-system2/)
+
+- **Eight recorded tasks** — voice-assistant requests (English, French, and with an attacker's note injected), counting, date ordering, arithmetic, sentiment, SMS spam — every item answered once by Jev and once by GPT-5.2, so the slider recomputes the three setups from real answers, item by item (section 4 of the page shows each item, Jev's confidence bar, whether it was escalated, and who was right).
+- **Your own task, live** — type your labels and a few examples, paste *your* OpenRouter key (it stays in your browser and only talks to `openrouter.ai`), pick any LLM, see the cost estimate, run Jev + the LLM from the page.
+- **The rigorous version** — confidence intervals, calibration (ECE, AUROC), held-out thresholds, the prompt-injection experiment and the open-weight models — is one click away at **[study.html](https://iskandeur.github.io/system1-system2/study.html)** and summarised below.
+
+## What the recorded tasks show
+
+At the page's default rule (Jev answers alone when it is at least 90% sure; a wrong answer costs 10 cents), the winner changes with the task — that is the point:
+
+| Task | Jev only | Hybrid | GPT-5.2 only | Winner |
+|---|---:|---:|---:|---|
+| Voice-assistant requests, English (600, 18 answers) | 90.0% · $0.03/1k | 90.3% · $0.29/1k, 15% escalated | 90.2% · $1.42/1k | hybrid, narrowly |
+| Same, French (600) | 89.7% · $0.03 | 89.3% · $0.40, 20% escalated | 89.3% · $1.60 | Jev |
+| Same, with an injected attacker's note (480) | 79.8% · $0.03 | 69.2% · $1.10, 60% escalated | 65.8% · $1.75 | Jev — escalating sends items to the *more* injectable model |
+| Counting items in a list (120) | see page | | | |
+| Which date comes first (120) | see page | | | |
+| Is the arithmetic right (120) | see page | | | |
+| Sentiment of short reviews (120) | see page | | | |
+| SMS spam (120) | see page | | | |
+
+(The five small tasks are filled in by `node scripts/build-playground.mjs` from `data/predictions/`; the page always shows the current numbers.)
+
+## The study behind it
 
 **The finding in one sentence:** on 600 MASSIVE utterances (18 classes) Jev's confidence is well calibrated (ECE 4.5%, AUROC 0.83) and turns a 90.0%-accurate model into one that is 96.1% accurate on the 85% of items it keeps — but the LLM behind it (GPT-5.2, 90.2%) is no more accurate than Jev on this task, so escalation buys nothing in accuracy, and under prompt injection the LLM is the weaker link: an *"annotation team re-labelled this"* payload flips GPT-5.2 **80 times out of 80**, versus 26/80 for Jev, so routing attacked items to the LLM makes the hybrid *worse*; a one-sentence hardening of the instructions brings both to the noise floor.
 
-**New, open-weight System 1 models run locally on a CPU ([section 5](#5-open-weight-system-1-run-locally-on-cpu)):** on a 120-item subset, Laya, Laya-multilingual and Kev-0.8B reach 68–74% in English against Jev's 88%, at $0 per call. Laya-multilingual halves the French penalty of the English Laya (−10 points instead of −22.5), and Kev's confidence ranks errors better than Jev's (AUROC 0.875 vs 0.856) despite being under-confident.
+**Open-weight System 1 models run locally on a CPU ([section 5](#5-open-weight-system-1-run-locally-on-cpu)):** on a 120-item subset, Laya, Laya-multilingual and Kev-0.8B reach 68–74% in English against Jev's 88%, at $0 per call. Laya-multilingual halves the French penalty of the English Laya (−10 points instead of −22.5), and Kev's confidence ranks errors better than Jev's (AUROC 0.875 vs 0.856) despite being under-confident.
 
 ![Reliability diagram of System 1 confidences and the accuracy/cost frontier of the hybrid](docs/assets/hero.svg)
 
-Live results page with an interactive threshold slider: **https://iskandeur.github.io/system1-system2/**
+Full results page with intervals and the threshold sweep: **https://iskandeur.github.io/system1-system2/study.html**
 
 ## 30-second quickstart
 
