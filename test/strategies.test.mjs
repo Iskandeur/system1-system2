@@ -52,6 +52,15 @@ test('strategies: the three accuracies, escalation rate and per-1k costs', () =>
   assert.equal(strategies(ITEMS, 1).hybrid.escalationRate, 1);
 });
 
+test('strategies: items without a known right answer count for cost and speed, not for accuracy', () => {
+  const s = strategies([...ITEMS, { truth: null, s1: { pred: 'a', conf: 0.1, cost: 0.00003, ms: 300 }, s2: { pred: 'b', cost: 0.0015, ms: 2500 } }], 0.5);
+  assert.equal(s.s1.n, 5);
+  assert.equal(s.s1.labelled, 4);
+  assert.equal(s.s1.accuracy, 0.5);
+  assert.equal(s.hybrid.escalated, 2);
+  assert.ok(Math.abs(s.hybrid.cost1k - ((0.00003 * 5 + 0.0015 * 2) / 5) * 1000) < 1e-9);
+});
+
 test('pickWinner: pure API cost favours System 1; pricing mistakes flips it to the hybrid', () => {
   const s = strategies(ITEMS, 0.5);
   assert.equal(pickWinner(s, 0).key, 's1');

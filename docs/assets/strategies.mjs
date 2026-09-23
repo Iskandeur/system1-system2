@@ -26,11 +26,13 @@ export function scoreItem(item, threshold) {
   };
 }
 
-function summarize(n, correct, cost, ms, extra = {}) {
+// Accuracy is over the items whose right answer is known (`labelled`); cost and latency over all.
+function summarize(n, labelled, correct, cost, ms, extra = {}) {
   return {
     n,
+    labelled,
     correct,
-    accuracy: n ? correct / n : 0,
+    accuracy: labelled ? correct / labelled : 0,
     cost1k: n ? (cost / n) * 1000 : 0,
     ms: n ? ms / n : 0,
     ...extra,
@@ -39,12 +41,15 @@ function summarize(n, correct, cost, ms, extra = {}) {
 
 // The three strategies at one threshold: System 1 only, hybrid, System 2 only.
 export function strategies(items, threshold) {
-  let c1 = 0, c2 = 0, ch = 0, cost1 = 0, cost2 = 0, costh = 0, ms1 = 0, ms2 = 0, msh = 0, esc = 0;
+  let c1 = 0, c2 = 0, ch = 0, cost1 = 0, cost2 = 0, costh = 0, ms1 = 0, ms2 = 0, msh = 0, esc = 0, labelled = 0;
   for (const it of items) {
     const s = scoreItem(it, threshold);
-    if (s.s1ok) c1++;
-    if (s.s2ok) c2++;
-    if (s.hybridOk) ch++;
+    if (it.truth !== null && it.truth !== undefined) {
+      labelled++;
+      if (s.s1ok) c1++;
+      if (s.s2ok) c2++;
+      if (s.hybridOk) ch++;
+    }
     cost1 += it.s1.cost || 0;
     cost2 += it.s2.cost || 0;
     costh += s.hybridCost;
@@ -55,9 +60,9 @@ export function strategies(items, threshold) {
   }
   const n = items.length;
   return {
-    s1: summarize(n, c1, cost1, ms1),
-    hybrid: summarize(n, ch, costh, msh, { escalated: esc, escalationRate: n ? esc / n : 0 }),
-    s2: summarize(n, c2, cost2, ms2),
+    s1: summarize(n, labelled, c1, cost1, ms1),
+    hybrid: summarize(n, labelled, ch, costh, msh, { escalated: esc, escalationRate: n ? esc / n : 0 }),
+    s2: summarize(n, labelled, c2, cost2, ms2),
   };
 }
 

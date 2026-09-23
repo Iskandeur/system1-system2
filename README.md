@@ -266,7 +266,13 @@ node scripts/render-figures.mjs --dataset massive-en --s1 jev,gpt-4o-mini-logpro
 node scripts/build-openweights-subset.mjs --n 120 --seed 7
 node scripts/slice-predictions.mjs --from massive-en --to massive-en-openweights --tag jev --out jev   # same for gpt-5.2, and fr
 node scripts/analyze-openweights.mjs                      # → docs/assets/results/openweights.json
-node scripts/build-docs-assets.mjs                        # manifest for the page
+node scripts/build-docs-assets.mjs                        # manifest for the study page
+
+# playground: the five small tasks (three synthetic + two UCI downloads), both systems on each, then the page data
+node scripts/build-playground-sets.mjs --n 120 --seed 11  # data/count.json, dates.json, arith.json, sentiment.json, spam.json
+for d in count dates arith sentiment spam; do node scripts/predict.mjs --system s1 --dataset $d --tag jev; done
+for d in count dates arith sentiment spam; do S2_PROVIDER=openai S2_MODEL=gpt-5.2 node scripts/predict.mjs --system s2 --dataset $d --tag gpt-5.2; done
+node scripts/build-playground.mjs                         # → docs/assets/play/*.json (what the playground replays)
 ```
 
 `data/predictions/<dataset>/<tag>.json` are the per-item predictions every number is computed from (id, truth, prediction, confidence, cost, latency, tokens); the analyses are pure functions of those files, so `analyze.mjs` reproduces every figure without a key. The published GPT-5.2 runs went through an Anthropic-compatible endpoint; the same model id on OpenRouter or the OpenAI API reproduces them up to provider nondeterminism.
@@ -276,7 +282,8 @@ node scripts/build-docs-assets.mjs                        # manifest for the pag
 - `src/task.mjs` – a task = labels + criteria + instructions; prompts, schemas and the decision question are derived from it. `src/dataset.mjs` loads/validates dataset files.
 - `src/adapters/` – one interface, three transports: `chat-openai.mjs` (any `/chat/completions`), `chat-anthropic.mjs` (Messages API, forced tool call), `decision.mjs` (TypeSafe Jev). `index.mjs` composes auth, the disk cache and timing.
 - `src/router.mjs` – the gate. `src/metrics.mjs` – Wilson, ECE, Brier, AUROC, bootstrap, sweep, Pareto front, held-out threshold. `src/injection.mjs` – templates and the injected-set builder. `src/http.mjs` – fetch with retries and backoff. `src/config.mjs` – presets and precedence.
-- `scripts/` – `predict.mjs`, `analyze.mjs`, `analyze-injection.mjs`, `run-eval.mjs` (the three in one), dataset builders, `render-figures.mjs`, `build-docs-assets.mjs`, `fetch-prices.mjs`, `lint-no-secrets.mjs`.
+- `scripts/` – `predict.mjs`, `analyze.mjs`, `analyze-injection.mjs`, `run-eval.mjs` (the three in one), dataset builders (`build-massive.mjs`, `build-injection-set.mjs`, `build-playground-sets.mjs`), `build-playground.mjs`, `render-figures.mjs`, `build-docs-assets.mjs`, `fetch-prices.mjs`, `lint-no-secrets.mjs`.
+- `docs/index.html` – the playground (no build step; imports `docs/assets/strategies.mjs`, the pure strategy/winner/verdict logic also covered by `test/strategies.test.mjs`); `docs/study.html` – the study page; `docs/assets/play/` – per-task recorded answers the playground replays.
 - `docker/` – CPU-only servers exposing Laya and Kev behind the Jev request shape.
 - `data/` – datasets, `prices.json`, `predictions/`. `docs/` – the static results page and its JSON (no key ever reaches the browser). `test/` – `node:test`, mocked `fetch`.
 

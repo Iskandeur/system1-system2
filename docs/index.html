@@ -244,9 +244,9 @@ The app crashes every time I try to pay, I've been trying for an hour!!</textare
       // ---------- cards ----------
       function renderCards(items) {
         const s = strategies(items, state.threshold);
-        const win = items.length ? pickWinner(s, state.errorCost).key : null;
         const name = llmName();
-        const labelled = items.length;
+        const win = s.s1.labelled ? pickWinner(s, state.errorCost).key : null;
+        const labelled = s.s1.labelled;
         const cards = ['s1', 'hybrid', 's2'].map((k) => {
           const r = s[k];
           const title = k === 's2' ? `${name} only` : k === 's1' ? 'Jev only' : 'Hybrid';
@@ -262,7 +262,7 @@ The app crashes every time I try to pay, I've been trying for an hour!!</textare
           </div>`;
         });
         $('cards').innerHTML = cards.join('');
-        $('verdict').textContent = labelled ? verdict(s, state.errorCost, { s1: 'Jev', s2: name }) : 'No items yet.';
+        $('verdict').textContent = labelled ? verdict(s, state.errorCost, { s1: 'Jev', s2: name }) : items.length ? 'No right answers given, so no one can win: add " => answer" to some examples to score them.' : 'No items yet.';
         return s;
       }
 

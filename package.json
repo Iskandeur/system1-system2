@@ -16,6 +16,8 @@
     "prices": "node scripts/fetch-prices.mjs",
     "figures": "node scripts/render-figures.mjs",
     "build:docs": "node scripts/build-docs-assets.mjs",
+    "build:play": "node scripts/build-playground.mjs",
+    "dataset:play": "node scripts/build-playground-sets.mjs",
     "lint": "node scripts/lint-no-secrets.mjs --history",
     "test": "node --test \"test/**/*.test.mjs\""
   }
