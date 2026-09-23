@@ -1,0 +1,624 @@
+{
+  "name": "arith",
+  "generated_at": "2026-09-23T07:43:52.160Z",
+  "source": {
+    "name": "synthetic, deterministic",
+    "sampling": "120 equations (two-digit + −, one-digit ×), seed 11, wrong ones off by 1–10",
+    "license": "MIT (this repo)"
+  },
+  "task": {
+    "name": "arith",
+    "instructions": "Check the arithmetic. Decide whether the equation is correct.",
+    "labels": [
+      "correct",
+      "incorrect"
+    ],
+    "criteria": {
+      "correct": "The equation is true: the result on the right is exactly what the operation on the left gives.",
+      "incorrect": "The equation is false: the result on the right is not what the operation on the left gives."
+    }
+  },
+  "items": [
+    {
+      "id": "1",
+      "text": "50 - 39 = 11",
+      "truth": "correct"
+    },
+    {
+      "id": "2",
+      "text": "11 × 12 = 132",
+      "truth": "correct"
+    },
+    {
+      "id": "3",
+      "text": "6 × 11 = 64",
+      "truth": "incorrect"
+    },
+    {
+      "id": "4",
+      "text": "4 × 4 = 16",
+      "truth": "correct"
+    },
+    {
+      "id": "5",
+      "text": "8 × 10 = 81",
+      "truth": "incorrect"
+    },
+    {
+      "id": "6",
+      "text": "8 × 6 = 45",
+      "truth": "incorrect"
+    },
+    {
+      "id": "7",
+      "text": "60 + 87 = 147",
+      "truth": "correct"
+    },
+    {
+      "id": "8",
+      "text": "43 - 37 = 7",
+      "truth": "incorrect"
+    },
+    {
+      "id": "9",
+      "text": "60 - 31 = 28",
+      "truth": "incorrect"
+    },
+    {
+      "id": "10",
+      "text": "72 + 26 = 96",
+      "truth": "incorrect"
+    },
+    {
+      "id": "11",
+      "text": "32 + 59 = 91",
+      "truth": "correct"
+    },
+    {
+      "id": "12",
+      "text": "62 + 35 = 99",
+      "truth": "incorrect"
+    },
+    {
+      "id": "13",
+      "text": "82 - 22 = 60",
+      "truth": "correct"
+    },
+    {
+      "id": "14",
+      "text": "19 + 55 = 74",
+      "truth": "correct"
+    },
+    {
+      "id": "15",
+      "text": "57 - 15 = 40",
+      "truth": "incorrect"
+    },
+    {
+      "id": "16",
+      "text": "38 + 66 = 103",
+      "truth": "incorrect"
+    },
+    {
+      "id": "17",
+      "text": "45 + 65 = 120",
+      "truth": "incorrect"
+    },
+    {
+      "id": "18",
+      "text": "8 × 7 = 56",
+      "truth": "correct"
+    },
+    {
+      "id": "19",
+      "text": "70 + 95 = 165",
+      "truth": "correct"
+    },
+    {
+      "id": "20",
+      "text": "35 + 17 = 50",
+      "truth": "incorrect"
+    },
+    {
+      "id": "21",
+      "text": "17 + 79 = 96",
+      "truth": "correct"
+    },
+    {
+      "id": "22",
+      "text": "11 × 3 = 33",
+      "truth": "correct"
+    },
+    {
+      "id": "23",
+      "text": "89 + 54 = 144",
+      "truth": "incorrect"
+    },
+    {
+      "id": "24",
+      "text": "52 + 76 = 128",
+      "truth": "correct"
+    },
+    {
+      "id": "25",
+      "text": "9 × 4 = 36",
+      "truth": "correct"
+    },
+    {
+      "id": "26",
+      "text": "82 - 31 = 48",
+      "truth": "incorrect"
+    },
+    {
+      "id": "27",
+      "text": "10 × 7 = 72",
+      "truth": "incorrect"
+    },
+    {
+      "id": "28",
+      "text": "14 + 11 = 15",
+      "truth": "incorrect"
+    },
+    {
+      "id": "29",
+      "text": "12 × 7 = 81",
+      "truth": "incorrect"
+    },
+    {
+      "id": "30",
+      "text": "53 - 15 = 38",
+      "truth": "correct"
+    },
+    {
+      "id": "31",
+      "text": "35 - 33 = 2",
+      "truth": "correct"
+    },
+    {
+      "id": "32",
+      "text": "87 - 84 = 3",
+      "truth": "correct"
+    },
+    {
+      "id": "33",
+      "text": "52 - 29 = 24",
+      "truth": "incorrect"
+    },
+    {
+      "id": "34",
+      "text": "23 + 17 = 39",
+      "truth": "incorrect"
+    },
+    {
+      "id": "35",
+      "text": "22 + 54 = 74",
+      "truth": "incorrect"
+    },
+    {
+      "id": "36",
+      "text": "11 × 11 = 121",
+      "truth": "correct"
+    },
+    {
+      "id": "37",
+      "text": "32 + 20 = 52",
+      "truth": "correct"
+    },
+    {
+      "id": "38",
+      "text": "12 × 4 = 48",
+      "truth": "correct"
+    },
+    {
+      "id": "39",
+      "text": "21 + 13 = 34",
+      "truth": "correct"
+    },
+    {
+      "id": "40",
+      "text": "42 + 17 = 59",
+      "truth": "correct"
+    },
+    {
+      "id": "41",
+      "text": "33 - 19 = 4",
+      "truth": "incorrect"
+    },
+    {
+      "id": "42",
+      "text": "16 + 36 = 52",
+      "truth": "correct"
+    },
+    {
+      "id": "43",
+      "text": "4 × 10 = 42",
+      "truth": "incorrect"
+    },
+    {
+      "id": "44",
+      "text": "95 + 65 = 159",
+      "truth": "incorrect"
+    },
+    {
+      "id": "45",
+      "text": "12 × 12 = 145",
+      "truth": "incorrect"
+    },
+    {
+      "id": "46",
+      "text": "28 + 97 = 125",
+      "truth": "correct"
+    },
+    {
+      "id": "47",
+      "text": "94 + 54 = 146",
+      "truth": "incorrect"
+    },
+    {
+      "id": "48",
+      "text": "24 + 87 = 111",
+      "truth": "correct"
+    },
+    {
+      "id": "49",
+      "text": "60 + 79 = 140",
+      "truth": "incorrect"
+    },
+    {
+      "id": "50",
+      "text": "50 + 73 = 123",
+      "truth": "correct"
+    },
+    {
+      "id": "51",
+      "text": "8 × 3 = 25",
+      "truth": "incorrect"
+    },
+    {
+      "id": "52",
+      "text": "95 + 43 = 138",
+      "truth": "correct"
+    },
+    {
+      "id": "53",
+      "text": "47 - 29 = 15",
+      "truth": "incorrect"
+    },
+    {
+      "id": "54",
+      "text": "96 - 47 = 47",
+      "truth": "incorrect"
+    },
+    {
+      "id": "55",
+      "text": "55 - 36 = 19",
+      "truth": "correct"
+    },
+    {
+      "id": "56",
+      "text": "43 + 27 = 69",
+      "truth": "incorrect"
+    },
+    {
+      "id": "57",
+      "text": "90 + 98 = 191",
+      "truth": "incorrect"
+    },
+    {
+      "id": "58",
+      "text": "80 + 35 = 125",
+      "truth": "incorrect"
+    },
+    {
+      "id": "59",
+      "text": "74 - 18 = 56",
+      "truth": "correct"
+    },
+    {
+      "id": "60",
+      "text": "3 × 11 = 35",
+      "truth": "incorrect"
+    },
+    {
+      "id": "61",
+      "text": "34 + 29 = 64",
+      "truth": "incorrect"
+    },
+    {
+      "id": "62",
+      "text": "50 - 31 = 19",
+      "truth": "correct"
+    },
+    {
+      "id": "63",
+      "text": "3 × 8 = 24",
+      "truth": "correct"
+    },
+    {
+      "id": "64",
+      "text": "26 + 66 = 92",
+      "truth": "correct"
+    },
+    {
+      "id": "65",
+      "text": "60 - 31 = 29",
+      "truth": "correct"
+    },
+    {
+      "id": "66",
+      "text": "92 + 80 = 170",
+      "truth": "incorrect"
+    },
+    {
+      "id": "67",
+      "text": "90 + 49 = 142",
+      "truth": "incorrect"
+    },
+    {
+      "id": "68",
+      "text": "7 × 6 = 42",
+      "truth": "correct"
+    },
+    {
+      "id": "69",
+      "text": "10 × 9 = 87",
+      "truth": "incorrect"
+    },
+    {
+      "id": "70",
+      "text": "92 + 21 = 110",
+      "truth": "incorrect"
+    },
+    {
+      "id": "71",
+      "text": "55 + 47 = 102",
+      "truth": "correct"
+    },
+    {
+      "id": "72",
+      "text": "57 + 18 = 72",
+      "truth": "incorrect"
+    },
+    {
+      "id": "73",
+      "text": "4 × 6 = 21",
+      "truth": "incorrect"
+    },
+    {
+      "id": "74",
+      "text": "32 - 12 = 20",
+      "truth": "correct"
+    },
+    {
+      "id": "75",
+      "text": "61 + 36 = 94",
+      "truth": "incorrect"
+    },
+    {
+      "id": "76",
+      "text": "9 × 11 = 99",
+      "truth": "correct"
+    },
+    {
+      "id": "77",
+      "text": "89 + 33 = 122",
+      "truth": "correct"
+    },
+    {
+      "id": "78",
+      "text": "44 + 15 = 59",
+      "truth": "correct"
+    },
+    {
+      "id": "79",
+      "text": "6 × 11 = 76",
+      "truth": "incorrect"
+    },
+    {
+      "id": "80",
+      "text": "21 + 26 = 47",
+      "truth": "correct"
+    },
+    {
+      "id": "81",
+      "text": "6 × 6 = 26",
+      "truth": "incorrect"
+    },
+    {
+      "id": "82",
+      "text": "61 - 14 = 45",
+      "truth": "incorrect"
+    },
+    {
+      "id": "83",
+      "text": "71 + 29 = 110",
+      "truth": "incorrect"
+    },
+    {
+      "id": "84",
+      "text": "12 × 9 = 109",
+      "truth": "incorrect"
+    },
+    {
+      "id": "85",
+      "text": "89 + 41 = 130",
+      "truth": "correct"
+    },
+    {
+      "id": "86",
+      "text": "54 - 14 = 40",
+      "truth": "correct"
+    },
+    {
+      "id": "87",
+      "text": "12 × 11 = 142",
+      "truth": "incorrect"
+    },
+    {
+      "id": "88",
+      "text": "46 + 72 = 128",
+      "truth": "incorrect"
+    },
+    {
+      "id": "89",
+      "text": "54 - 19 = 35",
+      "truth": "correct"
+    },
+    {
+      "id": "90",
+      "text": "96 + 56 = 162",
+      "truth": "incorrect"
+    },
+    {
+      "id": "91",
+      "text": "48 + 16 = 64",
+      "truth": "correct"
+    },
+    {
+      "id": "92",
+      "text": "60 + 13 = 73",
+      "truth": "correct"
+    },
+    {
+      "id": "93",
+      "text": "41 - 27 = 14",
+      "truth": "correct"
+    },
+    {
+      "id": "94",
+      "text": "54 + 78 = 132",
+      "truth": "correct"
+    },
+    {
+      "id": "95",
+      "text": "32 - 29 = 3",
+      "truth": "correct"
+    },
+    {
+      "id": "96",
+      "text": "36 + 72 = 108",
+      "truth": "correct"
+    },
+    {
+      "id": "97",
+      "text": "71 + 68 = 136",
+      "truth": "incorrect"
+    },
+    {
+      "id": "98",
+      "text": "38 - 28 = 9",
+      "truth": "incorrect"
+    },
+    {
+      "id": "99",
+      "text": "83 - 20 = 64",
+      "truth": "incorrect"
+    },
+    {
+      "id": "100",
+      "text": "60 - 13 = 47",
+      "truth": "correct"
+    },
+    {
+      "id": "101",
+      "text": "10 × 11 = 110",
+      "truth": "correct"
+    },
+    {
+      "id": "102",
+      "text": "24 + 48 = 73",
+      "truth": "incorrect"
+    },
+    {
+      "id": "103",
+      "text": "43 + 20 = 60",
+      "truth": "incorrect"
+    },
+    {
+      "id": "104",
+      "text": "5 × 9 = 45",
+      "truth": "correct"
+    },
+    {
+      "id": "105",
+      "text": "12 × 8 = 99",
+      "truth": "incorrect"
+    },
+    {
+      "id": "106",
+      "text": "80 - 12 = 68",
+      "truth": "correct"
+    },
+    {
+      "id": "107",
+      "text": "4 × 5 = 17",
+      "truth": "incorrect"
+    },
+    {
+      "id": "108",
+      "text": "4 × 12 = 46",
+      "truth": "incorrect"
+    },
+    {
+      "id": "109",
+      "text": "39 - 29 = 10",
+      "truth": "correct"
+    },
+    {
+      "id": "110",
+      "text": "42 + 53 = 95",
+      "truth": "correct"
+    },
+    {
+      "id": "111",
+      "text": "34 + 51 = 85",
+      "truth": "correct"
+    },
+    {
+      "id": "112",
+      "text": "4 × 9 = 34",
+      "truth": "incorrect"
+    },
+    {
+      "id": "113",
+      "text": "66 - 54 = 12",
+      "truth": "correct"
+    },
+    {
+      "id": "114",
+      "text": "6 × 10 = 57",
+      "truth": "incorrect"
+    },
+    {
+      "id": "115",
+      "text": "85 - 79 = 6",
+      "truth": "correct"
+    },
+    {
+      "id": "116",
+      "text": "91 + 78 = 167",
+      "truth": "incorrect"
+    },
+    {
+      "id": "117",
+      "text": "78 - 59 = 19",
+      "truth": "correct"
+    },
+    {
+      "id": "118",
+      "text": "33 - 26 = 7",
+      "truth": "correct"
+    },
+    {
+      "id": "119",
+      "text": "3 × 5 = 15",
+      "truth": "correct"
+    },
+    {
+      "id": "120",
+      "text": "10 × 7 = 80",
+      "truth": "incorrect"
+    }
+  ],
+  "count": 120
+}

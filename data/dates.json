@@ -1,0 +1,624 @@
+{
+  "name": "dates",
+  "generated_at": "2026-09-23T07:43:52.160Z",
+  "source": {
+    "name": "synthetic, deterministic",
+    "sampling": "120 date pairs 2019–2026 in three formats, seed 11, half A-first",
+    "license": "MIT (this repo)"
+  },
+  "task": {
+    "name": "dates",
+    "instructions": "Two dates are given. Decide which one comes first in time.",
+    "labels": [
+      "a_first",
+      "b_first"
+    ],
+    "criteria": {
+      "a_first": "Date A is earlier than date B.",
+      "b_first": "Date B is earlier than date A."
+    }
+  },
+  "items": [
+    {
+      "id": "1",
+      "text": "Date A: July 2, 2025. Date B: 2026-01-02.",
+      "truth": "a_first"
+    },
+    {
+      "id": "2",
+      "text": "Date A: 2025-06-18. Date B: 20 October 2025.",
+      "truth": "a_first"
+    },
+    {
+      "id": "3",
+      "text": "Date A: October 7, 2025. Date B: October 6, 2025.",
+      "truth": "b_first"
+    },
+    {
+      "id": "4",
+      "text": "Date A: 11 September 2021. Date B: March 28, 2022.",
+      "truth": "a_first"
+    },
+    {
+      "id": "5",
+      "text": "Date A: 2023-06-09. Date B: 2023-10-18.",
+      "truth": "a_first"
+    },
+    {
+      "id": "6",
+      "text": "Date A: 14 January 2019. Date B: 2020-10-15.",
+      "truth": "a_first"
+    },
+    {
+      "id": "7",
+      "text": "Date A: 2019-09-25. Date B: September 8, 2019.",
+      "truth": "b_first"
+    },
+    {
+      "id": "8",
+      "text": "Date A: 2022-12-27. Date B: 2022-12-09.",
+      "truth": "b_first"
+    },
+    {
+      "id": "9",
+      "text": "Date A: 4 May 2019. Date B: 2019-12-14.",
+      "truth": "a_first"
+    },
+    {
+      "id": "10",
+      "text": "Date A: 11 February 2024. Date B: 2024-02-07.",
+      "truth": "b_first"
+    },
+    {
+      "id": "11",
+      "text": "Date A: 2019-07-03. Date B: September 6, 2019.",
+      "truth": "a_first"
+    },
+    {
+      "id": "12",
+      "text": "Date A: 28 July 2019. Date B: July 5, 2019.",
+      "truth": "b_first"
+    },
+    {
+      "id": "13",
+      "text": "Date A: October 19, 2024. Date B: 2024-10-25.",
+      "truth": "a_first"
+    },
+    {
+      "id": "14",
+      "text": "Date A: October 20, 2019. Date B: May 23, 2019.",
+      "truth": "b_first"
+    },
+    {
+      "id": "15",
+      "text": "Date A: September 12, 2019. Date B: 2019-09-15.",
+      "truth": "a_first"
+    },
+    {
+      "id": "16",
+      "text": "Date A: September 28, 2023. Date B: 3 September 2023.",
+      "truth": "b_first"
+    },
+    {
+      "id": "17",
+      "text": "Date A: 8 April 2021. Date B: 4 January 2021.",
+      "truth": "b_first"
+    },
+    {
+      "id": "18",
+      "text": "Date A: July 20, 2021. Date B: 2021-07-24.",
+      "truth": "a_first"
+    },
+    {
+      "id": "19",
+      "text": "Date A: 28 January 2021. Date B: 19 November 2021.",
+      "truth": "a_first"
+    },
+    {
+      "id": "20",
+      "text": "Date A: 2019-05-19. Date B: 9 March 2019.",
+      "truth": "b_first"
+    },
+    {
+      "id": "21",
+      "text": "Date A: 27 April 2025. Date B: 2025-04-25.",
+      "truth": "b_first"
+    },
+    {
+      "id": "22",
+      "text": "Date A: 2026-03-12. Date B: 4 May 2026.",
+      "truth": "a_first"
+    },
+    {
+      "id": "23",
+      "text": "Date A: August 3, 2023. Date B: 28 July 2023.",
+      "truth": "b_first"
+    },
+    {
+      "id": "24",
+      "text": "Date A: 2023-08-13. Date B: 2023-09-06.",
+      "truth": "a_first"
+    },
+    {
+      "id": "25",
+      "text": "Date A: December 3, 2025. Date B: June 9, 2025.",
+      "truth": "b_first"
+    },
+    {
+      "id": "26",
+      "text": "Date A: May 27, 2021. Date B: July 4, 2021.",
+      "truth": "a_first"
+    },
+    {
+      "id": "27",
+      "text": "Date A: 2 December 2025. Date B: 6 December 2025.",
+      "truth": "a_first"
+    },
+    {
+      "id": "28",
+      "text": "Date A: 2024-01-27. Date B: December 10, 2024.",
+      "truth": "a_first"
+    },
+    {
+      "id": "29",
+      "text": "Date A: 2023-03-28. Date B: 24 March 2023.",
+      "truth": "b_first"
+    },
+    {
+      "id": "30",
+      "text": "Date A: 1 March 2021. Date B: 2021-08-05.",
+      "truth": "a_first"
+    },
+    {
+      "id": "31",
+      "text": "Date A: 2021-06-08. Date B: June 28, 2021.",
+      "truth": "a_first"
+    },
+    {
+      "id": "32",
+      "text": "Date A: 2021-04-02. Date B: April 24, 2021.",
+      "truth": "a_first"
+    },
+    {
+      "id": "33",
+      "text": "Date A: January 4, 2026. Date B: 3 January 2026.",
+      "truth": "b_first"
+    },
+    {
+      "id": "34",
+      "text": "Date A: 11 January 2022. Date B: 2022-06-11.",
+      "truth": "a_first"
+    },
+    {
+      "id": "35",
+      "text": "Date A: 9 May 2026. Date B: June 12, 2027.",
+      "truth": "a_first"
+    },
+    {
+      "id": "36",
+      "text": "Date A: May 2, 2026. Date B: 5 March 2026.",
+      "truth": "b_first"
+    },
+    {
+      "id": "37",
+      "text": "Date A: 28 September 2025. Date B: 2025-09-22.",
+      "truth": "b_first"
+    },
+    {
+      "id": "38",
+      "text": "Date A: 2025-10-09. Date B: 2025-10-06.",
+      "truth": "b_first"
+    },
+    {
+      "id": "39",
+      "text": "Date A: 2023-02-09. Date B: 6 February 2023.",
+      "truth": "b_first"
+    },
+    {
+      "id": "40",
+      "text": "Date A: 2023-11-09. Date B: 4 June 2023.",
+      "truth": "b_first"
+    },
+    {
+      "id": "41",
+      "text": "Date A: 21 July 2024. Date B: July 26, 2024.",
+      "truth": "a_first"
+    },
+    {
+      "id": "42",
+      "text": "Date A: 10 June 2020. Date B: 1 June 2020.",
+      "truth": "b_first"
+    },
+    {
+      "id": "43",
+      "text": "Date A: January 3, 2023. Date B: 9 May 2022.",
+      "truth": "b_first"
+    },
+    {
+      "id": "44",
+      "text": "Date A: 2026-05-13. Date B: May 21, 2026.",
+      "truth": "a_first"
+    },
+    {
+      "id": "45",
+      "text": "Date A: October 12, 2026. Date B: 2026-09-01.",
+      "truth": "b_first"
+    },
+    {
+      "id": "46",
+      "text": "Date A: October 16, 2026. Date B: 9 October 2026.",
+      "truth": "b_first"
+    },
+    {
+      "id": "47",
+      "text": "Date A: January 4, 2019. Date B: 21 January 2019.",
+      "truth": "a_first"
+    },
+    {
+      "id": "48",
+      "text": "Date A: December 11, 2023. Date B: 12 December 2023.",
+      "truth": "a_first"
+    },
+    {
+      "id": "49",
+      "text": "Date A: June 16, 2019. Date B: 11 February 2018.",
+      "truth": "b_first"
+    },
+    {
+      "id": "50",
+      "text": "Date A: January 21, 2019. Date B: February 25, 2020.",
+      "truth": "a_first"
+    },
+    {
+      "id": "51",
+      "text": "Date A: April 21, 2026. Date B: January 8, 2026.",
+      "truth": "b_first"
+    },
+    {
+      "id": "52",
+      "text": "Date A: 9 October 2023. Date B: 2023-10-07.",
+      "truth": "b_first"
+    },
+    {
+      "id": "53",
+      "text": "Date A: 27 March 2020. Date B: 22 February 2019.",
+      "truth": "b_first"
+    },
+    {
+      "id": "54",
+      "text": "Date A: 1 April 2019. Date B: 2019-04-15.",
+      "truth": "a_first"
+    },
+    {
+      "id": "55",
+      "text": "Date A: August 20, 2025. Date B: September 17, 2025.",
+      "truth": "a_first"
+    },
+    {
+      "id": "56",
+      "text": "Date A: June 21, 2026. Date B: 19 June 2026.",
+      "truth": "b_first"
+    },
+    {
+      "id": "57",
+      "text": "Date A: February 16, 2025. Date B: 18 March 2025.",
+      "truth": "a_first"
+    },
+    {
+      "id": "58",
+      "text": "Date A: 2020-03-13. Date B: November 21, 2020.",
+      "truth": "a_first"
+    },
+    {
+      "id": "59",
+      "text": "Date A: 3 August 2021. Date B: 9 August 2021.",
+      "truth": "a_first"
+    },
+    {
+      "id": "60",
+      "text": "Date A: November 26, 2023. Date B: 2023-08-04.",
+      "truth": "b_first"
+    },
+    {
+      "id": "61",
+      "text": "Date A: 2023-10-24. Date B: October 25, 2024.",
+      "truth": "a_first"
+    },
+    {
+      "id": "62",
+      "text": "Date A: August 28, 2023. Date B: 23 May 2023.",
+      "truth": "b_first"
+    },
+    {
+      "id": "63",
+      "text": "Date A: May 19, 2020. Date B: 2020-10-14.",
+      "truth": "a_first"
+    },
+    {
+      "id": "64",
+      "text": "Date A: 2022-09-08. Date B: 18 May 2022.",
+      "truth": "b_first"
+    },
+    {
+      "id": "65",
+      "text": "Date A: 16 April 2025. Date B: 2025-12-22.",
+      "truth": "a_first"
+    },
+    {
+      "id": "66",
+      "text": "Date A: August 7, 2020. Date B: September 3, 2020.",
+      "truth": "a_first"
+    },
+    {
+      "id": "67",
+      "text": "Date A: 12 September 2023. Date B: 8 July 2022.",
+      "truth": "b_first"
+    },
+    {
+      "id": "68",
+      "text": "Date A: 28 January 2019. Date B: 2018-04-12.",
+      "truth": "b_first"
+    },
+    {
+      "id": "69",
+      "text": "Date A: 7 November 2026. Date B: 13 January 2025.",
+      "truth": "b_first"
+    },
+    {
+      "id": "70",
+      "text": "Date A: 2023-06-16. Date B: 17 December 2023.",
+      "truth": "a_first"
+    },
+    {
+      "id": "71",
+      "text": "Date A: 19 October 2023. Date B: October 25, 2023.",
+      "truth": "a_first"
+    },
+    {
+      "id": "72",
+      "text": "Date A: April 10, 2021. Date B: 17 April 2021.",
+      "truth": "a_first"
+    },
+    {
+      "id": "73",
+      "text": "Date A: 26 June 2023. Date B: August 19, 2023.",
+      "truth": "a_first"
+    },
+    {
+      "id": "74",
+      "text": "Date A: 25 August 2026. Date B: 2026-08-02.",
+      "truth": "b_first"
+    },
+    {
+      "id": "75",
+      "text": "Date A: 18 March 2019. Date B: 2019-06-24.",
+      "truth": "a_first"
+    },
+    {
+      "id": "76",
+      "text": "Date A: 28 March 2023. Date B: 2023-03-16.",
+      "truth": "b_first"
+    },
+    {
+      "id": "77",
+      "text": "Date A: May 4, 2020. Date B: July 25, 2019.",
+      "truth": "b_first"
+    },
+    {
+      "id": "78",
+      "text": "Date A: March 10, 2024. Date B: 22 June 2024.",
+      "truth": "a_first"
+    },
+    {
+      "id": "79",
+      "text": "Date A: May 24, 2021. Date B: September 27, 2021.",
+      "truth": "a_first"
+    },
+    {
+      "id": "80",
+      "text": "Date A: January 21, 2025. Date B: 7 January 2025.",
+      "truth": "b_first"
+    },
+    {
+      "id": "81",
+      "text": "Date A: 21 September 2024. Date B: 10 March 2024.",
+      "truth": "b_first"
+    },
+    {
+      "id": "82",
+      "text": "Date A: June 5, 2024. Date B: 2024-01-26.",
+      "truth": "b_first"
+    },
+    {
+      "id": "83",
+      "text": "Date A: 2024-11-28. Date B: November 1, 2024.",
+      "truth": "b_first"
+    },
+    {
+      "id": "84",
+      "text": "Date A: February 16, 2020. Date B: February 5, 2020.",
+      "truth": "b_first"
+    },
+    {
+      "id": "85",
+      "text": "Date A: 2021-11-27. Date B: 3 May 2021.",
+      "truth": "b_first"
+    },
+    {
+      "id": "86",
+      "text": "Date A: November 11, 2021. Date B: 4 March 2021.",
+      "truth": "b_first"
+    },
+    {
+      "id": "87",
+      "text": "Date A: September 20, 2026. Date B: 2 April 2026.",
+      "truth": "b_first"
+    },
+    {
+      "id": "88",
+      "text": "Date A: 18 November 2025. Date B: November 7, 2025.",
+      "truth": "b_first"
+    },
+    {
+      "id": "89",
+      "text": "Date A: November 21, 2019. Date B: August 6, 2019.",
+      "truth": "b_first"
+    },
+    {
+      "id": "90",
+      "text": "Date A: 2026-11-03. Date B: 24 April 2026.",
+      "truth": "b_first"
+    },
+    {
+      "id": "91",
+      "text": "Date A: November 12, 2025. Date B: August 2, 2025.",
+      "truth": "b_first"
+    },
+    {
+      "id": "92",
+      "text": "Date A: 2019-05-09. Date B: 21 September 2019.",
+      "truth": "a_first"
+    },
+    {
+      "id": "93",
+      "text": "Date A: 17 April 2021. Date B: 12 March 2022.",
+      "truth": "a_first"
+    },
+    {
+      "id": "94",
+      "text": "Date A: 2020-01-12. Date B: 24 July 2019.",
+      "truth": "b_first"
+    },
+    {
+      "id": "95",
+      "text": "Date A: 21 January 2024. Date B: February 2, 2024.",
+      "truth": "a_first"
+    },
+    {
+      "id": "96",
+      "text": "Date A: 2026-05-17. Date B: 26 May 2026.",
+      "truth": "a_first"
+    },
+    {
+      "id": "97",
+      "text": "Date A: March 3, 2026. Date B: 2 March 2026.",
+      "truth": "b_first"
+    },
+    {
+      "id": "98",
+      "text": "Date A: 12 January 2024. Date B: January 24, 2024.",
+      "truth": "a_first"
+    },
+    {
+      "id": "99",
+      "text": "Date A: 16 July 2021. Date B: 2 July 2021.",
+      "truth": "b_first"
+    },
+    {
+      "id": "100",
+      "text": "Date A: 9 April 2026. Date B: April 25, 2026.",
+      "truth": "a_first"
+    },
+    {
+      "id": "101",
+      "text": "Date A: August 24, 2023. Date B: May 15, 2023.",
+      "truth": "b_first"
+    },
+    {
+      "id": "102",
+      "text": "Date A: 2026-08-15. Date B: March 3, 2025.",
+      "truth": "b_first"
+    },
+    {
+      "id": "103",
+      "text": "Date A: 11 December 2020. Date B: 2021-06-28.",
+      "truth": "a_first"
+    },
+    {
+      "id": "104",
+      "text": "Date A: January 1, 2025. Date B: 13 July 2025.",
+      "truth": "a_first"
+    },
+    {
+      "id": "105",
+      "text": "Date A: 2 October 2020. Date B: 18 October 2020.",
+      "truth": "a_first"
+    },
+    {
+      "id": "106",
+      "text": "Date A: 10 April 2019. Date B: 2019-10-17.",
+      "truth": "a_first"
+    },
+    {
+      "id": "107",
+      "text": "Date A: 2024-06-25. Date B: 16 June 2024.",
+      "truth": "b_first"
+    },
+    {
+      "id": "108",
+      "text": "Date A: 2 December 2023. Date B: 4 June 2023.",
+      "truth": "b_first"
+    },
+    {
+      "id": "109",
+      "text": "Date A: 1 January 2021. Date B: September 18, 2021.",
+      "truth": "a_first"
+    },
+    {
+      "id": "110",
+      "text": "Date A: June 19, 2022. Date B: 17 August 2022.",
+      "truth": "a_first"
+    },
+    {
+      "id": "111",
+      "text": "Date A: September 17, 2020. Date B: 9 August 2020.",
+      "truth": "b_first"
+    },
+    {
+      "id": "112",
+      "text": "Date A: May 10, 2019. Date B: 23 May 2019.",
+      "truth": "a_first"
+    },
+    {
+      "id": "113",
+      "text": "Date A: May 4, 2021. Date B: 8 March 2021.",
+      "truth": "b_first"
+    },
+    {
+      "id": "114",
+      "text": "Date A: 2023-03-25. Date B: July 20, 2024.",
+      "truth": "a_first"
+    },
+    {
+      "id": "115",
+      "text": "Date A: 2021-09-07. Date B: 23 January 2021.",
+      "truth": "b_first"
+    },
+    {
+      "id": "116",
+      "text": "Date A: 2019-10-15. Date B: 2019-12-10.",
+      "truth": "a_first"
+    },
+    {
+      "id": "117",
+      "text": "Date A: 1 April 2026. Date B: 2026-02-02.",
+      "truth": "b_first"
+    },
+    {
+      "id": "118",
+      "text": "Date A: 1 April 2023. Date B: 2023-04-13.",
+      "truth": "a_first"
+    },
+    {
+      "id": "119",
+      "text": "Date A: February 10, 2025. Date B: 2025-12-16.",
+      "truth": "a_first"
+    },
+    {
+      "id": "120",
+      "text": "Date A: 4 April 2023. Date B: 2023-04-25.",
+      "truth": "a_first"
+    }
+  ],
+  "count": 120
+}

@@ -1,0 +1,986 @@
+{
+  "name": "sentiment",
+  "generated_at": "2026-09-23T07:43:53.091Z",
+  "source": {
+    "name": "Sentiment Labelled Sentences (UCI)",
+    "url": "https://archive.ics.uci.edu/dataset/331/sentiment+labelled+sentences",
+    "license": "CC BY 4.0",
+    "citation": "Kotzias, Denil, de Freitas & Smyth, \"From Group to Individual Labels using Deep Features\", KDD 2015",
+    "sampling": "120 sentences of 12–160 characters, half positive, seeded (11) from the IMDB, Amazon and Yelp files"
+  },
+  "task": {
+    "name": "sentiment",
+    "instructions": "Decide whether this short review is positive or negative.",
+    "labels": [
+      "positive",
+      "negative"
+    ],
+    "criteria": {
+      "positive": "The reviewer is satisfied, praises or recommends.",
+      "negative": "The reviewer is dissatisfied, complains or warns against."
+    }
+  },
+  "items": [
+    {
+      "id": "1",
+      "text": "Again, no plot at all.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "2",
+      "text": "But, Kevin Spacey is an excellent, verbal tsunami as Buddy Ackerman  and totally believable because he is a great actor.",
+      "truth": "positive",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "3",
+      "text": "This is my new fav Vegas buffet spot.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "4",
+      "text": "I'll even say it again  this is torture.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "5",
+      "text": "All three broke within two months of use.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "6",
+      "text": "However, after about a year, the fliptop started to get loose and wobbly and eventually my screen went black and I couldn't receive and place calls.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "7",
+      "text": "There is not a deal good enough that would drag me into that establishment again.",
+      "truth": "negative",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "8",
+      "text": "Anyways, The food was definitely not filling at all, and for the price you pay you should expect more.",
+      "truth": "negative",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "9",
+      "text": "& That movie was bad.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "10",
+      "text": "Setup went very smoothly.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "11",
+      "text": "Simple, lightweight and great fit.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "12",
+      "text": "Bacon is hella salty.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "13",
+      "text": "I received my supposedly new motorola 375 and apparently there was not a match between the phone and the charger.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "14",
+      "text": "My side Greek salad with the Greek dressing was so tasty, and the pita and hummus was very refreshing.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "15",
+      "text": "The soundtrack wasn't terrible, either.",
+      "truth": "positive",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "16",
+      "text": "An extensive menu provides lots of options for breakfast.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "17",
+      "text": "What a waste.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "18",
+      "text": "Then, there's the plot holes.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "19",
+      "text": "The movie is full of wonderful dancing (hence the title!",
+      "truth": "positive",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "20",
+      "text": "The phone gets EXTREMELY HOT!",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "21",
+      "text": "The guys all had steaks, and our steak loving son who has had steak at the best and worst places said it was the best steak he's ever eaten.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "22",
+      "text": "***SPOILERS*** Whatever else can (or can't) be said about it, SURFACE is superbly crafted.",
+      "truth": "positive",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "23",
+      "text": "The atmosphere is modern and hip, while maintaining a touch of coziness.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "24",
+      "text": "This was one of the worst films i have ever seen.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "25",
+      "text": "Perfect for someone (me) who only likes beer ice cold, or in this case, even colder.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "26",
+      "text": "This is one of the best movies out there that shows such strong sibling bond for each other.",
+      "truth": "positive",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "27",
+      "text": "The service here leaves a lot to be desired.",
+      "truth": "negative",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "28",
+      "text": "The only possible way this movie could be redeemed would be as MST3K fodder.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "29",
+      "text": "Works like a charm; it work the same as the one I got with the phone.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "30",
+      "text": "A greasy, unhealthy meal.",
+      "truth": "negative",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "31",
+      "text": "That being said, for a phone, the camera is very nice; many cool effects to play with, and video is decent as well.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "32",
+      "text": "Can't store anything but phone numbers to SIM.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "33",
+      "text": "I dressed up to be treated so rudely!",
+      "truth": "negative",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "34",
+      "text": "It's A PIECE OF CRAP!",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "35",
+      "text": "Oh and I forgot to also mention the weird color effect it has on your phone.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "36",
+      "text": "So Far So Good!.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "37",
+      "text": "Jawbone Era is awesome too!",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "38",
+      "text": "Don't buy it.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "39",
+      "text": "So we went to Tigerlilly and had a fantastic afternoon!",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "40",
+      "text": "Happy so far!.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "41",
+      "text": "I guess it was supposed to be clever twist, then shed some light on the situation, but it was just stupid.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "42",
+      "text": "Very little music or anything to speak of.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "43",
+      "text": "The worst phone I've ever had.... Only had it for a few months.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "44",
+      "text": "By this time our side of the restaurant was almost empty so there was no excuse.",
+      "truth": "negative",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "45",
+      "text": "There were several moments in the movie that just didn't need to be there and were excruciatingly slow moving.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "46",
+      "text": "Here's where the movie really pi**ed me off.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "47",
+      "text": "I bought it for my mother and she had a problem with the battery.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "48",
+      "text": "It has a great camera thats 2MP, and the pics are nice and clear with great picture quality.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "49",
+      "text": "First of all, it doesn't wear well.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "50",
+      "text": "Buyer--Be Very Careful!!!!!.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "51",
+      "text": "They will customize your order any way you'd like, my usual is Eggplant with Green Bean stir fry, love it!",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "52",
+      "text": "The food, amazing.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "53",
+      "text": "Very nice and relaxing late night viewing.",
+      "truth": "positive",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "54",
+      "text": "Won't go back.",
+      "truth": "negative",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "55",
+      "text": "Very disappointing.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "56",
+      "text": "Which are small and not worth the price.",
+      "truth": "negative",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "57",
+      "text": "Not much dialogue, not much music, the whole film was shot as elaborately and aesthetically like a sculpture.",
+      "truth": "positive",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "58",
+      "text": "My first visit to Hiro was a delight!",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "59",
+      "text": "Never got it!!!!!",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "60",
+      "text": "It's like a bad two hour TV movie.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "61",
+      "text": "My brother in law who works at the mall ate here same day, and guess what he was sick all night too.",
+      "truth": "negative",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "62",
+      "text": "Disapointing Results.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "63",
+      "text": "The only suspense I was feeling was the frustration at just how retarded the girls were.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "64",
+      "text": "Everything Captain Howdy says is either laughable or just plain stupid.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "65",
+      "text": "Plug was the wrong size.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "66",
+      "text": "Product was excellent and works better than the verizon one and Boy was it cheaper!",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "67",
+      "text": "Nothing new there.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "68",
+      "text": "I've missed numerous calls because of this reason.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "69",
+      "text": "i'm glad i found this product on amazon it is hard to find, it wasn't high priced.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "70",
+      "text": "Crisp and Clear.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "71",
+      "text": "I recommend iGo to anyone with different brand cell phones/mp3 players in the family.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "72",
+      "text": "Battery life is real good.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "73",
+      "text": "The directing and the cinematography aren't quite as good.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "74",
+      "text": "I believe that this place is a great stop for those with a huge belly and hankering for sushi.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "75",
+      "text": "My friend loved the salmon tartar.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "76",
+      "text": "Protects the phone on all sides.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "77",
+      "text": "A great film by a great director.",
+      "truth": "positive",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "78",
+      "text": "The cinematography is simply stunning (to say the least) and the fx are nothing if not state-of-the-art.",
+      "truth": "positive",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "79",
+      "text": "Buy it, play it, enjoy it, love it.",
+      "truth": "positive",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "80",
+      "text": "Doesn't Work.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "81",
+      "text": "Great Phone.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "82",
+      "text": "This is cool because most cases are just open there allowing the screen to get all scratched up.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "83",
+      "text": "Bad characters, bad story and bad acting.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "84",
+      "text": "Service was fine and the waitress was friendly.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "85",
+      "text": "The film succeeds despite, or perhaps because of, an obviously meagre budget.",
+      "truth": "positive",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "86",
+      "text": "It is not good.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "87",
+      "text": "This was a flick doomed from its conception.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "88",
+      "text": "Based on the sub-par service I received and no effort to show their gratitude for my business I won't be going back.",
+      "truth": "negative",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "89",
+      "text": "This one wants to surf on the small wave of space movies in 1998 (Deep Impact and Armageddon), and this one fails everywhere.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "90",
+      "text": "Brilliance indeed.",
+      "truth": "positive",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "91",
+      "text": "Plus, with the movie's rather modest budget and fast running time, it does an amazing job!",
+      "truth": "positive",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "92",
+      "text": "I have a Verizon LG phone and they work well together, good reception and range that exceeds 20 feet line of sight.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "93",
+      "text": "Went in for happy hour, great list of wines.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "94",
+      "text": "Excellent bluetooth headset.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "95",
+      "text": "It was extremely \"crumby\" and pretty tasteless.",
+      "truth": "negative",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "96",
+      "text": "That just SCREAMS \"LEGIT\" in my book...somethat's also pretty rare here in Vegas.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "97",
+      "text": "Just spicy enough.. Perfect actually.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "98",
+      "text": "Not recommended.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "99",
+      "text": "This movie is terrible.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "100",
+      "text": "I sat riveted to the TV screen.",
+      "truth": "positive",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "101",
+      "text": "And then tragedy struck.",
+      "truth": "negative",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "102",
+      "text": "This pair of headphones is the worst that I have ever had sound-wise.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "103",
+      "text": "This is by far the worst purchase I've made on Amazon.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "104",
+      "text": "This is a GREAT place to eat!",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "105",
+      "text": "Wow very spicy but delicious.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "106",
+      "text": "Go watch it!",
+      "truth": "positive",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "107",
+      "text": "It didn't charge for me.",
+      "truth": "negative",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "108",
+      "text": "The dining space is tiny, but elegantly decorated and comfortable.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "109",
+      "text": "Not recommended.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "110",
+      "text": "Mobile Phone Tools are a must have.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "111",
+      "text": "These were so good we ordered them twice.",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "112",
+      "text": "Kids pizza is always a hit too with lots of great side dish options for the kiddos!",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "113",
+      "text": "And the drinks are WEAK, people!",
+      "truth": "negative",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "114",
+      "text": "Best tacos in town by far!!",
+      "truth": "positive",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "115",
+      "text": "Don't waste your time here.",
+      "truth": "negative",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "116",
+      "text": "like the other reviewer said \"you couldn't pay me to eat at this place again.\"",
+      "truth": "negative",
+      "meta": {
+        "origin": "yelp"
+      }
+    },
+    {
+      "id": "117",
+      "text": "It was clear that she had the range and ability to pull off this part.",
+      "truth": "positive",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "118",
+      "text": "This is a beautiful phone.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    },
+    {
+      "id": "119",
+      "text": "Then the film just dropped the ball.",
+      "truth": "negative",
+      "meta": {
+        "origin": "imdb"
+      }
+    },
+    {
+      "id": "120",
+      "text": "Very good phone.",
+      "truth": "positive",
+      "meta": {
+        "origin": "amazon"
+      }
+    }
+  ],
+  "count": 120
+}

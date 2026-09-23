@@ -1,0 +1,1959 @@
+{
+ "dataset": "arith",
+ "tag": "jev",
+ "role": "system1",
+ "defense": "none",
+ "generated_at": "2026-09-23T07:46:30.854Z",
+ "started_at": "2026-09-23T07:45:42.192Z",
+ "complete": true,
+ "system": {
+  "provider": "jev",
+  "kind": "decision",
+  "model": "typesafe/jev-1.13",
+  "base_url": "https://openrouter.ai/api/alpha/decisions",
+  "api_key_env": "OPENROUTER_API_KEY",
+  "confidence": "model",
+  "extra_headers": []
+ },
+ "count": 120,
+ "errors": 0,
+ "cache": {
+  "hits": 0,
+  "misses": 120
+ },
+ "summary": {
+  "n": 120,
+  "correct": 103,
+  "accuracy": 0.858333,
+  "accuracy_ci": {
+   "lo": 0.784804,
+   "hi": 0.909632
+  },
+  "cost_total_usd": 0.001809,
+  "cost_per_1k_usd": 0.015072,
+  "cost_coverage": 1,
+  "mean_latency_ms": 304.891667
+ },
+ "items": [
+  {
+   "id": "1",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.99,
+    "incorrect": 0.01
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 358,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "2",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 341,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "3",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.94,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.03,
+    "incorrect": 0.97
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 258,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "4",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 351,
+   "input_tokens": 357,
+   "output_tokens": 31
+  },
+  {
+   "id": "5",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0,
+    "incorrect": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 279,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "6",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 1,
+    "correct": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 284,
+   "input_tokens": 357,
+   "output_tokens": 31
+  },
+  {
+   "id": "7",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.98,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.01,
+    "correct": 0.99
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 235,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "8",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.76,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.88,
+    "correct": 0.12
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 253,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "9",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.96,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.98,
+    "correct": 0.02
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 330,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "10",
+   "truth": "incorrect",
+   "pred": "correct",
+   "confidence": 0.89,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.94,
+    "incorrect": 0.06
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 251,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "11",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.85,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.92,
+    "incorrect": 0.08
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 293,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "12",
+   "truth": "incorrect",
+   "pred": "correct",
+   "confidence": 0.94,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.03,
+    "correct": 0.97
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 326,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "13",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 1,
+    "incorrect": 0
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 306,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "14",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.91,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.05,
+    "correct": 0.95
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 315,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "15",
+   "truth": "incorrect",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 379,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "16",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.75,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.13,
+    "incorrect": 0.87
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 299,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "17",
+   "truth": "incorrect",
+   "pred": "correct",
+   "confidence": 0.84,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.08,
+    "correct": 0.92
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 338,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "18",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 343,
+   "input_tokens": 357,
+   "output_tokens": 31
+  },
+  {
+   "id": "19",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.98,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.99,
+    "incorrect": 0.01
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 348,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "20",
+   "truth": "incorrect",
+   "pred": "correct",
+   "confidence": 0.79,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.11,
+    "correct": 0.89
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 310,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "21",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.95,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.02,
+    "correct": 0.98
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 301,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "22",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.2,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.6,
+    "incorrect": 0.4
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 285,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "23",
+   "truth": "incorrect",
+   "pred": "correct",
+   "confidence": 0.69,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.15,
+    "correct": 0.85
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 254,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "24",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.96,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.02,
+    "correct": 0.98
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 281,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "25",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 1,
+    "incorrect": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 230,
+   "input_tokens": 357,
+   "output_tokens": 31
+  },
+  {
+   "id": "26",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.9,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.95,
+    "correct": 0.05
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 287,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "27",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0,
+    "incorrect": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 308,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "28",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0,
+    "incorrect": 1
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 283,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "29",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.99,
+    "correct": 0.01
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 317,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "30",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.88,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.94,
+    "incorrect": 0.06
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 334,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "31",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 1,
+    "incorrect": 0
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 303,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "32",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 288,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "33",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.86,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.07,
+    "incorrect": 0.93
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 269,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "34",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.96,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.02,
+    "incorrect": 0.98
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 420,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "35",
+   "truth": "incorrect",
+   "pred": "correct",
+   "confidence": 0.9,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.05,
+    "correct": 0.95
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 386,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "36",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 253,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "37",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 1,
+    "incorrect": 0
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 322,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "38",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 324,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "39",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.98,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.99,
+    "incorrect": 0.01
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 332,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "40",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.01,
+    "correct": 0.99
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 239,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "41",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0,
+    "incorrect": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 241,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "42",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.01,
+    "correct": 0.99
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 295,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "43",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0,
+    "incorrect": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 240,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "44",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.45,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.27,
+    "incorrect": 0.73
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 293,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "45",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.01,
+    "incorrect": 0.99
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 271,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "46",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.89,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.06,
+    "correct": 0.94
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 302,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "47",
+   "truth": "incorrect",
+   "pred": "correct",
+   "confidence": 0.77,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.88,
+    "incorrect": 0.12
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 337,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "48",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.9,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.95,
+    "incorrect": 0.05
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 243,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "49",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.81,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.91,
+    "correct": 0.09
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 379,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "50",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.54,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.23,
+    "correct": 0.77
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 392,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "51",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0,
+    "incorrect": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 349,
+   "input_tokens": 357,
+   "output_tokens": 31
+  },
+  {
+   "id": "52",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.94,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.03,
+    "correct": 0.97
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 329,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "53",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.89,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.06,
+    "incorrect": 0.94
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 348,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "54",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.37,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.32,
+    "incorrect": 0.68
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 307,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "55",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.98,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.01,
+    "correct": 0.99
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 262,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "56",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.94,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.97,
+    "correct": 0.03
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 337,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "57",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.96,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.98,
+    "correct": 0.02
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 336,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "58",
+   "truth": "incorrect",
+   "pred": "correct",
+   "confidence": 0.93,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.04,
+    "correct": 0.96
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 298,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "59",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 285,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "60",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 1,
+    "correct": 0
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 272,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "61",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.85,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.08,
+    "incorrect": 0.92
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 306,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "62",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.99,
+    "incorrect": 0.01
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 299,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "63",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 1,
+    "incorrect": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 398,
+   "input_tokens": 357,
+   "output_tokens": 31
+  },
+  {
+   "id": "64",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.89,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.05,
+    "correct": 0.95
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 246,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "65",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.97,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.02,
+    "correct": 0.98
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 237,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "66",
+   "truth": "incorrect",
+   "pred": "correct",
+   "confidence": 0.93,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.03,
+    "correct": 0.97
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 247,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "67",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.67,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.84,
+    "correct": 0.16
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 255,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "68",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 421,
+   "input_tokens": 357,
+   "output_tokens": 31
+  },
+  {
+   "id": "69",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 1,
+    "correct": 0
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 263,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "70",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.2,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.6,
+    "correct": 0.4
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 339,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "71",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.65,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.82,
+    "incorrect": 0.18
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 360,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "72",
+   "truth": "incorrect",
+   "pred": "correct",
+   "confidence": 0.39,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.7,
+    "incorrect": 0.3
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 360,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "73",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0,
+    "incorrect": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 255,
+   "input_tokens": 357,
+   "output_tokens": 31
+  },
+  {
+   "id": "74",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 1,
+    "incorrect": 0
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 271,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "75",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.7,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.85,
+    "correct": 0.15
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 292,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "76",
+   "truth": "correct",
+   "pred": "incorrect",
+   "confidence": 0.77,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.88,
+    "correct": 0.12
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 277,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "77",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.87,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.06,
+    "correct": 0.94
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 365,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "78",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.01,
+    "correct": 0.99
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 386,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "79",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.94,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.03,
+    "incorrect": 0.97
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 302,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "80",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 371,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "81",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.98,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.01,
+    "incorrect": 0.99
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 370,
+   "input_tokens": 357,
+   "output_tokens": 31
+  },
+  {
+   "id": "82",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.06,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.47,
+    "incorrect": 0.53
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 421,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "83",
+   "truth": "incorrect",
+   "pred": "correct",
+   "confidence": 0.51,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.24,
+    "correct": 0.76
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 269,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "84",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.99,
+    "correct": 0.01
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 409,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "85",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.89,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.06,
+    "correct": 0.94
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 303,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "86",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 1,
+    "incorrect": 0
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 275,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "87",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.99,
+    "correct": 0.01
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 310,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "88",
+   "truth": "incorrect",
+   "pred": "correct",
+   "confidence": 0.65,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.83,
+    "incorrect": 0.17
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 265,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "89",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 1,
+    "incorrect": 0
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 243,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "90",
+   "truth": "incorrect",
+   "pred": "correct",
+   "confidence": 0.3,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.65,
+    "incorrect": 0.35
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 272,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "91",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 1,
+    "incorrect": 0
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 306,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "92",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 270,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "93",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.96,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.02,
+    "correct": 0.98
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 302,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "94",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.92,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.96,
+    "incorrect": 0.04
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 353,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "95",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 270,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "96",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 401,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "97",
+   "truth": "incorrect",
+   "pred": "correct",
+   "confidence": 0.47,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.73,
+    "incorrect": 0.27
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 279,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "98",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0,
+    "incorrect": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 291,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "99",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.12,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.56,
+    "correct": 0.44
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 307,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "100",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.98,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.01,
+    "correct": 0.99
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 296,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "101",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 290,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "102",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 1,
+    "correct": 0
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 244,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "103",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.96,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.98,
+    "correct": 0.02
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 386,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "104",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 1,
+    "incorrect": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 315,
+   "input_tokens": 357,
+   "output_tokens": 31
+  },
+  {
+   "id": "105",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0,
+    "incorrect": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 277,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "106",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 266,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "107",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0,
+    "incorrect": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 308,
+   "input_tokens": 357,
+   "output_tokens": 31
+  },
+  {
+   "id": "108",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.01,
+    "incorrect": 0.99
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 255,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "109",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 1,
+    "incorrect": 0
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 288,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "110",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.94,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.03,
+    "correct": 0.97
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 280,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "111",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.86,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.07,
+    "correct": 0.93
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 298,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "112",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 1,
+    "correct": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 271,
+   "input_tokens": 357,
+   "output_tokens": 31
+  },
+  {
+   "id": "113",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 242,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "114",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0,
+    "incorrect": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 282,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "115",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.98,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.99,
+    "incorrect": 0.01
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 265,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "116",
+   "truth": "incorrect",
+   "pred": "correct",
+   "confidence": 0.95,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 0.98,
+    "incorrect": 0.02
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 272,
+   "input_tokens": 360,
+   "output_tokens": 31
+  },
+  {
+   "id": "117",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 0.94,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.03,
+    "correct": 0.97
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 276,
+   "input_tokens": 359,
+   "output_tokens": 31
+  },
+  {
+   "id": "118",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "correct": 1,
+    "incorrect": 0
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 393,
+   "input_tokens": 358,
+   "output_tokens": 31
+  },
+  {
+   "id": "119",
+   "truth": "correct",
+   "pred": "correct",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0,
+    "correct": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 278,
+   "input_tokens": 357,
+   "output_tokens": 31
+  },
+  {
+   "id": "120",
+   "truth": "incorrect",
+   "pred": "incorrect",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "incorrect": 0.99,
+    "correct": 0.01
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 310,
+   "input_tokens": 358,
+   "output_tokens": 31
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-09-23T07:50:42.993Z",
+  "tasks": [
+    {
+      "id": "massive-en",
+      "file": "assets/play/massive-en.json",
+      "title": "Voice-assistant requests (English)",
+      "question": "Which of 18 things is the user asking for?",
+      "n": 600,
+      "labels": 18,
+      "s2": [
+        "gpt-5.2"
+      ]
+    },
+    {
+      "id": "massive-fr",
+      "file": "assets/play/massive-fr.json",
+      "title": "Same requests, in French",
+      "question": "Same 18 answers, French text, English criteria.",
+      "n": 600,
+      "labels": 18,
+      "s2": [
+        "gpt-5.2"
+      ]
+    },
+    {
+      "id": "massive-en-injected",
+      "file": "assets/play/massive-en-injected.json",
+      "title": "Requests with an attacker's note inside",
+      "question": "Same 18 answers, but the text tries to trick the model.",
+      "n": 480,
+      "labels": 18,
+      "s2": [
+        "gpt-5.2"
+      ]
+    }
+  ]
+}

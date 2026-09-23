@@ -1,0 +1,1959 @@
+{
+ "dataset": "dates",
+ "tag": "jev",
+ "role": "system1",
+ "defense": "none",
+ "generated_at": "2026-09-23T07:45:42.114Z",
+ "started_at": "2026-09-23T07:44:52.993Z",
+ "complete": true,
+ "system": {
+  "provider": "jev",
+  "kind": "decision",
+  "model": "typesafe/jev-1.13",
+  "base_url": "https://openrouter.ai/api/alpha/decisions",
+  "api_key_env": "OPENROUTER_API_KEY",
+  "confidence": "model",
+  "extra_headers": []
+ },
+ "count": 120,
+ "errors": 0,
+ "cache": {
+  "hits": 0,
+  "misses": 120
+ },
+ "summary": {
+  "n": 120,
+  "correct": 120,
+  "accuracy": 1,
+  "accuracy_ci": {
+   "lo": 0.96898,
+   "hi": 1
+  },
+  "cost_total_usd": 0.001795,
+  "cost_per_1k_usd": 0.01496,
+  "cost_coverage": 1,
+  "mean_latency_ms": 308.591667
+ },
+ "items": [
+  {
+   "id": "1",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 350,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "2",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 240,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "3",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 292,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "4",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 401,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "5",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 329,
+   "input_tokens": 359,
+   "output_tokens": 34
+  },
+  {
+   "id": "6",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 290,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "7",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 247,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "8",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 255,
+   "input_tokens": 359,
+   "output_tokens": 34
+  },
+  {
+   "id": "9",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 370,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "10",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 297,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "11",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 291,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "12",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 273,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "13",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 258,
+   "input_tokens": 358,
+   "output_tokens": 34
+  },
+  {
+   "id": "14",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 295,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "15",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 268,
+   "input_tokens": 358,
+   "output_tokens": 34
+  },
+  {
+   "id": "16",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 255,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "17",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014826,
+   "cost_source": "provider",
+   "latency_ms": 278,
+   "input_tokens": 353,
+   "output_tokens": 34
+  },
+  {
+   "id": "18",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 352,
+   "input_tokens": 358,
+   "output_tokens": 34
+  },
+  {
+   "id": "19",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 414,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "20",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 279,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "21",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 341,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "22",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 298,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "23",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 384,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "24",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 467,
+   "input_tokens": 359,
+   "output_tokens": 34
+  },
+  {
+   "id": "25",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 339,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "26",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 297,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "27",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014826,
+   "cost_source": "provider",
+   "latency_ms": 321,
+   "input_tokens": 353,
+   "output_tokens": 34
+  },
+  {
+   "id": "28",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 0.91,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0.95,
+    "b_first": 0.05
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 264,
+   "input_tokens": 358,
+   "output_tokens": 34
+  },
+  {
+   "id": "29",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 393,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "30",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 258,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "31",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 236,
+   "input_tokens": 358,
+   "output_tokens": 34
+  },
+  {
+   "id": "32",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 277,
+   "input_tokens": 358,
+   "output_tokens": 34
+  },
+  {
+   "id": "33",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 268,
+   "input_tokens": 354,
+   "output_tokens": 34
+  },
+  {
+   "id": "34",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 252,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "35",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 362,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "36",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 256,
+   "input_tokens": 354,
+   "output_tokens": 34
+  },
+  {
+   "id": "37",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 313,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "38",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 289,
+   "input_tokens": 359,
+   "output_tokens": 34
+  },
+  {
+   "id": "39",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 298,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "40",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 244,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "41",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 299,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "42",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 442,
+   "input_tokens": 354,
+   "output_tokens": 34
+  },
+  {
+   "id": "43",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 273,
+   "input_tokens": 354,
+   "output_tokens": 34
+  },
+  {
+   "id": "44",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 277,
+   "input_tokens": 358,
+   "output_tokens": 34
+  },
+  {
+   "id": "45",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 294,
+   "input_tokens": 358,
+   "output_tokens": 34
+  },
+  {
+   "id": "46",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 270,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "47",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 304,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "48",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 279,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "49",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 1486,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "50",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 266,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "51",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 345,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "52",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 294,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "53",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 254,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "54",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 379,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "55",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 285,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "56",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 270,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "57",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 280,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "58",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 275,
+   "input_tokens": 358,
+   "output_tokens": 34
+  },
+  {
+   "id": "59",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000014826,
+   "cost_source": "provider",
+   "latency_ms": 282,
+   "input_tokens": 353,
+   "output_tokens": 34
+  },
+  {
+   "id": "60",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 268,
+   "input_tokens": 358,
+   "output_tokens": 34
+  },
+  {
+   "id": "61",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 346,
+   "input_tokens": 358,
+   "output_tokens": 34
+  },
+  {
+   "id": "62",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 272,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "63",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 282,
+   "input_tokens": 358,
+   "output_tokens": 34
+  },
+  {
+   "id": "64",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 349,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "65",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 256,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "66",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 262,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "67",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 301,
+   "input_tokens": 354,
+   "output_tokens": 34
+  },
+  {
+   "id": "68",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 289,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "69",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 260,
+   "input_tokens": 354,
+   "output_tokens": 34
+  },
+  {
+   "id": "70",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 275,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "71",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 265,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "72",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 352,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "73",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 289,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "74",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 283,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "75",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 309,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "76",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 294,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "77",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 262,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "78",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 295,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "79",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 276,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "80",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 350,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "81",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 339,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "82",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 277,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "83",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 291,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "84",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 266,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "85",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 288,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "86",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 294,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "87",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 256,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "88",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 256,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "89",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 450,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "90",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 350,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "91",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 275,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "92",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 272,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "93",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 305,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "94",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 417,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "95",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 279,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "96",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 275,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "97",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 283,
+   "input_tokens": 354,
+   "output_tokens": 34
+  },
+  {
+   "id": "98",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 314,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "99",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 276,
+   "input_tokens": 354,
+   "output_tokens": 34
+  },
+  {
+   "id": "100",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 306,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "101",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 293,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "102",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 226,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "103",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 264,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "104",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 260,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "105",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 263,
+   "input_tokens": 354,
+   "output_tokens": 34
+  },
+  {
+   "id": "106",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 312,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "107",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 450,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "108",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014826,
+   "cost_source": "provider",
+   "latency_ms": 236,
+   "input_tokens": 353,
+   "output_tokens": 34
+  },
+  {
+   "id": "109",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 286,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "110",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 397,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "111",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 309,
+   "input_tokens": 355,
+   "output_tokens": 34
+  },
+  {
+   "id": "112",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 301,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "113",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 274,
+   "input_tokens": 354,
+   "output_tokens": 34
+  },
+  {
+   "id": "114",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 270,
+   "input_tokens": 358,
+   "output_tokens": 34
+  },
+  {
+   "id": "115",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 1,
+    "a_first": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 246,
+   "input_tokens": 357,
+   "output_tokens": 34
+  },
+  {
+   "id": "116",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 282,
+   "input_tokens": 359,
+   "output_tokens": 34
+  },
+  {
+   "id": "117",
+   "truth": "b_first",
+   "pred": "b_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 0,
+    "b_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 328,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "118",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 263,
+   "input_tokens": 356,
+   "output_tokens": 34
+  },
+  {
+   "id": "119",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "a_first": 1,
+    "b_first": 0
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 246,
+   "input_tokens": 358,
+   "output_tokens": 34
+  },
+  {
+   "id": "120",
+   "truth": "a_first",
+   "pred": "a_first",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "b_first": 0,
+    "a_first": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 276,
+   "input_tokens": 356,
+   "output_tokens": 34
+  }
+ ]
+}

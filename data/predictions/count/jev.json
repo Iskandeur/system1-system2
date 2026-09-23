@@ -1,0 +1,1959 @@
+{
+ "dataset": "count",
+ "tag": "jev",
+ "role": "system1",
+ "defense": "none",
+ "generated_at": "2026-09-23T07:44:47.257Z",
+ "started_at": "2026-09-23T07:43:58.986Z",
+ "complete": true,
+ "system": {
+  "provider": "jev",
+  "kind": "decision",
+  "model": "typesafe/jev-1.13",
+  "base_url": "https://openrouter.ai/api/alpha/decisions",
+  "api_key_env": "OPENROUTER_API_KEY",
+  "confidence": "model",
+  "extra_headers": []
+ },
+ "count": 120,
+ "errors": 0,
+ "cache": {
+  "hits": 0,
+  "misses": 120
+ },
+ "summary": {
+  "n": 120,
+  "correct": 120,
+  "accuracy": 1,
+  "accuracy_ci": {
+   "lo": 0.96898,
+   "hi": 1
+  },
+  "cost_total_usd": 0.001771,
+  "cost_per_1k_usd": 0.014755,
+  "cost_coverage": 1,
+  "mean_latency_ms": 301.616667
+ },
+ "items": [
+  {
+   "id": "1",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014742,
+   "cost_source": "provider",
+   "latency_ms": 493,
+   "input_tokens": 351,
+   "output_tokens": 40
+  },
+  {
+   "id": "2",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014742,
+   "cost_source": "provider",
+   "latency_ms": 313,
+   "input_tokens": 351,
+   "output_tokens": 40
+  },
+  {
+   "id": "3",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014406,
+   "cost_source": "provider",
+   "latency_ms": 333,
+   "input_tokens": 343,
+   "output_tokens": 40
+  },
+  {
+   "id": "4",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.0000147,
+   "cost_source": "provider",
+   "latency_ms": 314,
+   "input_tokens": 350,
+   "output_tokens": 40
+  },
+  {
+   "id": "5",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014658,
+   "cost_source": "provider",
+   "latency_ms": 299,
+   "input_tokens": 349,
+   "output_tokens": 40
+  },
+  {
+   "id": "6",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 338,
+   "input_tokens": 356,
+   "output_tokens": 40
+  },
+  {
+   "id": "7",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014784,
+   "cost_source": "provider",
+   "latency_ms": 363,
+   "input_tokens": 352,
+   "output_tokens": 40
+  },
+  {
+   "id": "8",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014826,
+   "cost_source": "provider",
+   "latency_ms": 288,
+   "input_tokens": 353,
+   "output_tokens": 40
+  },
+  {
+   "id": "9",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014658,
+   "cost_source": "provider",
+   "latency_ms": 290,
+   "input_tokens": 349,
+   "output_tokens": 40
+  },
+  {
+   "id": "10",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.0000147,
+   "cost_source": "provider",
+   "latency_ms": 351,
+   "input_tokens": 350,
+   "output_tokens": 40
+  },
+  {
+   "id": "11",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 312,
+   "input_tokens": 358,
+   "output_tokens": 40
+  },
+  {
+   "id": "12",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014658,
+   "cost_source": "provider",
+   "latency_ms": 333,
+   "input_tokens": 349,
+   "output_tokens": 40
+  },
+  {
+   "id": "13",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014532,
+   "cost_source": "provider",
+   "latency_ms": 300,
+   "input_tokens": 346,
+   "output_tokens": 40
+  },
+  {
+   "id": "14",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 266,
+   "input_tokens": 354,
+   "output_tokens": 40
+  },
+  {
+   "id": "15",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 295,
+   "input_tokens": 355,
+   "output_tokens": 40
+  },
+  {
+   "id": "16",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014742,
+   "cost_source": "provider",
+   "latency_ms": 246,
+   "input_tokens": 351,
+   "output_tokens": 40
+  },
+  {
+   "id": "17",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014616,
+   "cost_source": "provider",
+   "latency_ms": 295,
+   "input_tokens": 348,
+   "output_tokens": 40
+  },
+  {
+   "id": "18",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 313,
+   "input_tokens": 355,
+   "output_tokens": 40
+  },
+  {
+   "id": "19",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 263,
+   "input_tokens": 356,
+   "output_tokens": 40
+  },
+  {
+   "id": "20",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 286,
+   "input_tokens": 357,
+   "output_tokens": 40
+  },
+  {
+   "id": "21",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014826,
+   "cost_source": "provider",
+   "latency_ms": 389,
+   "input_tokens": 353,
+   "output_tokens": 40
+  },
+  {
+   "id": "22",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.0000147,
+   "cost_source": "provider",
+   "latency_ms": 258,
+   "input_tokens": 350,
+   "output_tokens": 40
+  },
+  {
+   "id": "23",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014616,
+   "cost_source": "provider",
+   "latency_ms": 314,
+   "input_tokens": 348,
+   "output_tokens": 40
+  },
+  {
+   "id": "24",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014826,
+   "cost_source": "provider",
+   "latency_ms": 269,
+   "input_tokens": 353,
+   "output_tokens": 40
+  },
+  {
+   "id": "25",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.0000147,
+   "cost_source": "provider",
+   "latency_ms": 325,
+   "input_tokens": 350,
+   "output_tokens": 40
+  },
+  {
+   "id": "26",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.0000147,
+   "cost_source": "provider",
+   "latency_ms": 278,
+   "input_tokens": 350,
+   "output_tokens": 40
+  },
+  {
+   "id": "27",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014448,
+   "cost_source": "provider",
+   "latency_ms": 290,
+   "input_tokens": 344,
+   "output_tokens": 40
+  },
+  {
+   "id": "28",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 312,
+   "input_tokens": 356,
+   "output_tokens": 40
+  },
+  {
+   "id": "29",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014742,
+   "cost_source": "provider",
+   "latency_ms": 301,
+   "input_tokens": 351,
+   "output_tokens": 40
+  },
+  {
+   "id": "30",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014742,
+   "cost_source": "provider",
+   "latency_ms": 341,
+   "input_tokens": 351,
+   "output_tokens": 40
+  },
+  {
+   "id": "31",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014658,
+   "cost_source": "provider",
+   "latency_ms": 269,
+   "input_tokens": 349,
+   "output_tokens": 40
+  },
+  {
+   "id": "32",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.0000147,
+   "cost_source": "provider",
+   "latency_ms": 248,
+   "input_tokens": 350,
+   "output_tokens": 40
+  },
+  {
+   "id": "33",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.00001449,
+   "cost_source": "provider",
+   "latency_ms": 315,
+   "input_tokens": 345,
+   "output_tokens": 40
+  },
+  {
+   "id": "34",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014658,
+   "cost_source": "provider",
+   "latency_ms": 284,
+   "input_tokens": 349,
+   "output_tokens": 40
+  },
+  {
+   "id": "35",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 315,
+   "input_tokens": 357,
+   "output_tokens": 40
+  },
+  {
+   "id": "36",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014742,
+   "cost_source": "provider",
+   "latency_ms": 275,
+   "input_tokens": 351,
+   "output_tokens": 40
+  },
+  {
+   "id": "37",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.00001449,
+   "cost_source": "provider",
+   "latency_ms": 346,
+   "input_tokens": 345,
+   "output_tokens": 40
+  },
+  {
+   "id": "38",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 301,
+   "input_tokens": 354,
+   "output_tokens": 40
+  },
+  {
+   "id": "39",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 265,
+   "input_tokens": 356,
+   "output_tokens": 40
+  },
+  {
+   "id": "40",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014742,
+   "cost_source": "provider",
+   "latency_ms": 368,
+   "input_tokens": 351,
+   "output_tokens": 40
+  },
+  {
+   "id": "41",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014784,
+   "cost_source": "provider",
+   "latency_ms": 268,
+   "input_tokens": 352,
+   "output_tokens": 40
+  },
+  {
+   "id": "42",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014574,
+   "cost_source": "provider",
+   "latency_ms": 284,
+   "input_tokens": 347,
+   "output_tokens": 40
+  },
+  {
+   "id": "43",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014532,
+   "cost_source": "provider",
+   "latency_ms": 356,
+   "input_tokens": 346,
+   "output_tokens": 40
+  },
+  {
+   "id": "44",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014574,
+   "cost_source": "provider",
+   "latency_ms": 307,
+   "input_tokens": 347,
+   "output_tokens": 40
+  },
+  {
+   "id": "45",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.0000147,
+   "cost_source": "provider",
+   "latency_ms": 254,
+   "input_tokens": 350,
+   "output_tokens": 40
+  },
+  {
+   "id": "46",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 279,
+   "input_tokens": 356,
+   "output_tokens": 40
+  },
+  {
+   "id": "47",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014406,
+   "cost_source": "provider",
+   "latency_ms": 288,
+   "input_tokens": 343,
+   "output_tokens": 40
+  },
+  {
+   "id": "48",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014658,
+   "cost_source": "provider",
+   "latency_ms": 307,
+   "input_tokens": 349,
+   "output_tokens": 40
+  },
+  {
+   "id": "49",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014616,
+   "cost_source": "provider",
+   "latency_ms": 280,
+   "input_tokens": 348,
+   "output_tokens": 40
+  },
+  {
+   "id": "50",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 295,
+   "input_tokens": 356,
+   "output_tokens": 40
+  },
+  {
+   "id": "51",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014406,
+   "cost_source": "provider",
+   "latency_ms": 254,
+   "input_tokens": 343,
+   "output_tokens": 40
+  },
+  {
+   "id": "52",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 306,
+   "input_tokens": 359,
+   "output_tokens": 40
+  },
+  {
+   "id": "53",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 0.99,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.0000147,
+   "cost_source": "provider",
+   "latency_ms": 371,
+   "input_tokens": 350,
+   "output_tokens": 40
+  },
+  {
+   "id": "54",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 254,
+   "input_tokens": 355,
+   "output_tokens": 40
+  },
+  {
+   "id": "55",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014574,
+   "cost_source": "provider",
+   "latency_ms": 284,
+   "input_tokens": 347,
+   "output_tokens": 40
+  },
+  {
+   "id": "56",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 299,
+   "input_tokens": 359,
+   "output_tokens": 40
+  },
+  {
+   "id": "57",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014784,
+   "cost_source": "provider",
+   "latency_ms": 271,
+   "input_tokens": 352,
+   "output_tokens": 40
+  },
+  {
+   "id": "58",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014616,
+   "cost_source": "provider",
+   "latency_ms": 261,
+   "input_tokens": 348,
+   "output_tokens": 40
+  },
+  {
+   "id": "59",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 326,
+   "input_tokens": 357,
+   "output_tokens": 40
+  },
+  {
+   "id": "60",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014784,
+   "cost_source": "provider",
+   "latency_ms": 309,
+   "input_tokens": 352,
+   "output_tokens": 40
+  },
+  {
+   "id": "61",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000015246,
+   "cost_source": "provider",
+   "latency_ms": 340,
+   "input_tokens": 363,
+   "output_tokens": 40
+  },
+  {
+   "id": "62",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014574,
+   "cost_source": "provider",
+   "latency_ms": 304,
+   "input_tokens": 347,
+   "output_tokens": 40
+  },
+  {
+   "id": "63",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014784,
+   "cost_source": "provider",
+   "latency_ms": 262,
+   "input_tokens": 352,
+   "output_tokens": 40
+  },
+  {
+   "id": "64",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014448,
+   "cost_source": "provider",
+   "latency_ms": 347,
+   "input_tokens": 344,
+   "output_tokens": 40
+  },
+  {
+   "id": "65",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014448,
+   "cost_source": "provider",
+   "latency_ms": 345,
+   "input_tokens": 344,
+   "output_tokens": 40
+  },
+  {
+   "id": "66",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.00001449,
+   "cost_source": "provider",
+   "latency_ms": 289,
+   "input_tokens": 345,
+   "output_tokens": 40
+  },
+  {
+   "id": "67",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014616,
+   "cost_source": "provider",
+   "latency_ms": 387,
+   "input_tokens": 348,
+   "output_tokens": 40
+  },
+  {
+   "id": "68",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014784,
+   "cost_source": "provider",
+   "latency_ms": 273,
+   "input_tokens": 352,
+   "output_tokens": 40
+  },
+  {
+   "id": "69",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014742,
+   "cost_source": "provider",
+   "latency_ms": 281,
+   "input_tokens": 351,
+   "output_tokens": 40
+  },
+  {
+   "id": "70",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 302,
+   "input_tokens": 358,
+   "output_tokens": 40
+  },
+  {
+   "id": "71",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014658,
+   "cost_source": "provider",
+   "latency_ms": 280,
+   "input_tokens": 349,
+   "output_tokens": 40
+  },
+  {
+   "id": "72",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014658,
+   "cost_source": "provider",
+   "latency_ms": 351,
+   "input_tokens": 349,
+   "output_tokens": 40
+  },
+  {
+   "id": "73",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014532,
+   "cost_source": "provider",
+   "latency_ms": 350,
+   "input_tokens": 346,
+   "output_tokens": 40
+  },
+  {
+   "id": "74",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014826,
+   "cost_source": "provider",
+   "latency_ms": 294,
+   "input_tokens": 353,
+   "output_tokens": 40
+  },
+  {
+   "id": "75",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014658,
+   "cost_source": "provider",
+   "latency_ms": 277,
+   "input_tokens": 349,
+   "output_tokens": 40
+  },
+  {
+   "id": "76",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.00001449,
+   "cost_source": "provider",
+   "latency_ms": 286,
+   "input_tokens": 345,
+   "output_tokens": 40
+  },
+  {
+   "id": "77",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014532,
+   "cost_source": "provider",
+   "latency_ms": 325,
+   "input_tokens": 346,
+   "output_tokens": 40
+  },
+  {
+   "id": "78",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014784,
+   "cost_source": "provider",
+   "latency_ms": 251,
+   "input_tokens": 352,
+   "output_tokens": 40
+  },
+  {
+   "id": "79",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.0000147,
+   "cost_source": "provider",
+   "latency_ms": 312,
+   "input_tokens": 350,
+   "output_tokens": 40
+  },
+  {
+   "id": "80",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 285,
+   "input_tokens": 354,
+   "output_tokens": 40
+  },
+  {
+   "id": "81",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014826,
+   "cost_source": "provider",
+   "latency_ms": 341,
+   "input_tokens": 353,
+   "output_tokens": 40
+  },
+  {
+   "id": "82",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.0000147,
+   "cost_source": "provider",
+   "latency_ms": 249,
+   "input_tokens": 350,
+   "output_tokens": 40
+  },
+  {
+   "id": "83",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014658,
+   "cost_source": "provider",
+   "latency_ms": 346,
+   "input_tokens": 349,
+   "output_tokens": 40
+  },
+  {
+   "id": "84",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 289,
+   "input_tokens": 357,
+   "output_tokens": 40
+  },
+  {
+   "id": "85",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 285,
+   "input_tokens": 355,
+   "output_tokens": 40
+  },
+  {
+   "id": "86",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000015036,
+   "cost_source": "provider",
+   "latency_ms": 260,
+   "input_tokens": 358,
+   "output_tokens": 40
+  },
+  {
+   "id": "87",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 359,
+   "input_tokens": 357,
+   "output_tokens": 40
+  },
+  {
+   "id": "88",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.00001512,
+   "cost_source": "provider",
+   "latency_ms": 267,
+   "input_tokens": 360,
+   "output_tokens": 40
+  },
+  {
+   "id": "89",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014406,
+   "cost_source": "provider",
+   "latency_ms": 251,
+   "input_tokens": 343,
+   "output_tokens": 40
+  },
+  {
+   "id": "90",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014784,
+   "cost_source": "provider",
+   "latency_ms": 312,
+   "input_tokens": 352,
+   "output_tokens": 40
+  },
+  {
+   "id": "91",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 271,
+   "input_tokens": 356,
+   "output_tokens": 40
+  },
+  {
+   "id": "92",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014616,
+   "cost_source": "provider",
+   "latency_ms": 234,
+   "input_tokens": 348,
+   "output_tokens": 40
+  },
+  {
+   "id": "93",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 267,
+   "input_tokens": 359,
+   "output_tokens": 40
+  },
+  {
+   "id": "94",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014742,
+   "cost_source": "provider",
+   "latency_ms": 236,
+   "input_tokens": 351,
+   "output_tokens": 40
+  },
+  {
+   "id": "95",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 274,
+   "input_tokens": 355,
+   "output_tokens": 40
+  },
+  {
+   "id": "96",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 302,
+   "input_tokens": 355,
+   "output_tokens": 40
+  },
+  {
+   "id": "97",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014532,
+   "cost_source": "provider",
+   "latency_ms": 248,
+   "input_tokens": 346,
+   "output_tokens": 40
+  },
+  {
+   "id": "98",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014616,
+   "cost_source": "provider",
+   "latency_ms": 307,
+   "input_tokens": 348,
+   "output_tokens": 40
+  },
+  {
+   "id": "99",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 274,
+   "input_tokens": 354,
+   "output_tokens": 40
+  },
+  {
+   "id": "100",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 297,
+   "input_tokens": 355,
+   "output_tokens": 40
+  },
+  {
+   "id": "101",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014952,
+   "cost_source": "provider",
+   "latency_ms": 273,
+   "input_tokens": 356,
+   "output_tokens": 40
+  },
+  {
+   "id": "102",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 268,
+   "input_tokens": 354,
+   "output_tokens": 40
+  },
+  {
+   "id": "103",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.00001449,
+   "cost_source": "provider",
+   "latency_ms": 314,
+   "input_tokens": 345,
+   "output_tokens": 40
+  },
+  {
+   "id": "104",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014574,
+   "cost_source": "provider",
+   "latency_ms": 310,
+   "input_tokens": 347,
+   "output_tokens": 40
+  },
+  {
+   "id": "105",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014616,
+   "cost_source": "provider",
+   "latency_ms": 303,
+   "input_tokens": 348,
+   "output_tokens": 40
+  },
+  {
+   "id": "106",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.0000147,
+   "cost_source": "provider",
+   "latency_ms": 300,
+   "input_tokens": 350,
+   "output_tokens": 40
+  },
+  {
+   "id": "107",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 314,
+   "input_tokens": 359,
+   "output_tokens": 40
+  },
+  {
+   "id": "108",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014616,
+   "cost_source": "provider",
+   "latency_ms": 487,
+   "input_tokens": 348,
+   "output_tokens": 40
+  },
+  {
+   "id": "109",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 0,
+    "more_than_5": 1
+   },
+   "cost": 0.000014994,
+   "cost_source": "provider",
+   "latency_ms": 372,
+   "input_tokens": 357,
+   "output_tokens": 40
+  },
+  {
+   "id": "110",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014532,
+   "cost_source": "provider",
+   "latency_ms": 340,
+   "input_tokens": 346,
+   "output_tokens": 40
+  },
+  {
+   "id": "111",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014784,
+   "cost_source": "provider",
+   "latency_ms": 293,
+   "input_tokens": 352,
+   "output_tokens": 40
+  },
+  {
+   "id": "112",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 315,
+   "input_tokens": 354,
+   "output_tokens": 40
+  },
+  {
+   "id": "113",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.0000147,
+   "cost_source": "provider",
+   "latency_ms": 258,
+   "input_tokens": 350,
+   "output_tokens": 40
+  },
+  {
+   "id": "114",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014658,
+   "cost_source": "provider",
+   "latency_ms": 279,
+   "input_tokens": 349,
+   "output_tokens": 40
+  },
+  {
+   "id": "115",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.00001491,
+   "cost_source": "provider",
+   "latency_ms": 325,
+   "input_tokens": 355,
+   "output_tokens": 40
+  },
+  {
+   "id": "116",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 0.95,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0.97,
+    "five_or_fewer": 0.03
+   },
+   "cost": 0.000014826,
+   "cost_source": "provider",
+   "latency_ms": 303,
+   "input_tokens": 353,
+   "output_tokens": 40
+  },
+  {
+   "id": "117",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 0,
+    "five_or_fewer": 1
+   },
+   "cost": 0.000014658,
+   "cost_source": "provider",
+   "latency_ms": 275,
+   "input_tokens": 349,
+   "output_tokens": 40
+  },
+  {
+   "id": "118",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000014868,
+   "cost_source": "provider",
+   "latency_ms": 287,
+   "input_tokens": 354,
+   "output_tokens": 40
+  },
+  {
+   "id": "119",
+   "truth": "more_than_5",
+   "pred": "more_than_5",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "more_than_5": 1,
+    "five_or_fewer": 0
+   },
+   "cost": 0.000015078,
+   "cost_source": "provider",
+   "latency_ms": 292,
+   "input_tokens": 359,
+   "output_tokens": 40
+  },
+  {
+   "id": "120",
+   "truth": "five_or_fewer",
+   "pred": "five_or_fewer",
+   "confidence": 1,
+   "confidence_source": "model",
+   "probabilities": {
+    "five_or_fewer": 1,
+    "more_than_5": 0
+   },
+   "cost": 0.000014742,
+   "cost_source": "provider",
+   "latency_ms": 269,
+   "input_tokens": 351,
+   "output_tokens": 40
+  }
+ ]
+}

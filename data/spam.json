@@ -1,0 +1,626 @@
+{
+  "name": "spam",
+  "generated_at": "2026-09-23T07:43:54.336Z",
+  "source": {
+    "name": "SMS Spam Collection (UCI)",
+    "url": "https://archive.ics.uci.edu/dataset/228/sms+spam+collection",
+    "license": "CC BY 4.0",
+    "citation": "Almeida, Hidalgo & Yamakami, \"Contributions to the study of SMS spam filtering: new collection and results\", DocEng 2011",
+    "sampling": "120 messages of 15–200 characters, half spam (the collection itself is 13% spam), seeded (11)"
+  },
+  "task": {
+    "name": "spam",
+    "instructions": "Decide whether this text message is spam or a normal personal message.",
+    "labels": [
+      "spam",
+      "ham"
+    ],
+    "criteria": {
+      "spam": "Unsolicited advertising, prize or lottery claims, premium-rate numbers, phishing.",
+      "ham": "A normal message between people: plans, chit-chat, questions, replies."
+    }
+  },
+  "items": [
+    {
+      "id": "1",
+      "text": "Free video camera phones with Half Price line rental for 12 mths and 500 cross ntwk mins 100 txts. Call MobileUpd8 08001950382 or Call2OptOut/674&",
+      "truth": "spam"
+    },
+    {
+      "id": "2",
+      "text": "U have a Secret Admirer who is looking 2 make contact with U-find out who they R*reveal who thinks UR so special-call on 09065171142-stopsms-08",
+      "truth": "spam"
+    },
+    {
+      "id": "3",
+      "text": "Yeah work is fine, started last week, all the same stuff as before, dull but easy and guys are fun!",
+      "truth": "ham"
+    },
+    {
+      "id": "4",
+      "text": "HI DARLIN IVE JUST GOT BACK AND I HAD A REALLY NICE NIGHT AND THANKS SO MUCH FOR THE LIFT SEE U TOMORROW XXX",
+      "truth": "ham"
+    },
+    {
+      "id": "5",
+      "text": "WIN a year supply of CDs 4 a store of ur choice worth £500 & enter our £100 Weekly draw txt MUSIC to 87066 Ts&Cs www.Ldew.com.subs16+1win150ppmx3",
+      "truth": "spam"
+    },
+    {
+      "id": "6",
+      "text": "It is a good thing I'm now getting the connection to bw",
+      "truth": "ham"
+    },
+    {
+      "id": "7",
+      "text": "Yeah there's quite a bit left, I'll swing by tomorrow when I get up",
+      "truth": "ham"
+    },
+    {
+      "id": "8",
+      "text": "YOU HAVE WON! As a valued Vodafone customer our computer has picked YOU to win a £150 prize. To collect is easy. Just call 09061743386",
+      "truth": "spam"
+    },
+    {
+      "id": "9",
+      "text": "Refused a loan? Secured or Unsecured? Can't get credit? Call free now 0800 195 6669 or text back 'help' & we will!",
+      "truth": "spam"
+    },
+    {
+      "id": "10",
+      "text": "You have won a Nokia 7250i. This is what you get when you win our FREE auction. To take part send Nokia to 86021 now. HG/Suite342/2Lands Row/W1JHL 16+",
+      "truth": "spam"
+    },
+    {
+      "id": "11",
+      "text": "You are being contacted by our dating service by someone you know! To find out who it is, call from a land line 09050000928. PoBox45W2TG150P",
+      "truth": "spam"
+    },
+    {
+      "id": "12",
+      "text": "FreeMsg Today's the day if you are ready! I'm horny & live in your town. I love sex fun & games! Netcollex Ltd 08700621170150p per msg reply Stop to end",
+      "truth": "spam"
+    },
+    {
+      "id": "13",
+      "text": "St andre, virgil's cream",
+      "truth": "ham"
+    },
+    {
+      "id": "14",
+      "text": "Then u go back urself lor...",
+      "truth": "ham"
+    },
+    {
+      "id": "15",
+      "text": "FREE2DAY sexy St George's Day pic of Jordan!Txt PIC to 89080 dont miss out, then every wk a saucy celeb!4 more pics c PocketBabe.co.uk 0870241182716 £3/wk",
+      "truth": "spam"
+    },
+    {
+      "id": "16",
+      "text": "Fancy a shag? I do.Interested? sextextuk.com txt XXUK SUZY to 69876. Txts cost 1.50 per msg. TnCs on website. X",
+      "truth": "spam"
+    },
+    {
+      "id": "17",
+      "text": "Loan for any purpose £500 - £75,000. Homeowners + Tenants welcome. Have you been previously refused? We can still help. Call Free 0800 1956669 or text back 'help'",
+      "truth": "spam"
+    },
+    {
+      "id": "18",
+      "text": "She was supposed to be but couldn't make it, she's still in town though",
+      "truth": "ham"
+    },
+    {
+      "id": "19",
+      "text": "Hey I am really horny want to chat or see me naked text hot to 69698 text charged at 150pm to unsubscribe text stop 69698",
+      "truth": "spam"
+    },
+    {
+      "id": "20",
+      "text": "Can meh? Thgt some will clash... Really ah, i dun mind... I dun seen to have lost any weight... Gee...",
+      "truth": "ham"
+    },
+    {
+      "id": "21",
+      "text": "Now only i reached home. . . I am very tired now. . I will come tomorro",
+      "truth": "ham"
+    },
+    {
+      "id": "22",
+      "text": "Dont think you need yellow card for uk travel. Ask someone that has gone before. If you do its just &lt;#&gt; bucks",
+      "truth": "ham"
+    },
+    {
+      "id": "23",
+      "text": "Daddy, shu shu is looking 4 u... U wan me 2 tell him u're not in singapore or wat?",
+      "truth": "ham"
+    },
+    {
+      "id": "24",
+      "text": "Hows the pain dear?y r u smiling?",
+      "truth": "ham"
+    },
+    {
+      "id": "25",
+      "text": "Carlos is taking his sweet time as usual so let me know when you and patty are done/want to smoke and I'll tell him to haul ass",
+      "truth": "ham"
+    },
+    {
+      "id": "26",
+      "text": "Ur cash-balance is currently 500 pounds - to maximize ur cash-in now send GO to 86688 only 150p/msg. CC: 08718720201 PO BOX 114/14 TCR/W1",
+      "truth": "spam"
+    },
+    {
+      "id": "27",
+      "text": "Got what it takes 2 take part in the WRC Rally in Oz? U can with Lucozade Energy! Text RALLY LE to 61200 (25p), see packs or lucozade.co.uk/wrc & itcould be u!",
+      "truth": "spam"
+    },
+    {
+      "id": "28",
+      "text": "S:)s.nervous &lt;#&gt; :)",
+      "truth": "ham"
+    },
+    {
+      "id": "29",
+      "text": "GENT! We are trying to contact you. Last weekends draw shows that you won a £1000 prize GUARANTEED. Call 09064012160. Claim Code K52. Valid 12hrs only. 150ppm",
+      "truth": "spam"
+    },
+    {
+      "id": "30",
+      "text": "Back 2 work 2morro half term over! Can U C me 2nite 4 some sexy passion B4 I have 2 go back? Chat NOW 09099726481 Luv DENA Calls £1/minMobsmoreLKPOBOX177HP51FL",
+      "truth": "spam"
+    },
+    {
+      "id": "31",
+      "text": "XMAS iscoming & ur awarded either £500 CD gift vouchers & free entry 2 r £100 weekly draw txt MUSIC to 87066 TnC www.Ldew.com1win150ppmx3age16subscription",
+      "truth": "spam"
+    },
+    {
+      "id": "32",
+      "text": "Double Mins & Double Txt & 1/2 price Linerental on Latest Orange Bluetooth mobiles. Call MobileUpd8 for the very latest offers. 08000839402 or call2optout/LF56",
+      "truth": "spam"
+    },
+    {
+      "id": "33",
+      "text": "How i noe... She's in da car now... Later then c lar... I'm wearing shorts...",
+      "truth": "ham"
+    },
+    {
+      "id": "34",
+      "text": "I don't know u and u don't know me. Send CHAT to 86688 now and let's find each other! Only 150p/Msg rcvd. HG/Suite342/2Lands/Row/W1J6HL LDN. 18 years or over.",
+      "truth": "spam"
+    },
+    {
+      "id": "35",
+      "text": "Lol well don't do it without me. We could have a big sale together.",
+      "truth": "ham"
+    },
+    {
+      "id": "36",
+      "text": "Tessy..pls do me a favor. Pls convey my birthday wishes to Nimya..pls dnt forget it. Today is her birthday Shijas",
+      "truth": "ham"
+    },
+    {
+      "id": "37",
+      "text": "Machan you go to gym tomorrow, i wil come late goodnight.",
+      "truth": "ham"
+    },
+    {
+      "id": "38",
+      "text": "Welcome! Please reply with your AGE and GENDER to begin. e.g 24M",
+      "truth": "spam"
+    },
+    {
+      "id": "39",
+      "text": "Loans for any purpose even if you have Bad Credit! Tenants Welcome. Call NoWorriesLoans.com on 08717111821",
+      "truth": "spam"
+    },
+    {
+      "id": "40",
+      "text": "Are you going to wipro interview today?",
+      "truth": "ham"
+    },
+    {
+      "id": "41",
+      "text": "REMINDER FROM O2: To get 2.50 pounds free call credit and details of great offers pls reply 2 this text with your valid name, house no and postcode",
+      "truth": "spam"
+    },
+    {
+      "id": "42",
+      "text": "Ur TONEXS subscription has been renewed and you have been charged £4.50. You can choose 10 more polys this month. www.clubzed.co.uk *BILLING MSG*",
+      "truth": "spam"
+    },
+    {
+      "id": "43",
+      "text": "I'm at work. Please call",
+      "truth": "ham"
+    },
+    {
+      "id": "44",
+      "text": "December only! Had your mobile 11mths+? You are entitled to update to the latest colour camera mobile for Free! Call The Mobile Update Co FREE on 08002986906",
+      "truth": "spam"
+    },
+    {
+      "id": "45",
+      "text": "She went to attend another two rounds today..but still did't reach home..",
+      "truth": "ham"
+    },
+    {
+      "id": "46",
+      "text": "You have got tallent but you are wasting.",
+      "truth": "ham"
+    },
+    {
+      "id": "47",
+      "text": "Msg me when rajini comes.",
+      "truth": "ham"
+    },
+    {
+      "id": "48",
+      "text": "Roger that. We‘re probably going to rem in about 20",
+      "truth": "ham"
+    },
+    {
+      "id": "49",
+      "text": "Hey darlin.. i can pick u up at college if u tell me wen & where 2 mt.. love Pete xx",
+      "truth": "ham"
+    },
+    {
+      "id": "50",
+      "text": "Dorothy@kiefer.com (Bank of Granite issues Strong-Buy) EXPLOSIVE PICK FOR OUR MEMBERS *****UP OVER 300% *********** Nasdaq Symbol CDGT That is a $5.00 per..",
+      "truth": "spam"
+    },
+    {
+      "id": "51",
+      "text": "HMV BONUS SPECIAL 500 pounds of genuine HMV vouchers to be won. Just answer 4 easy questions. Play Now! Send HMV to 86688 More info:www.100percent-real.com",
+      "truth": "spam"
+    },
+    {
+      "id": "52",
+      "text": "Hope you are having a good week. Just checking in",
+      "truth": "ham"
+    },
+    {
+      "id": "53",
+      "text": "Kinda. First one gets in at twelve! Aah. Speak tomo",
+      "truth": "ham"
+    },
+    {
+      "id": "54",
+      "text": "Arngd marriage is while u r walkin unfortuntly a snake bites u. bt love marriage is dancing in frnt of d snake &amp; sayin Bite me, bite me.",
+      "truth": "ham"
+    },
+    {
+      "id": "55",
+      "text": "Hiya, sorry didn't hav signal. I haven't seen or heard from and neither has, which is unusual in itself! I'll put on the case and get him to sort it out! Hugs and snogs.",
+      "truth": "ham"
+    },
+    {
+      "id": "56",
+      "text": "Got it. Seventeen pounds for seven hundred ml – hope ok.",
+      "truth": "ham"
+    },
+    {
+      "id": "57",
+      "text": "THANX4 TODAY CER IT WAS NICE 2 CATCH UP BUT WE AVE 2 FIND MORE TIME MORE OFTEN OH WELL TAKE CARE C U SOON.C",
+      "truth": "ham"
+    },
+    {
+      "id": "58",
+      "text": "Kit Strip - you have been billed 150p. Netcollex Ltd. PO Box 1013 IG11 OJA",
+      "truth": "spam"
+    },
+    {
+      "id": "59",
+      "text": "FREE MESSAGE Activate your 500 FREE Text Messages by replying to this message with the word FREE For terms & conditions, visit www.07781482378.com",
+      "truth": "spam"
+    },
+    {
+      "id": "60",
+      "text": "Oh ya ya. I remember da. .",
+      "truth": "ham"
+    },
+    {
+      "id": "61",
+      "text": "Huh but i got lesson at 4 lei n i was thinkin of going to sch earlier n i tot of parkin at kent vale...",
+      "truth": "ham"
+    },
+    {
+      "id": "62",
+      "text": "Todays Vodafone numbers ending with 4882 are selected to a receive a £350 award. If your number matches call 09064019014 to receive your £350 award.",
+      "truth": "spam"
+    },
+    {
+      "id": "63",
+      "text": "Hhahhaahahah rofl wtf nig was leonardo in your room or something",
+      "truth": "ham"
+    },
+    {
+      "id": "64",
+      "text": "Thanks for your ringtone order, reference number X29. Your mobile will be charged 4.50. Should your tone not arrive please call customer services 09065989180",
+      "truth": "spam"
+    },
+    {
+      "id": "65",
+      "text": "Lol where do u come up with these ideas?",
+      "truth": "ham"
+    },
+    {
+      "id": "66",
+      "text": "Dear Matthew please call 09063440451 from a landline, your complimentary 4*Lux Tenerife holiday or £1000 CASH await collection. ppm150 SAE T&Cs Box334 SK38XH.",
+      "truth": "spam"
+    },
+    {
+      "id": "67",
+      "text": "URGENT This is our 2nd attempt to contact U. Your £900 prize from YESTERDAY is still awaiting collection. To claim CALL NOW 09061702893. ACL03530150PM",
+      "truth": "spam"
+    },
+    {
+      "id": "68",
+      "text": "You are being contacted by our Dating Service by someone you know! To find out who it is, call from your mobile or landline 09064017305 PoBox75LDNS7",
+      "truth": "spam"
+    },
+    {
+      "id": "69",
+      "text": "Sunshine Quiz Wkly Q! Win a top Sony DVD player if u know which country the Algarve is in? Txt ansr to 82277. £1.50 SP:Tyrone",
+      "truth": "spam"
+    },
+    {
+      "id": "70",
+      "text": "We tried to contact you re your reply to our offer of a Video Phone 750 anytime any network mins Half Price Line Rental Camcorder Reply or call 08000930705",
+      "truth": "spam"
+    },
+    {
+      "id": "71",
+      "text": "RT-KIng Pro Video Club>> Need help? info@ringtoneking.co.uk or call 08701237397 You must be 16+ Club credits redeemable at www.ringtoneking.co.uk! Enjoy!",
+      "truth": "spam"
+    },
+    {
+      "id": "72",
+      "text": "I don't know u and u don't know me. Send CHAT to 86688 now and let's find each other! Only 150p/Msg rcvd. HG/Suite342/2Lands/Row/W1J6HL LDN. 18 years or over.",
+      "truth": "spam"
+    },
+    {
+      "id": "73",
+      "text": "Dear U've been invited to XCHAT. This is our final attempt to contact u! Txt CHAT to 86688",
+      "truth": "spam"
+    },
+    {
+      "id": "74",
+      "text": "I'm at home n ready...",
+      "truth": "ham"
+    },
+    {
+      "id": "75",
+      "text": "Miss call miss call khelate kintu opponenter miss call dhorte lage. Thats d rule. One with great phone receiving quality wins.",
+      "truth": "ham"
+    },
+    {
+      "id": "76",
+      "text": "PRIVATE! Your 2003 Account Statement for shows 800 un-redeemed S. I. M. points. Call 08719899230 Identifier Code: 41685 Expires 07/11/04",
+      "truth": "spam"
+    },
+    {
+      "id": "77",
+      "text": "Nah dub but je still buff",
+      "truth": "ham"
+    },
+    {
+      "id": "78",
+      "text": "S..antha num corrct dane",
+      "truth": "ham"
+    },
+    {
+      "id": "79",
+      "text": "As usual..iam fine, happy &amp; doing well..:)",
+      "truth": "ham"
+    },
+    {
+      "id": "80",
+      "text": "Marvel Mobile Play the official Ultimate Spider-man game (£4.50) on ur mobile right now. Text SPIDER to 83338 for the game & we ll send u a FREE 8Ball wallpaper",
+      "truth": "spam"
+    },
+    {
+      "id": "81",
+      "text": "Had your mobile 10 mths? Update to latest Orange camera/video phones for FREE. Save £s with Free texts/weekend calls. Text YES for a callback orno to opt out",
+      "truth": "spam"
+    },
+    {
+      "id": "82",
+      "text": "I reach home safe n sound liao...",
+      "truth": "ham"
+    },
+    {
+      "id": "83",
+      "text": "Okie but i scared u say i fat... Then u dun wan me already...",
+      "truth": "ham"
+    },
+    {
+      "id": "84",
+      "text": "FREE>Ringtone! Reply REAL or POLY eg REAL1 1. PushButton 2. DontCha 3. BabyGoodbye 4. GoldDigger 5. WeBeBurnin 1st tone FREE and 6 more when u join for £3/wk",
+      "truth": "spam"
+    },
+    {
+      "id": "85",
+      "text": "Nice.nice.how is it working?",
+      "truth": "ham"
+    },
+    {
+      "id": "86",
+      "text": "Save money on wedding lingerie at www.bridal.petticoatdreams.co.uk Choose from a superb selection with national delivery. Brought to you by WeddingFriend",
+      "truth": "spam"
+    },
+    {
+      "id": "87",
+      "text": "URGENT! We are trying to contact U. Todays draw shows that you have won a £2000 prize GUARANTEED. Call 09066358361 from land line. Claim Y87. Valid 12hrs only",
+      "truth": "spam"
+    },
+    {
+      "id": "88",
+      "text": "FREE entry into our £250 weekly competition just text the word WIN to 80086 NOW. 18 T&C www.txttowin.co.uk",
+      "truth": "spam"
+    },
+    {
+      "id": "89",
+      "text": "Oh is it? Send me the address",
+      "truth": "ham"
+    },
+    {
+      "id": "90",
+      "text": "PRIVATE! Your 2003 Account Statement for 07808247860 shows 800 un-redeemed S. I. M. points. Call 08719899229 Identifier Code: 40411 Expires 06/11/04",
+      "truth": "spam"
+    },
+    {
+      "id": "91",
+      "text": "Check Out Choose Your Babe Videos @ sms.shsex.netUN fgkslpoPW fgkslpo",
+      "truth": "spam"
+    },
+    {
+      "id": "92",
+      "text": "And now electricity just went out fml.",
+      "truth": "ham"
+    },
+    {
+      "id": "93",
+      "text": "I also thk too fast... Xy suggest one not me. U dun wan it's ok. Going 2 rain leh where got gd.",
+      "truth": "ham"
+    },
+    {
+      "id": "94",
+      "text": "\"Response\" is one of d powerful weapon 2 occupy a place in others 'HEART'... So, always give response 2 who cares 4 U\"... Gud night..swt dreams..take care",
+      "truth": "ham"
+    },
+    {
+      "id": "95",
+      "text": "I meant as an apology from me for texting you to get me drugs at &lt;#&gt; at night",
+      "truth": "ham"
+    },
+    {
+      "id": "96",
+      "text": "Congrats! 2 mobile 3G Videophones R yours. call 09061744553 now! videochat wid ur mates, play java games, Dload polyH music, noline rentl. bx420. ip4. 5we. 150pm",
+      "truth": "spam"
+    },
+    {
+      "id": "97",
+      "text": "That sucks. So what do you got planned for your yo valentine? I am your yo valentine aren't I?",
+      "truth": "ham"
+    },
+    {
+      "id": "98",
+      "text": "Play w computer? Aiyah i tok 2 u lor?",
+      "truth": "ham"
+    },
+    {
+      "id": "99",
+      "text": "WOT STUDENT DISCOUNT CAN U GET ON BOOKS?",
+      "truth": "ham"
+    },
+    {
+      "id": "100",
+      "text": "The world's most happiest frnds never have the same characters... Dey just have the best understanding of their differences...",
+      "truth": "ham"
+    },
+    {
+      "id": "101",
+      "text": "I sent them. Do you like?",
+      "truth": "ham"
+    },
+    {
+      "id": "102",
+      "text": "Do you want a new Video phone? 600 anytime any network mins 400 Inclusive Video calls AND downloads 5 per week Free delTOMORROW call 08002888812 or reply NOW",
+      "truth": "spam"
+    },
+    {
+      "id": "103",
+      "text": "You have an important customer service announcement. Call FREEPHONE 0800 542 0825 now!",
+      "truth": "spam"
+    },
+    {
+      "id": "104",
+      "text": "FreeMsg: Txt: CALL to No: 86888 & claim your reward of 3 hours talk time to use from your phone now! Subscribe6GBP/mnth inc 3hrs 16 stop?txtStop",
+      "truth": "spam"
+    },
+    {
+      "id": "105",
+      "text": "SMS. ac sun0819 posts HELLO:\"You seem cool, wanted to say hi. HI!!!\" Stop? Send STOP to 62468",
+      "truth": "spam"
+    },
+    {
+      "id": "106",
+      "text": "Update_Now - 12Mths Half Price Orange line rental: 400mins...Call MobileUpd8 on 08000839402 or call2optout=J5Q",
+      "truth": "spam"
+    },
+    {
+      "id": "107",
+      "text": "WIN a £200 Shopping spree every WEEK Starting NOW. 2 play text STORE to 88039. SkilGme. TsCs08714740323 1Winawk! age16 £1.50perweeksub.",
+      "truth": "spam"
+    },
+    {
+      "id": "108",
+      "text": "Will do, you gonna be at blake's all night? I might be able to get out of here a little early",
+      "truth": "ham"
+    },
+    {
+      "id": "109",
+      "text": "44 7732584351, Do you want a New Nokia 3510i colour phone DeliveredTomorrow? With 300 free minutes to any mobile + 100 free texts + Free Camcorder reply or call 08000930705.",
+      "truth": "spam"
+    },
+    {
+      "id": "110",
+      "text": "Eerie Nokia tones 4u, rply TONE TITLE to 8007 eg TONE DRACULA to 8007 Titles: GHOST, ADDAMSFA, MUNSTERS, EXORCIST, TWILIGHT www.getzed.co.uk POBox36504W45WQ 150p",
+      "truth": "spam"
+    },
+    {
+      "id": "111",
+      "text": "Ard 530 like dat lor. We juz meet in mrt station then ü dun haf to come out.",
+      "truth": "ham"
+    },
+    {
+      "id": "112",
+      "text": "Or i go home first lar ü wait 4 me lor.. I put down my stuff first..",
+      "truth": "ham"
+    },
+    {
+      "id": "113",
+      "text": "URGENT! Your mobile No 07xxxxxxxxx won a £2,000 bonus caller prize on 02/06/03! this is the 2nd attempt to reach YOU! call 09066362231 ASAP! BOX97N7QP, 150PPM",
+      "truth": "spam"
+    },
+    {
+      "id": "114",
+      "text": "Good afternoon sunshine! How dawns that day ? Are we refreshed and happy to be alive? Do we breathe in the air and smile ? I think of you, my love ... As always",
+      "truth": "ham"
+    },
+    {
+      "id": "115",
+      "text": "UR GOING 2 BAHAMAS! CallFREEFONE 08081560665 and speak to a live operator to claim either Bahamas cruise of£2000 CASH 18+only. To opt out txt X to 07786200117",
+      "truth": "spam"
+    },
+    {
+      "id": "116",
+      "text": "This is the 2nd time we have tried to contact u. U have won the £1450 prize to claim just call 09053750005 b4 310303. T&Cs/stop SMS 08718725756. 140ppm",
+      "truth": "spam"
+    },
+    {
+      "id": "117",
+      "text": "Get your garden ready for summer with a FREE selection of summer bulbs and seeds worth £33:50 only with The Scotsman this Saturday. To stop go2 notxt.co.uk",
+      "truth": "spam"
+    },
+    {
+      "id": "118",
+      "text": "No I don't have cancer. Moms making a big deal out of a regular checkup aka pap smear",
+      "truth": "ham"
+    },
+    {
+      "id": "119",
+      "text": "Gain the rights of a wife.dont demand it.i am trying as husband too.Lets see",
+      "truth": "ham"
+    },
+    {
+      "id": "120",
+      "text": "Pls call me da. What happen.",
+      "truth": "ham"
+    }
+  ],
+  "count": 120
+}

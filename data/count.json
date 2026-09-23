@@ -1,0 +1,624 @@
+{
+  "name": "count",
+  "generated_at": "2026-09-23T07:43:52.158Z",
+  "source": {
+    "name": "synthetic, deterministic",
+    "sampling": "120 lists of 3–8 nouns, seed 11, half above five",
+    "license": "MIT (this repo)"
+  },
+  "task": {
+    "name": "count",
+    "instructions": "Count the items in the list. Decide whether there are more than five.",
+    "labels": [
+      "more_than_5",
+      "five_or_fewer"
+    ],
+    "criteria": {
+      "more_than_5": "The list contains six or more items.",
+      "five_or_fewer": "The list contains five items or fewer."
+    }
+  },
+  "items": [
+    {
+      "id": "1",
+      "text": "We need nails, pliers, oranges, clamps, erasers and folders.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "2",
+      "text": "Shopping list: envelopes, radishes, screws, peaches, oranges.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "3",
+      "text": "Items: hammers; folders; bolts",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "4",
+      "text": "We need pears, cucumbers, nails, tomatoes and potatoes.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "5",
+      "text": "Shopping list: cucumbers, pears, oranges, markers.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "6",
+      "text": "Shopping list: notebooks, peaches, rulers, plums, bananas, tomatoes, apples, labels.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "7",
+      "text": "Shopping list: rulers, folders, carrots, hammers, erasers, apples.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "8",
+      "text": "We need pencils, mangoes, clamps, pliers, notebooks and erasers.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "9",
+      "text": "We need peppers, hammers, tomatoes, clamps and leeks.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "10",
+      "text": "Shopping list: cucumbers, erasers, notebooks, peaches.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "11",
+      "text": "Shopping list: markers, cherries, clamps, bolts, beets, peaches, mangoes.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "12",
+      "text": "Shopping list: clamps, stamps, labels, hammers, notebooks.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "13",
+      "text": "Items: screws; hammers; staplers; notebooks",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "14",
+      "text": "Items: mangoes; labels; pencils; bananas; grapes; envelopes; cucumbers",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "15",
+      "text": "Shopping list: clamps, saws, mangoes, markers, lemons, pears.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "16",
+      "text": "We need clamps, drills, pencils, apples, wrenches and potatoes.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "17",
+      "text": "We need stamps, plums, staplers and beets.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "18",
+      "text": "We need stamps, drills, peppers, peaches, onions, leeks, potatoes and folders.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "19",
+      "text": "Items: levels; peppers; hammers; leeks; pears; potatoes; carrots; lemons",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "20",
+      "text": "We need envelopes, onions, turnips, plums, lemons, staplers, notebooks and grapes.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "21",
+      "text": "We need clamps, pliers, plums, stamps, wrenches and folders.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "22",
+      "text": "Shopping list: peppers, apples, nails, notebooks, folders, levels.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "23",
+      "text": "We need peppers, staplers, pencils and cucumbers.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "24",
+      "text": "Shopping list: grapes, apples, pencils, onions, tomatoes, carrots, erasers.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "25",
+      "text": "Shopping list: notebooks, bananas, rulers, saws, lemons.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "26",
+      "text": "We need onions, notebooks, staplers, oranges, envelopes and stamps.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "27",
+      "text": "We need onions, notebooks and peaches.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "28",
+      "text": "Shopping list: plums, labels, erasers, drills, clamps, apples, screws, markers.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "29",
+      "text": "Shopping list: peaches, stamps, wrenches, drills, screws.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "30",
+      "text": "We need potatoes, cucumbers, cherries, bananas and grapes.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "31",
+      "text": "Items: screws; peaches; onions; labels; apples; notebooks",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "32",
+      "text": "Items: erasers; pears; envelopes; rulers; cherries",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "33",
+      "text": "Items: apples; labels; pliers; grapes",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "34",
+      "text": "We need carrots, envelopes, markers, hammers and turnips.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "35",
+      "text": "Items: wrenches; pencils; tomatoes; peaches; peppers; notebooks; leeks; erasers",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "36",
+      "text": "Shopping list: turnips, levels, radishes, tomatoes, stamps.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "37",
+      "text": "We need clamps, carrots, folders and tomatoes.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "38",
+      "text": "Shopping list: grapes, cucumbers, staplers, onions, labels, hammers.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "39",
+      "text": "We need stamps, labels, rulers, mangoes, notebooks, folders, turnips and potatoes.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "40",
+      "text": "We need hammers, pencils, clamps, labels, tomatoes and lemons.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "41",
+      "text": "Shopping list: cherries, wrenches, markers, bananas, apples.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "42",
+      "text": "We need radishes, rulers and wrenches.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "43",
+      "text": "Shopping list: leeks, staplers, pencils.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "44",
+      "text": "Shopping list: saws, clamps, labels, stamps.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "45",
+      "text": "Items: peaches; radishes; potatoes; nails; pears",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "46",
+      "text": "Shopping list: bananas, turnips, hammers, envelopes, cherries, cucumbers.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "47",
+      "text": "Items: labels; peppers; erasers",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "48",
+      "text": "Shopping list: cucumbers, plums, stamps, pencils.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "49",
+      "text": "Items: bolts; beets; apples; leeks; clamps",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "50",
+      "text": "Items: clamps; stamps; oranges; cherries; cucumbers; mangoes; screws",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "51",
+      "text": "Items: apples; peaches; oranges",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "52",
+      "text": "We need peppers, stamps, mangoes, hammers, envelopes, labels, wrenches and peaches.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "53",
+      "text": "We need staplers, clamps, oranges, mangoes and envelopes.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "54",
+      "text": "Shopping list: bananas, tomatoes, pliers, staplers, peppers, turnips, markers.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "55",
+      "text": "Items: plums; envelopes; bananas; potatoes; folders",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "56",
+      "text": "Items: onions; bolts; saws; plums; lemons; radishes; wrenches; grapes",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "57",
+      "text": "We need stamps, plums, onions, erasers, drills and turnips.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "58",
+      "text": "We need stamps, oranges, potatoes, erasers and clamps.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "59",
+      "text": "Shopping list: mangoes, pliers, folders, pencils, lemons, bananas, hammers.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "60",
+      "text": "Shopping list: radishes, staplers, clamps, turnips, onions.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "61",
+      "text": "Shopping list: wrenches, radishes, nails, pencils, cherries, mangoes, erasers, onions.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "62",
+      "text": "We need cherries, apples and cucumbers.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "63",
+      "text": "Items: turnips; bolts; pears; levels; grapes; nails; potatoes",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "64",
+      "text": "Items: plums; lemons; clamps",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "65",
+      "text": "Items: envelopes; pencils; mangoes",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "66",
+      "text": "Items: mangoes; leeks; tomatoes",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "67",
+      "text": "We need markers, labels, hammers, levels and pencils.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "68",
+      "text": "Shopping list: turnips, leeks, envelopes, clamps, cherries.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "69",
+      "text": "Shopping list: peppers, bolts, levels, envelopes, plums, grapes.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "70",
+      "text": "Shopping list: pliers, peppers, grapes, labels, pencils, turnips, cucumbers, levels.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "71",
+      "text": "We need lemons, drills, onions, plums and potatoes.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "72",
+      "text": "We need nails, turnips, clamps, pliers and stamps.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "73",
+      "text": "We need cucumbers, screws and staplers.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "74",
+      "text": "Shopping list: beets, hammers, markers, levels, lemons, peppers.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "75",
+      "text": "Items: potatoes; pliers; apples; radishes; oranges",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "76",
+      "text": "Items: labels; peppers; hammers; bolts",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "77",
+      "text": "Items: bolts; bananas; nails; cucumbers",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "78",
+      "text": "Items: potatoes; labels; cherries; peaches; turnips; stamps",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "79",
+      "text": "Shopping list: drills, potatoes, envelopes, onions, labels, markers.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "80",
+      "text": "Items: hammers; nails; bananas; screws; apples; cucumbers; staplers",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "81",
+      "text": "Items: bananas; leeks; staplers; nails; clamps; markers; hammers",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "82",
+      "text": "Shopping list: peaches, onions, clamps, erasers, bananas.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "83",
+      "text": "We need pears, bolts, nails, onions and saws.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "84",
+      "text": "Shopping list: peaches, mangoes, nails, grapes, screws, notebooks, rulers, folders.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "85",
+      "text": "We need drills, rulers, oranges, hammers, notebooks, pliers and mangoes.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "86",
+      "text": "Items: staplers; wrenches; saws; onions; rulers; pears; erasers; levels",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "87",
+      "text": "Shopping list: saws, lemons, markers, notebooks, mangoes, peaches, envelopes.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "88",
+      "text": "We need stamps, cherries, screws, levels, wrenches, cucumbers, staplers and drills.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "89",
+      "text": "Items: envelopes; turnips; rulers",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "90",
+      "text": "Shopping list: folders, erasers, bananas, staplers, peppers, potatoes.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "91",
+      "text": "Shopping list: levels, nails, erasers, peaches, lemons, oranges, pliers.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "92",
+      "text": "Items: plums; folders; leeks; notebooks; stamps",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "93",
+      "text": "We need cucumbers, peaches, grapes, drills, levels, saws, oranges and mangoes.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "94",
+      "text": "We need nails, lemons, notebooks, peaches, levels and screws.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "95",
+      "text": "Shopping list: mangoes, screws, markers, cucumbers, stamps, leeks.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "96",
+      "text": "We need rulers, pears, stamps, staplers, folders, potatoes and cherries.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "97",
+      "text": "Items: carrots; grapes; bolts; drills; apples",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "98",
+      "text": "Shopping list: tomatoes, bolts, pencils, folders, drills.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "99",
+      "text": "Shopping list: beets, hammers, plums, notebooks, saws, stamps.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "100",
+      "text": "Shopping list: nails, peaches, leeks, turnips, pliers, erasers.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "101",
+      "text": "We need stamps, envelopes, leeks, cherries, pliers, pears and peppers.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "102",
+      "text": "We need tomatoes, levels, pliers, peppers, notebooks, grapes, envelopes and rulers.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "103",
+      "text": "We need screws, rulers and radishes.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "104",
+      "text": "Shopping list: radishes, labels, saws.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "105",
+      "text": "Items: staplers; cherries; lemons; notebooks",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "106",
+      "text": "We need wrenches, potatoes, peppers, lemons and labels.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "107",
+      "text": "Shopping list: hammers, erasers, pears, peppers, beets, staplers, drills, notebooks.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "108",
+      "text": "We need pears, peppers, markers, bananas and stamps.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "109",
+      "text": "Items: wrenches; onions; pliers; mangoes; cherries; clamps; envelopes",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "110",
+      "text": "Items: folders; levels; erasers; saws",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "111",
+      "text": "We need hammers, peaches, plums, bananas, nails and labels.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "112",
+      "text": "We need pears, lemons, beets, cherries, rulers and bananas.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "113",
+      "text": "Items: wrenches; plums; onions; pliers; screws",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "114",
+      "text": "We need notebooks, wrenches, radishes and tomatoes.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "115",
+      "text": "Items: levels; turnips; grapes; hammers; leeks; wrenches; bananas",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "116",
+      "text": "We need beets, nails, wrenches, hammers, labels and notebooks.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "117",
+      "text": "We need pencils, staplers, drills, tomatoes and beets.",
+      "truth": "five_or_fewer"
+    },
+    {
+      "id": "118",
+      "text": "We need leeks, peaches, saws, folders, grapes and radishes.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "119",
+      "text": "We need grapes, peaches, leeks, radishes, cherries, bolts and cucumbers.",
+      "truth": "more_than_5"
+    },
+    {
+      "id": "120",
+      "text": "Shopping list: envelopes, beets, mangoes, rulers, tomatoes.",
+      "truth": "five_or_fewer"
+    }
+  ],
+  "count": 120
+}

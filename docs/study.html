@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The study — System 1 / System 2, confidence-gated routing, measured</title>
+    <meta name="description" content="A fast typed-decision model answers first; a strong LLM is called only when its confidence is low. Calibration, cost/accuracy frontier, prompt-injection resistance and a language gap, measured on public data." />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #ffffff;
+        --fg: #111827;
+        --muted: #6b7280;
+        --line: #e5e7eb;
+        --card: #f9fafb;
+        --accent: #2563eb;
+        --s1: #f59e0b;
+        --s2: #10b981;
+        --bad: #ef4444;
+        --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b0f17;
+          --fg: #e7eefc;
+          --muted: #9aa8c7;
+          --line: #1f2937;
+          --card: #121a2b;
+          --accent: #6aa6ff;
+          --s1: #fbbf24;
+          --s2: #34d399;
+          --bad: #f87171;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        line-height: 1.5;
+      }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .wrap { max-width: 1040px; margin: 0 auto; padding: 32px 20px 64px; }
+      header h1 { font-size: 30px; margin: 0 0 6px; letter-spacing: -0.01em; }
+      header p.lede { font-size: 18px; color: var(--muted); margin: 0 0 12px; max-width: 820px; }
+      .finding { font-size: 19px; margin: 18px 0 8px; padding: 16px 18px; border-left: 4px solid var(--accent); background: var(--card); border-radius: 0 8px 8px 0; }
+      .finding b { color: var(--fg); }
+      .meta { font-size: 13px; color: var(--muted); }
+      section { margin-top: 44px; }
+      h2 { font-size: 22px; margin: 0 0 6px; }
+      h3 { font-size: 16px; margin: 22px 0 6px; }
+      p { max-width: 820px; }
+      .muted { color: var(--muted); }
+      .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 14px 0; }
+      .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; min-width: 0; }
+      .card .k { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+      .card .v { font-size: 24px; font-weight: 700; margin: 2px 0 0; }
+      .card .s { font-size: 12px; color: var(--muted); }
+      table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 10px 0; }
+      th, td { padding: 7px 8px; border-bottom: 1px solid var(--line); text-align: right; vertical-align: top; }
+      th:first-child, td:first-child { text-align: left; }
+      th { color: var(--muted); font-weight: 600; }
+      td.l { text-align: left; }
+      .tablewrap { overflow-x: auto; }
+      code { font-family: var(--mono); font-size: 0.92em; background: var(--card); padding: 1px 5px; border-radius: 4px; }
+      pre { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; overflow-x: auto; font-size: 13px; }
+      .chart { width: 100%; height: auto; display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; }
+      .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      @media (max-width: 760px) { .row { grid-template-columns: 1fr; } header h1 { font-size: 24px; } .finding { font-size: 17px; } }
+      .slider { display: flex; align-items: center; gap: 14px; margin: 12px 0; flex-wrap: wrap; }
+      .slider input[type=range] { flex: 1; min-width: 200px; accent-color: var(--accent); }
+      .slider .t { font-family: var(--mono); font-size: 15px; min-width: 6ch; }
+      .pill { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 12px; border: 1px solid var(--line); color: var(--muted); }
+      .err { color: var(--bad); border: 1px solid var(--bad); border-radius: 8px; padding: 10px 12px; white-space: pre-wrap; font-size: 13px; }
+      .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--muted); margin-top: 6px; }
+      .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+      .router { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 10px; align-items: center; margin: 14px 0; font-size: 14px; }
+      .router .box { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px; text-align: center; }
+      .router .arrow { color: var(--muted); text-align: center; }
+      @media (max-width: 760px) { .router { grid-template-columns: 1fr; } .router .arrow { transform: rotate(90deg); } }
+      footer { margin-top: 56px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; }
+      .hidden { display: none; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <p class="meta"><a href="./">← Back to the playground</a> · this is the detailed study behind it (calibration, held-out thresholds, confidence intervals).</p>
+        <h1>System 1 / System 2: confidence-gated routing, measured</h1>
+        <p class="lede">
+          A fast, cheap <em>System 1</em> classifies first and reports a confidence. A strong <em>System 2</em> LLM is
+          called only when that confidence is below a threshold. This page replays recorded results from public data;
+          no key, no live call. Code and reproduction: <a href="https://github.com/Iskandeur/system1-system2">github.com/Iskandeur/system1-system2</a>.
+        </p>
+        <div id="finding" class="finding">Loading results…</div>
+        <div id="error" class="err hidden"></div>
+      </header>
+
+      <section id="router-section">
+        <h2>The router</h2>
+        <div class="router">
+          <div class="box"><b>Input text</b><br /><span class="muted">e.g. a voice-assistant request, a ticket, an issue</span></div>
+          <div class="arrow">→</div>
+          <div class="box"><b>System 1</b><br /><span class="muted" id="routerS1">typed-decision model, ~300 ms</span><br />label + confidence</div>
+          <div class="arrow">→</div>
+          <div class="box"><b>confidence ≥ t ?</b><br /><span class="muted">yes → answer</span><br /><span class="muted">no → <b>System 2</b> (<span id="routerS2">LLM</span>)</span></div>
+        </div>
+        <p class="muted">Every item is scored by both systems once, so every threshold, and the two extremes (System 1 only at t = 0, System 2 only at t = 1), come from the same predictions.</p>
+      </section>
+
+      <section id="hybrid-section">
+        <h2>Accuracy and cost as the threshold moves</h2>
+        <p id="hybridIntro" class="muted"></p>
+        <div class="slider">
+          <label for="threshold">threshold t</label>
+          <input id="threshold" type="range" min="0" max="1" step="0.02" value="0.5" />
+          <span class="t" id="thresholdValue">0.50</span>
+          <span class="pill" id="chosenPill"></span>
+        </div>
+        <div class="cards" id="hybridCards"></div>
+        <div class="row">
+          <div><svg id="sweepChart" class="chart" viewBox="0 0 520 300" role="img" aria-label="accuracy and cost against threshold"></svg><div class="legend"><span><i style="background:var(--accent)"></i>hybrid accuracy</span><span><i style="background:var(--s2)"></i>System 2 only</span><span><i style="background:var(--s1)"></i>System 1 only</span><span><i style="background:var(--muted)"></i>escalation rate</span></div></div>
+          <div><svg id="frontierChart" class="chart" viewBox="0 0 520 300" role="img" aria-label="accuracy against cost per thousand items"></svg><div class="legend"><span><i style="background:var(--accent)"></i>hybrid, one dot per threshold</span><span><i style="background:var(--s1)"></i>System 1 only</span><span><i style="background:var(--s2)"></i>System 2 only</span></div></div>
+        </div>
+        <h3>Held-out operating point</h3>
+        <p class="muted" id="heldoutNote"></p>
+        <div class="tablewrap"><table id="heldoutTable"><thead><tr><th>Strategy</th><th>Accuracy (95% CI)</th><th>Cost / 1k items</th><th>Mean latency</th><th>Escalation</th></tr></thead><tbody></tbody></table></div>
+        <div id="otherPairs"></div>
+      </section>
+
+      <section id="calibration-section">
+        <h2>Is the confidence worth routing on?</h2>
+        <p class="muted">A reliability diagram puts items in ten confidence bins and compares each bin's mean confidence with its accuracy. Bars on the diagonal mean "when it says 80 %, it is right 80 % of the time". ECE is the count-weighted gap; AUROC says how well confidence ranks right answers above wrong ones (0.5 = useless).</p>
+        <div class="cards" id="calibCards"></div>
+        <div class="row" id="reliabilityCharts"></div>
+      </section>
+
+      <section id="injection-section" class="hidden">
+        <h2>Prompt injection through the router</h2>
+        <p class="muted" id="injectionIntro"></p>
+        <div class="tablewrap"><table id="injectionTable"><thead><tr><th>System</th><th>Defense</th><th>Targeted success</th><th>Flipped vs clean</th><th>Control flip</th><th>Confidence clean → attacked</th><th>Successful &amp; above t</th></tr></thead><tbody></tbody></table></div>
+        <svg id="injectionChart" class="chart" viewBox="0 0 1040 260" role="img" aria-label="attack success by template"></svg>
+        <div class="legend" id="injectionLegend"></div>
+        <h3>Through the router</h3>
+        <div class="tablewrap"><table id="injectionHybridTable"><thead><tr><th>Pair</th><th>Defense</th><th>t</th><th>Targeted success</th><th>Escalated under attack</th><th>Passed the router</th></tr></thead><tbody></tbody></table></div>
+        <p class="muted" id="injectionRouterNote"></p>
+        <div class="tablewrap"><table id="injectionRouterTable"><thead><tr><th>System 1 · defense</th><th>t</th><th>Successful attacks kept (conf ≥ t)</th><th>Escalation clean → attacked</th><th>Hybrid targeted success</th><th>Passed the router</th></tr></thead><tbody></tbody></table></div>
+        <details><summary>The six templates</summary><div class="tablewrap"><table id="templateTable"><thead><tr><th>Template</th><th>Appended payload</th></tr></thead><tbody></tbody></table></div></details>
+      </section>
+
+      <section id="language-section" class="hidden">
+        <h2>Same items, in French</h2>
+        <p class="muted" id="languageIntro"></p>
+        <div class="tablewrap"><table id="languageTable"><thead><tr><th>System</th><th>EN accuracy</th><th>FR accuracy</th><th>Gap</th><th>EN ECE</th><th>FR ECE</th></tr></thead><tbody></tbody></table></div>
+        <div id="languageHybrid"></div>
+      </section>
+
+      <section id="openweights-section" class="hidden">
+        <h2>Open-weight System 1, run locally on CPU</h2>
+        <p class="muted" id="openweightsIntro"></p>
+        <div class="tablewrap"><table id="openweightsTable"><thead><tr><th>System</th><th>Runs on</th><th>EN accuracy</th><th>FR accuracy</th><th>FR − EN</th><th>Median latency</th><th>ECE EN / FR</th><th>Cost / 1k</th></tr></thead><tbody></tbody></table></div>
+        <p class="muted" id="openweightsNote"></p>
+      </section>
+
+      <section>
+        <h2>Reproduce</h2>
+        <pre>git clone https://github.com/Iskandeur/system1-system2 &amp;&amp; cd system1-system2
+cp .env.example .env            # OPENROUTER_API_KEY is enough for the default pair
+node scripts/run-eval.mjs --limit 20
+node scripts/analyze.mjs --dataset massive-en      # recompute every number on this page from data/predictions/</pre>
+        <p class="muted">All predictions, the datasets and the analysis code are in the repository. Methods, limitations and sources are in the README.</p>
+      </section>
+
+      <footer id="footer">Generated from <code>docs/assets/results/*.json</code>.</footer>
+    </div>
+
+    <script>
+      const $ = (id) => document.getElementById(id);
+      const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      const pct = (x, d = 1) => (x === null || x === undefined ? '–' : (x * 100).toFixed(d) + '%');
+      const ci = (c, d = 1) => (c ? ` [${(c.lo * 100).toFixed(d)}–${(c.hi * 100).toFixed(d)}]` : '');
+      const usd = (x, d = 2) => (x === null || x === undefined ? '–' : '$' + Number(x).toFixed(d));
+      const ms = (x) => (x === null || x === undefined ? '–' : Math.round(x) + ' ms');
+      const modelOf = (res, tag) => (res.systems[tag] ? res.systems[tag].model : tag);
+      const svgEl = (name, attrs = {}, text) => {
+        const el = document.createElementNS('http://www.w3.org/2000/svg', name);
+        for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+        if (text !== undefined) el.textContent = text;
+        return el;
+      };
+      const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+
+      async function load(path) {
+        const r = await fetch(path, { cache: 'no-cache' });
+        if (!r.ok) throw new Error(`${path}: HTTP ${r.status}`);
+        return r.json();
+      }
+
+      // ---------- hybrid ----------
+      function renderHybrid(res, hybrid) {
+        const s1 = res.systems[hybrid.s1];
+        const s2 = res.systems[hybrid.s2];
+        $('routerS1').textContent = `${s1.model}, ${ms(s1.mean_latency_ms)}`;
+        $('routerS2').textContent = s2.model;
+        $('hybridIntro').textContent = `${res.dataset.name}: ${hybrid.n} items, ${res.dataset.labels.length} labels. System 1 = ${s1.model} (confidence: ${(s1.confidence_sources || []).join('/')}), System 2 = ${s2.model}. Cost per 1,000 items at public list prices; latency as measured.`;
+        const slider = $('threshold');
+        const t0 = hybrid.heldout.threshold;
+        slider.value = t0;
+        $('chosenPill').textContent = `held-out choice: t = ${t0}`;
+        const show = () => {
+          const t = Number(slider.value);
+          $('thresholdValue').textContent = t.toFixed(2);
+          const row = hybrid.sweep.reduce((a, b) => (Math.abs(b.threshold - t) < Math.abs(a.threshold - t) ? b : a));
+          const cards = [
+            ['Hybrid accuracy', pct(row.accuracy), `95% CI ${pct(row.accuracy_ci.lo)}–${pct(row.accuracy_ci.hi)}`],
+            ['Cost / 1k items', usd(row.cost_per_1k_usd, 2), `System 2 only: ${usd(hybrid.system2_only.cost_per_1k_usd)} · System 1 only: ${usd(hybrid.system1_only.cost_per_1k_usd, 3)}`],
+            ['Escalated to System 2', pct(row.escalation_rate), `captures ${pct(row.error_capture, 0)} of System 1's errors, wastes ${pct(row.waste, 0)} of its correct answers`],
+            ['Mean latency', ms(row.mean_latency_ms), `System 2 only: ${ms(hybrid.system2_only.mean_latency_ms)}`],
+          ];
+          $('hybridCards').innerHTML = cards.map(([k, v, s]) => `<div class="card"><div class="k">${esc(k)}</div><div class="v">${esc(v)}</div><div class="s">${esc(s)}</div></div>`).join('');
+          drawSweep(hybrid, t);
+          drawFrontier(hybrid, t);
+        };
+        slider.oninput = show;
+        show();
+
+        const e = hybrid.heldout;
+        const b = hybrid.heldout_best || e;
+        $('heldoutNote').textContent = `The threshold is chosen on one half of the items (${e.tune_n}) and everything below is measured on the other half (${e.n} items). Two rules: "match" = ${e.rule}; "best" = ${b.rule}.`;
+        const tb = $('heldoutTable').querySelector('tbody');
+        tb.innerHTML = [
+          [`System 2 only (${s2.model})`, e.system2_only],
+          [`System 1 only (${s1.model})`, e.system1_only],
+          [`Hybrid, "match" rule: t = ${e.threshold}`, e.hybrid],
+          [`Hybrid, "best" rule: t = ${b.threshold}`, b.hybrid],
+        ].map(([name, s]) => `<tr><td class="l">${esc(name)}</td><td>${pct(s.accuracy)}${esc(ci(s.accuracy_ci))}</td><td>${usd(s.cost_per_1k_usd, 3)}</td><td>${ms(s.mean_latency_ms)}</td><td>${s.escalation_rate === undefined ? '–' : pct(s.escalation_rate)}</td></tr>`).join('');
+      }
+
+      function axes(svg, { x0, y0, w, h, xTicks, yTicks, xLabel, yLabel }) {
+        const line = css('--line');
+        const muted = css('--muted');
+        for (const [v, label] of yTicks) {
+          const y = y0 + h - v * h;
+          svg.appendChild(svgEl('line', { x1: x0, y1: y, x2: x0 + w, y2: y, stroke: line }));
+          svg.appendChild(svgEl('text', { x: x0 - 6, y: y + 4, 'font-size': 11, 'text-anchor': 'end', fill: muted }, label));
+        }
+        for (const [v, label] of xTicks) {
+          const x = x0 + v * w;
+          svg.appendChild(svgEl('text', { x, y: y0 + h + 16, 'font-size': 11, 'text-anchor': 'middle', fill: muted }, label));
+        }
+        svg.appendChild(svgEl('text', { x: x0 + w / 2, y: y0 + h + 32, 'font-size': 11, 'text-anchor': 'middle', fill: muted }, xLabel));
+        svg.appendChild(svgEl('text', { transform: `translate(12,${y0 + h / 2}) rotate(-90)`, 'font-size': 11, 'text-anchor': 'middle', fill: muted }, yLabel));
+      }
+
+      function drawSweep(hybrid, t) {
+        const svg = $('sweepChart');
+        svg.innerHTML = '';
+        const x0 = 46, y0 = 14, w = 460, h = 240;
+        const accs = hybrid.sweep.map((r) => r.accuracy).concat([hybrid.system1_only.accuracy, hybrid.system2_only.accuracy]);
+        const lo = Math.max(0, Math.floor((Math.min(...accs) - 0.02) * 20) / 20);
+        const sy = (a) => y0 + h - ((a - lo) / (1 - lo)) * h;
+        const sx = (v) => x0 + v * w;
+        const yTicks = [];
+        for (let a = lo; a <= 1.0001; a += 0.05) yTicks.push([(a - lo) / (1 - lo), Math.round(a * 100) + '%']);
+        axes(svg, { x0, y0, w, h, xTicks: [0, 0.25, 0.5, 0.75, 1].map((v) => [v, v.toFixed(2)]), yTicks, xLabel: 'threshold t (escalate when System 1 confidence < t)', yLabel: 'accuracy · escalation' });
+        svg.appendChild(svgEl('line', { x1: sx(0), y1: sy(hybrid.system2_only.accuracy), x2: sx(1), y2: sy(hybrid.system2_only.accuracy), stroke: css('--s2'), 'stroke-dasharray': '4 4' }));
+        svg.appendChild(svgEl('line', { x1: sx(0), y1: sy(hybrid.system1_only.accuracy), x2: sx(1), y2: sy(hybrid.system1_only.accuracy), stroke: css('--s1'), 'stroke-dasharray': '4 4' }));
+        const esc_ = (r) => y0 + h - r.escalation_rate * h;
+        svg.appendChild(svgEl('path', { d: hybrid.sweep.map((r, i) => `${i ? 'L' : 'M'}${sx(r.threshold)},${esc_(r)}`).join(' '), fill: 'none', stroke: css('--muted'), 'stroke-width': 1.5, 'stroke-dasharray': '2 3' }));
+        svg.appendChild(svgEl('path', { d: hybrid.sweep.map((r, i) => `${i ? 'L' : 'M'}${sx(r.threshold)},${sy(r.accuracy)}`).join(' '), fill: 'none', stroke: css('--accent'), 'stroke-width': 2.5 }));
+        svg.appendChild(svgEl('line', { x1: sx(t), y1: y0, x2: sx(t), y2: y0 + h, stroke: css('--fg'), 'stroke-opacity': 0.5 }));
+        const row = hybrid.sweep.reduce((a, b) => (Math.abs(b.threshold - t) < Math.abs(a.threshold - t) ? b : a));
+        svg.appendChild(svgEl('circle', { cx: sx(row.threshold), cy: sy(row.accuracy), r: 5, fill: css('--accent') }));
+      }
+
+      function drawFrontier(hybrid, t) {
+        const svg = $('frontierChart');
+        svg.innerHTML = '';
+        const x0 = 46, y0 = 14, w = 460, h = 240;
+        const pts = hybrid.sweep.filter((r) => typeof r.cost_per_1k_usd === 'number');
+        const s1 = hybrid.system1_only, s2 = hybrid.system2_only;
+        const costs = pts.map((p) => p.cost_per_1k_usd).concat([s1.cost_per_1k_usd, s2.cost_per_1k_usd]).filter((c) => c > 0);
+        const minC = Math.min(...costs) / 1.5, maxC = Math.max(...costs) * 1.5;
+        const accs = pts.map((p) => p.accuracy).concat([s1.accuracy, s2.accuracy]);
+        const lo = Math.max(0, Math.floor((Math.min(...accs) - 0.02) * 20) / 20);
+        const sx = (c) => x0 + ((Math.log10(Math.max(c, minC)) - Math.log10(minC)) / (Math.log10(maxC) - Math.log10(minC))) * w;
+        const sy = (a) => y0 + h - ((a - lo) / (1 - lo)) * h;
+        const yTicks = [];
+        for (let a = lo; a <= 1.0001; a += 0.05) yTicks.push([(a - lo) / (1 - lo), Math.round(a * 100) + '%']);
+        const xTicks = [];
+        for (let e = Math.ceil(Math.log10(minC)); e <= Math.floor(Math.log10(maxC)); e++) xTicks.push([(Math.log10(10 ** e) - Math.log10(minC)) / (Math.log10(maxC) - Math.log10(minC)), '$' + (e >= 0 ? 10 ** e : (10 ** e).toFixed(-e))]);
+        axes(svg, { x0, y0, w, h, xTicks, yTicks, xLabel: 'cost per 1,000 items (USD, log scale)', yLabel: 'accuracy' });
+        svg.appendChild(svgEl('path', { d: pts.map((p, i) => `${i ? 'L' : 'M'}${sx(p.cost_per_1k_usd)},${sy(p.accuracy)}`).join(' '), fill: 'none', stroke: css('--accent'), 'stroke-width': 2 }));
+        for (const p of pts) {
+          const c = svgEl('circle', { cx: sx(p.cost_per_1k_usd), cy: sy(p.accuracy), r: 2.5, fill: css('--accent') });
+          c.appendChild(svgEl('title', {}, `t=${p.threshold}: ${pct(p.accuracy)}, ${usd(p.cost_per_1k_usd, 3)}/1k, escalation ${pct(p.escalation_rate)}`));
+          svg.appendChild(c);
+        }
+        const row = pts.reduce((a, b) => (Math.abs(b.threshold - t) < Math.abs(a.threshold - t) ? b : a));
+        svg.appendChild(svgEl('circle', { cx: sx(row.cost_per_1k_usd), cy: sy(row.accuracy), r: 8, fill: 'none', stroke: css('--accent'), 'stroke-width': 2 }));
+        svg.appendChild(svgEl('rect', { x: sx(s1.cost_per_1k_usd) - 5, y: sy(s1.accuracy) - 5, width: 10, height: 10, fill: css('--s1') }));
+        svg.appendChild(svgEl('rect', { x: sx(s2.cost_per_1k_usd) - 5, y: sy(s2.accuracy) - 5, width: 10, height: 10, fill: css('--s2') }));
+      }
+
+      function renderOtherPairs(res) {
+        if (res.hybrids.length < 2) return;
+        const rows = res.hybrids.map((h) => {
+          const e = h.heldout;
+          return `<tr><td class="l">${esc(modelOf(res, h.s1))} → ${esc(modelOf(res, h.s2))}</td><td>${pct(e.system2_only.accuracy)}${esc(ci(e.system2_only.accuracy_ci))}</td><td>${pct(e.system1_only.accuracy)}</td><td>${pct(e.hybrid.accuracy)}${esc(ci(e.hybrid.accuracy_ci))}</td><td>${e.threshold}</td><td>${pct(e.hybrid.escalation_rate)}</td><td>${usd(e.system2_only.cost_per_1k_usd)} → ${usd(e.hybrid.cost_per_1k_usd)}</td></tr>`;
+        });
+        $('otherPairs').innerHTML = `<h3>Every pair, held-out half</h3><div class="tablewrap"><table><thead><tr><th>System 1 → System 2</th><th>S2 only</th><th>S1 only</th><th>Hybrid</th><th>t</th><th>Escalation</th><th>Cost / 1k: S2 → hybrid</th></tr></thead><tbody>${rows.join('')}</tbody></table></div>`;
+      }
+
+      // ---------- calibration ----------
+      function renderCalibration(res) {
+        const s1s = res.s1.map((t) => res.systems[t]).filter((s) => s.calibration);
+        $('calibCards').innerHTML = s1s.map((s) => `<div class="card"><div class="k">${esc(s.model)} · ${esc((s.confidence_sources || []).join('/'))}</div><div class="v">ECE ${pct(s.calibration.ece)}</div><div class="s">95% CI ${pct(s.calibration.ece_ci.lo)}–${pct(s.calibration.ece_ci.hi)} · AUROC ${s.calibration.auroc === null ? '–' : s.calibration.auroc.toFixed(3)} · Brier ${s.calibration.brier.toFixed(3)} · accuracy ${pct(s.accuracy)} · mean confidence ${pct(s.calibration.mean_confidence)}</div></div>`).join('');
+        const host = $('reliabilityCharts');
+        host.innerHTML = '';
+        for (const s of s1s) {
+          const svg = svgEl('svg', { class: 'chart', viewBox: '0 0 520 300', role: 'img', 'aria-label': `reliability diagram of ${s.model}` });
+          const x0 = 46, y0 = 24, w = 460, h = 230;
+          const sx = (v) => x0 + v * w, sy = (v) => y0 + h - v * h;
+          const ticks = [0, 0.2, 0.4, 0.6, 0.8, 1].map((v) => [v, Math.round(v * 100) + '%']);
+          axes(svg, { x0, y0, w, h, xTicks: [0, 0.2, 0.4, 0.6, 0.8, 1].map((v) => [v, v.toFixed(1)]), yTicks: ticks, xLabel: 'confidence (bin)', yLabel: 'accuracy in bin' });
+          svg.appendChild(svgEl('line', { x1: sx(0), y1: sy(0), x2: sx(1), y2: sy(1), stroke: css('--muted'), 'stroke-dasharray': '4 4' }));
+          const bins = s.calibration.bins;
+          const bw = w / bins.length;
+          const maxCount = Math.max(...bins.map((b) => b.count), 1);
+          bins.forEach((b, i) => {
+            if (!b.count) return;
+            const x = sx(b.lo) + 3;
+            const r = svgEl('rect', { x, y: sy(b.accuracy), width: bw - 6, height: sy(0) - sy(b.accuracy), fill: css('--accent'), 'fill-opacity': 0.35 + 0.55 * (b.count / maxCount), rx: 2 });
+            r.appendChild(svgEl('title', {}, `${b.lo.toFixed(1)}–${b.hi.toFixed(1)}: n=${b.count}, mean confidence ${pct(b.confidence)}, accuracy ${pct(b.accuracy)}`));
+            svg.appendChild(r);
+            svg.appendChild(svgEl('text', { x: x + (bw - 6) / 2, y: sy(b.accuracy) - 4, 'font-size': 10, 'text-anchor': 'middle', fill: css('--muted') }, String(b.count)));
+          });
+          svg.appendChild(svgEl('text', { x: x0 + 6, y: y0 + 4, 'font-size': 12, fill: css('--fg') }, `${s.model} — ECE ${pct(s.calibration.ece)}, n=${s.calibration.n}`));
+          const box = document.createElement('div');
+          box.appendChild(svg);
+          host.appendChild(box);
+        }
+      }
+
+      // ---------- injection ----------
+      function renderInjection(inj, clean) {
+        $('injection-section').classList.remove('hidden');
+        $('injectionIntro').textContent = `${inj.dataset.base_items} source items from ${inj.dataset.source}, each with ${inj.dataset.templates.length} appended payloads (${inj.dataset.count} items). Targeted success = the model outputs the attacker's label, which is never the true one. "Flipped" compares with the same model's answer on the clean item; the benign control appends unrelated text with no target.`;
+        const sys = Object.values(inj.systems).sort((a, b) => (a.role + a.defense + a.model).localeCompare(b.role + b.defense + b.model));
+        const rate = (r) => (r && r.rate !== null ? `${pct(r.rate)}${ci(r.ci, 0)}` : '–');
+        $('injectionTable').querySelector('tbody').innerHTML = sys.map((s) => `<tr><td class="l">${esc(s.model)} <span class="pill">${s.role === 'system1' ? 'System 1' : 'System 2'}</span></td><td>${esc(s.defense)}</td><td>${rate(s.targeted)}</td><td>${rate(s.flipped)}</td><td>${rate(s.control_flipped)}</td><td>${s.confidence ? `${pct(s.confidence.clean_mean)} → ${pct(s.confidence.attacked_mean)}` : '–'}</td><td>${s.confidence ? rate(s.confidence.successful_above_threshold) + ` (t=${s.confidence.threshold})` : '–'}</td></tr>`).join('');
+        // grouped bars per template
+        const svg = $('injectionChart');
+        svg.innerHTML = '';
+        const templates = inj.dataset.templates.filter((t) => !t.control).map((t) => t.name);
+        const x0 = 46, y0 = 14, w = 980, h = 200;
+        axes(svg, { x0, y0, w, h, xTicks: templates.map((t, i) => [(i + 0.5) / templates.length, t]), yTicks: [0, 0.25, 0.5, 0.75, 1].map((v) => [v, Math.round(v * 100) + '%']), xLabel: 'injection template', yLabel: 'targeted success' });
+        const colors = [css('--s1'), css('--accent'), css('--s2'), css('--bad'), '#8b5cf6', '#14b8a6'];
+        const gw = w / templates.length;
+        const bw = Math.min(28, (gw - 16) / sys.length);
+        sys.forEach((s, k) => {
+          templates.forEach((t, i) => {
+            const r = s.by_template[t] && s.by_template[t].targeted;
+            if (!r) return;
+            const x = x0 + i * gw + 8 + k * bw;
+            const rect = svgEl('rect', { x, y: y0 + h - r.rate * h, width: bw - 3, height: r.rate * h, fill: colors[k % colors.length], rx: 2 });
+            rect.appendChild(svgEl('title', {}, `${s.model} (${s.defense}) · ${t}: ${pct(r.rate)} [${pct(r.ci.lo, 0)}–${pct(r.ci.hi, 0)}], n=${r.n}`));
+            svg.appendChild(rect);
+            svg.appendChild(svgEl('line', { x1: x + (bw - 3) / 2, y1: y0 + h - r.ci.lo * h, x2: x + (bw - 3) / 2, y2: y0 + h - r.ci.hi * h, stroke: css('--fg'), 'stroke-opacity': 0.5 }));
+          });
+        });
+        $('injectionLegend').innerHTML = sys.map((s, k) => `<span><i style="background:${colors[k % colors.length]}"></i>${esc(s.model)} · ${esc(s.defense)}</span>`).join('');
+        $('injectionHybridTable').querySelector('tbody').innerHTML = inj.hybrids.map((h) => `<tr><td class="l">${esc(h.s1)} → ${esc(h.s2)}</td><td>${esc(h.defense)}</td><td>${h.threshold}</td><td>${rate(h.targeted)}</td><td>${rate(h.escalated)}</td><td>${rate(h.passed_router)}</td></tr>`).join('');
+        const routerRows = [];
+        for (const s of sys.filter((x) => x.confidence && x.confidence.by_threshold)) {
+          const hyb = inj.hybrids.filter((h) => h.s1 === s.tag && h.by_threshold);
+          for (const b of s.confidence.by_threshold.filter((x) => [0.5, 0.7, 0.9].includes(x.threshold))) {
+            const hb = hyb.map((h) => ({ h, r: h.by_threshold.find((x) => x.threshold === b.threshold) })).filter((x) => x.r);
+            routerRows.push(`<tr><td class="l">${esc(s.model)} · ${esc(s.defense)}</td><td>${b.threshold}</td><td>${rate(b.successful_above_threshold)}</td><td>${pct(b.escalation_clean.rate)} → ${pct(b.escalation_attacked.rate)}</td><td>${hb.map((x) => `${esc(x.h.s2)}: ${rate(x.r.targeted)}`).join('<br>') || '–'}</td><td>${hb.map((x) => rate(x.r.passed_router)).join('<br>') || '–'}</td></tr>`);
+          }
+        }
+        $('injectionRouterTable').querySelector('tbody').innerHTML = routerRows.join('');
+        $('injectionRouterNote').textContent = `Reference threshold: ${inj.hybrids[0] ? inj.hybrids[0].threshold_source : ''}. Below, the same numbers at fixed thresholds: an attack that lowers System 1's confidence gets escalated (and then only wins if System 2 also falls), and every extra escalation is an extra paid LLM call.`;
+        $('templateTable').querySelector('tbody').innerHTML = inj.dataset.templates.map((t) => `<tr><td class="l"><b>${esc(t.name)}</b><br><span class="muted">${esc(t.description)}</span></td><td class="l"><code>${esc(t.payload)}</code></td></tr>`).join('');
+      }
+
+      // ---------- language ----------
+      function renderLanguage(en, fr) {
+        $('language-section').classList.remove('hidden');
+        $('languageIntro').textContent = `The ${fr.dataset.count} French items are the same MASSIVE utterances as the English ones (same ids, human-localised). Same models, same prompts, same criteria in English.`;
+        const tags = [...new Set([...Object.keys(en.systems), ...Object.keys(fr.systems)])].filter((t) => en.systems[t] && fr.systems[t]);
+        $('languageTable').querySelector('tbody').innerHTML = tags.map((t) => {
+          const a = en.systems[t], b = fr.systems[t];
+          const gap = b.accuracy - a.accuracy;
+          return `<tr><td class="l">${esc(a.model)} <span class="pill">${a.role === 'system1' ? 'System 1' : 'System 2'}</span></td><td>${pct(a.accuracy)}${esc(ci(a.accuracy_ci))}</td><td>${pct(b.accuracy)}${esc(ci(b.accuracy_ci))}</td><td style="color:${gap < 0 ? 'var(--bad)' : 'inherit'}">${(gap * 100).toFixed(1)} pts</td><td>${a.calibration ? pct(a.calibration.ece) : '–'}</td><td>${b.calibration ? pct(b.calibration.ece) : '–'}</td></tr>`;
+        }).join('');
+        const pairs = fr.hybrids.filter((h) => en.hybrids.some((x) => x.s1 === h.s1 && x.s2 === h.s2));
+        if (pairs.length) {
+          $('languageHybrid').innerHTML = `<h3>Hybrid, held-out half</h3><div class="tablewrap"><table><thead><tr><th>Pair</th><th>EN hybrid</th><th>EN escalation</th><th>FR hybrid</th><th>FR escalation</th><th>FR System 2 only</th></tr></thead><tbody>${pairs.map((h) => { const e = en.hybrids.find((x) => x.s1 === h.s1 && x.s2 === h.s2).heldout; const f = h.heldout; return `<tr><td class="l">${esc(modelOf(fr, h.s1))} → ${esc(modelOf(fr, h.s2))}</td><td>${pct(e.hybrid.accuracy)} @ t=${e.threshold}</td><td>${pct(e.hybrid.escalation_rate)}</td><td>${pct(f.hybrid.accuracy)} @ t=${f.threshold}</td><td>${pct(f.hybrid.escalation_rate)}</td><td>${pct(f.system2_only.accuracy)}</td></tr>`; }).join('')}</tbody></table></div>`;
+        }
+      }
+
+      // ---------- open-weight ----------
+      function renderOpenWeights(ow) {
+        $('openweights-section').classList.remove('hidden');
+        const n = ow.languages.en ? ow.languages.en.count : '?';
+        $('openweightsIntro').textContent = `A stratified subset of ${n} MASSIVE items (same ids in English and French, every scenario represented), because a local model on a 2-vCPU server without a GPU takes seconds per decision. Every system below answered exactly these items; the hosted rows are slices of the full 600-item runs. Numbers are not comparable in absolute terms with the 600-item tables above (n = ${n} gives up to about ±8 points).`;
+        const order = ['jev', 'gpt-5.2', 'laya', 'laya-multilingual', 'kev'];
+        const tags = Object.keys(ow.systems).sort((a, b) => (order.indexOf(a) + 99 * (order.indexOf(a) < 0)) - (order.indexOf(b) + 99 * (order.indexOf(b) < 0)));
+        const acc = (b) => (b ? `${pct(b.accuracy)}${esc(ci(b.accuracy_ci, 0))}` : '–');
+        $('openweightsTable').querySelector('tbody').innerHTML = tags.map((t) => {
+          const s = ow.systems[t];
+          const any = s.en || s.fr;
+          const gap = s.gap_fr_minus_en;
+          const lat = [s.en, s.fr].filter(Boolean).map((b) => ms(b.latency_ms.median)).join(' / ');
+          const eceTxt = [s.en, s.fr].map((b) => (b && b.calibration ? pct(b.calibration.ece) : '–')).join(' / ');
+          return `<tr><td class="l">${esc(s.model || t)} <span class="pill">${any.role === 'system2' ? 'System 2' : 'System 1'}</span></td><td>${esc(s.where)}</td><td>${acc(s.en)}</td><td>${acc(s.fr)}</td><td style="color:${gap < 0 ? 'var(--bad)' : 'inherit'}">${gap === undefined ? '–' : (gap * 100).toFixed(1) + ' pts'}</td><td>${lat}</td><td>${eceTxt}</td><td>${usd(any.cost_per_1k_usd, 3)}</td></tr>`;
+        }).join('');
+        $('openweightsNote').textContent = ow.note || 'Latency is wall-clock per decision and only comparable within a group: hosted APIs over the network, local models on a shared 2-vCPU server without a GPU (medians shown; a few calls stalled for tens of seconds under host load). Kev was run in English only (its model card lists English). The question is the same 18-way choice for every model and was not tuned for any of them. Local cost is $0 per call (hardware and electricity not counted).';
+      }
+
+      function renderFinding(res, hybrid) {
+        const e = hybrid.heldout;
+        const s1 = res.systems[hybrid.s1], s2 = res.systems[hybrid.s2];
+        const gap = s2.accuracy - s1.accuracy;
+        const r9 = hybrid.sweep.reduce((a, b) => (Math.abs(b.threshold - 0.9) < Math.abs(a.threshold - 0.9) ? b : a));
+        const verdict = Math.abs(gap) < 0.02
+          ? `<b>${esc(s2.model)} alone is no more accurate than ${esc(s1.model)} alone</b> (${pct(s2.accuracy)} vs ${pct(s1.accuracy)}), so no threshold buys accuracy: chosen on one half, the threshold lands at t = ${e.threshold} (hybrid ${pct(e.hybrid.accuracy)} vs System 2 ${pct(e.system2_only.accuracy)} on the other half).`
+          : `<b>${esc(s2.model)} alone ${gap > 0 ? 'beats' : 'trails'} ${esc(s1.model)} alone by ${Math.abs(gap * 100).toFixed(1)} points</b>; chosen on one half, t = ${e.threshold} gives ${pct(e.hybrid.accuracy)} on the other half (System 2 ${pct(e.system2_only.accuracy)}) at ${pct(e.hybrid.escalation_rate, 0)} escalation.`;
+        const cons = res.consensus ? ` All ${res.consensus.systems.length} systems agree <em>against</em> the label on ${pct(res.consensus.rate_against_label)} of items, a floor on the residual error.` : '';
+        $('finding').innerHTML = `On ${res.dataset.count} ${esc(res.dataset.name)} items (${res.dataset.labels.length} labels), ${verdict} What ${esc(s1.model)}'s confidence does buy is <b>selectivity</b>: it is calibrated (ECE <b>${pct(s1.calibration.ece)}</b>${s1.calibration.auroc === null ? '' : `, AUROC ${s1.calibration.auroc.toFixed(2)}`}) and at t = ${r9.threshold} it hands off ${pct(r9.escalation_rate, 0)} of items and is <b>${pct(r9.selective_accuracy)}</b> accurate on the ${pct(r9.coverage, 0)} it keeps, for ${usd(r9.cost_per_1k_usd)} per 1,000 items instead of ${usd(s2.cost_per_1k_usd)}.${cons}`;
+      }
+
+      async function main() {
+        const manifest = await load('./assets/manifest.json');
+        const byId = Object.fromEntries(manifest.results.map((r) => [r.id, r]));
+        const main = byId['massive-en'] || manifest.results.find((r) => r.kind === 'hybrid');
+        if (!main) throw new Error('no hybrid results in manifest');
+        const res = await load('./assets/' + main.file);
+        const hybrid = res.hybrids.find((h) => h.s1 === 'jev') || res.hybrids[0];
+        renderFinding(res, hybrid);
+        renderHybrid(res, hybrid);
+        renderOtherPairs(res);
+        renderCalibration(res);
+        const inj = manifest.results.find((r) => r.kind === 'injection');
+        if (inj) renderInjection(await load('./assets/' + inj.file), res);
+        if (byId['massive-fr']) renderLanguage(res, await load('./assets/' + byId['massive-fr'].file));
+        if (byId['openweights']) renderOpenWeights(await load('./assets/' + byId['openweights'].file));
+        $('footer').innerHTML = `Generated ${esc(String(res.generated_at).slice(0, 10))} from <code>docs/assets/results/*.json</code>. Accuracy intervals are Wilson 95%; ECE intervals are percentile bootstrap (1000 resamples). Costs use each model's public list price on the day of the run (see README).`;
+      }
+      main().catch((e) => { $('error').classList.remove('hidden'); $('error').textContent = String(e && e.stack ? e.stack : e); $('finding').textContent = 'Results could not be loaded.'; });
+    </script>
+  </body>
+</html>
