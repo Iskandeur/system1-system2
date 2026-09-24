@@ -75,7 +75,7 @@ Dataset: 600 `en-US` test utterances of [MASSIVE 1.1](https://github.com/alexa/m
 | **TypeSafe Jev 1.13** (confidence from the decision API) | **90.0%** [87.3–92.2] | **4.5%** [3.1–6.8] | 0.83 | 0.068 | 94.1% | $0.031 | 302 ms |
 | GPT-4o-mini (confidence = logprob of the label tokens) | 82.0% [78.7–84.9] | 14.6% [12.2–17.5] | 0.85 | 0.150 | 95.7% | $0.072 | 1,084 ms |
 
-Jev's reliability diagram tracks the diagonal: items it scores 0.9–1.0 (512 of 600) are right 96.1% of the time, items in 0.5–0.6 are right 62%, items in 0.3–0.4 are right 29%. GPT-4o-mini puts 548 of 600 items in the top bin and is right on 86% of them — its confidence ranks errors about as well as Jev's (AUROC 0.85) but its *values* are inflated, so a threshold on it has almost nothing to act on. As far as I can find, TypeSafe publishes no reliability curve for Jev; this is an independent one, on one task.
+Jev's reliability diagram tracks the diagonal: items it scores 0.9–1.0 (512 of 600) are right 96.1% of the time, items in 0.5–0.6 are right 62%, items in 0.3–0.4 are right 29%. GPT-4o-mini puts 548 of 600 items in the top bin and is right on 86% of them — its confidence ranks errors about as well as Jev's (AUROC 0.85) but its *values* are inflated, so a threshold on it has almost nothing to act on. TypeSafe publishes no reliability curve for Jev; this is one more independent one, on one task (others are listed under [Related work](#related-work)).
 
 What that buys, from the threshold sweep (in-sample, all 600 items):
 
@@ -286,6 +286,17 @@ node scripts/build-playground.mjs                         # → docs/assets/play
 - `docs/index.html` – the playground (no build step; imports `docs/assets/strategies.mjs`, the pure strategy/winner/verdict logic also covered by `test/strategies.test.mjs`); `docs/study.html` – the study page; `docs/assets/play/` – per-task recorded answers the playground replays.
 - `docker/` – CPU-only servers exposing Laya and Kev behind the Jev request shape.
 - `data/` – datasets, `prices.json`, `predictions/`. `docs/` – the static results page and its JSON (no key ever reaches the browser). `test/` – `node:test`, mocked `fetch`.
+
+## Related work
+
+Jev came out on 15 September 2026 and was measured independently many times within two weeks. This repo is not the first to look at its calibration. Projects that measure the same things, all read on 2026-09-24:
+
+- **[JevBench](https://github.com/fstandhartinger/jevbench)** (Benchmark Heaven) — a ranked board of Jev-class decision models on public and sealed items, with calibration as one of four scored axes. Its companion site **[jevbench.xyz](https://jevbench.xyz)** replays single Jev runs (Banking77, 3,080 items, 80.3%) and keeps every failure, including 29 wrong answers at confidence 1.00 that no threshold can catch.
+- **[Running-Dolphins/jev-bench](https://github.com/Running-Dolphins/jev-bench)** — accuracy and reliability tables for Jev on twelve business-like tasks, framed exactly as here: Jev's confidence as the gate of a human-in-the-loop process.
+- **[AbdelStark/jev-benchmarks](https://github.com/AbdelStark/jev-benchmarks)** — Jev against GLiNER2.5 on three zero-shot classification sets, with coverage at a fixed error budget and paired bootstrap intervals.
+- **[awesome-jev-robustness](https://github.com/Yifan-Lan/awesome-jev-robustness)** — a curated index of about 110 independent tests of Jev's calibration and robustness (option order, wording, language, injected text), the place to start for anything not listed here.
+
+What this repo adds that those do not: the whole **router** under prompt injection, with System 1 and System 2 attacked by the same payloads (and the finding that escalation can send attacked items to the *more* injectable model, GPT-5.2 flipped 80/80 by the "annotation team" payload); a **French run on the same item ids** as the English one; and **open-weight System 1 models run locally on CPU** next to Jev.
 
 ## Sources
 
