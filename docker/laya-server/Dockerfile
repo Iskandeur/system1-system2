@@ -12,7 +12,10 @@ RUN apt-get update \
 # We install torch from the official CPU wheel index to avoid pulling CUDA runtime wheels.
 RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch
 RUN pip install --no-cache-dir fastapi uvicorn transformers safetensors huggingface_hub numpy
-RUN pip install --no-cache-dir --no-deps laya
+# Pinned: the runtime changes the confidences. The rows of 2026-09-21 ran on laya 0.3.4, which applied
+# the English checkpoint's shipped 0.10 temperature to 18-option choices; 0.3.5+ clamps it to 0.5.
+# The weights on the Hub have not changed since 2026-09-19. The rows of 2026-09-25 ran on 0.3.20.
+RUN pip install --no-cache-dir --no-deps laya==0.3.20
 
 WORKDIR /app
 COPY server.py /app/server.py

@@ -60,6 +60,9 @@ export function parseResponse({ system, task, json }) {
     cost,
     cost_source,
     ...tokenCounts(json?.usage),
+    // Local servers report the runtime that produced the answer (docker/laya-server): the same
+    // weights gave different confidences under two laya versions, and nothing recorded which.
+    ...(json?.runtime && typeof json.runtime === 'object' ? { runtime: json.runtime } : {}),
   };
 }
 

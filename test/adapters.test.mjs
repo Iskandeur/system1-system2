@@ -172,6 +172,18 @@ test('decision request: model/state/questions with the task criteria; response w
   assert.deepEqual({ label: r.label, confidence: r.confidence, source: r.confidence_source, cost: r.cost }, { label: 'bug', confidence: 0.83, source: 'model', cost: 0.00005 });
   assert.deepEqual(r.probabilities, { bug: 0.9, feature: 0.08, docs: 0.02 });
   assert.throws(() => decision.parseResponse({ system: jev, task, json: { answers: {} } }), /no usable choice/);
+  assert.equal('runtime' in r, false, 'a hosted API reports no runtime, and none is invented');
+});
+
+test('decision response: a local server\'s runtime version is kept with the answer', () => {
+  const laya = sys({ provider: 'laya' });
+  const r = decision.parseResponse({
+    system: laya,
+    task,
+    json: { answers: { label: { choice: 'bug', confidence: 0.5, probabilities: { bug: 0.6, feature: 0.3, docs: 0.1 } } }, usage: {}, runtime: { laya: '0.3.20' } },
+  });
+  assert.deepEqual(r.runtime, { laya: '0.3.20' });
+  assert.equal(r.cost, 0, 'a local server is $0');
 });
 
 test('typesafe preset posts the same shape to the native endpoint with its own key', async () => {
