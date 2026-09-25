@@ -407,7 +407,7 @@ node scripts/analyze.mjs --dataset massive-en      # recompute every number on t
         $('openweights-section').classList.remove('hidden');
         const n = ow.languages.en ? ow.languages.en.count : '?';
         $('openweightsIntro').textContent = `A stratified subset of ${n} MASSIVE items (same ids in English and French, every scenario represented), because a local model on a 2-vCPU server without a GPU takes seconds per decision. Every system below answered exactly these items; the hosted rows are slices of the full 600-item runs. Numbers are not comparable in absolute terms with the 600-item tables above (n = ${n} gives up to about ±8 points).`;
-        const order = ['jev', 'gpt-5.2', 'laya', 'laya-multilingual', 'kev'];
+        const order = ['jev', 'gpt-5.2', 'laya', 'laya-0320', 'laya-hm512', 'laya-multilingual', 'laya-multilingual-hm512', 'kev'];
         const tags = Object.keys(ow.systems).sort((a, b) => (order.indexOf(a) + 99 * (order.indexOf(a) < 0)) - (order.indexOf(b) + 99 * (order.indexOf(b) < 0)));
         const acc = (b) => (b ? `${pct(b.accuracy)}${esc(ci(b.accuracy_ci, 0))}` : '–');
         $('openweightsTable').querySelector('tbody').innerHTML = tags.map((t) => {
@@ -416,9 +416,9 @@ node scripts/analyze.mjs --dataset massive-en      # recompute every number on t
           const gap = s.gap_fr_minus_en;
           const lat = [s.en, s.fr].filter(Boolean).map((b) => ms(b.latency_ms.median)).join(' / ');
           const eceTxt = [s.en, s.fr].map((b) => (b && b.calibration ? pct(b.calibration.ece) : '–')).join(' / ');
-          return `<tr><td class="l">${esc(s.model || t)} <span class="pill">${any.role === 'system2' ? 'System 2' : 'System 1'}</span></td><td>${esc(s.where)}</td><td>${acc(s.en)}</td><td>${acc(s.fr)}</td><td style="color:${gap < 0 ? 'var(--bad)' : 'inherit'}">${gap === undefined ? '–' : (gap * 100).toFixed(1) + ' pts'}</td><td>${lat}</td><td>${eceTxt}</td><td>${usd(any.cost_per_1k_usd, 3)}</td></tr>`;
+          return `<tr><td class="l">${esc(s.model || t)}${s.variant ? ` <span class="muted">· ${esc(s.variant)}</span>` : ''} <span class="pill">${any.role === 'system2' ? 'System 2' : 'System 1'}</span></td><td>${esc(s.where)}</td><td>${acc(s.en)}</td><td>${acc(s.fr)}</td><td style="color:${gap < 0 ? 'var(--bad)' : 'inherit'}">${gap === undefined ? '–' : (gap * 100).toFixed(1) + ' pts'}</td><td>${lat}</td><td>${eceTxt}</td><td>${usd(any.cost_per_1k_usd, 3)}</td></tr>`;
         }).join('');
-        $('openweightsNote').textContent = ow.note || 'Latency is wall-clock per decision and only comparable within a group: hosted APIs over the network, local models on a shared 2-vCPU server without a GPU (medians shown; a few calls stalled for tens of seconds under host load). Kev was run in English only (its model card lists English). The question is the same 18-way choice for every model and was not tuned for any of them. Local cost is $0 per call (hardware and electricity not counted).';
+        $('openweightsNote').textContent = ow.note || 'Latency is wall-clock per decision and only comparable within a group: hosted APIs over the network, local models on a shared 2-vCPU server without a GPU (medians shown; a few calls stalled for tens of seconds under host load). Kev was run in English only (its model card lists English). The question is the same 18-way choice for every model and was not tuned for any of them. Laya rows with the same model id are the same weights: the first English run used laya 0.3.4, which applied the checkpoint\'s shipped 0.10 temperature to 18-option choices (0.3.5 and later clamp it to 0.5); the rows marked "read whole" raise head_max_len to 512, since by default Laya cuts each of the 18 option descriptions to 9 tokens (English) or 13 (multilingual) to fit its budget. Local cost is $0 per call (hardware and electricity not counted).';
       }
 
       function renderFinding(res, hybrid) {

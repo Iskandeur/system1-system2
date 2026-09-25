@@ -1,20 +1,25 @@
 from __future__ import annotations
 
 import time
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from fastapi import FastAPI
 from pydantic import BaseModel
 
 import laya
 
-app = FastAPI(title="laya-systemone", version="0.1")
+app = FastAPI(title="laya-systemone", version="0.2")
 
 
 class SystemOneRequest(BaseModel):
     model: str
     state: Any
     questions: Dict[str, Any]
+    # Laya's token budget, per call; None keeps the checkpoint's own (512/192 English, 1024/256
+    # multilingual). With many options the option text is cut to fit head_max_len: 18 options get
+    # (192 - 16) // 18 = 9 tokens each, [MASK] included. Sent with --s1-params.
+    max_len: Optional[int] = None
+    head_max_len: Optional[int] = None
 
 
 def _jsonify(x: Any) -> Any:
@@ -54,12 +59,15 @@ def _get_agent(model_id: str):
 def systemone(req: SystemOneRequest):
     t0 = time.time()
     agent = _get_agent(req.model)
-    result = agent.predict(req.state, req.questions)
+    result = agent.predict(req.state, req.questions, max_len=req.max_len, head_max_len=req.head_max_len)
     out = {
         "model": req.model,
         "answers": _jsonify(result.get("answers")),
         # We don't have token usage for local inference; keep shape compatible.
         "usage": {},
         "latency_ms": int((time.time() - t0) * 1000),
+        # The runtime changes the answers, not only the weights: laya 0.3.4 applied the shipped 0.10
+        # temperature to 18-option choices, 0.3.5+ clamps it to 0.5. Recorded in every prediction row.
+        "runtime": {"laya": getattr(laya, "__version__", None)},
     }
     return out

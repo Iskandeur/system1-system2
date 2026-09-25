@@ -53,6 +53,7 @@ function compactRow(item, r) {
     cached: r.cached || undefined,
     input_tokens: r.input_tokens ?? undefined,
     output_tokens: r.output_tokens ?? undefined,
+    runtime: r.runtime ?? undefined,
   };
 }
 

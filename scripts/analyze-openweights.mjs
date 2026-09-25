@@ -23,7 +23,22 @@ const WHERE = {
   'gpt-5.2': 'hosted API',
   laya: 'local CPU',
   'laya-multilingual': 'local CPU',
+  // Same weights, re-run on 2026-09-25 with laya 0.3.20: first with the default option budget (the
+  // runtime alone changed), then with the budget raised so the 18 criteria are read whole.
+  'laya-0320': 'local CPU',
+  'laya-hm512': 'local CPU',
+  'laya-multilingual-hm512': 'local CPU',
   kev: 'local CPU',
+};
+
+// Rows that share a model id with another row say what differs. The English checkpoint ships a 0.10
+// temperature for choices with 11+ options: laya 0.3.4 applied it (probabilities sharpened tenfold),
+// 0.3.5+ clamps it to 0.5. The multilingual checkpoint ships none, so its runtime does not matter here.
+const VARIANT = {
+  laya: 'laya 0.3.4, shipped 0.10 temperature',
+  'laya-0320': 'laya 0.3.20, temperature clamped to 0.5',
+  'laya-hm512': 'laya 0.3.20, option descriptions read whole',
+  'laya-multilingual-hm512': 'option descriptions read whole',
 };
 
 function quantile(sorted, q) {
@@ -70,7 +85,7 @@ function main() {
     out.languages[lang] = { dataset: name, count: ds.items.length, source: ds.source ?? null };
     for (const tag of listPredictionTags(name)) {
       const pred = loadPredictions(name, tag);
-      out.systems[tag] ??= { tag, where: WHERE[tag] ?? 'unknown' };
+      out.systems[tag] ??= { tag, where: WHERE[tag] ?? 'unknown', ...(VARIANT[tag] ? { variant: VARIANT[tag] } : {}) };
       out.systems[tag][lang] = systemBlock(pred);
       out.systems[tag].model ??= out.systems[tag][lang].model;
     }

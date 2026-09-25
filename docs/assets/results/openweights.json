@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-21T20:20:53.930Z",
+ "generated_at": "2026-09-25T01:48:00.261Z",
  "kind": "openweights",
  "languages": {
   "en": {
@@ -251,6 +251,7 @@
   "laya": {
    "tag": "laya",
    "where": "local CPU",
+   "variant": "laya 0.3.4, shipped 0.10 temperature",
    "en": {
     "tag": "laya",
     "model": "convaiinnovations/laya",
@@ -323,6 +324,88 @@
     }
    },
    "gap_fr_minus_en": -0.225
+  },
+  "laya-0320": {
+   "tag": "laya-0320",
+   "where": "local CPU",
+   "variant": "laya 0.3.20, temperature clamped to 0.5",
+   "en": {
+    "tag": "laya-0320",
+    "model": "convaiinnovations/laya",
+    "role": "system1",
+    "where": "local CPU",
+    "n": 120,
+    "correct": 84,
+    "accuracy": 0.7,
+    "accuracy_ci": {
+     "lo": 0.6128,
+     "hi": 0.7747
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 0,
+    "latency_ms": {
+     "mean": 1864.6167,
+     "median": 1817,
+     "p90": 2104,
+     "max": 2465
+    },
+    "calibration": {
+     "n": 120,
+     "ece": 0.2043,
+     "ece_ci": {
+      "lo": 0.1453,
+      "hi": 0.2792
+     },
+     "auroc": 0.8133,
+     "mean_confidence": 0.8703
+    },
+    "vs_jev": {
+     "only_this_correct": 3,
+     "only_jev_correct": 25
+    }
+   },
+   "model": "convaiinnovations/laya"
+  },
+  "laya-hm512": {
+   "tag": "laya-hm512",
+   "where": "local CPU",
+   "variant": "laya 0.3.20, option descriptions read whole",
+   "en": {
+    "tag": "laya-hm512",
+    "model": "convaiinnovations/laya",
+    "role": "system1",
+    "where": "local CPU",
+    "n": 120,
+    "correct": 76,
+    "accuracy": 0.6333,
+    "accuracy_ci": {
+     "lo": 0.5442,
+     "hi": 0.7142
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 0,
+    "latency_ms": {
+     "mean": 3705.4333,
+     "median": 3060,
+     "p90": 6547,
+     "max": 11120
+    },
+    "calibration": {
+     "n": 120,
+     "ece": 0.1666,
+     "ece_ci": {
+      "lo": 0.1148,
+      "hi": 0.2321
+     },
+     "auroc": 0.8681,
+     "mean_confidence": 0.7137
+    },
+    "vs_jev": {
+     "only_this_correct": 1,
+     "only_jev_correct": 31
+    }
+   },
+   "model": "convaiinnovations/laya"
   },
   "laya-multilingual": {
    "tag": "laya-multilingual",
@@ -399,6 +482,83 @@
     }
    },
    "gap_fr_minus_en": -0.1
+  },
+  "laya-multilingual-hm512": {
+   "tag": "laya-multilingual-hm512",
+   "where": "local CPU",
+   "variant": "option descriptions read whole",
+   "en": {
+    "tag": "laya-multilingual-hm512",
+    "model": "convaiinnovations/laya-multilingual",
+    "role": "system1",
+    "where": "local CPU",
+    "n": 120,
+    "correct": 82,
+    "accuracy": 0.6833,
+    "accuracy_ci": {
+     "lo": 0.5955,
+     "hi": 0.7598
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 0,
+    "latency_ms": {
+     "mean": 1037.025,
+     "median": 1000,
+     "p90": 1191,
+     "max": 1674
+    },
+    "calibration": {
+     "n": 120,
+     "ece": 0.0975,
+     "ece_ci": {
+      "lo": 0.0704,
+      "hi": 0.1768
+     },
+     "auroc": 0.8768,
+     "mean_confidence": 0.7751
+    },
+    "vs_jev": {
+     "only_this_correct": 4,
+     "only_jev_correct": 28
+    }
+   },
+   "model": "convaiinnovations/laya-multilingual",
+   "fr": {
+    "tag": "laya-multilingual-hm512",
+    "model": "convaiinnovations/laya-multilingual",
+    "role": "system1",
+    "where": "local CPU",
+    "n": 120,
+    "correct": 64,
+    "accuracy": 0.5333,
+    "accuracy_ci": {
+     "lo": 0.4444,
+     "hi": 0.6202
+    },
+    "errors": 0,
+    "cost_per_1k_usd": 0,
+    "latency_ms": {
+     "mean": 1168.0167,
+     "median": 1018,
+     "p90": 1252,
+     "max": 14042
+    },
+    "calibration": {
+     "n": 120,
+     "ece": 0.2047,
+     "ece_ci": {
+      "lo": 0.1428,
+      "hi": 0.2843
+     },
+     "auroc": 0.8524,
+     "mean_confidence": 0.7315
+    },
+    "vs_jev": {
+     "only_this_correct": 3,
+     "only_jev_correct": 44
+    }
+   },
+   "gap_fr_minus_en": -0.15
   }
  }
 }
